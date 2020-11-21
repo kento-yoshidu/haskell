@@ -3,9 +3,9 @@ title: git logの出力をカスタマイズする
 image: './01/image01.jpg'
 ---
 
-<!-- <header class="header">
+<header class="header">
   <h1 class="header-title">git logでコミット履歴を見る(前編)</h1>
-</header>-->
+</header>
 
 <main class="main">
 
