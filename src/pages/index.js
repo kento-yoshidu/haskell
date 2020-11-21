@@ -1,24 +1,26 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-/*
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-*/
 
 const BlogIndex = ({ data, location }) => {
+  /*
   return (
     <div>
       <div>test</div>
       <Link to={'hello-world/01'}>test</Link>
       <Link to={'hello-world/02'}>test</Link>
     </div>
-  )
-  /*
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  ) */
+
+  // サイトタイトル => gatsby-config.js
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  
   const posts = data.allMarkdownRemark.nodes
 
+  /*
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
@@ -31,7 +33,7 @@ const BlogIndex = ({ data, location }) => {
         </p>
       </Layout>
     )
-  }
+  }*/
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -71,7 +73,6 @@ const BlogIndex = ({ data, location }) => {
       </ol>
     </Layout>
   )
-  */
 }
 
 export default BlogIndex
