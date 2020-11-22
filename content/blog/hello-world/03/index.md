@@ -1,10 +1,10 @@
 ---
-title: git logの出力をカスタマイズする
+title: git logでコミット履歴を見る(後編)
 date: "2020-11-20T23:46:37.121Z"
 ---
 
 <header class="header">
-  <h1 class="header-title">git logでコミット履歴を見る(前編)</h1>
+  <h1 class="header-title">git logでコミット履歴を見る(後編)</h1>
 </header>
 
 <main class="main">

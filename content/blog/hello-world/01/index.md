@@ -1,6 +1,10 @@
 ---
 title: "git logでコミット履歴を見る(前編)"
+postdate: "2020-11-11"
+updatedate: "2020-11-11"
+category: "Git中級者を目指す"
 image: './01/image01.jpg'
+description: git log のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。
 ---
 
 <!-- <header class="header">
@@ -11,13 +15,11 @@ image: './01/image01.jpg'
 
 <section class="section">
 
-## git logのオプション
+# git logのオプション
 
 `git log`のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。
 
 ※対象はgitの入門書を読み終えた方を想定して書きました。~~自分が全然わかっていなかったこともあり~~ だからと言っては何ですが、記述が冗長になっていたりやたら丁寧だったりするかもしれませんが、ご了承ください。
-
-</section>
 
 <section class="section">
 
@@ -271,6 +273,9 @@ bbb
 
 他の例も以下に置いておきます。マークダウン上で見るよりもgitコンソールの方がカラフルですし幾分見やすいですね。
 
+</section>
+
+<section class="section">
 
 ## `--stat`で変更内容を簡易的に確認する
 
@@ -300,6 +305,10 @@ f082e60 create html                                 # ファイル作成
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
+</section>
+
+<section class="section">
+
 ## `--name-stats`で`--stat`よりも更に簡易表示する
 
 変更内容を一文字で表してくれます。
@@ -322,6 +331,10 @@ A       index.html
 Renameの時に`R100`と表示されていますが、この数字は「変更の前と後で、ファイルの中身がどれくらい一緒か」をパーセンテージで表しています。
 今回の例ではファイル名を変更しただけで内容は一切触っていないので、100=「100%一緒だよ」になります。
 
+</section>
+
+<section class="section">
+
 ## `--name-only`でファイル名のみ表示する
 
 名前からも分かる通り、変更のあったファイル名のみが表示されます。
@@ -339,6 +352,10 @@ index.html
 f082e60 create html
 index.html
 ```
+
+</section>
+
+<section class="section">
 
 ## `-- <path>`で特定のファイルの履歴を確認する
 
@@ -363,8 +380,6 @@ $ git log --stat --oneline -- index.ejs
 今回は途中で`index.html`から`index.ejs`にファイル名を変更しています。`-- index.ejs`で検索しても、`index.html`は検索されません。
 
 ![キャプチャ](./image01.jpg)
-
-<img src="./01/image01.jpg" />
 
 そういう時は`--follow`オプションを付けてください。変更前のindex.htmlも検索してくれます。
 なお、引数の順番は注意が必要です。`--follow -- ファイル名`としなければ旧ファイルが検索されませんでした（git version 2.22.0）。
@@ -393,6 +408,9 @@ f082e60 create html
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
+</section>
+
+<section class="section">
 
 ## `--since`で日付以降のコミット、`--until`で日付以前のコミット
 
@@ -495,6 +513,10 @@ $ git log --since="2017-06-30" --until="2018-06-29" --oneline
 41ece2d 2018 commit
 ```
 
+</section>
+
+<section class="section">
+
 ## `--relative-date`で日付を相対表示する
 
 通常、コミットの日時情報はYYYY-MM-DDといった風に絶対表示されますが、`--relative-date`オプションを渡すことで「〇か月前」「〇時間前」といった現在の日時に対する相対的な形式で出力することが可能です。
@@ -520,6 +542,10 @@ Date:   5 months ago   # 5か月前
 
     2nd commit
 ```
+
+</section>
+
+<section class="section">
 
 ## マージ関係
 
@@ -547,6 +573,10 @@ fa906d1 dev commit
 4f4d558 initial commit
 ```
 
+</section>
+
+<section class="section">
+
 ## Authorとcommitter
 
 これはそのまま、`--author=〇〇`、`--committer=〇〇`の形で記述できます。
@@ -571,9 +601,17 @@ CommitDate: Fri Mar 6 16:27:08 2020 +0900
 
     create index.html
 ```
+</section>
+
+</section>
+
+<section class="section">
+
 # `git log`ではないけれど
 
 以上、`git log`に関係するオプションを紹介しましたが、`git log`ではないもののコミットログに関係するコマンドをいくつか紹介したいと思います。
+
+<section class="section">
 
 ## `git shortlog`でユーザごとのコミット履歴を取得する
 
@@ -605,6 +643,10 @@ $ git shortlog -ns
      5  potsunen
      1  alien
 ```
+
+</section>
+
+<section class="section">
 
 ## `git blame`で変更を行ったユーザを特定する
 
@@ -642,6 +684,10 @@ bcb58434 (alien    2020-06-05 11:51:00 +0900 2) function screamHello(name: strin
 なお、blameは「責める、糾弾」などと言った意味です。自分が犯人だった時にはrebase等でもみ消しましょう。
 
 長くなりましたので今回は以上です。次回は後編ということで、
+
+</section>
+
+<section class="section">
 
 ## 参考 : AuthorとCommiterの違い
 
