@@ -2,39 +2,39 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
-import Layout from "../components/layout"
+//import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const { previous, next } = data;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <div>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        {/*
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header> */}
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
+      <header className="header">
+        <h1 itemProp="headline">{post.frontmatter.title}</h1>
+      </header>
+
+      <section className="info">
+        <p>投稿日{post.frontmatter.postdate}</p>
+        <p>最終更新日{post.frontmatter.updatedate}</p>
+        <p>カテゴリ：{post.frontmatter.category}</p>
+      </section>
+
+      <section
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        itemProp="articleBody"
+      />
+
+      <footer>
+        <Bio />
+      </footer>
+
       <nav className="blog-post-nav">
         <ul
           style={{
@@ -61,7 +61,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </li>
         </ul>
       </nav>
-    </Layout>
+    </div>
   )
 }
 
@@ -84,8 +84,10 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        postdate(formatString: "YYYY年 MM月 DD日")
+        updatedate(formatString: "YYYY年 MM月 DD日")
         description
+        category
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
