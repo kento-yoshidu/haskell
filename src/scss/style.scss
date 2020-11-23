@@ -62,6 +62,43 @@ html {
   }
 }
 
+.post-list {
+  width: 60%;
+  margin-left: 10%;
+  .post-list-item {
+    border: 1px solid red;
+    margin-bottom: 30px;
+    .post-title {
+      margin-bottom: 20px;
+      a {
+        color: #444;
+        font-size: 3rem;
+        font-weight: 100;
+        text-decoration: none;
+        transition: .5s;
+
+        &:hover {
+          color: #BD3F32;
+        }
+      }
+    }
+
+    .info {
+      display: flex;
+
+      .category,
+      .post,
+      .update {
+        font-size: 1.3rem;
+      }
+
+    }
+    .description {
+      font-size: 1.8rem;
+    }
+  }
+}
+
 .section {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
   margin: 0 auto 50px;
@@ -118,9 +155,6 @@ img {
   height: auto;
 }
 
-.article-title {
-  font-size: 3rem;
-}
 /*
 .gatsby-highlight-code-line {
   //background-color: #feb;

@@ -44,8 +44,7 @@ const BlogIndex = ({ data, location }) => {
         <h1 className="header-title">記事一覧</h1> 
       </header>
       <Bio />
-      <main class="main">
-        <ol style={{ listStyle: `none` }}>
+        <ol style={{ listStyle: `none` }} className="post-list">
           {posts.map(post => {
             const title = post.frontmatter.title || post.fields.slug
 
@@ -57,28 +56,32 @@ const BlogIndex = ({ data, location }) => {
                   itemType="http://schema.org/Article"
                 >
                   <header>
-                    <h2 className="article-title">
+                    <h2 className="post-title">
                       <Link to={post.fields.slug} itemProp="url">
                         <span itemProp="headline">{title}</span>
                       </Link>
                     </h2>
-                    <p>{post.frontmatter.postdate}</p>
-                    <p>{post.frontmatter.updatedate}</p>
+
+                    <div class="info">
+                      <p className="category">{post.frontmatter.category}</p>
+                      <p className="post">{post.frontmatter.postdate}</p>
+                      <p className="update">{post.frontmatter.updatedate}</p>
+                    </div>
+
                   </header>
-                  <section>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.description || post.excerpt,
-                      }}
-                      itemProp="description"
-                    />
-                  </section>
+
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                    className="description"
+                  />
                 </article>
               </li>
             )
           })}
         </ol>
-      </main>
     </div>
     //</Layout>
   )
@@ -93,7 +96,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___postdate], order: DESC }) {
       nodes {
         excerpt
         fields {
@@ -104,6 +107,7 @@ export const pageQuery = graphql`
           updatedate(formatString: "YYYY年 MM月 DD日")
           title
           description
+          category
         }
       }
     }
