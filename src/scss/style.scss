@@ -64,10 +64,10 @@ html {
 
 .post-list {
   width: 60%;
+  margin-top: 50px;
   margin-left: 10%;
   .post-list-item {
-    border: 1px solid red;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     .post-title {
       margin-bottom: 20px;
       a {
@@ -99,6 +99,12 @@ html {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .post-list {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
 .section {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
   margin: 0 auto 50px;

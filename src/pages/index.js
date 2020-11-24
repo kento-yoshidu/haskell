@@ -43,45 +43,48 @@ const BlogIndex = ({ data, location }) => {
       <header className="header">
         <h1 className="header-title">記事一覧</h1> 
       </header>
-      <Bio />
-        <ol style={{ listStyle: `none` }} className="post-list">
-          {posts.map(post => {
-            const title = post.frontmatter.title || post.fields.slug
 
-            return (
-              <li key={post.fields.slug}>
-                <article
-                  className="post-list-item"
-                  itemScope
-                  itemType="http://schema.org/Article"
-                >
-                  <header>
-                    <h2 className="post-title">
-                      <Link to={post.fields.slug} itemProp="url">
-                        <span itemProp="headline">{title}</span>
-                      </Link>
-                    </h2>
+      {/*<Bio />*/}
 
-                    <div class="info">
-                      <p className="category">{post.frontmatter.category}</p>
-                      <p className="post">{post.frontmatter.postdate}</p>
-                      <p className="update">{post.frontmatter.updatedate}</p>
-                    </div>
+      <ol style={{ listStyle: `none` }} className="post-list">
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
 
-                  </header>
+          return (
+            <li key={post.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
 
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                    className="description"
-                  />
-                </article>
-              </li>
-            )
-          })}
-        </ol>
+                <header>
+                  <h2 className="post-title">
+                    <Link to={post.fields.slug} itemProp="url">
+                      <span itemProp="headline">{title}</span>
+                    </Link>
+                  </h2>
+
+                  <div class="info">
+                    <p className="category">{post.frontmatter.category}</p>
+                    <p className="post">{post.frontmatter.postdate}</p>
+                    <p className="update">{post.frontmatter.updatedate}</p>
+                  </div>
+
+                </header>
+
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: post.frontmatter.description || post.excerpt,
+                  }}
+                  itemProp="description"
+                  className="description"
+                />
+              </article>
+            </li>
+          )
+        })}
+      </ol>
     </div>
     //</Layout>
   )
