@@ -1,5 +1,5 @@
 ---
-title: git logでコミット履歴を見る(後編)
+title: "#2 git logでコミット履歴を見る(後編)"
 postdate: "2020-11-20"
 updatedate: "2020-11-20"
 category: "Git中級者を目指す"
