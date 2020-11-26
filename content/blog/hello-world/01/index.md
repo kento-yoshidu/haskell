@@ -7,8 +7,6 @@ image: './01/image01.jpg'
 description: git log のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。
 ---
 
-<main class="main">
-
 <section class="section">
 
 # git logのオプション
