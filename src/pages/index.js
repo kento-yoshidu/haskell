@@ -7,6 +7,10 @@ import SEO from "../components/seo"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons"
+
+
 const BlogIndex = ({ data, location }) => {
   /*
   return (
@@ -43,6 +47,7 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="記事一覧" />
       <header className="header">
         <h1 className="header-title">記事一覧</h1> 
+        <FontAwesomeIcon icon={faCheckSquare} />
       </header>
 
       {/*<Bio />*/}

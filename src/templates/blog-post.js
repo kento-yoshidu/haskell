@@ -27,9 +27,10 @@ const BlogPostTemplate = ({ data, location }) => {
         <p>カテゴリ：{post.frontmatter.category}</p>
       </section>
 
-      <section
+      <main
         dangerouslySetInnerHTML={{ __html: post.html }}
-        itemProp="articleBody"
+        //itemProp="articleBody"
+        className="main"
       />
 
       <nav className="blog-post-nav">
