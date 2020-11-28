@@ -1,14 +1,14 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
+//import Bio from "../components/bio"
+//import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons"
+import { faClock, faUndo } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -49,8 +49,7 @@ const BlogIndex = ({ data, location }) => {
     <div>
       <SEO title="記事一覧" />
       <header className="header">
-        <h1 className="header-title">記事一覧</h1> 
-        <FontAwesomeIcon icon={faCheckSquare} />
+        <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
       </header>
 
       {/*<Bio />*/}
@@ -76,8 +75,8 @@ const BlogIndex = ({ data, location }) => {
 
                   <div class="info">
                     <p className="category">{post.frontmatter.category}</p>
-                    <p className="post">{post.frontmatter.postdate}</p>
-                    <p className="update">{post.frontmatter.updatedate}</p>
+                    <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
+                    <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
                   </div>
 
                 </header>

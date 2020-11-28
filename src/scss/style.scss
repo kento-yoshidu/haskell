@@ -66,16 +66,19 @@ html {
   width: 60%;
   margin-top: 50px;
   margin-left: 10%;
+
   .post-list-item {
     margin-bottom: 50px;
+
     .post-title {
       margin-bottom: 20px;
+
       a {
         color: #444;
-        font-size: 3rem;
+        font-size: 3.5rem;
         font-weight: 100;
-        text-decoration: none;
         transition: .5s;
+        line-height: 1.7;
 
         &:hover {
           color: #BD3F32;
@@ -85,16 +88,31 @@ html {
 
     .info {
       display: flex;
+      margin-left: 20px;
 
       .category,
       .post,
       .update {
         font-size: 1.3rem;
+        padding: 3px 7px 3px 0px;
+        margin-right: 20px;
+
+        svg {
+          margin-right: 5px;
+        }
+      }
+
+      .category {
+        background: #ddd;
+        border-radius: 15px;
       }
 
     }
+
     .description {
-      font-size: 1.8rem;
+      margin-left: 20px;
+      font-size: 1.7rem;
+      line-height: 1.6;
     }
   }
 }
@@ -102,7 +120,26 @@ html {
 @media screen and (max-width: 768px) {
   .post-list {
     width: 90%;
-    margin: 0 auto;
+    margin: 50px auto;
+
+    .post-list-item {
+      margin-block-end: 30px;
+
+      .post-title {
+
+        a {
+          font-size: 2.5rem;
+        }
+      }
+
+      .info {
+        flex-direction: column;
+
+        .category {
+          border: 1px solid red;
+        }
+      }
+    }
   }
 }
 .section {

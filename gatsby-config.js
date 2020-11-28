@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Potsunen Blog`,
+    title: `鳥に生まれることができなかった人へ`,
     siteUrl: `https://potsunen-blog.netlify.app/`,
     author: {
       name: `Kento Yoshizu`,
