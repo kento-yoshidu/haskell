@@ -8,21 +8,13 @@ import Footer from "../components/footer"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faUndo } from "@fortawesome/free-solid-svg-icons"
+import { faFolder, faClock, faUndo } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
 const BlogIndex = ({ data, location }) => {
-  /*
-  return (
-    <div>
-      <div>test</div>
-      <Link to={'hello-world/01'}>test</Link>
-      <Link to={'hello-world/02'}>test</Link>
-    </div>
-  ) */
 
   // サイトタイトル => gatsby-config.js
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -74,7 +66,7 @@ const BlogIndex = ({ data, location }) => {
                   </h2>
 
                   <div class="info">
-                    <p className="category">{post.frontmatter.category}</p>
+                    <p className="category"><FontAwesomeIcon icon={faFolder} />{post.frontmatter.category}</p>
                     <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
                     <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
                   </div>
