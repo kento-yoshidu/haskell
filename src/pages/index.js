@@ -5,6 +5,7 @@ import { Link, graphql } from "gatsby"
 //import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
+import CategoryList from "../components/category-list"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,6 +47,8 @@ const BlogIndex = ({ data, location }) => {
 
       {/*<Bio />*/}
 
+      <CategoryList />
+
       <ol style={{ listStyle: `none` }} className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -66,7 +69,7 @@ const BlogIndex = ({ data, location }) => {
                   </h2>
 
                   <div class="info">
-                    <p className="category"><FontAwesomeIcon icon={faFolder} />{post.frontmatter.category}</p>
+                    <p className="category"><FontAwesomeIcon icon={faFolder} />{post.frontmatter.categoryName}</p>
                     <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
                     <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
                   </div>
@@ -111,7 +114,7 @@ export const pageQuery = graphql`
           updatedate(formatString: "YYYY年 MM月 DD日")
           title
           description
-          category
+          categoryName
         }
       }
     }

@@ -2,15 +2,10 @@
 title: "#3 git logの出力をカスタマイズする"
 postdate: "9999-11-20"
 updatedate: "2020-11-20"
-category: "Git中級者を目指す"
+categoryName: "Git中級者を目指す"
+categorySlug: GitAdvance
 description: git logのコマンドを紹介した前回、`git log --oneline --all --graph`の組み合わせが便利ですよーとお話ししました。
 ---
-
-<header class="header">
-  <h1 class="header-title">git logでコミット履歴を見る(前編)</h1>
-</header>
-
-<main class="main">
 
 <section class="section">
 
