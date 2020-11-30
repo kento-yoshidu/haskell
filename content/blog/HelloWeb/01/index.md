@@ -2,7 +2,8 @@
 title: "#0 このコンテンツを立ち上げようと思ったきっかけ"
 postdate: "2020-11-29"
 updatedate: "2020-11-11"
-category: "初めてのHTML &T CSS"
+categoryName: "初めてのHTML & CSS"
+categorySlug: HelloWeb
 description: git log のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。
 ---
 

@@ -87,7 +87,7 @@ export const pageQuery = graphql`
         postdate(formatString: "YYYY年 MM月 DD日")
         updatedate(formatString: "YYYY年 MM月 DD日")
         description
-        category
+        categoryName
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
