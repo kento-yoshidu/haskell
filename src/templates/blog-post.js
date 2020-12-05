@@ -19,6 +19,7 @@ const BlogPostTemplate = ({ data, location }) => {
       />
       <header className="header">
         <h1 itemProp="headline">{post.frontmatter.title}</h1>
+        <Link to={"/"}>back</Link>
       </header>
 
       <section className="info">
