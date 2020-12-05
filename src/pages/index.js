@@ -43,6 +43,7 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="記事一覧" />
       <header className="header">
         <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
+        <p>Powered by Gatsby</p>
       </header>
 
       {/*<Bio />*/}
