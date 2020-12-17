@@ -1,5 +1,8 @@
 @import "./reset";
 
+$main-color: #BD3F32;
+$main-color2: #CB356B;
+
 html {
   color: #444;
   font-size: 62.5%;
@@ -156,8 +159,14 @@ html {
 }
 .section {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
-  margin: 0 auto 50px;
+  margin: 0 auto 70px;
   h2 {
+    padding-bottom: 8px;
+    font-size: 5rem;
+    border-bottom: 9px solid $main-color2;
+    margin-bottom: 50px;
+  }
+  h3 {
     font-size: 3.8rem;
     margin-bottom: 40px;
     border-left: 10px solid #CB356B;
@@ -167,8 +176,8 @@ html {
 
 @media screen and (max-width: 768px) {
   .section {
-    margin: 0 auto 30px;
-    h2 {
+    margin: 0 auto 40px;
+    h3 {
       font-size: 2rem;
       line-height: 1.5;
       padding: 3px 0 3px 1.8rem;
@@ -210,6 +219,25 @@ img {
   height: auto;
 }
 
+table {
+  margin: 40px 0 40px 20px;
+  tr {
+    th {
+      border: 1px solid #bbb;
+      padding: 10px 15px;
+      background: $main-color2;
+      font-size: 2.3rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    td {
+      padding: 10px 20px;
+      font-size: 2rem;
+      border: 1px solid #bbb;
+    }
+
+  }
+}
 .footer {
   height: 30vh;
   background: #444;
@@ -251,3 +279,4 @@ img {
   padding-left: 2.8em; 
 }
 */
+

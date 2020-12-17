@@ -301,8 +301,88 @@ $ psql -1 --single-transaction
 
 ## ユーザ作成
 
+`createuser`コマンドの場合、ログイン以外は拒否されるのがデフォルトです。ユーザ、DBの作成は明示的にオプションを渡す必要があります。
+
+|オプション|説明|
+|:--|:--|
+|-P --pwprompt|パスワードを設定する|
+|-s --superuser|スーパーユーザとして作成する|
+|-d --createdb|データベースの作成を許可する|
+|-l --login|ログインを許可する(**デフォルト**)|
+|-S --no-superuser|スーパーユーザとして作成しない(**デフォルト**)|
+|-D --no-createdb|データベースの作成を禁止する(**デフォルト**)|
+|-R --no-createroll|新しいユーザの作成を禁止する(**デフォルト**)|
+|-L --no-login|ログインを禁止する|
 
 
+```
 c:\postgres>2020-12-15 13:18:03.628 JST [17224] LOG:  バックグラウンドワーカ"logical replication launcher" (PID 1972)は終了コード1で終了しました
 2020-12-15 13:18:03.653 JST [3560] LOG:  シャットダウンしています
 2020-12-15 13:18:03.889 JST [17224] LOG:  データベースシステムはシャットダウンしました
+```
+
+## テンプレート
+
+template0 -E可能
+template1 デフォルト -E不可
+
+## createdb
+
+|オプション|内容|
+|:--|:--|:--|
+|-E --encoding|エンコーディングの指定|
+|-O --owner|所有者の指定|
+|-l --locale|ロケールの指定|
+|-T --template|テンプレートの指定|
+
+# postgres.conf
+
+initdb実行時に作成されます。
+
+## サーバの動作関係
+
+|パラメータ|内容|デフォルト|
+|:--|:--|:--|
+|listen_address|Postgresサーバ自身のIPアドレス|localhost|
+|log_connections|待ち受けポート番号|5432|
+|max_connections|サーバへの最大同時接続数|100|
+
+上記設定は**Postgresサーバの再起動のみ**によって、設定変更が反映されます。
+※postgres.confの再読み込みやSETコマンドの実行によって変更されない。
+
+
+## ログ関係
+
+|パラメータ|内容|
+|:--|:--|
+|logging_collector|標準エラーをファイルに書き出すかどうか|
+|log_connections|クライアントの認証、サーバへの接続など、クライアントに関するログを出力するかどうか|
+|log_min_messages|出力するログレベルを指定※後述|
+|log_line_prefix|ログの行頭にユーザ名やDB名などの情報を付与する|
+
+## その他
+
+### default_transaction_isolation
+
+新しいトランザクションの分離レベルを設定します。
+
+postgres.confの再読み込み、SETコマンドで設定の繁栄が可能です。
+
+READ UNCOMMITED
+
+**コミットされていない**変更を他のトランザクションから参照できます。なお、コミットされていない変更を読み取ってしまうことを**ダーディリード**といいます。
+
+READ COMMITTED
+
+**コミットされた**変更を他のトランザクションから参照できます。postgres.sqlにおけるデフォルトのレベルです。
+
+REPEATABLE READ
+
+## SETコマンドによる設定の変更
+
+**コミットされた追加・変更**を他のトランザクションから参照できます。
+
+セッション内でのみ有効です。切断してしまえば元に戻ります。
+
+
+https://sites.google.com/site/kojimemos/home/mysql/toranzakushon/toranzakushon-fen-lireberu
