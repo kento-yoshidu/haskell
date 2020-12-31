@@ -7,5 +7,5 @@ import "./src/normalize.css"
 //import "./src/scss/style.scss"
 
 // Highlighting for code blocks
-import "prismjs/themes/prism.css"
+//import "prismjs/themes/prism.css"
 //import "./src/prism-tomorrow.css"
