@@ -6,6 +6,9 @@ import { Link, graphql } from "gatsby"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 
+import "prismjs/themes/prism-tomorrow.css"
+import "prismjs/plugins/line-numbers/prism-line-numbers.css"
+
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
