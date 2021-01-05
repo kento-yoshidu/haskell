@@ -1,5 +1,5 @@
 ---
-title: [MEMO]PREPARE文
+title: \[MEMO]PREPARE文
 postdqate: "2021-01-05"
 updatedate: "2020-01-05"
 categoryName: "Postgresメモ"
