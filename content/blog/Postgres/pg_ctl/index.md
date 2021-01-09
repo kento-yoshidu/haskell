@@ -2,8 +2,8 @@
 title: "pg_ctl"
 postdate: "2020-12-12"
 updatedate: "2020-12-12"
-categoryName: "PostgreSQLメモ"
-categorySlug: PostgreSQLMemo
+categoryName: "ハンズオンPostgrSQL"
+categorySlug: "HandsonPostgreSQL"
 ---
 
 # pg_ctl

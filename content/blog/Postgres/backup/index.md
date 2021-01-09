@@ -1,5 +1,10 @@
-
-
+---
+title: バックアップを行う
+postdqate: "2021-01-09"
+updatedate: "2021-01-09"
+categoryName: "ハンズオンPostgrSQL"
+categorySlug: "HandsonPostgreSQL"
+---
 
 ## pg_dumpとpg_dumpall
 

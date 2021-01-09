@@ -2,9 +2,11 @@
 title: PostgreSQLをインストールする（Windows）
 postdqate: "2020-12-23"
 updatedate: "2020-12-23"
-categoryName: "Postgresメモ"
-categorySlug: "PostgresMamo"
+categoryName: "ハンズオンPostgrSQL"
+categorySlug: "HandsonPostgreSQL"
 ---
+
+<section class="section">
 
 ## インストーラをダウンロードする
 
@@ -17,6 +19,10 @@ categorySlug: "PostgresMamo"
 exeファイルがダウンロードされると思いますので、管理者として実行します。
 
 ![](images/02.jpg)
+
+</section>
+
+<section class="section">
 
 ## インストールする
 
@@ -68,6 +74,10 @@ Nextをクリックすればインストールが開始されます。
 
 今回はクラスタ作成場所を`C:\postgres`に指定しました。指定した場所にアクセスし、DB関係のファイルがあるかを確認しておきます。
 
+</section>
+
+<section class="section">
+
 ## DBプログラムへのパスを通す
 
 PostgreSQLの操作方法は様々ありますが、ここでは主に`psql`コマンドを私用します。
@@ -81,6 +91,10 @@ PostgreSQLの操作方法は様々ありますが、ここでは主に`psql`コ�
 psql.exeは
 
 ![](images/15.jpg)
+
+</section>
+
+<section class="section">
 
 # DBのアクセスログを収集する
 
@@ -101,7 +115,7 @@ psql.exeは
 
 既に私用している環境を汚すのもいやだと思うので、新しくクラスタを作成します。
 
-```
+```console
 $ initdb pgtest
 
 (略)
