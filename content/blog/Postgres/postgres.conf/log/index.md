@@ -1,6 +1,6 @@
 ---
 title: "ログ出力ハンズオン"
-postdqate: "2020-12-23"
+postdate: "2020-12-23"
 updatedate: "2020-12-23"
 categoryName: "Postgresメモ"
 categorySlug: "PostgresMamo"
