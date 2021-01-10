@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
   // Get all markdown blog posts sorted by date
-  const result = await graphql(
+  const markdowns = await graphql(
     `
       {
         allMarkdownRemark(
@@ -26,15 +26,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result.errors) {
+  
+  if (markdowns.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
-      result.errors
+      markdowns.errors
     )
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = markdowns.data.allMarkdownRemark.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -56,6 +57,67 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+  /*
+  ****************************************************************
+  ****************************************************************
+  ****************************************************************
+  ****************************************************************
+  */
+
+  // categoryページに関して
+
+  //const catTemplate = path.resolve(`./src/templates/category.js`)
+  /*
+  const category = await graphql(
+    `
+      {
+        allMarkdownRemark
+        {
+          edges {
+            node {
+              id
+              frontmatter {
+                categorySlug
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+  */
+  const category = await graphql(
+    `
+      {
+        allMarkdownRemark
+        {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  /*
+  for (key in category.data.allMarkdownRemark.edges) {
+      console.log("=========", key)
+  }*/
+
+  category.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: `cate/${node.fields.slug}`,
+      component: path.resolve(`./src/templates/category.js`),
+      context: {
+        catid: node.id,
+      }
+    })
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
