@@ -2,8 +2,8 @@
 title: postgres.confファイル
 postdate: "2021-01-09"
 updatedate: "2021-01-09"
-categoryname: "ハンズオンpostgrsql"
-categoryslug: "handsonpostgresql"
+categoryName: "ハンズオンpostgrsql"
+categorySlug: "handsonpostgresql"
 ---
 
 # postgres.conf

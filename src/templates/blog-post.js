@@ -5,13 +5,14 @@ import { Link, graphql } from "gatsby"
 //import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
+import FixHeader from "../components/fixHeader"
 
 import "prismjs/themes/prism-tomorrow.css"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  //const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
   return (
@@ -20,6 +21,9 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+
+      <FixHeader />
+
       <header className="header">
         <h1 itemProp="headline">{post.frontmatter.title}</h1>
         <Link to={"/"}>back</Link>
@@ -70,6 +74,30 @@ const BlogPostTemplate = ({ data, location }) => {
 }
 
 export default BlogPostTemplate
+
+/*
+export const pageQuery = graphql`
+  query($category: String) {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { categorySlug: { in: [$category] } } }
+    ) {
+      totalCount
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  }
+`
+*/
 
 export const pageQuery = graphql`
   query BlogPostBySlug(

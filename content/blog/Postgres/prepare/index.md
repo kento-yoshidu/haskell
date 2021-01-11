@@ -2,8 +2,8 @@
 title: \[MEMO]PREPARE文
 postdqate: "2021-01-05"
 updatedate: "2020-01-05"
-categoryname: "ハンズオンpostgrsql"
-categoryslug: "handsonpostgresql"
+categoryName: "ハンズオンpostgrsql"
+categorySlug: "handsonpostgresql"
 ---
 
 ## `PREPARE`でプリペアド文を定義する
