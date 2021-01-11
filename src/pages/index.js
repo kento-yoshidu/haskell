@@ -18,7 +18,7 @@ config.autoAddCss = false
 const BlogIndex = ({ data, location }) => {
 
   // サイトタイトル => gatsby-config.js
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  //const siteTitle = data.site.siteMetadata?.title || `Title`;
   
   const posts = data.allMarkdownRemark.nodes
 

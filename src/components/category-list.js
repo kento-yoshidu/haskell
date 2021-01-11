@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Link, StaticQuery, graphql } from "gatsby"
-import { duplicateArgMessage } from "graphql/validation/rules/UniqueArgumentNames";
+//import { duplicateArgMessage } from "graphql/validation/rules/UniqueArgumentNames";
 
 const CategoryList = () => (
   <StaticQuery

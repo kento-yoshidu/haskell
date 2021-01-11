@@ -75,6 +75,7 @@ const BlogPostTemplate = ({ data, location }) => {
 
 export default BlogPostTemplate
 
+/*
 export const pageQuery = graphql`
   query($category: String) {
     allMarkdownRemark(
@@ -96,8 +97,8 @@ export const pageQuery = graphql`
     }
   }
 `
+*/
 
-/*
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
@@ -139,4 +140,3 @@ export const pageQuery = graphql`
     }
   }
 `
-*/

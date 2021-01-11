@@ -2,8 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 
 const Category = ({ pageContext, data }) => {
-  const { category } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  //const { category } = pageContext
+  //const { edges, totalCount } = data.allMarkdownRemark
+  const { edges } = data.allmarkdownRemark
 
   return (
     <div>
