@@ -67,41 +67,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // categoryページに関して
 
-  //const catTemplate = path.resolve(`./src/templates/category.js`)
-  /*
   const category = await graphql(
-    `
-      {
-        allMarkdownRemark
-        {
-          edges {
-            node {
-              id
-              frontmatter {
-                categorySlug
-              }
+    ` {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              categorySlug
             }
           }
         }
       }
-    `
-  )
-  */
-  const category = await graphql(
-    `
-      {
-        allMarkdownRemark
-        {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `
+    } `
   )
 
   /*
@@ -110,11 +91,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }*/
 
   category.data.allMarkdownRemark.edges.forEach(({ node }) => {
+
+    console.log(node.frontmatter.categorySlug)
     createPage({
-      path: `cate/${node.fields.slug}`,
+      path: `category/${node.frontmatter.categorySlug}`,
       component: path.resolve(`./src/templates/category.js`),
       context: {
-        catid: node.id,
+        categoryId: node.frontmatter.categorySlug,
+        skip: 0,
+        limit: 1000,
+        currentPage: 1,
+        isFirst: true,
+        isLast: true,
       }
     })
   })

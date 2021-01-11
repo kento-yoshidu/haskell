@@ -4,16 +4,13 @@ import { graphql } from "gatsby"
 const Category = ({ pageContext, data }) => {
   const { category } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
-  //const catHeader = `[${category}]カテゴリの記事`
-
-  console.log('hogehoge')
 
   return (
     <div>
       <p>test</p>
       { edges.map((node) => {
 
-        console.log(node.node.frontmatter.categorySlug)
+        console.log(node)
         return (
           <p> { node.node.frontmatter.categorySlug }</p>
         )
@@ -26,12 +23,22 @@ const Category = ({ pageContext, data }) => {
 export default Category
 
 export const pageQuery = graphql`
-  query ($category: String) {
-    allMarkdownRemark(
-      filter: { frontmatter: {categorySlug: { eq: $category }}}
+  query($categoryId: String) {
+    allMarkdownRemark (
+      filter: {
+        frontmatter: {
+          categorySlug: {
+            eq: $categoryId
+          }
+        }
+      }
     ) {
       edges {
         node {
+          id
+          fields {
+            slug
+          }
           frontmatter {
             categorySlug
           }

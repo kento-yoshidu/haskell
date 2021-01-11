@@ -2,8 +2,8 @@
 title: プリペアド文
 postdate: "2021-01-05"
 updatedate: "2020-01-05"
-categoryname: "ハンズオンpostgrsql"
-categoryslug: "handsonpostgresql"
+categoryName: "ハンズオンpostgrsql"
+categorySlug: "handsonpostgresql"
 ---
 
 まずはテーブルを用意します。
