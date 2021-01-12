@@ -17,9 +17,6 @@ config.autoAddCss = false
 
 const BlogIndex = ({ data, location }) => {
 
-  // サイトタイトル => gatsby-config.js
-  //const siteTitle = data.site.siteMetadata?.title || `Title`;
-  
   const posts = data.allMarkdownRemark.nodes
 
   return (
@@ -27,7 +24,7 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="記事一覧" />
       <header className="header">
         <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
-        <p>Powered by Gatsby</p>
+        <p>記事一覧</p>
       </header>
 
       <CategoryList />
