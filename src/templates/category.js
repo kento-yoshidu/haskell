@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 const Category = ({ pageContext, data }) => {
   //const { category } = pageContext
@@ -9,10 +9,15 @@ const Category = ({ pageContext, data }) => {
     <div>
       <p>test</p>
       { edges.map((node) => {
+        const title = node.node.frontmatter.title 
 
-        console.log(node)
+        console.log(node.node)
+
         return (
-          <p> { node.node.frontmatter.categorySlug }</p>
+          <div>
+            <p> { title }</p>
+            <Link to={node.node.fields.slug}>{ title }</Link>
+          </div>
         )
       }
       ) }
@@ -41,6 +46,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             categorySlug
+            title
           }
         }
       }
