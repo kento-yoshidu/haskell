@@ -8,7 +8,7 @@ const CategoryList = () => (
     query={graphql`
       query {
         allMarkdownRemark {
-          group(field: frontmatter___categoryName) {
+          group(field: frontmatter___categorySlug) {
             fieldValue
             totalCount
           }
@@ -22,7 +22,7 @@ const CategoryList = () => (
         <ul>
           {data.allMarkdownRemark.group.map(categoryName => (
             <li key={categoryName.fieldValue}>
-              <Link to={`/categories/${categoryName.fieldValue}/`}>
+              <Link to={`/category/${categoryName.fieldValue}/`}>
                 {categoryName.fieldValue} ({categoryName.totalCount})
               </Link>
             </li>
