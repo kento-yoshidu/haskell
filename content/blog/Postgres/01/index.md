@@ -1,6 +1,6 @@
 ---
 title: PostgreSQLをインストールする（Windows）
-postdqate: "2020-12-23"
+postdate: "2020-12-23"
 updatedate: "2020-12-23"
 categoryName: "ハンズオンPostgrSQL"
 categorySlug: "HandsonPostgreSQL"
