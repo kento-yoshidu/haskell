@@ -1,6 +1,6 @@
 ---
 title: ドメイン
-postdqate: "2021-01-09"
+postdate: "2021-01-09"
 updatedate: "2021-01-09"
 categoryName: "ハンズオンPostgrSQL"
 categorySlug: "HandsonPostgreSQL"
