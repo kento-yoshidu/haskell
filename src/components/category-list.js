@@ -6,9 +6,15 @@ import { Link, StaticQuery, graphql } from "gatsby"
 const CategoryList = () => (
   <StaticQuery
     query={graphql`
-      query {
-        allMarkdownRemark {
-          group(field: frontmatter___categorySlug) {
+      query ($category: String) {
+        allMarkdownRemark(filter: {frontmatter: {categorySlug: {eq: $category}}}) {
+          totalCount
+          group(field: frontmatter___categoryName, limit: 1) {
+            nodes {
+              frontmatter {
+                categorySlug
+              }
+            }
             fieldValue
             totalCount
           }
@@ -20,16 +26,17 @@ const CategoryList = () => (
       <nav>
         <p>カテゴリ一覧</p>
         <ul>
-          {data.allMarkdownRemark.group.map(categoryName => (
-            <li key={categoryName.fieldValue}>
-              <Link to={`/category/${categoryName.fieldValue}/`}>
-                {categoryName.fieldValue} ({categoryName.totalCount})
+          {data.allMarkdownRemark.group.map(group => (
+            <li>
+              <Link to={`/category/${group.nodes[0].frontmatter.categorySlug}`}>
+                { group.fieldValue } ({ group.totalCount})
               </Link>
             </li>
           ))}
         </ul>
       </nav>
-    )}
+    )
+  }
   />
 )
 
