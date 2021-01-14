@@ -24,7 +24,7 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="記事一覧" />
       <header className="header">
         <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
-        <p>記事一覧</p>
+        <h2 className="page-title">記事一覧</h2>
       </header>
 
       <CategoryList />
@@ -49,7 +49,11 @@ const BlogIndex = ({ data, location }) => {
                   </h2>
 
                   <div class="info">
-                    <p className="category"><FontAwesomeIcon icon={faFolder} />{post.frontmatter.categoryName}</p>
+                    <p className="category">
+                      <FontAwesomeIcon icon={faFolder} />
+                      <Link to={`category/${post.frontmatter.categorySlug}`}>
+                      {post.frontmatter.categoryName}</Link>
+                    </p>
                     <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
                     <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
                   </div>
@@ -94,6 +98,7 @@ export const pageQuery = graphql`
           title
           description
           categoryName
+          categorySlug
         }
       }
     }

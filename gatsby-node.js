@@ -85,14 +85,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     } `
   )
 
-  /*
-  for (key in category.data.allMarkdownRemark.edges) {
-      console.log("=========", key)
-  }*/
-
   category.data.allMarkdownRemark.edges.forEach(({ node }) => {
 
-    console.log(node.frontmatter.categorySlug)
     createPage({
       path: `category/${node.frontmatter.categorySlug}`,
       component: path.resolve(`./src/templates/category.js`),

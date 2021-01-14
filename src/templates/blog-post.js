@@ -25,8 +25,13 @@ const BlogPostTemplate = ({ data, location }) => {
       <FixHeader />
 
       <header className="header">
-        <h1 itemProp="headline">{post.frontmatter.title}</h1>
-        <Link to={"/"}>back</Link>
+        <h1 className="header-title" itemProp="headline">
+          <Link to={"/"}>
+            {data.site.siteMetadata.title}
+          </Link>
+        </h1>
+
+        <h2 className="page-title" itemProp="headline">{post.frontmatter.title}</h2>
       </header>
 
       <section className="info">

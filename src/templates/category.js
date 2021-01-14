@@ -12,7 +12,7 @@ import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
 const Category = ({ pageContext, data }) => {
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { edges } = data.allMarkdownRemark
 
   return (
     <div>
