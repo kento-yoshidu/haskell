@@ -9,13 +9,14 @@ const CategoryList = () => (
       query ($category: String) {
         allMarkdownRemark(filter: {frontmatter: {categorySlug: {eq: $category}}}) {
           totalCount
-          group(field: frontmatter___categoryName) {
+          group(field: frontmatter___categoryName, limit: 1) {
             nodes {
               frontmatter {
                 categorySlug
               }
             }
             fieldValue
+            totalCount
           }
         }
       }
@@ -28,7 +29,7 @@ const CategoryList = () => (
           {data.allMarkdownRemark.group.map(group => (
             <li>
               <Link to={`/category/${group.nodes[0].frontmatter.categorySlug}`}>
-                { group.fieldValue}
+                { group.fieldValue } ({ group.totalCount})
               </Link>
             </li>
           ))}
