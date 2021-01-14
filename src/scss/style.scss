@@ -29,9 +29,22 @@ html {
     font-size: 4rem;
   }
 
-  h1 {
-    font-size: 4.6rem;
+  .header-title {
+    font-size: 2.4rem;
     font-weight: 600;
+    letter-spacing: 3px;
+
+    a {
+      color: #eee;
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+
+  .page-title {
+    margin-top: 6vh;
+    font-size: 5rem;
     letter-spacing: 5px;
   }
 
@@ -261,10 +274,6 @@ table {
   padding: 1em;
   overflow: auto;
   font-size: 1.8rem;
-}
-
-@media screen and (max-width: 768px) {
-  font-size: 1.5rem;
 }
 
 .gatsby-highlight-code-line {
