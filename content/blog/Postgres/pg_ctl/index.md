@@ -2,7 +2,7 @@
 title: "pg_ctl"
 postdate: "2020-12-12"
 updatedate: "2020-12-12"
-categoryName: "ハンズオンPostgrSQL"
+categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 ---
 

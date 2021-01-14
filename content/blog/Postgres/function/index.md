@@ -2,7 +2,7 @@
 title: プリペアド文
 postdate: "2021-01-05"
 updatedate: "2020-01-05"
-categoryName: "ハンズオンpostgrsql"
+categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 ---
 

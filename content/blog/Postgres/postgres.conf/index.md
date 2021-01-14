@@ -2,7 +2,7 @@
 title: postgres.confファイル
 postdate: "2021-01-09"
 updatedate: "2021-01-09"
-categoryName: "ハンズオンpostgrsql"
+categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 ---
 

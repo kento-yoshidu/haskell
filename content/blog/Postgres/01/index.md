@@ -2,7 +2,7 @@
 title: PostgreSQLをインストールする（Windows）
 postdate: "2020-12-23"
 updatedate: "2020-12-23"
-categoryName: "ハンズオンPostgrSQL"
+categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 ---
 
