@@ -2,7 +2,7 @@
 title: バックアップを行う
 postdate: "2021-01-09"
 updatedate: "2021-01-09"
-categoryName: "ハンズオンPostgrSQL"
+categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 ---
 
