@@ -3,9 +3,9 @@ import { Link, graphql } from "gatsby"
 
 //import Bio from "../components/bio"
 //import Layout from "../components/layout"
-import SEO from "../components/seo"
+//import CategoryList from "../components/category-list"
+//import SEO from "../components/seo"
 import Footer from "../components/footer"
-import CategoryList from "../components/category-list"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,57 +21,63 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <div>
-      <SEO title="記事一覧" />
+
       <header className="header">
         <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
         <h2 className="page-title">記事一覧</h2>
       </header>
 
-      <CategoryList />
+      <div className="links">
+        <Link to="/categories/" className="link">カテゴリ一覧</Link>
+        <Link to="/tags/" className="link">タグ一覧</Link>
+      </div>
 
-      <ol style={{ listStyle: `none` }} className="post-list">
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+      <main className="main">
+        <ol style={{ listStyle: `none` }} className="post-list">
+          {posts.map(post => {
+            const title = post.frontmatter.title || post.fields.slug
 
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+            return (
+              <li key={post.fields.slug}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
 
-                <header>
-                  <h2 className="post-title">
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
+                  <header>
+                    <h2 className="post-title">
+                      <Link to={post.fields.slug} itemProp="url">
+                        <span itemProp="headline">{title}</span>
+                      </Link>
+                    </h2>
 
-                  <div class="info">
-                    <p className="category">
-                      <FontAwesomeIcon icon={faFolder} />
-                      <Link to={`category/${post.frontmatter.categorySlug}`}>
-                      {post.frontmatter.categoryName}</Link>
-                    </p>
-                    <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
-                    <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
-                  </div>
+                    <div class="info">
+                      <p className="category">
+                        <FontAwesomeIcon icon={faFolder} />
+                        <Link to={`category/${post.frontmatter.categorySlug}`}>
+                        {post.frontmatter.categoryName}</Link>
+                      </p>
+                      <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
+                      <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
+                    </div>
 
-                </header>
+                  </header>
 
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: post.frontmatter.description || post.excerpt,
-                  }}
-                  itemProp="description"
-                  className="description"
-                />
-              </article>
-            </li>
-          )
-        })}
-      </ol>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                    className="description"
+                  />
+                </article>
+              </li>
+            )
+          })}
+        </ol>
+
+        </main>
       <Footer />
     </div>
   )
