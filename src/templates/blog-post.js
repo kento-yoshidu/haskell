@@ -1,9 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-//import Bio from "../components/bio"
-//import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PageIndex from "../components/pageIndex"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
 
@@ -40,11 +39,16 @@ const BlogPostTemplate = ({ data, location }) => {
         <p>カテゴリ：{post.frontmatter.category}</p>
       </section>
 
-      <main
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        //itemProp="articleBody"
-        className="main"
-      />
+      <div className="wrapper">
+        <PageIndex />
+
+
+        <main
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          //itemProp="articleBody"
+          className="main"
+        />
+      </div>
 
       <nav className="blog-post-nav">
         <ul
