@@ -40,8 +40,6 @@ const BlogPostTemplate = ({ data, location }) => {
       </section>
 
       <div className="wrapper">
-        <PageIndex />
-
 
         <main
           dangerouslySetInnerHTML={{ __html: post.html }}
