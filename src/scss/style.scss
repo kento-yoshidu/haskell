@@ -72,22 +72,30 @@ html {
 }
 
 .main {
-  padding-top: 10vh;
   width: 50vw;
   margin-left: 15vw;
+
+  h1 {
+    padding-bottom: 8px;
+    font-size: 5rem;
+    border-bottom: 9px solid $main-color2;
+    margin-bottom: 50px;
+  }
 }
+
 
 @media screen and (max-width: 768px) {
   .main {
     width: 90%; 
     margin: 0 auto;
+    h1 {
+      font-size: 3rem;
+    }
   }
 }
 
 .post-list {
-  width: 60%;
   margin-top: 50px;
-  margin-left: 10%;
 
   .post-list-item {
     margin-bottom: 50px;
@@ -158,9 +166,8 @@ html {
           padding: 0;
           margin-bottom: 5px;
         }
-        .category {
-        }
       }
+
       .description {
         margin: 10px 0 0 0;
         font-size: 1.4rem;
@@ -169,25 +176,12 @@ html {
   }
 }
 
-.main h1 {
-  padding-bottom: 8px;
-  font-size: 5rem;
-  border-bottom: 9px solid $main-color2;
-  margin-bottom: 50px;
-}
-
-@media screen and (max-width: 768px) {
-  .main h1 {
-    font-size: 3rem;
-  }
-}
-
 .section {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
   margin: 30px auto 60px;
   h2 {
     font-size: 3.8rem;
-    margin-bottom: 40px;
+    margin: 80px 0 40px;
     border-left: 10px solid #CB356B;
     padding: 8px 0 8px 2rem;
   }
@@ -237,9 +231,14 @@ ul {
   background: #ddd !important;
 }
 
-img {
-  width: 100%;
-  height: auto;
+.gatsby-resp-image-wrapper {
+  border: 1px solid red;
+  margin-bottom: 50px;
+  img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 5px 5px #eee !important;
+  }
 }
 
 table {
@@ -261,6 +260,7 @@ table {
 
   }
 }
+
 .footer {
   height: 30vh;
   background: #444;
@@ -268,12 +268,13 @@ table {
 
 // 外枠?
 .gatsby-highlight {
+  width: 95%;
   background-color: #444;
   border-radius: 0.3em;
   margin: 20px 0 50px;
   padding: 1em;
   overflow: auto;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .gatsby-highlight-code-line {
@@ -286,7 +287,6 @@ table {
   border-left: 0.25em solid #f99;
 }
 
-/*
 .gatsby-highlight pre[class*="language-"] {
   background: red;
   background-color: transparent;
@@ -294,8 +294,8 @@ table {
   padding: 0;
   overflow: initial;
   float: left;
-  min-width: 100%; }
-  */
+  //min-width: 100%; なにこれ?
+}
 
 .gatsby-highlight pre[class*="language-"].line-numbers {
   padding-left: 2.8em; 
