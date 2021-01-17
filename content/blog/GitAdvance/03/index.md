@@ -5,6 +5,7 @@ updatedate: "2020-11-20"
 categoryName: "Git中級者を目指す"
 categorySlug: GitAdvance
 description: git logのコマンドを紹介した前回、`git log --oneline --all --graph`の組み合わせが便利ですよーとお話ししました。
+tags: ["git","入門"]
 ---
 
 <section class="section">
