@@ -52,7 +52,7 @@ const BlogIndex = ({ data, location }) => {
                       </Link>
                     </h2>
 
-                    <div class="info">
+                    <div className="info">
                       <p className="category">
                         <FontAwesomeIcon icon={faFolder} />
                         <Link to={`category/${post.frontmatter.categorySlug}`}>
@@ -60,6 +60,16 @@ const BlogIndex = ({ data, location }) => {
                       </p>
                       <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
                       <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
+                      <p className="tags"><FontAwesomeIcon icon={faUndo} />
+                        {
+                          post.frontmatter.tags.map(tag => {
+                            return (
+                              <a href="/"> { tag }</a>
+                            )
+                          })
+                        }
+                      </p>
+
                     </div>
 
                   </header>
@@ -105,6 +115,7 @@ export const pageQuery = graphql`
           description
           categoryName
           categorySlug
+          tags
         }
       }
     }
