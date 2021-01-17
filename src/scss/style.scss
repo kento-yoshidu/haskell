@@ -92,6 +92,10 @@ html {
   }
 }
 
+.main.post-list {
+  width: 70vw;
+}
+
 .main.categoriesMain {
   width: 70vw;
   margin-top: 5vh;
@@ -105,6 +109,9 @@ html {
     h1 {
       font-size: 3rem;
     }
+  }
+  .main.post-list {
+    width: 90vw;
   }
   .main.categoriesMain {
     width: 90vw;
@@ -123,7 +130,7 @@ html {
       a {
         color: #444;
         font-size: 3.5rem;
-        font-weight: 100;
+        font-weight: 900;
         transition: .5s;
         line-height: 1.7;
 
@@ -139,14 +146,21 @@ html {
 
       .category,
       .post,
-      .update {
-        font-size: 1.3rem;
+      .update,
+      .tags {
+        font-size: 1.7rem;
         padding: 3px 7px 3px 0px;
-        margin-right: 20px;
+        margin-right: 15px;
 
         svg {
           margin-right: 5px;
         }
+
+        }
+        .tags {
+          a {
+            margin-right: 7px;
+          }
       }
     }
 
@@ -164,11 +178,9 @@ html {
     margin: 50px auto;
 
     .post-list-item {
-
       .post-title {
-
         a {
-          font-size: 2.2rem;
+          font-size: 2rem;
         }
       }
 
@@ -178,8 +190,9 @@ html {
 
         .category,
         .post,
-        .update {
-          font-size: 1rem;
+        .update,
+        .tags {
+          font-size: 1.3rem;
           padding: 0;
           margin-bottom: 5px;
         }
@@ -243,7 +256,14 @@ html {
 
 @media screen and (max-width: 768px) {
   .section {
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
+    h2 {
+      font-size: 2.4rem;
+      line-height: 1.4;
+      border-left: 7px solid #CB356B;
+      padding: 5px 0 5px 1.2rem;
+      margin: 50px 0 20px;
+    }
     h3 {
       font-size: 2rem;
       line-height: 1.5;
@@ -321,7 +341,7 @@ table {
   background-color: #444;
   border-radius: 0.3em;
   margin: 20px 0 50px;
-  padding: 1em;
+  padding: .8em;
   overflow: auto;
   font-size: 1.6rem;
 }
@@ -350,3 +370,9 @@ table {
   padding-left: 2.8em; 
 }
 
+@media screen and (max-width: 768px) {
+  .gatsby-highlight {
+    font-size: 1.3rem;
+    margin: 20px 0 25px;
+  }
+}
