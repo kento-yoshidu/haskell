@@ -32,7 +32,7 @@ const BlogIndex = ({ data, location }) => {
         <Link to="/tags/" className="link">タグ一覧</Link>
       </div>
 
-      <main className="main">
+      <main className="main post-list">
         <ol style={{ listStyle: `none` }} className="post-list">
           {posts.map(post => {
             const title = post.frontmatter.title || post.fields.slug
