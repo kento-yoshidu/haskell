@@ -17,10 +17,14 @@ const Category = ({ pageContext, data }) => {
   return (
     <div>
       <header className="header">
-        <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
-        <p>「{ edges[0].node.frontmatter.categoryName }」カテゴリの記事一覧</p>
+        <h1 className="header-title">
+          <Link to={"/"}>鳥に生まれることができなかった人へ</Link>
+        </h1> 
+        <h2 className="page-title">
+          「{ edges[0].node.frontmatter.categoryName }」カテゴリの記事</h2>
       </header>
 
+      <main className="main">
       <ol style={{ listStyle: `none` }} className="post-list">
         {
           edges.map((node) => {
@@ -54,6 +58,7 @@ const Category = ({ pageContext, data }) => {
           })
         }
       </ol>
+      </main>
 
       <Footer />
     </div>
@@ -65,6 +70,9 @@ export default Category
 export const pageQuery = graphql`
   query($categoryId: String) {
     allMarkdownRemark (
+      sort: {
+        fields: [frontmatter___postdate], order: DESC
+      }
       filter: {
         frontmatter: {
           categorySlug: {

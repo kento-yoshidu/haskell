@@ -29,7 +29,7 @@ html {
     font-size: 4rem;
   }
 
-  .header-title {
+  h1 {
     font-size: 2.4rem;
     font-weight: 600;
     letter-spacing: 3px;
@@ -64,9 +64,16 @@ html {
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       line-height: 1.5;
       width: 80%;
+    }
+    .page-title {
+      margin-top: 3vh;
+      font-size: 2rem;;
+      line-height: 1.2;
+      width: 80%;
+      letter-spacing: 2px;
     }
   }
 }
@@ -74,6 +81,8 @@ html {
 .main {
   width: 50vw;
   margin-left: 15vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 
   h1 {
     padding-bottom: 8px;
@@ -83,6 +92,11 @@ html {
   }
 }
 
+.main.categoriesMain {
+  width: 70vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
 
 @media screen and (max-width: 768px) {
   .main {
@@ -91,6 +105,9 @@ html {
     h1 {
       font-size: 3rem;
     }
+  }
+  .main.categoriesMain {
+    width: 90vw;
   }
 }
 
@@ -176,6 +193,39 @@ html {
   }
 }
 
+.categoryList {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  .listItem {
+    border: 1px solid #888;
+    border-radius: 3px;
+    a {
+      display: block;
+      padding: 8px 15px;
+      font-size: 1.8rem;
+      text-decoration: none;
+      color: #444;
+      font-weight: 900;
+      transition: .3s;;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .categoryList {
+    flex-direction: column;
+    .listItem {
+      a {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
 .section {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
   margin: 30px auto 60px;
@@ -232,7 +282,6 @@ ul {
 }
 
 .gatsby-resp-image-wrapper {
-  border: 1px solid red;
   margin-bottom: 50px;
   img {
     width: 100%;
