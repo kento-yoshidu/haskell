@@ -4,6 +4,7 @@ postdate: "2020-12-23"
 updatedate: "2020-12-23"
 categoryName: "Postgresメモ"
 categorySlug: "PostgresMamo"
+tags: ["git","入門"]
 ---
 
 # DBのアクセスログを収集する

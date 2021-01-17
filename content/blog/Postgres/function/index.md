@@ -4,6 +4,7 @@ postdate: "2021-01-05"
 updatedate: "2020-01-05"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
+tags: ["git","入門"]
 ---
 
 まずはテーブルを用意します。
