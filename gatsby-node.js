@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { resolve } = require("path")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -60,9 +61,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   /*
   ****************************************************************
-  ****************************************************************
-  ****************************************************************
-  ****************************************************************
   */
 
   // categoryページに関して
@@ -100,6 +98,48 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
   })
+
+  /*
+  ****************************************************************
+  */
+
+  // tagページ生成
+
+  const tag = await graphql(
+    ` {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+            }
+          }
+        }
+      }
+      tagsGroup: allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+    } `
+  )
+
+  console.log(typeof tag.data.tagsGroup)
+
+  tag.data.tagsGroup.group.map(tag => {
+
+    createPage({
+      path: `tag/${tag.fieldValue}`,
+      component: path.resolve(`./src/templates/tag.js`),
+      context: {
+        tag: tag.fieldValue
+      }
+    })
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -119,12 +159,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
-  // Explicitly define the siteMetadata {} object
-  // This way those will always be defined even if removed from gatsby-config.js
-
-  // Also explicitly define the Markdown frontmatter
-  // This way the "MarkdownRemark" queries will return `null` even when no
-  // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
       author: Author
