@@ -4,7 +4,7 @@ postdate: "2020-12-23"
 updatedate: "2020-12-23"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
-tags: ["git","入門"]
+tags: ["PostgreSQL"]
 ---
 
 <section class="section">

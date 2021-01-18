@@ -1,10 +1,10 @@
 ---
-title: \[MEMO]PREPARE文
+title: PREPARE文2
 postdate: "2021-01-05"
 updatedate: "2020-01-05"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
-tags: ["git","入門"]
+tags: ["PostgreSQL", "PREPARE"]
 ---
 
 ## `PREPARE`でプリペアド文を定義する
