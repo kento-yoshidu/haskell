@@ -13,13 +13,13 @@ config.autoAddCss = false
 
 const Tags = ({ pageContext, data }) => {
 
-  const groups = data.tagsGroup.group
+  //const groups = data.tagsGroup.group
 
   const { tag } = pageContext
 
-  const edges = data.allMarkdownRemark
+  const nodes = data.allMarkdownRemark.edges
 
-  console.log(edges)
+  console.log(nodes)
 
   return (
     <div>
@@ -33,15 +33,51 @@ const Tags = ({ pageContext, data }) => {
       </header>
 
       <main className="main">
-        <ol className="post-list">
+        <ol className="post-list" style={{ listStyle: `none` }}>
+          {
+            nodes.map(node => {
+              return (
+                <li key={node.node.id}>
+                  <Link to={node.node.fields.slug}>
+                    { node.node.frontmatter.title }
+                  </Link>
+                </li>
+              )
+            })
+          }
         </ol>
       </main>
+
+      <Footer />
     </div>
   )
 }
 
 export default Tags
 
+export const pageQuery = graphql`
+  query($tag: String) {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  }
+`
+/*
 export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
@@ -68,3 +104,4 @@ export const pageQuery = graphql`
     }
   }
 `
+*/
