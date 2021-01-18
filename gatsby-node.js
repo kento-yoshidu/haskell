@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { resolve } = require("path")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -60,9 +61,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   /*
   ****************************************************************
-  ****************************************************************
-  ****************************************************************
-  ****************************************************************
   */
 
   // categoryページに関して
@@ -100,6 +98,65 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
   })
+
+  /*
+  ****************************************************************
+  */
+
+  // tagページ生成
+
+  const tag = await graphql(
+    ` {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+            }
+          }
+        }
+      }
+      tagsGroup: allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+    } `
+  )
+
+  console.log(typeof tag.data.tagsGroup)
+
+  tag.data.tagsGroup.group.map(tag => {
+
+    createPage({
+      path: `tag/${tag.fieldValue}`,
+      component: path.resolve(`./src/templates/tag.js`),
+      context: {
+        tag: tag.fieldValue
+      }
+    })
+  })
+  /*
+  tag.data.allMarkdownRemark.edges.forEach(({ node }) => {
+
+    createPage({
+      path: `tag/${node.frontmatter.tags}`,
+      component: path.resolve(`./src/templates/tag.js`),
+      context: {
+        tags: node.frontmatter.tags,
+        skip: 0,
+        limit: 1000,
+        currentPage: 1,
+        isFirst: true,
+        isLast: true,
+      }
+    })
+  })
+  */
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
