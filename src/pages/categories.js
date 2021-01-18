@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Links from "../components/links"
 import Footer from "../components/footer"
-import CategoryList from "../components/category-list"
 //import "../scss/style.scss"
 
 
@@ -21,6 +21,8 @@ const Categorys = ({ data, location }) => {
           <Link to={"/"}>鳥に生まれることができなかった人へ</Link></h1> 
         <h2 className="page-title">カテゴリ一覧</h2>
       </header>
+
+      <Links />
 
       <main className="main categoriesMain">
         <ul className="categoryList">
