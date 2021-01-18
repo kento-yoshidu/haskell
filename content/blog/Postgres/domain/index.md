@@ -4,7 +4,7 @@ postdate: "2021-01-09"
 updatedate: "2021-01-09"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
-tags: ["git","入門"]
+tags: ["PostgreSQL","ドメイン"]
 ---
 
 `CREATE DOMAIN ドメイン名 AS データ型`
