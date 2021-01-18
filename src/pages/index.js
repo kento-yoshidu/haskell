@@ -5,11 +5,12 @@ import { Link, graphql } from "gatsby"
 //import Layout from "../components/layout"
 //import CategoryList from "../components/category-list"
 //import SEO from "../components/seo"
+import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo } from "@fortawesome/free-solid-svg-icons"
+import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -27,10 +28,7 @@ const BlogIndex = ({ data, location }) => {
         <h2 className="page-title">記事一覧</h2>
       </header>
 
-      <div className="links">
-        <Link to="/categories/" className="link">カテゴリ一覧</Link>
-        <Link to="/tags/" className="link">タグ一覧</Link>
-      </div>
+      <Links />
 
       <main className="main post-list">
         <ol style={{ listStyle: `none` }} className="post-list">
@@ -60,11 +58,11 @@ const BlogIndex = ({ data, location }) => {
                       </p>
                       <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
                       <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
-                      <p className="tags"><FontAwesomeIcon icon={faUndo} />
+                      <p className="tags"><FontAwesomeIcon icon={faTags} />
                         {
                           post.frontmatter.tags.map(tag => {
                             return (
-                              <a href="/"> { tag }</a>
+                              <a href="/">{ tag }</a>
                             )
                           })
                         }
