@@ -1,16 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Links from "../components/links"
 import Footer from "../components/footer"
-import CategoryList from "../components/category-list"
-//import "../scss/style.scss"
-
 
 const Tags = ({ data, location }) => {
 
   const tags = data.allMarkdownRemark.group
-
-  console.log(location)
 
   return (
     <div>
@@ -19,11 +15,13 @@ const Tags = ({ data, location }) => {
         <h2 className="page-title">タグ一覧</h2>
       </header>
 
-      <main className="main">
+      <Links />
+
+      <main className="main tagsMain">
         <ul className="tagList">
           {tags.map(tag => {
             return (
-              <li>
+              <li className="listItem">
                 <Link to={`/tag/${tag.fieldValue}`}>
                   { tag.fieldValue } （{ tag.totalCount }）
                 </Link>

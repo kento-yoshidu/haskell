@@ -1,10 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-//import Bio from "../components/bio"
-//import Layout from "../components/layout"
-//import CategoryList from "../components/category-list"
-//import SEO from "../components/seo"
+import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
@@ -22,6 +19,9 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <div>
+      <SEO
+        title={data.site.siteMetadata.title }
+      />
 
       <header className="header">
         <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
@@ -98,6 +98,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___postdate], order: DESC }) {

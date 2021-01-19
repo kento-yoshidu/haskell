@@ -6,7 +6,7 @@ module.exports = {
       name: `Kento Yoshizu`,
       summary: `Front-end engineer in Shiga, Japan`,
     },
-    description: `Tech BLog and other`,
+    description: `IT技術ブログとその他趣味`,
     social: {
       twitter: `potsunen15`,
     },

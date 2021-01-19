@@ -3,16 +3,10 @@ import { Link, graphql } from "gatsby"
 
 import Links from "../components/links"
 import Footer from "../components/footer"
-//import "../scss/style.scss"
-
 
 const Categorys = ({ data, location }) => {
 
   const categories = data.allMarkdownRemark.group
-
-  categories.map(category => {
-    console.log(category.nodes[0].frontmatter)
-  })
 
   return (
     <div>
@@ -49,7 +43,7 @@ export const pageQuery = graphql`
   query ($category: String) {
     allMarkdownRemark(filter: {frontmatter: {categorySlug: {eq: $category}}}) {
       totalCount
-      group(field: frontmatter___categoryName, limit: 1) {
+      group(field: frontmatter___categoryName) {
         nodes {
           frontmatter {
             categorySlug
