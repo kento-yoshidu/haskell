@@ -103,15 +103,16 @@ a {
 @media screen and (max-width: 768px) {
   .links {
     flex-direction: column;
-    margin: 20px auto;
+    margin: 20px auto 5px;
 
     .link {
-      font-size: 2.2rem;
-      margin: 10px 0;
-      padding: 8px 15px;
+      font-size: 2rem;
+      margin: 8px 0;
+      padding: 5px 10px;
     }
   }
 }
+
 .main {
   width: 50vw;
   margin-left: 15vw;
@@ -133,7 +134,6 @@ a {
 .main.categoriesMain,
 .main.tagsMain {
   width: 70vw;
-  margin-top: 5vh;
   margin-bottom: 5vh;
 }
 
@@ -145,11 +145,12 @@ a {
       font-size: 3rem;
     }
   }
-  .main.post-list {
-    width: 90vw;
-  }
+  .main.post-list,
   .main.categoriesMain {
     width: 90vw;
+  }
+  .main.tagsMain {
+    width: 95vw;
   }
 }
 
@@ -257,7 +258,7 @@ a {
     a {
       display: block;
       padding: 8px 15px;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       text-decoration: none;
       color: #444;
       font-weight: 900;
@@ -273,16 +274,27 @@ a {
   }
 }
 
+.tagList {
+  .listItem {
+    margin-right: 5px;
+    a {
+      padding: 5px 10px;
+      font-size: 1.4rem;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .categoryList {
     flex-direction: column;
     .listItem {
       a {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
     }
   }
 }
+
 .section {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
   margin: 30px auto 60px;
@@ -327,6 +339,7 @@ p {
 @media screen and (max-width: 768px) {
   p {
     font-size: 1.5rem;
+    line-height: 1.7;
     margin-bottom: 10px;
   }
 }

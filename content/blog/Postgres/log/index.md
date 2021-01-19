@@ -2,9 +2,9 @@
 title: "ログ出力ハンズオン"
 postdate: "2020-12-23"
 updatedate: "2020-12-23"
-categoryName: "Postgresメモ"
-categorySlug: "PostgresMamo"
-tags: ["git","入門"]
+categoryName: "ハンズオンPostgreSQL"
+categorySlug: "HandsonPostgreSQL"
+tags: ["git"]
 ---
 
 # DBのアクセスログを収集する
