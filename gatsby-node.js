@@ -5,15 +5,16 @@ const { resolve } = require("path")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
-  // Get all markdown blog posts sorted by date
   const markdowns = await graphql(
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: {
+            fields: [frontmatter___date],
+            order: DESC
+          }
           limit: 1000
         ) {
           nodes {
@@ -27,7 +28,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  
   if (markdowns.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -37,10 +37,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const posts = markdowns.data.allMarkdownRemark.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
@@ -62,7 +58,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   /*
   ****************************************************************
   */
-
   // categoryページに関して
 
   const category = await graphql(
@@ -76,6 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             frontmatter {
               categorySlug
+              categoryName
             }
           }
         }
@@ -89,6 +85,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: `category/${node.frontmatter.categorySlug}`,
       component: path.resolve(`./src/templates/category.js`),
       context: {
+        category: node.frontmatter.categoryName,
         categoryId: node.frontmatter.categorySlug,
         skip: 0,
         limit: 1000,
@@ -127,8 +124,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     } `
   )
-
-  console.log(typeof tag.data.tagsGroup)
 
   tag.data.tagsGroup.group.map(tag => {
 

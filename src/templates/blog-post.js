@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Links from "../components/links"
 import SEO from "../components/seo"
-import PageIndex from "../components/pageIndex"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
 
@@ -11,7 +11,6 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
-  //const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
   return (
@@ -39,6 +38,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <p>カテゴリ：{post.frontmatter.category}</p>
       </section>
 
+      <Links />
       <div className="wrapper">
 
         <main
@@ -81,30 +81,6 @@ const BlogPostTemplate = ({ data, location }) => {
 }
 
 export default BlogPostTemplate
-
-/*
-export const pageQuery = graphql`
-  query($category: String) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { categorySlug: { in: [$category] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  }
-`
-*/
 
 export const pageQuery = graphql`
   query BlogPostBySlug(

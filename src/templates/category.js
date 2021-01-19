@@ -1,18 +1,21 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo } from "@fortawesome/free-solid-svg-icons"
+import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
 const Category = ({ pageContext, data }) => {
+
   const { edges } = data.allMarkdownRemark
+  const { category } = pageContext
 
   return (
     <div>
@@ -21,8 +24,11 @@ const Category = ({ pageContext, data }) => {
           <Link to={"/"}>鳥に生まれることができなかった人へ</Link>
         </h1> 
         <h2 className="page-title">
-          「{ edges[0].node.frontmatter.categoryName }」カテゴリの記事</h2>
+          { category } カテゴリの記事
+        </h2>
       </header>
+
+      <Links />
 
       <main className="main">
       <ol style={{ listStyle: `none` }} className="post-list">
@@ -50,6 +56,15 @@ const Category = ({ pageContext, data }) => {
                       </p>
                       <p className="post"><FontAwesomeIcon icon={faClock} />{node.node.frontmatter.postdate}</p>
                       <p className="update"><FontAwesomeIcon icon={faUndo} />{node.node.frontmatter.updatedate}</p>
+                      <p className="tags"><FontAwesomeIcon icon={faTags} />
+                        {
+                          node.node.frontmatter.tags.map(tag => {
+                            return (
+                              <a href="/">{ tag }</a>
+                            )
+                          })
+                        }
+                      </p>
                     </div>
                   </header>
                 </article>
@@ -95,6 +110,7 @@ export const pageQuery = graphql`
             description
             categoryName
             title
+            tags
           }
         }
       }

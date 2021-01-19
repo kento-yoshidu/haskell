@@ -5,7 +5,7 @@ import Footer from "../components/footer"
 import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo } from "@fortawesome/free-solid-svg-icons"
+import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -13,10 +13,7 @@ config.autoAddCss = false
 
 const Tags = ({ pageContext, data }) => {
 
-  //const groups = data.tagsGroup.group
-
   const { tag } = pageContext
-
   const nodes = data.allMarkdownRemark.edges
 
   console.log(nodes)
@@ -36,11 +33,41 @@ const Tags = ({ pageContext, data }) => {
         <ol className="post-list" style={{ listStyle: `none` }}>
           {
             nodes.map(node => {
+
+              const title = node.node.frontmatter.title 
+
               return (
                 <li key={node.node.id}>
-                  <Link to={node.node.fields.slug}>
-                    { node.node.frontmatter.title }
-                  </Link>
+                  <article
+                    className="post-list-item"
+                    itemScope
+                    itemType="http://schema.org/Article"
+                  >
+                    <header>
+                      <h2 className="post-title">
+                        <Link to={node.node.fields.slug} itemProp="url">
+                          <span itemProp="headline">{ title }</span>
+                        </Link>
+                      </h2>
+                      <div className="info">
+                        <p className="category">
+                          <FontAwesomeIcon icon={faFolder} />
+                          <Link to={`/category/${node.node.frontmatter.categorySlug}`}>{node.node.frontmatter.categoryName}</Link>
+                        </p>
+                        <p className="post"><FontAwesomeIcon icon={faClock} />{node.node.frontmatter.postdate}</p>
+                        <p className="update"><FontAwesomeIcon icon={faUndo} />{node.node.frontmatter.updatedate}</p>
+                        <p className="tags"><FontAwesomeIcon icon={faTags} />
+                          {
+                            node.node.frontmatter.tags.map(tag => {
+                              return (
+                                <a href="/">{ tag }</a>
+                              )
+                            })
+                          }
+                        </p>
+                      </div>
+                    </header>
+                  </article>
                 </li>
               )
             })
@@ -58,9 +85,16 @@ export default Tags
 export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: {
+        fields: [frontmatter___date], order: DESC
+      }
+      filter: {
+        frontmatter: {
+          tags: {
+            in: [$tag]
+          }
+        }
+      }
     ) {
       totalCount
       edges {
@@ -70,38 +104,17 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            postdate(formatString: "YYYY年 MM月 DD日")
+            updatedate(formatString: "YYYY年 MM月 DD日")
+            categoryName
+            categorySlug
+            description
+            categoryName
             title
+            tags
           }
         }
       }
     }
   }
 `
-/*
-export const pageQuery = graphql`
-  query($tag: String) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-    tagsGroup: allMarkdownRemark {
-      group(field: frontmatter___tags) {
-        fieldValue
-      }
-    }
-  }
-`
-*/
