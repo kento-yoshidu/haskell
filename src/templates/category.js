@@ -60,7 +60,7 @@ const Category = ({ pageContext, data }) => {
                         {
                           node.node.frontmatter.tags.map(tag => {
                             return (
-                              <a href="/">{ tag }</a>
+                              <a href={`/tag/${tag}`}>{ tag }</a>
                             )
                           })
                         }
@@ -86,7 +86,8 @@ export const pageQuery = graphql`
   query($categoryId: String) {
     allMarkdownRemark (
       sort: {
-        fields: [frontmatter___postdate], order: DESC
+        fields: [frontmatter___postdate],
+        order: DESC
       }
       filter: {
         frontmatter: {
@@ -103,12 +104,10 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            postdate(formatString: "YYYY年 MM月 DD日")
-            updatedate(formatString: "YYYY年 MM月 DD日")
+            postdate(formatString: "YYYY年MM月DD日")
+            updatedate(formatString: "YYYY年MM月DD日")
             categoryName
             categorySlug
-            description
-            categoryName
             title
             tags
           }

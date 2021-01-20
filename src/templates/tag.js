@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
@@ -14,8 +15,8 @@ config.autoAddCss = false
 const Tags = ({ pageContext, data }) => {
 
   const { tag } = pageContext
-  const nodes = data.allMarkdownRemark.edges
-
+  const nodes = data.allMarkdownRemark.nodes
+  
   console.log(nodes)
 
   return (
@@ -29,15 +30,16 @@ const Tags = ({ pageContext, data }) => {
         </h2>
       </header>
 
+      <Links />
+
       <main className="main">
         <ol className="post-list" style={{ listStyle: `none` }}>
-          {
-            nodes.map(node => {
+          { nodes.map(node => {
 
-              const title = node.node.frontmatter.title 
+              const title = node.frontmatter.title 
 
               return (
-                <li key={node.node.id}>
+                <li key={node.id}>
                   <article
                     className="post-list-item"
                     itemScope
@@ -45,22 +47,22 @@ const Tags = ({ pageContext, data }) => {
                   >
                     <header>
                       <h2 className="post-title">
-                        <Link to={node.node.fields.slug} itemProp="url">
+                        <Link to={node.fields.slug} itemProp="url">
                           <span itemProp="headline">{ title }</span>
                         </Link>
                       </h2>
                       <div className="info">
                         <p className="category">
                           <FontAwesomeIcon icon={faFolder} />
-                          <Link to={`/category/${node.node.frontmatter.categorySlug}`}>{node.node.frontmatter.categoryName}</Link>
+                          <Link to={`/category/${node.frontmatter.categorySlug}`}>{node.frontmatter.categoryName}</Link>
                         </p>
-                        <p className="post"><FontAwesomeIcon icon={faClock} />{node.node.frontmatter.postdate}</p>
-                        <p className="update"><FontAwesomeIcon icon={faUndo} />{node.node.frontmatter.updatedate}</p>
+                        <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
+                        <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
                         <p className="tags"><FontAwesomeIcon icon={faTags} />
                           {
-                            node.node.frontmatter.tags.map(tag => {
+                            node.frontmatter.tags.map(tag => {
                               return (
-                                <a href="/">{ tag }</a>
+                                <a href={`/tag/${tag}`}>{ tag }</a>
                               )
                             })
                           }
@@ -97,22 +99,19 @@ export const pageQuery = graphql`
       }
     ) {
       totalCount
-      edges {
-        node {
+        nodes {
           id
           fields {
             slug
           }
           frontmatter {
-            postdate(formatString: "YYYY年 MM月 DD日")
-            updatedate(formatString: "YYYY年 MM月 DD日")
+            postdate(formatString: "YYYY年MM月DD日")
+            updatedate(formatString: "YYYY年MM月DD日")
             categoryName
             categorySlug
-            description
             categoryName
             title
             tags
-          }
         }
       }
     }
