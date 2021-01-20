@@ -15,16 +15,17 @@ config.autoAddCss = false
 
 const BlogIndex = ({ data, location }) => {
 
-  const posts = data.allMarkdownRemark.nodes
+  const siteData = data.siteData;
+  const postData = data.postData;
 
   return (
     <div>
       <SEO
-        title={data.site.siteMetadata.title }
+        title={siteData.siteMetadata.title }
       />
 
       <header className="header">
-        <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
+        <h1 className="header-title">{ siteData.siteMetadata.title}</h1> 
         <h2 className="page-title">記事一覧</h2>
       </header>
 
@@ -32,11 +33,11 @@ const BlogIndex = ({ data, location }) => {
 
       <main className="main post-list">
         <ol style={{ listStyle: `none` }} className="post-list">
-          {posts.map(post => {
+          {postData.nodes.map(post => {
             const title = post.frontmatter.title || post.fields.slug
 
             return (
-              <li key={post.fields.slug}>
+              <li key={post.id}>
                 <article
                   className="post-list-item"
                   itemScope
@@ -62,14 +63,12 @@ const BlogIndex = ({ data, location }) => {
                         {
                           post.frontmatter.tags.map(tag => {
                             return (
-                              <a href="/">{ tag }</a>
+                              <a href={`/tag/${tag}`}>{ tag }</a>
                             )
                           })
                         }
                       </p>
-
                     </div>
-
                   </header>
 
                   <p
@@ -95,14 +94,21 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
+    siteData: site {
       siteMetadata {
         title
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___postdate], order: DESC }) {
+
+    postData: allMarkdownRemark(
+      sort: {
+        fields: [frontmatter___postdate],
+        order: DESC
+      }
+    ) {
       nodes {
+        id
         excerpt
         fields {
           slug
