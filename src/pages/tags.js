@@ -11,7 +11,11 @@ const Tags = ({ data, location }) => {
   return (
     <div>
       <header className="header">
-        <h1 className="header-title">鳥に生まれることができなかった人へ</h1> 
+        <h1 className="header-title">
+          <Link to={"/"}>
+            鳥に生まれることができなかった人へ
+          </Link>
+        </h1> 
         <h2 className="page-title">タグ一覧</h2>
       </header>
 

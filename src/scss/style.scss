@@ -114,7 +114,7 @@ a {
 }
 
 .main {
-  width: 50vw;
+  width: 80vw;
   margin-left: 15vw;
   margin-top: 5vh;
   margin-bottom: 5vh;
@@ -127,14 +127,8 @@ a {
   }
 }
 
-.main.post-list {
-  width: 80vw;
-}
-
-.main.categoriesMain,
-.main.tagsMain {
-  width: 70vw;
-  margin-bottom: 5vh;
+.main.article {
+  width: 50%;
 }
 
 @media screen and (max-width: 768px) {

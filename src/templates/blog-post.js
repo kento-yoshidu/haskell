@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <main
           dangerouslySetInnerHTML={{ __html: post.html }}
           //itemProp="articleBody"
-          className="main"
+          className="main article"
         />
       </div>
 
