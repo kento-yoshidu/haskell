@@ -27,7 +27,7 @@ const Tags = ({ data, location }) => {
             return (
               <li className="listItem">
                 <Link to={`/tag/${tag.fieldValue}`}>
-                  { tag.fieldValue } （{ tag.totalCount }）
+                  { tag.fieldValue }({ tag.totalCount })
                 </Link>
               </li>
             )

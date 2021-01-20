@@ -32,57 +32,49 @@ const BlogIndex = ({ data, location }) => {
       <Links />
 
       <main className="main post-list">
-        <ol style={{ listStyle: `none` }} className="post-list">
+        <ul className="post-list">
           {postData.nodes.map(post => {
             const title = post.frontmatter.title || post.fields.slug
 
             return (
-              <li key={post.id}>
-                <article
-                  className="post-list-item"
-                  itemScope
-                  itemType="http://schema.org/Article"
-                >
+              <li key={post.id}
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <h2 className="post-title">
+                  <Link to={post.fields.slug} itemProp="url">
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </h2>
 
-                  <header>
-                    <h2 className="post-title">
-                      <Link to={post.fields.slug} itemProp="url">
-                        <span itemProp="headline">{title}</span>
-                      </Link>
-                    </h2>
-
-                    <div className="info">
-                      <p className="category">
-                        <FontAwesomeIcon icon={faFolder} />
-                        <Link to={`category/${post.frontmatter.categorySlug}`}>
-                        {post.frontmatter.categoryName}</Link>
-                      </p>
-                      <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
-                      <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
-                      <p className="tags"><FontAwesomeIcon icon={faTags} />
-                        {
-                          post.frontmatter.tags.map(tag => {
-                            return (
-                              <a href={`/tag/${tag}`}>{ tag }</a>
-                            )
-                          })
-                        }
-                      </p>
-                    </div>
-                  </header>
-
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                    className="description"
-                  />
-                </article>
+                <div className="info">
+                  <p className="category">
+                    <FontAwesomeIcon icon={faFolder} />
+                    <Link to={`category/${post.frontmatter.categorySlug}`}>
+                    {post.frontmatter.categoryName}</Link>
+                  </p>
+                  <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
+                  <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
+                  <p className="tags"><FontAwesomeIcon icon={faTags} />
+                    {
+                      post.frontmatter.tags.map(tag => {
+                        return (
+                          <a
+                            href={`/tag/${tag}`}
+                            key={`${tag}`}
+                          >
+                            { tag }
+                          </a>
+                        )
+                      })
+                    }
+                  </p>
+                </div>
               </li>
             )
           })}
-        </ol>
+        </ul>
 
         </main>
       <Footer />
@@ -114,12 +106,11 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          postdate(formatString: "YYYY年 MM月 DD日")
-          updatedate(formatString: "YYYY年 MM月 DD日")
-          title
-          description
+          postdate(formatString: "YYYY年MM月DD日")
+          updatedate(formatString: "YYYY年MM月DD日")
           categoryName
           categorySlug
+          title
           tags
         }
       }
