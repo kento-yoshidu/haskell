@@ -5,7 +5,6 @@ updatedate: "2020-12-23"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 tags: ["PostgreSQL"]
-number: 0
 ---
 
 # ハンズオンPostgreSQL

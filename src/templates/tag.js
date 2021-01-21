@@ -24,51 +24,48 @@ const Tags = ({ pageContext, data }) => {
           <Link to={"/"}>鳥に生まれることができなかった人へ</Link>
         </h1> 
         <h2 className="page-title">
-          「{ tag }」タグの記事
+          { tag } タグの記事
         </h2>
       </header>
 
       <Links />
 
       <main className="main">
-        <ol className="post-list" style={{ listStyle: `none` }}>
-          { nodes.map(node => {
 
-              const title = node.frontmatter.title 
+      <ol className="post-list">
+        { nodes.map(node => {
+          const title = node.frontmatter.title 
 
-              return (
-                <li key={node.id}>
-                  <article
-                    className="post-list-item"
-                    itemScope
-                    itemType="http://schema.org/Article"
-                  >
-                    <header>
-                      <h2 className="post-title">
-                        <Link to={node.fields.slug} itemProp="url">
-                          <span itemProp="headline">{ title }</span>
-                        </Link>
-                      </h2>
-                      <div className="info">
-                        <p className="category">
-                          <FontAwesomeIcon icon={faFolder} />
-                          <Link to={`/category/${node.frontmatter.categorySlug}`}>{node.frontmatter.categoryName}</Link>
-                        </p>
-                        <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
-                        <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
-                        <p className="tags"><FontAwesomeIcon icon={faTags} />
-                          {
-                            node.frontmatter.tags.map(tag => {
-                              return (
-                                <a href={`/tag/${tag}`}>{ tag }</a>
-                              )
-                            })
-                          }
-                        </p>
-                      </div>
-                    </header>
-                  </article>
-                </li>
+            return (
+              <li
+                key={node.id}
+                className="post-list-item"
+              >
+
+                <h2 className="post-title">
+                  <Link to={node.fields.slug} itemProp="url">
+                    <span itemProp="headline">{ title }</span>
+                  </Link>
+                </h2>
+
+                <div className="info">
+                  <p className="category">
+                    <FontAwesomeIcon icon={faFolder} />
+                    <Link to={`/category/${node.frontmatter.categorySlug}`}>{node.frontmatter.categoryName}</Link>
+                  </p>
+                  <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
+                  <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
+                  <p className="tags"><FontAwesomeIcon icon={faTags} />
+                    {
+                      node.frontmatter.tags.map(tag => {
+                        return (
+                          <a href={`/tag/${tag}`}>{ tag }</a>
+                        )
+                      })
+                    }
+                  </p>
+                </div>
+              </li>
               )
             })
           }
@@ -86,7 +83,7 @@ export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
       sort: {
-        fields: [frontmatter___date],
+        fields: [frontmatter___postdate],
         order: DESC
       }
       filter: {
@@ -97,20 +94,19 @@ export const pageQuery = graphql`
         }
       }
     ) {
-      totalCount
-        nodes {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            postdate(formatString: "YYYY年MM月DD日")
-            updatedate(formatString: "YYYY年MM月DD日")
-            categoryName
-            categorySlug
-            categoryName
-            title
-            tags
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          postdate(formatString: "YYYY年MM月DD日")
+          updatedate(formatString: "YYYY年MM月DD日")
+          categoryName
+          categorySlug
+          categoryName
+          title
+          tags
         }
       }
     }
