@@ -32,6 +32,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-emoji`,
+            options: {
+              emojiConversion: 'shortnameToUnicode',
+            }
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 630,
