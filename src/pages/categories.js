@@ -41,7 +41,15 @@ export default Categorys
 
 export const pageQuery = graphql`
   query ($category: String) {
-    allMarkdownRemark(filter: {frontmatter: {categorySlug: {eq: $category}}}) {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          categorySlug: {
+            eq: $category
+          }
+        }
+      }
+    ) {
       totalCount
       group(field: frontmatter___categoryName) {
         nodes {

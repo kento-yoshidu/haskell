@@ -106,6 +106,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // tagページ生成
 
+  /*
   const tag = await graphql(
     ` {
       allMarkdownRemark {
@@ -128,6 +129,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     } `
   )
+  */
+
+  const tag = await graphql(`
+    {
+      tagsGroup: allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+    }
+  `)
+
+  console.log("==============")
+  console.log(tag.data)
 
   tag.data.tagsGroup.group.map(tag => {
 
