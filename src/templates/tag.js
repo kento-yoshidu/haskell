@@ -17,8 +17,6 @@ const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   const nodes = data.allMarkdownRemark.nodes
   
-  console.log(nodes)
-
   return (
     <div>
       <header className="header">
@@ -88,7 +86,8 @@ export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
       sort: {
-        fields: [frontmatter___date], order: DESC
+        fields: [frontmatter___date],
+        order: DESC
       }
       filter: {
         frontmatter: {
