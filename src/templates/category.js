@@ -59,7 +59,9 @@ const Category = ({ pageContext, data }) => {
                   {
                     node.frontmatter.tags.map(tag => {
                       return (
-                        <a href={`/tag/${tag}`}>{ tag }</a>
+                        <Link
+                          to={`/tag/${tag}`}>{ tag }
+                        </Link>
                       )
                     })
                   }

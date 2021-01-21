@@ -31,7 +31,7 @@ const BlogIndex = ({ data, location }) => {
 
       <Links />
 
-      <main className="main post-list">
+      <main className="main">
         <ul className="post-list">
           {postData.nodes.map(post => {
             const title = post.frontmatter.title || post.fields.slug
@@ -60,12 +60,12 @@ const BlogIndex = ({ data, location }) => {
                     {
                       post.frontmatter.tags.map(tag => {
                         return (
-                          <a
-                            href={`/tag/${tag}`}
+                          <Link 
+                            to={`tag/${tag}`}
                             key={`${tag}`}
                           >
                             { tag }
-                          </a>
+                          </Link>
                         )
                       })
                     }

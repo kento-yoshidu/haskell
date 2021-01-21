@@ -102,12 +102,13 @@ a {
 
 @media screen and (max-width: 768px) {
   .links {
-    flex-direction: column;
-    margin: 20px auto 5px;
+    //flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 20px auto;
 
     .link {
-      font-size: 2rem;
-      margin: 8px 0;
+      font-size: 1.2rem;
       padding: 5px 10px;
     }
   }
@@ -115,7 +116,7 @@ a {
 
 .main {
   width: 75vw;
-  margin: 5vh auto;
+  margin: 5vw auto;
 
   h1 {
     padding-bottom: 8px;
@@ -131,20 +132,19 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-  .main {
+  .main{
+    width: 90vw;
+    margin: 0 auto;
+  }
+  /*
+  .main.article {
     width: 90%; 
     margin: 0 auto;
     h1 {
       font-size: 3rem;
     }
   }
-  .main.post-list,
-  .main.categoriesMain {
-    width: 90vw;
-  }
-  .main.tagsMain {
-    width: 95vw;
-  }
+  */
 }
 
 .post-list {
@@ -194,15 +194,15 @@ a {
             color: $main-color;
           }
         }
-        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 768px) {
   .post-list {
-    width: 90%;
-    margin: 50px auto;
+    width: 85%;
+    margin: 0 auto;
 
     .post-list-item {
       .post-title {
@@ -223,11 +223,6 @@ a {
           padding: 0;
           margin-bottom: 5px;
         }
-      }
-
-      .description {
-        margin: 10px 0 0 0;
-        font-size: 1.4rem;
       }
     }
   }
