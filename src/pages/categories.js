@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Header from "../components/header"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -10,11 +11,12 @@ const Categorys = ({ data, location }) => {
 
   return (
     <div>
-      <header className="header">
-        <h1 className="header-title">
-          <Link to={"/"}>鳥に生まれることができなかった人へ</Link></h1> 
-        <h2 className="page-title">カテゴリ一覧</h2>
-      </header>
+
+      <Header
+        headerTitle="鳥に生まれることができなかった人へ"
+        pageTitle="カテゴリ一覧"
+        isTopPage={ false }
+      />
 
       <Links />
 

@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Header from "../components/header"
 import Links from "../components/links"
 import Footer from "../components/footer"
-import "../scss/style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
@@ -19,14 +19,11 @@ const Category = ({ pageContext, data }) => {
 
   return (
     <div>
-      <header className="header">
-        <h1 className="header-title">
-          <Link to={"/"}>鳥に生まれることができなかった人へ</Link>
-        </h1> 
-        <h2 className="page-title">
-          { category } カテゴリの記事
-        </h2>
-      </header>
+
+      <Header
+        headerTitle="鳥に生まれる人ができなかった人へ"
+        pageTitle={`${ category } カテゴリの記事`}
+      />
 
       <Links />
 
