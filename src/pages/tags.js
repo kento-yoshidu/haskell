@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Header from "../components/header"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -10,14 +11,12 @@ const Tags = ({ data, location }) => {
 
   return (
     <div>
-      <header className="header">
-        <h1 className="header-title">
-          <Link to={"/"}>
-            鳥に生まれることができなかった人へ
-          </Link>
-        </h1> 
-        <h2 className="page-title">タグ一覧</h2>
-      </header>
+
+      <Header
+        headerTitle="鳥に生まれることができなかった人へ"
+        pageTitle="タグ一覧"
+        isTopPage={ false }
+      />
 
       <Links />
 
@@ -43,8 +42,8 @@ const Tags = ({ data, location }) => {
 export default Tags
 
 export const pageQuery = graphql`
-  query ($tags: String) {
-    allMarkdownRemark(filter: {frontmatter: {tags: {eq: $tags}}}) {
+  query ($tag: String) {
+    allMarkdownRemark(filter: {frontmatter: {tags: {eq: $tag}}}) {
       group(field: frontmatter___tags, limit: 1) {
         nodes {
           frontmatter {
@@ -57,5 +56,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-

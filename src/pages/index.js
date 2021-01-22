@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
+import Header from "../components/header"
 import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
@@ -24,10 +25,11 @@ const BlogIndex = ({ data, location }) => {
         title={siteData.siteMetadata.title }
       />
 
-      <header className="header">
-        <h1 className="header-title">{ siteData.siteMetadata.title}</h1> 
-        <h2 className="page-title">記事一覧</h2>
-      </header>
+      <Header
+        headerTitle={ siteData.siteMetadata.title}
+        pageTitle="記事一覧"
+        isTopPage={ true }
+      />
 
       <Links />
 
@@ -64,7 +66,7 @@ const BlogIndex = ({ data, location }) => {
                             to={`tag/${tag}`}
                             key={`${tag}`}
                           >
-                            { tag }
+                            #{ tag }
                           </Link>
                         )
                       })
