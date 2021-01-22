@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Header from "../components/header"
 import Links from "../components/links"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
@@ -22,15 +23,10 @@ const BlogPostTemplate = ({ data, location }) => {
 
       <FixHeader />
 
-      <header className="header">
-        <h1 className="header-title" itemProp="headline">
-          <Link to={"/"}>
-            {data.site.siteMetadata.title}
-          </Link>
-        </h1>
-
-        <h2 className="page-title" itemProp="headline">{post.frontmatter.title}</h2>
-      </header>
+      <Header
+        headerTitle={ data.site.siteMetadata.title }
+        pageTitle={ post.frontmatter.title }
+      />
 
       <section className="info">
         <p>投稿日{post.frontmatter.postdate}</p>
