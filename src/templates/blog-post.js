@@ -55,6 +55,7 @@ const BlogPostTemplate = ({ data, location }) => {
           }}
         >
           <li>
+            以前の投稿!
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
@@ -62,6 +63,7 @@ const BlogPostTemplate = ({ data, location }) => {
             )}
           </li>
           <li>
+            以後の投稿!
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →

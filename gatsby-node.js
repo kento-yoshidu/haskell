@@ -11,66 +11,54 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
-  const markdowns = await graphql(
-    `
-      {
-        allMarkdownRemark(
+  const markdowns = await graphql(`
+    query {
+      allMarkdownRemark(
           sort: {
-            fields: [frontmatter___date],
+            fields: [frontmatter___postdate],
             order: DESC
           }
           limit: 1000
         ) {
-          nodes {
-            id
-            fields {
-              slug
+          group(field: frontmatter___categorySlug) {
+            nodes {
+              id
+              fields {
+                slug
+              }
+              frontmatter {
+                categorySlug
+              }
             }
           }
         }
-      }
-    `
-  )
+    }
+  `)
 
-  if (markdowns.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      markdowns.errors
-    )
-    return
-  }
+  const group = markdowns.data.allMarkdownRemark.group
 
-  // ページネーション用のカウンター
-  let paginationCount = 0;
-  
-  const posts = markdowns.data.allMarkdownRemark.nodes
+  group.forEach((nodes) => {
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+    nodes.nodes.forEach((node, index) => {
+
+      const previousPostId = index === 0 ? null : nodes.nodes[index - 1].id
+      const nextPostId = index === nodes.nodes.length - 1 ? null : nodes.nodes[index + 1].id
+
+      console.log(index,"回目終了")
 
       createPage({
-        path: post.fields.slug,
+        path: node.fields.slug,
         component: blogPost,
         context: {
-          id: post.id,
+          id: node.id,
           previousPostId,
           nextPostId,
         },
       })
-      paginationCount++;
     })
 
-    // 1ページに、いつくつ記事を載せるか
-    const postPerPage = 10;
 
-    // トータルの記事数を算出
-    let numPages = Math.ceil(paginationCount / postPerPage);
-  }
-
-  console.log("=======================--")
-  console.log(paginationCount)
+  })
 
   /*
   ****************************************************************
