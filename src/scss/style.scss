@@ -11,7 +11,12 @@ html {
 }
 
 a {
+  color: #666;
   transition: .2s;
+
+  &:hover {
+    color: $main-color;
+  }
 }
 
 .header {
@@ -328,6 +333,45 @@ ul {
     font-size: 1.8rem;
     line-height: 1.5;
     margin-bottom: 10px;
+  }
+}
+
+.beforeAndAfter {
+  width: 50%;
+  margin-left: 15vw;
+  padding-bottom: 50px;
+
+  .before,
+  .after {
+    display: block;
+    border: 2px solid #bbb;
+    border-radius: 3px;
+    padding: 18px 25px;
+
+    &:hover {
+      color: inherit;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: #666;
+      border-bottom: 3px dotted $main-color;
+      padding-bottom: 7px;
+      margin-bottom: 20px;
+
+    }
+    .title {
+      font-size: 2.4rem;
+    }
+
+    &:hover {
+      background: rgba(240,240,240,.5)
+    }
+  }
+
+  .before {
+    margin-bottom: 30px;
   }
 }
 
