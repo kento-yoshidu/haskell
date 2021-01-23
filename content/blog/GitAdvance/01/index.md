@@ -830,9 +830,10 @@ CommitDate: Fri Feb 28 11:15:26 2020 +0900
 </section>
 
 <section class="section">
+
 # 参考
 
-- https://qiita.com/yukimura1227/items/fbb076db61a2e43a32e3
+- [gitでrename&modifyしたファイルのログを追跡できるようにしたい場合](https://qiita.com/yukimura1227/items/fbb076db61a2e43a32e3)
 - [git diff --name-status で出る R100 って何？](https://stakiran.hatenablog.com/entry/2019/01/14/072206)
 - [Advanced Git log](https://www.atlassian.com/ja/git/tutorials/git-log)
 </section>
