@@ -4,9 +4,6 @@ const { resolve } = require("path")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
 
-  /*
-   * 
-   */
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
@@ -50,9 +47,56 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       })
     })
-
-
   })
+
+  /*
+  ****************************************************************
+  */
+  // categoryページに関して
+
+  const allposts = await graphql(`
+    query {
+      allMarkdownRemark {
+        nodes {
+          fields {
+            slug
+          }
+          id
+          frontmatter {
+            categoryName
+            categorySlug
+            tags
+            title
+            postdate(difference: "")
+            updatedate(formatString: "", fromNow: false, locale: "")
+          }
+        }
+      }
+    }
+  `)
+
+
+  const blogPostsPerPage = 6;
+  const blogPosts = allposts.data.allMarkdownRemark.nodes.length;
+  const blogPages = Math.ceil(blogPosts / blogPostsPerPage)
+
+  console.log(blogPages)
+
+  Array.from({ length: blogPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? "/page/1/" : `/page/${i + 1}/`,
+      component: path.resolve("./src/templates/page.js"),
+      context: {
+        skip: blogPostsPerPage * i,
+        limit: blogPostsPerPage,
+      }
+    })
+  })
+
+
+
+
+
 
   /*
   ****************************************************************
