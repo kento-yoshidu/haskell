@@ -44,33 +44,29 @@ const BlogPostTemplate = ({ data, location }) => {
         />
       </div>
 
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+      <nav className="beforeAndAfter">
         {previous && (
-          <li>
-            以前の投稿
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          </li>
+          <Link
+            to={previous.fields.slug} rel="prev"
+            class="before"
+          >
+            <h2>← 前の記事</h2>
+            <p className="title">
+              {previous.frontmatter.title}
+            </p>
+          </Link>
         )}
         {next && (
-          <li>
-            以後の投稿
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          </li>
+          <Link
+            to={next.fields.slug}
+            className="after"
+          >
+            <h2>後の記事 →</h2>
+            <p className="title">
+              {next.frontmatter.title}
+            </p>
+          </Link>
         )}
-        </ul>
       </nav>
 
       <Footer />
