@@ -20,9 +20,9 @@ a {
 }
 
 .header {
-  background: #CB356B;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #BD3F32, #CB356B);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #BD3F32, #CB356B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #CB356B;
+  background: -webkit-linear-gradient(to right, #BD3F32, #CB356B);
+  background: linear-gradient(to left bottom, orange, #CB356B);
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -120,7 +120,7 @@ a {
 
 .main {
   width: 75vw;
-  margin: 5vw auto;
+  margin: 2vh auto 4vh;
 
   h1 {
     padding-bottom: 8px;
@@ -148,13 +148,14 @@ a {
   list-style: none;
 
   .post-list-item {
-    margin-bottom: 50px;
+    margin-bottom: 55px;
 
     .post-title {
-      margin-bottom: 10px;
+      margin-bottom: 7px;
 
       a {
         color: #444;
+        text-decoration: none;
         font-size: 3rem;
         font-weight: 900;
         transition: .5s;
@@ -168,7 +169,6 @@ a {
 
     .info {
       display: flex;
-      margin-left: 20px;
 
       .category,
       .post,
@@ -201,6 +201,7 @@ a {
     margin: 0 auto;
 
     .post-list-item {
+      margin-bottom: 20px;
       .post-title {
         a {
           font-size: 2rem;
@@ -359,8 +360,8 @@ ul {
       border-bottom: 3px dotted $main-color;
       padding-bottom: 7px;
       margin-bottom: 20px;
-
     }
+
     .title {
       font-size: 2.4rem;
     }
@@ -375,12 +376,36 @@ ul {
   }
 }
 
+@media screen and (Max-width: 768px) {
+  .beforeAndAfter {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+
+    .before,
+    .after {
+      padding: 10px 15px;
+
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+    .before {
+      margin-bottom: 15px;
+    }
+  }
+}
 .language-text {
   color: #444 !important;
   background: #ddd !important;
 }
 
 .gatsby-resp-image-wrapper {
+  margin-left: 1rem !important;
   margin-bottom: 50px;
   img {
     width: 100%;
