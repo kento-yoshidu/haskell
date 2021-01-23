@@ -54,20 +54,22 @@ const BlogPostTemplate = ({ data, location }) => {
             padding: 0,
           }}
         >
+        {previous && (
           <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
+            以前の投稿
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
           </li>
+        )}
+        {next && (
           <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
+            以後の投稿
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
           </li>
+        )}
         </ul>
       </nav>
 
