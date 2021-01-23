@@ -16,7 +16,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMarkdownRemark(
           sort: {
             fields: [frontmatter___postdate],
-            order: DESC
           }
           limit: 1000
         ) {
@@ -25,9 +24,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               id
               fields {
                 slug
-              }
-              frontmatter {
-                categorySlug
               }
             }
           }
@@ -43,8 +39,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const previousPostId = index === 0 ? null : nodes.nodes[index - 1].id
       const nextPostId = index === nodes.nodes.length - 1 ? null : nodes.nodes[index + 1].id
-
-      console.log(index,"回目終了")
 
       createPage({
         path: node.fields.slug,
