@@ -40,6 +40,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
+  // ページネーション用のカウンター
+  let paginationCount = 0;
+  
   const posts = markdowns.data.allMarkdownRemark.nodes
 
   if (posts.length > 0) {
@@ -56,8 +59,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nextPostId,
         },
       })
+      paginationCount++;
     })
+
+    // 1ページに、いつくつ記事を載せるか
+    const postPerPage = 10;
+
+    // トータルの記事数を算出
+    let numPages = Math.ceil(paginationCount / postPerPage);
   }
+
+  console.log("=======================--")
+  console.log(paginationCount)
 
   /*
   ****************************************************************
