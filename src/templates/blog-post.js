@@ -34,18 +34,11 @@ const BlogPostTemplate = ({ data, location }) => {
         isArticle={ true }
       />
 
-      <section className="info">
-        <p>カテゴリ：{post.frontmatter.category}</p>
-      </section>
-
-      <div className="wrapper">
-
-        <main
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          //itemProp="articleBody"
-          className="main article"
-        />
-      </div>
+      <main
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        //itemProp="articleBody"
+        className="main article"
+      />
 
       <nav className="beforeAndAfter">
         {previous && (
