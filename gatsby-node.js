@@ -4,9 +4,6 @@ const { resolve } = require("path")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
 
-  /*
-   * 
-   */
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
@@ -50,8 +47,56 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       })
     })
+  })
 
+  /*
+  ****************************************************************
+  */
+  // ページネーション
 
+  const allposts = await graphql(`
+    query {
+      allMarkdownRemark {
+        nodes {
+          fields {
+            slug
+          }
+          id
+          frontmatter {
+            categoryName
+            categorySlug
+            tags
+            title
+            postdate(difference: "")
+            updatedate(formatString: "", fromNow: false, locale: "")
+          }
+        }
+      }
+    }
+  `)
+
+  // 1ページに表示する記事数
+  const blogPostsPerPage = 8;
+
+  // 記事合計数
+  const blogPosts = allposts.data.allMarkdownRemark.nodes.length;
+
+  // 何ページ生成するかの計算
+  const blogPages = Math.ceil(blogPosts / blogPostsPerPage)
+
+  Array.from({ length: blogPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? "/page/1/" : `/page/${i + 1}/`,
+      component: path.resolve("./src/templates/page.js"),
+      context: {
+        skip: blogPostsPerPage * i,
+        limit: blogPostsPerPage,
+        // 現在のページ番号
+        currentPage: i + 1,
+        isFirst: i + 1 === 1,
+        isLast: i + 1 === blogPages,
+      }
+    })
   })
 
   /*

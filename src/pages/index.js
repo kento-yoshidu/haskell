@@ -95,27 +95,28 @@ export const pageQuery = graphql`
       }
     }
 
-    postData: allMarkdownRemark(
-      sort: {
-        fields: [frontmatter___postdate],
-        order: DESC
-      }
-    ) {
-      nodes {
-        id
-        excerpt
-        fields {
-          slug
+    postData:
+      allMarkdownRemark(
+        sort: {
+          fields: [frontmatter___postdate],
+          order: DESC
         }
-        frontmatter {
-          postdate(formatString: "YYYY年MM月DD日")
-          updatedate(formatString: "YYYY年MM月DD日")
-          categoryName
-          categorySlug
-          title
-          tags
+      ) {
+        nodes {
+          id
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            postdate(formatString: "YYYY年MM月DD日")
+            updatedate(formatString: "YYYY年MM月DD日")
+            categoryName
+            categorySlug
+            title
+            tags
+          }
         }
       }
     }
-  }
 `
