@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   /*
   ****************************************************************
   */
-  // categoryページに関して
+  // ページネーション
 
   const allposts = await graphql(`
     query {
@@ -75,12 +75,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
+  // 1ページに表示する記事数
+  const blogPostsPerPage = 8;
 
-  const blogPostsPerPage = 6;
+  // 記事合計数
   const blogPosts = allposts.data.allMarkdownRemark.nodes.length;
-  const blogPages = Math.ceil(blogPosts / blogPostsPerPage)
 
-  console.log(blogPages)
+  // 何ページ生成するかの計算
+  const blogPages = Math.ceil(blogPosts / blogPostsPerPage)
 
   Array.from({ length: blogPages }).forEach((_, i) => {
     createPage({
@@ -89,14 +91,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         skip: blogPostsPerPage * i,
         limit: blogPostsPerPage,
+        // 現在のページ番号
+        currentPage: i + 1,
+        isFirst: i + 1 === 1,
+        isLast: i + 1 === blogPages,
       }
     })
   })
-
-
-
-
-
 
   /*
   ****************************************************************

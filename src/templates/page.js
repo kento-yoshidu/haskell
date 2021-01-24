@@ -14,10 +14,10 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data, location, pageContext }) => {
 
   console.log("=============---")
-  console.log(data)
+  console.log(pageContext)
 
   const siteData = data.siteData;
   const postData = data.postData;
@@ -79,6 +79,32 @@ const BlogIndex = ({ data, location }) => {
               </li>
             )
           })}
+        </ul>
+
+        
+        <ul className="pagination">
+          {!pageContext.isFirst && (
+            <li className="prev">
+              <Link
+                to={
+                  pageContext.currentPage === 2
+                    ? `/page/1/`
+                    : `/page/${pageContext.currentPage - 1}`
+                }
+                rel = "prev"
+              >
+                前のページ
+              </Link>
+            </li>
+          )}
+
+          {!pageContext.isLast && (
+            <li className="next">
+              <Link to={`/page/${pageContext.currentPage + 1}`} rel="next">
+                次のページ
+              </Link>
+            </li>
+          )}
         </ul>
 
         </main>
