@@ -23,7 +23,6 @@ const Header = ({ headerTitle,
       info,
       tag;
 
-
   if (isTopPage) {
     h1 = (
       <h1 className="header-title">{ headerTitle }</h1>
@@ -47,21 +46,27 @@ const Header = ({ headerTitle,
 
   info = (
     <div className="info">
-      <p>
-        <FontAwesomeIcon icon={faClock} />{ postdate }
-      </p>
-      <p>
-        <FontAwesomeIcon icon={faUndo} />{ updatedate }
-      </p>
-      <p>
-        <Link to={`/category/${ categorySlug }`}>
-          { categoryName }
-        </Link>
-      </p>
-      <p>
-        <FontAwesomeIcon icon={faTags} />
-        { tag }
-      </p>
+      <div>
+        <p>
+          <FontAwesomeIcon icon={faClock} />{ postdate }
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faUndo} />{ updatedate }
+        </p>
+      </div>
+
+      <div>
+        <p>
+          <FontAwesomeIcon icon={ faFolder } />
+          <Link to={`/category/${ categorySlug }`}>
+            { categoryName }
+          </Link>
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faTags} />
+          { tag }
+        </p>
+      </div>
     </div>
     )
   }
