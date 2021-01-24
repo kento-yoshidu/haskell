@@ -20,7 +20,9 @@ const Header = ({ headerTitle,
                 }) => {
 
   let h1,
+      info,
       tag;
+
 
   if (isTopPage) {
     h1 = (
@@ -35,47 +37,42 @@ const Header = ({ headerTitle,
   }
 
   if(isArticle) {
-    tag = (
-      tags.map(tag => {
-        return (
-          <Link to={`/tag/${tag}`}>
-            { tag }
-          </Link>
-        )
-      })
+
+    tag = tags.map(tag => {
+      return (
+        <Link to={`/tag/${ tag }`}>{tag}</Link>
+      )
+    }
+  )
+
+  info = (
+    <div className="info">
+      <p>
+        <FontAwesomeIcon icon={faClock} />{ postdate }
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faUndo} />{ updatedate }
+      </p>
+      <p>
+        <Link to={`/category/${ categorySlug }`}>
+          { categoryName }
+        </Link>
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faTags} />
+        { tag }
+      </p>
+    </div>
     )
+  }
 
   return (
     <header className="header">
       { h1 }
       <h2 className="page-title">{ pageTitle }</h2>
-      <div className="info">
-        <p>
-          <FontAwesomeIcon icon={faClock} />{ postdate }
-        </p>
-        <p>
-          <FontAwesomeIcon icon={faUndo} />{ updatedate }
-        </p>
-        <p>
-          <Link to={`/category/${ categorySlug }`}>
-            { categoryName }
-          </Link>
-        </p>
-        <p>
-          <FontAwesomeIcon icon={faTags} />
-          { tag }
-        </p>
-      </div>
+      { info }
     </header>
   )
-  } else {
-    return (
-      <header className="header">
-        { h1 }
-        <h2 className="page-title">{ pageTitle }</h2>
-      </header>
-    )
-  }
 }
 
 export default Header

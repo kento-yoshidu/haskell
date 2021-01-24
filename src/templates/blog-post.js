@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
-import Links from "../components/links"
+//import Links from "../components/links"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
@@ -38,7 +38,6 @@ const BlogPostTemplate = ({ data, location }) => {
         <p>カテゴリ：{post.frontmatter.category}</p>
       </section>
 
-      <Links />
       <div className="wrapper">
 
         <main
