@@ -26,11 +26,15 @@ const BlogPostTemplate = ({ data, location }) => {
       <Header
         headerTitle={ data.site.siteMetadata.title }
         pageTitle={ post.frontmatter.title }
+        postdate={ post.frontmatter.postdate}
+        updatedate={ post.frontmatter.updatedate }
+        categorySlug={ post.frontmatter.categorySlug}
+        categoryName={ post.frontmatter.categoryName}
+        tags={ post.frontmatter.tags }
+        isArticle={ true }
       />
 
       <section className="info">
-        <p>投稿日{post.frontmatter.postdate}</p>
-        <p>最終更新日{post.frontmatter.updatedate}</p>
         <p>カテゴリ：{post.frontmatter.category}</p>
       </section>
 
@@ -97,6 +101,8 @@ export const pageQuery = graphql`
         updatedate(formatString: "YYYY年 MM月 DD日")
         description
         categoryName
+        categorySlug
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
