@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
-import Links from "../components/links"
+//import Links from "../components/links"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
@@ -26,51 +26,43 @@ const BlogPostTemplate = ({ data, location }) => {
       <Header
         headerTitle={ data.site.siteMetadata.title }
         pageTitle={ post.frontmatter.title }
+        postdate={ post.frontmatter.postdate}
+        updatedate={ post.frontmatter.updatedate }
+        categorySlug={ post.frontmatter.categorySlug}
+        categoryName={ post.frontmatter.categoryName}
+        tags={ post.frontmatter.tags }
+        isArticle={ true }
       />
 
-      <section className="info">
-        <p>投稿日{post.frontmatter.postdate}</p>
-        <p>最終更新日{post.frontmatter.updatedate}</p>
-        <p>カテゴリ：{post.frontmatter.category}</p>
-      </section>
+      <main
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        //itemProp="articleBody"
+        className="main article"
+      />
 
-      <Links />
-      <div className="wrapper">
-
-        <main
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          //itemProp="articleBody"
-          className="main article"
-        />
-      </div>
-
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+      <nav className="beforeAndAfter">
         {previous && (
-          <li>
-            以前の投稿
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          </li>
+          <Link
+            to={previous.fields.slug} rel="prev"
+            class="before"
+          >
+            <h2>← 前の記事</h2>
+            <p className="title">
+              {previous.frontmatter.title}
+            </p>
+          </Link>
         )}
         {next && (
-          <li>
-            以後の投稿
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          </li>
+          <Link
+            to={next.fields.slug}
+            className="after"
+          >
+            <h2>後の記事 →</h2>
+            <p className="title">
+              {next.frontmatter.title}
+            </p>
+          </Link>
         )}
-        </ul>
       </nav>
 
       <Footer />
@@ -101,6 +93,8 @@ export const pageQuery = graphql`
         updatedate(formatString: "YYYY年 MM月 DD日")
         description
         categoryName
+        categorySlug
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
