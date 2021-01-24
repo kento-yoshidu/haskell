@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
-import Links from "../components/links"
+//import Links from "../components/links"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
@@ -26,15 +26,18 @@ const BlogPostTemplate = ({ data, location }) => {
       <Header
         headerTitle={ data.site.siteMetadata.title }
         pageTitle={ post.frontmatter.title }
+        postdate={ post.frontmatter.postdate}
+        updatedate={ post.frontmatter.updatedate }
+        categorySlug={ post.frontmatter.categorySlug}
+        categoryName={ post.frontmatter.categoryName}
+        tags={ post.frontmatter.tags }
+        isArticle={ true }
       />
 
       <section className="info">
-        <p>投稿日{post.frontmatter.postdate}</p>
-        <p>最終更新日{post.frontmatter.updatedate}</p>
         <p>カテゴリ：{post.frontmatter.category}</p>
       </section>
 
-      <Links />
       <div className="wrapper">
 
         <main
@@ -97,6 +100,8 @@ export const pageQuery = graphql`
         updatedate(formatString: "YYYY年 MM月 DD日")
         description
         categoryName
+        categorySlug
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
