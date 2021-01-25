@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
+import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -11,6 +12,9 @@ const Categorys = ({ data, location }) => {
 
   return (
     <div>
+      <SEO
+        title="カテゴリ一覧"
+      />
 
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
@@ -25,7 +29,7 @@ const Categorys = ({ data, location }) => {
           { categories.map(category => {
             return (
               <li className="listItem">
-                <Link to={`/category/${category.nodes[0].frontmatter.categorySlug}`}>
+                <Link to={`/category/${category.nodes[0].frontmatter.categorySlug}/`}>
                   { category.nodes[0].frontmatter.categoryName }({ category.totalCount })
                 </Link>
               </li>

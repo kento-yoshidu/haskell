@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
+import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -19,10 +20,13 @@ const Category = ({ pageContext, data }) => {
 
   return (
     <div>
+      <SEO
+        title={`${ category }カテゴリの記事`}
+      />
 
       <Header
         headerTitle="鳥に生まれる人ができなかった人へ"
-        pageTitle={`${ category } カテゴリの記事`}
+        pageTitle={`${ category }カテゴリの記事`}
       />
 
       <Links />
@@ -48,7 +52,7 @@ const Category = ({ pageContext, data }) => {
               <div className="info">
                 <p className="category">
                   <FontAwesomeIcon icon={faFolder} />
-                  <Link to={`/category/${node.frontmatter.categorySlug}`}>{node.frontmatter.categoryName}</Link>
+                  <Link to={`/category/${node.frontmatter.categorySlug}/`}>{node.frontmatter.categoryName}</Link>
                 </p>
                 <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
                 <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
@@ -57,7 +61,7 @@ const Category = ({ pageContext, data }) => {
                     node.frontmatter.tags.map(tag => {
                       return (
                         <Link
-                          to={`/tag/${tag}`}>{ tag }
+                          to={`/tag/${tag}/`}>#{ tag }
                         </Link>
                       )
                     })

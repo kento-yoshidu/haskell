@@ -30,7 +30,7 @@ const Header = ({ headerTitle,
   } else {
     h1 = (
       <h1 className="header-title">
-        <Link to="/">{ headerTitle }</Link>
+        <Link to="/page/1/">{ headerTitle }</Link>
       </h1>
     )
   }
@@ -58,7 +58,7 @@ const Header = ({ headerTitle,
       <div>
         <p>
           <FontAwesomeIcon icon={ faFolder } />
-          <Link to={`/category/${ categorySlug }`}>
+          <Link to={`/category/${ categorySlug }/`}>
             { categoryName }
           </Link>
         </p>

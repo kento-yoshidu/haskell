@@ -22,16 +22,13 @@ config.autoAddCss = false
 
 const BlogIndex = ({ data, location, pageContext }) => {
 
-  console.log("=============---")
-  console.log(pageContext)
-
   const siteData = data.siteData;
   const postData = data.postData;
 
   return (
     <div>
       <SEO
-        title={siteData.siteMetadata.title }
+        title="記事一覧"
       />
 
       <Header
@@ -62,7 +59,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
                 <div className="info">
                   <p className="category">
                     <FontAwesomeIcon icon={faFolder} />
-                    <Link to={`category/${post.frontmatter.categorySlug}`}>
+                    <Link to={`/category/${post.frontmatter.categorySlug}/`}>
                     {post.frontmatter.categoryName}</Link>
                   </p>
                   <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
@@ -72,7 +69,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
                       post.frontmatter.tags.map(tag => {
                         return (
                           <Link 
-                            to={`tag/${tag}`}
+                            to={`/tag/${tag}/`}
                             key={`${tag}`}
                           >
                             #{ tag }
@@ -95,7 +92,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
                 to={
                   pageContext.currentPage === 2
                     ? `/page/1/`
-                    : `/page/${pageContext.currentPage - 1}`
+                    : `/page/${pageContext.currentPage - 1}/`
                 }
                 rel = "prev"
               >

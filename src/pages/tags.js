@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
+import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -11,6 +12,9 @@ const Tags = ({ data, location }) => {
 
   return (
     <div>
+      <SEO
+        title="タグ一覧"
+      />
 
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
@@ -25,7 +29,7 @@ const Tags = ({ data, location }) => {
           {tags.map(tag => {
             return (
               <li className="listItem">
-                <Link to={`/tag/${tag.fieldValue}`}>
+                <Link to={`/tag/${tag.fieldValue}/`}>
                   { tag.fieldValue }({ tag.totalCount })
                 </Link>
               </li>
