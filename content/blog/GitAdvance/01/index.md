@@ -8,15 +8,11 @@ description: git log のオプションは多岐にわたります。入門書�
 tags: ["git"]
 ---
 
-<section class="section">
-
 # git logのオプション
 
 `git log`のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。
 
 ※対象はgitの入門書を読み終えた方を想定して書きました。~~自分が全然わかっていなかったこともあり~~ だからと言っては何ですが、記述が冗長になっていたりやたら丁寧だったりするかもしれませんが、ご了承ください。
-
-<section class="section">
 
 ## `--oneline`で簡易出力する
 
@@ -51,10 +47,6 @@ c5d4783 (HEAD -> master) master-commit
 
 なお、`--oneline`は`--pretty=oneline --abbrev-commit`を短縮したオプションのようです。
 ※abbrev → abbreviated → 省略された の意。
-
-</section>
-
-<section class="section">
 
 ## `--all`と`--graph`で他ブランチも含め、グラフィカルに出力する
 
@@ -103,9 +95,7 @@ $ git log --oneline --all --graph
 
 `lol`がエイリアスの名前です。一度設定しておけば`git lol`と実行するだけでグラフィカルなログが閲覧できます。
 
-</section>
 
-<section class="section">
 
 ## `-p`で変更内容を確認する
 
@@ -241,9 +231,7 @@ index 183df72..0000000
 -bbb
 ```
 
-</section>
 
-<section class="section">
 
 ## `--word-diff`で-pの出力を読みやすくする
 
@@ -279,9 +267,7 @@ bbb
 
 他の例も以下に置いておきます。マークダウン上で見るよりもgitコンソールの方がカラフルですし幾分見やすいですね。
 
-</section>
 
-<section class="section">
 
 ## `--stat`で変更内容を簡易的に確認する
 
@@ -316,9 +302,7 @@ bb8d2e3 Create html                                 # ファイル作成
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
-</section>
 
-<section class="section">
 
 ## `--name-status`で`--stat`よりも更に簡易表示する
 
@@ -350,9 +334,7 @@ A       index.html
 Renameの時に`R100`と表示されていますが、この数字は「変更の前と後で、ファイルの中身がどれくらい一緒か」をパーセンテージで表しています。
 今回の例ではファイル名を変更しただけで内容は一切触っていないので、100=「100%一緒だよ」になります。
 
-</section>
 
-<section class="section">
 
 ## `--name-only`でファイル名のみ表示する
 
@@ -380,9 +362,7 @@ bb8d2e3 Create html
 index.html
 ```
 
-</section>
 
-<section class="section">
 
 ## `-- <path>`で特定のファイルの履歴を確認する
 
@@ -518,9 +498,7 @@ $ git log --stat --oneline -- develop
  1 file changed, 0 insertions(+), 0 deletions(-)
  ```
 
-</section>
 
-<section class="section">
 
 ## `--since`で日付以降のコミット、`--until`で日付以前のコミット
 
@@ -623,9 +601,7 @@ $ git log --since="2017-06-30" --until="2018-06-29" --oneline
 41ece2d 2018 commit
 ```
 
-</section>
 
-<section class="section">
 
 ## `--relative-date`で日付を相対表示する
 
@@ -653,9 +629,7 @@ Date:   5 months ago   # 5か月前
     2nd commit
 ```
 
-</section>
 
-<section class="section">
 
 ## マージ関係
 
@@ -683,9 +657,7 @@ fa906d1 dev commit
 4f4d558 initial commit
 ```
 
-</section>
 
-<section class="section">
 
 ## Authorとcommitter
 
@@ -711,17 +683,13 @@ CommitDate: Fri Mar 6 16:27:08 2020 +0900
 
     create index.html
 ```
-</section>
 
-</section>
 
-<section class="section">
 
 # `git log`ではないけれど
 
 以上、`git log`に関係するオプションを紹介しましたが、`git log`ではないもののコミットログに関係するコマンドをいくつか紹介したいと思います。
 
-<section class="section">
 
 ## `git shortlog`でユーザごとのコミット履歴を取得する
 
@@ -754,9 +722,7 @@ $ git shortlog -ns
      1  alien
 ```
 
-</section>
 
-<section class="section">
 
 ## `git blame`で変更を行ったユーザを特定する
 
@@ -795,9 +761,7 @@ bcb58434 (alien    2020-06-05 11:51:00 +0900 2) function screamHello(name: strin
 
 長くなりましたので今回は以上です。次回は後編ということで、
 
-</section>
 
-<section class="section">
 
 ## 参考 : AuthorとCommiterの違い
 
@@ -827,13 +791,8 @@ CommitDate: Fri Feb 28 11:15:26 2020 +0900
     地球侵略記念amend
 ```
 
-</section>
-
-<section class="section">
-
 # 参考
 
 - [gitでrename&modifyしたファイルのログを追跡できるようにしたい場合](https://qiita.com/yukimura1227/items/fbb076db61a2e43a32e3)
 - [git diff --name-status で出る R100 って何？](https://stakiran.hatenablog.com/entry/2019/01/14/072206)
 - [Advanced Git log](https://www.atlassian.com/ja/git/tutorials/git-log)
-</section>

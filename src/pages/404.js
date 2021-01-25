@@ -7,7 +7,10 @@ const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <h1>{ siteTitle }</h1>
+    <div>
+      <SEO />
+      <h1>{ siteTitle }</h1>
+    </div>
   )
 }
 
