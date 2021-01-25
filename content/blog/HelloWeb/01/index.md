@@ -8,8 +8,6 @@ description:
 tags: ["HTML", "CSS", "入門"]
 ---
 
-<section class="section">
-
 # 本講座の目的
 
 - 本講座の目的は、HTML5・CSS3を用いてWebページを作成すること、そしてその手順を解説することです。
