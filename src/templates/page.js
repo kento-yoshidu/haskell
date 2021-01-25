@@ -22,16 +22,13 @@ config.autoAddCss = false
 
 const BlogIndex = ({ data, location, pageContext }) => {
 
-  console.log("=============---")
-  console.log(pageContext)
-
   const siteData = data.siteData;
   const postData = data.postData;
 
   return (
     <div>
       <SEO
-        title={siteData.siteMetadata.title }
+        title="記事一覧"
       />
 
       <Header

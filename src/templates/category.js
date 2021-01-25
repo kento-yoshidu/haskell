@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
+import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -19,10 +20,13 @@ const Category = ({ pageContext, data }) => {
 
   return (
     <div>
+      <SEO
+        title={`${ category }カテゴリの記事`}
+      />
 
       <Header
         headerTitle="鳥に生まれる人ができなかった人へ"
-        pageTitle={`${ category } カテゴリの記事`}
+        pageTitle={`${ category }カテゴリの記事`}
       />
 
       <Links />

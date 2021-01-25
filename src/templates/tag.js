@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
+import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -19,9 +20,13 @@ const Tags = ({ pageContext, data }) => {
   
   return (
     <div>
+      <SEO
+        title={`${ tag }タグの記事`}
+      />
+
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
-        pageTitle={`${ tag } タグの記事`}
+        pageTitle={`${ tag }タグの記事`}
       />
 
       <Links />
