@@ -76,7 +76,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   // 1ページに表示する記事数
-  const blogPostsPerPage = 8;
+  const blogPostsPerPage = 6;
 
   // 記事合計数
   const blogPosts = allposts.data.allMarkdownRemark.nodes.length;
