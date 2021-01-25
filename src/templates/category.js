@@ -48,7 +48,7 @@ const Category = ({ pageContext, data }) => {
               <div className="info">
                 <p className="category">
                   <FontAwesomeIcon icon={faFolder} />
-                  <Link to={`/category/${node.frontmatter.categorySlug}`}>{node.frontmatter.categoryName}</Link>
+                  <Link to={`/category/${node.frontmatter.categorySlug}/`}>{node.frontmatter.categoryName}</Link>
                 </p>
                 <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
                 <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
@@ -57,7 +57,7 @@ const Category = ({ pageContext, data }) => {
                     node.frontmatter.tags.map(tag => {
                       return (
                         <Link
-                          to={`/tag/${tag}`}>{ tag }
+                          to={`/tag/${tag}/`}>#{ tag }
                         </Link>
                       )
                     })

@@ -2,7 +2,7 @@
 title: 環境構築
 postdate: 2021-01-15
 updatedate: 2021-01-15
-categoryName: "入門 TypeScript"
+categoryName: "入門TypeScript"
 categorySlug: introTypescript
 tags: ["TypeScript", "入門"]
 ---

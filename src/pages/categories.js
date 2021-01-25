@@ -25,7 +25,7 @@ const Categorys = ({ data, location }) => {
           { categories.map(category => {
             return (
               <li className="listItem">
-                <Link to={`/category/${category.nodes[0].frontmatter.categorySlug}`}>
+                <Link to={`/category/${category.nodes[0].frontmatter.categorySlug}/`}>
                   { category.nodes[0].frontmatter.categoryName }({ category.totalCount })
                 </Link>
               </li>
