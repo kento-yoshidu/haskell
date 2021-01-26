@@ -7,8 +7,6 @@ categorySlug: introTypescript
 tags: ["TypeScript", "入門"]
 ---
 
-
-
 `npm init`で初期化。
 
 ```

@@ -8,8 +8,6 @@ description:
 tags: ["JavaScript","入門"]
 ---
 
-<section class="section">
-
 # #1 入門JavaScript(前編)
 
 ## JavaScriptとは
