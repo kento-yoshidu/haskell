@@ -1,15 +1,30 @@
 ---
-title: postgres.confファイル
-postdate: "2021-01-09"
-updatedate: "2021-01-09"
+title: postgresql.confファイル
+postdhoate: "2021-01-09"
+updatedate: "2021-01-26"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
-tags: ["PostgreSQL", "postgres.conf"]
+tags: ["PostgreSQL", "postgresql.conf"]
 ---
 
-# postgres.conf
+# postgresql.conf
 
-initdb実行時に作成されます。
+PostgreSQLサーバ全体の動作を制御するのがpostgresq,.confファイルです。
+
+initdb実行時に作成され、DBクラスタに作成されます。
+
+
+## postgresql.confファイルの特徴
+
+- コメントアウトは`#`
+- 大文字と小文字は区別されない。
+- 
+
+## postgresql.confの編集
+
+postgresql.confで設定されているパラメータは、テキストエディタでの編集はもちろん、SETコマンドを使用することで変更することもできます（SETコマンドによる変更はそのセッション内でのみ有効）。
+
+また、変更が反映されるタイミングはパラメータごとによって違います。サーバを再起動すれば確実に反映されますが、postgresqlファイルの再読み込み、そして一部、SETコマンドを使用するだけで変更が反映されるパラメータもあります。
 
 ## サーバの動作関係
 
@@ -19,8 +34,11 @@ initdb実行時に作成されます。
 |log_connections|待ち受けポート番号|5432|
 |max_connections|サーバへの最大同時接続数|100|
 
-上記設定は**Postgresサーバの再起動のみ**によって、設定変更が反映されます。
-※postgres.confの再読み込みやSETコマンドの実行によって変更されない。
+### listen_address
+
+
+
+上記設定は**Postgresサーバの再起動のみ**によって、設定変更が反映されます。※postgres.confの再読み込みやSETコマンドの実行によって変更されない。
 
 
 ## ログ関係
@@ -32,6 +50,9 @@ initdb実行時に作成されます。
 |log_min_messages|出力するログレベルを指定※後述|
 |log_line_prefix|ログの行頭にユーザ名やDB名などの情報を付与する|
 
+
+# エラー関係
+
 INFO…ユーザから出力を要求された情報
 NOTICE…ユーザにとって役立つ情報
 WARNING…不適切なコマンド使用等に対するユーザへの警告
@@ -39,6 +60,40 @@ ERROR…特定のコマンドを中断させたエラー
 LOG…データベース管理者にとって役立つ、パフォーマンスや内部の処理に関する情報
 FATAL…特定のセッションを中断させたエラー
 PANIC…全てのセッションを中断させた致命的なエラー
+
+# 設定の反映のために必要な動作ごとのパラメータ
+
+設定反映に必要な動作ごとにパラメータをまとめました。
+
+## サーバの再起動が必要
+
+- listen_address
+- port
+- max_connections
+- logging_collector
+
+## postgres.confの再読み込みが必要
+
+ログファイル関係と覚えればよさそう
+
+- log_directions
+- log_Directory
+- log_filename
+- log-line-prefix
+
+## スーパーユーザによるSETコマンドで可能
+
+- log_connections
+- log_min_messages
+- log_statement
+
+## 一般ユーザによるSETコマンドで可能
+
+クライアント設定系と覚えればよさそう
+
+- search_path
+- default_transaction_isolation
+- client_encording
 
 ## その他
 
@@ -70,10 +125,6 @@ REPEATABLE READ
 
 
 ## システムカタログ
-
-
-
-
 
 ## pg_settingsビュー
 
