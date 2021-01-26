@@ -8,9 +8,7 @@ description: git logのコマンドを紹介した前回、`git log --oneline --
 tags: ["git"]
 ---
 
-<section class="section">
-
-## うわっ、git log --onelineの結果、簡単すぎ...？
+# うわっ、git log --onelineの結果、簡単すぎ...？
 
 git logのコマンドを紹介した前回、`git log --oneline --all --graph`の組み合わせが便利ですよーとお話ししました。
 
@@ -142,6 +140,7 @@ $ git log --graph --pretty=format:"%C(red bold) %cd %Creset %x09 %C(magenta dim)
 ```
 
 # 参考
+
 [git logのフォーマットを指定する](https://qiita.com/harukasan/items/9149542584385e8dea75)
 
 [git log を見やすくする](https://qiita.com/takasianpride/items/842a785af610025a2030)

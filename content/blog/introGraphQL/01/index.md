@@ -7,8 +7,6 @@ categorySlug: introGraphQL
 tags: ["GraphQL", "GraphQL-Yoga", "入門"]
 ---
 
-<section class="section">
-
 # 環境構築する
 
 まずは`yarn init -y`して・・・
@@ -206,6 +204,7 @@ hello: (_, {name}) => `Hello ${ name }`)
 hello: (_, args) => `Hello ${ args.name }`)
 ```
 
+# 参考
 
 https://www.apollographql.com/docs/apollo-server/data/resolvers/
 
