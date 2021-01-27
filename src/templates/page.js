@@ -84,9 +84,9 @@ const BlogIndex = ({ data, location, pageContext }) => {
           })}
         </ul>
 
-        <ul className="pagination">
+        <div className="pagination">
           {!pageContext.isFirst && (
-            <li className="prev">
+            <p className="prev">
               <FontAwesomeIcon icon={faChevronCircleLeft} />
               <Link
                 to={
@@ -98,18 +98,18 @@ const BlogIndex = ({ data, location, pageContext }) => {
               >
                 前のページ
               </Link>
-            </li>
+            </p>
           )}
 
           {!pageContext.isLast && (
-            <li className="next">
+            <p className="next">
               <Link to={`/page/${pageContext.currentPage + 1}`} rel="next">
                 次のページ
               </Link>
               <FontAwesomeIcon icon={faChevronCircleRight} />
-            </li>
+            </p>
           )}
-        </ul>
+        </div>
 
         </main>
       <Footer />

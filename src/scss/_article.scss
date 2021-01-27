@@ -4,28 +4,40 @@ $main-color2: #CB356B;
 .main.article {
   width: 50%;
   margin-left: 15vw;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+  font-family: -apple-system,
+              BlinkMacSystemFont,
+              Roboto,
+              "Segoe UI",
+              "Helvetica Neue",
+              HelveticaNeue,
+              YuGothic,
+              "Yu Gothic Medium",
+              "Yu Gothic",
+              Verdana,
+              Meiryo,
+              sans-serif;
   padding-top: 5vh;
+
   h1 {
     padding-bottom: 8px;
-    font-size: 4.5rem;
+    font-size: 4rem;
     border-bottom: 9px solid $main-color2;
     margin-top: 50px;
     margin-bottom: 30px;
     line-height: 1.2;
   }
   h2 {
-    font-size: 3.8rem;
-    margin: 80px 0 20px;
-    border-left: 10px solid #CB356B;
+    font-size: 3.3rem;
+    margin: 50px 0 20px;
+    border-left: 10px solid $main-color2;
     padding: 8px 0 8px 2rem;
   }
   h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin: 30px 0 20px;
   }
   p {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 1.6;
     margin-bottom: 15px;
     text-indent: .8rem;
@@ -36,7 +48,27 @@ $main-color2: #CB356B;
       font-size: 1.8rem;
       line-height: 1.5;
       margin-bottom: 10px;
-      list-style: none;
+    }
+  }
+  table {
+    margin: 40px 0 40px 20px;
+    tr {
+      th {
+        border: 1px solid #bbb;
+        padding: 10px 15px;
+        background: $main-color2;
+        font-size: 2rem;
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.3;
+        vertical-align: middle;
+      }
+      td {
+        padding: 10px 20px;
+        font-size: 1.7rem;
+        border: 1px solid #bbb;
+        line-height: 1.3;
+      }
     }
   }
 }
@@ -44,18 +76,18 @@ $main-color2: #CB356B;
 @media screen and (max-width: 768px) {
   .main.article {
     h1 {
-      font-size: 3rem;
-      margin-bottom: 30px;
+      font-size: 2.8rem;
+      margin: 30px 0 20px;
     }
     h2 {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       line-height: 1.3;
-      border-left: 7px solid #CB356B;
-      padding: 5px 0 5px 1.2rem;
-      margin: 50px 0 20px;
+      border-left: 7px solid $main-color2;
+      padding: 4px 0 4px 1.2rem;
+      margin: 45px 0 20px;
     }
     h3 {
-      font-size: 2rem;
+      font-size: 1.9rem;
       line-height: 1.5;
       padding: 3px 0 3px 1.8rem;
       margin-bottom: 20px;
@@ -64,6 +96,25 @@ $main-color2: #CB356B;
       font-size: 1.5rem;
       line-height: 1.7;
       margin-bottom: 10px;
+    }
+    ul {
+      padding: 5px 15px;
+      li {
+        font-size: 1.4rem;
+      }
+    }
+    table {
+      margin: 30px auto;
+      tr {
+        th {
+          padding: 5px 8px;
+          font-size: 1.5rem;
+        }
+        td {
+          padding: 5px 8px;
+          font-size: 1.4rem;
+        }
+      }
     }
   }
 }
