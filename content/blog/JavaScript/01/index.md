@@ -235,4 +235,46 @@ constとletはどちらかに優劣が付くものではありません。letは
 
 
 
+# CommonJsによるexport
 
+```javascript
+
+// module.jsから関数をエクスポート
+module.exports.test = () => {
+  consoel.log('testモジュール');
+}
+
+// script.js
+const test = require('./module.js');
+
+test.test();
+// => testモジュール
+
+/*****************************************/
+
+// module.jsから関数をエクスポート
+module.exports.test = "testモジュール";
+
+// script.js
+const { test } = require('./script')
+
+console.log(test)
+// => testモジュール
+
+/*****************************************/
+
+// mojule.jsからオブジェクトをエクスポート
+module.exports.test = {
+  name: "kento",
+  age: 42,
+}
+
+// script.js
+const { test } = require('./module')
+
+console.log(test)
+```
+
+https://numb86-tech.hatenablog.com/entry/2020/08/07/091142
+
+https://blog.ikeryo1182.com/javascript-modules/

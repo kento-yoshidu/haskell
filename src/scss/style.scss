@@ -1,6 +1,7 @@
 @import "./reset";
 @import "./fixHeader";
 @import "./article";
+@import "./pagination";
 
 $main-color: #BD3F32;
 $main-color2: #CB356B;
@@ -373,87 +374,6 @@ a {
   }
 }
 
-.pagination {
-  position: relative;
-  width: 80%;
-  margin: 50px 0 60px;
-
-  .prev,
-  .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: inline-block;
-    padding: 5px 25px;
-    border: 2px solid $main-color;
-    border-radius: 50px;
-    transition: .3s;
-
-    svg {
-      color: $main-color;
-      font-size: 1.6rem;
-    }
-
-    a {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: $main-color;
-      text-decoration: none;
-    }
-
-    &:hover {
-      background: $main-color;
-      svg,
-      a {
-        color: #fff;
-      }
-    }
-  }
-
-  .prev {
-    left: 0;
-    svg {
-      margin-right: 8px;
-    }
-  }
-
-  .next {
-    right: 0;
-    svg {
-      margin-left: 8px;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .pagination {
-    width: 80%;
-    margin: 40px auto 50px;
-    .prev,
-    .next {
-      padding: 4px 12px;
-      border-radius: 20px;
-      svg {
-        font-size: 1.4rem;
-      }
-      a {
-        font-size: 1.3rem;
-      }
-    }
-
-    .prev {
-      svg {
-        margin-right: 5px;
-      }
-    }
-    .next {
-      svg {
-        margin-left: 5px;
-      }
-    }
-  }
-}
-
 .language-text {
   color: #444 !important;
   background: #ddd !important;
@@ -466,45 +386,6 @@ a {
   img {
     height: auto;
     box-shadow: 0 0 5px 5px #eee !important;
-  }
-}
-
-table {
-  margin: 40px 0 40px 20px;
-  tr {
-    th {
-      border: 1px solid #bbb;
-      padding: 10px 15px;
-      background: $main-color2;
-      font-size: 2.3rem;
-      font-weight: 400;
-      color: #fff;
-    }
-    td {
-      padding: 10px 20px;
-      font-size: 2rem;
-      border: 1px solid #bbb;
-    }
-  }
-}
-
-ul {
-  font-size: 1rem;;
-}
-
-@media screen and (max-width: 768px) {
-  table {
-    margin: 40px 0;
-    tr {
-      th {
-        font-size: 1.4rem;
-        padding: 8px 10px;
-      }
-      td {
-        padding: 8px 10px;
-        font-size: 1.4rem;
-      }
-    }
   }
 }
 
