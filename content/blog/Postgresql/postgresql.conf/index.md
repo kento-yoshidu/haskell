@@ -9,16 +9,51 @@ tags: ["PostgreSQL", "postgresql.conf"]
 
 # postgresql.conf
 
-PostgreSQLサーバ全体の動作を制御するのがpostgresq,.confファイルです。
+PostgreSQLサーバ全体の動作を制御するのがpostgresql.confファイルです。initdb実行時に作成され、DBクラスタ内に格納されます。
 
-initdb実行時に作成され、DBクラスタに作成されます。
+```shell{20}
+$ ll
+total 54
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 base/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 global/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_commit_ts/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_dynshmem/
+-rw-r--r-- 1 c-yoshizuke 1049089  4661  1月 27 09:50 pg_hba.conf
+-rw-r--r-- 1 c-yoshizuke 1049089  1678  1月 27 09:50 pg_ident.conf
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_logical/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_multixact/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_notify/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_replslot/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_serial/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_snapshots/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_stat/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_stat_tmp/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_subtrans/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_tblspc/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_twophase/
+-rw-r--r-- 1 c-yoshizuke 1049089     3  1月 27 09:50 PG_VERSION
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_wal/
+drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_xact/
+-rw-r--r-- 1 c-yoshizuke 1049089    90  1月 27 09:50 postgresql.auto.conf
+-rw-r--r-- 1 c-yoshizuke 1049089 27396  1月 27 09:50 postgresql.conf
+```
 
+また、`SHOW config_file;`コマンドでも、ファイルの置き場所を確認することができます。
+
+```shell
+> SHOW config_file;
+         config_file
+-----------------------------
+ c:/postgres/postgresql.conf
+(1 行)
+```
 
 ## postgresql.confファイルの特徴
 
-- コメントアウトは`#`
-- 大文字と小文字は区別されない。
-- 
+- `パラメータ = 設定値`という形で記述する
+- `#`でコメントアウト
+- 大文字と小文字は区別されない
+- データ型は論理型、文字列型、数値型、（単位付きの）数値型、列挙型（いわゆるenum）の5つ
 
 ## postgresql.confの編集
 
@@ -34,12 +69,12 @@ postgresql.confで設定されているパラメータは、テキストエデ�
 |log_connections|待ち受けポート番号|5432|
 |max_connections|サーバへの最大同時接続数|100|
 
-### listen_address
-
-
-
 上記設定は**Postgresサーバの再起動のみ**によって、設定変更が反映されます。※postgres.confの再読み込みやSETコマンドの実行によって変更されない。
 
+### listen_address
+
+TCP接続を許可するIPアドレスを指定します。デフォルト値は`localhost`であり、自身のサーバからしか接続できない設定になっています。
+他のマシンからの接続を許可するのであれば、`172.168.24.10`のようにIPアドレスを指定したり、`*`とすることで全てのマシンからの接続を許可することができます。
 
 ## ログ関係
 
@@ -53,13 +88,13 @@ postgresql.confで設定されているパラメータは、テキストエデ�
 
 # エラー関係
 
-INFO…ユーザから出力を要求された情報
-NOTICE…ユーザにとって役立つ情報
-WARNING…不適切なコマンド使用等に対するユーザへの警告
-ERROR…特定のコマンドを中断させたエラー
-LOG…データベース管理者にとって役立つ、パフォーマンスや内部の処理に関する情報
-FATAL…特定のセッションを中断させたエラー
-PANIC…全てのセッションを中断させた致命的なエラー
+- INFO…ユーザから出力を要求された情報
+- NOTICE…ユーザにとって役立つ情報
+- WARNING…不適切なコマンド使用等に対するユーザへの警告
+- ERROR…特定のコマンドを中断させたエラー
+- LOG…データベース管理者にとって役立つ、パフォーマンスや内部の処理に関する情報
+- FATAL…特定のセッションを中断させたエラー
+- PANIC…全てのセッションを中断させた致命的なエラー
 
 # 設定の反映のために必要な動作ごとのパラメータ
 
@@ -145,3 +180,5 @@ pg_settingsはサーバの実行時パラメータを取得できるビューで
 https://sites.google.com/site/kojimemos/home/mysql/toranzakushon/toranzakushon-fen-lireberu
 
 https://www.postgresql.jp/document/12/html/view-pg-settings.html
+
+https://www.dbonline.jp/postgresql/ini/index1.html
