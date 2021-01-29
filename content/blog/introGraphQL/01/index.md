@@ -8,6 +8,9 @@ tags: ["GraphQL", "GraphQL-Yoga", "入門"]
 ---
 
 # 環境構築する
+いつまで経ってもGraphQLに慣れない。GraphQLを手軽に操作検証できるように、勉強がてらローカルサーバを立てます。
+
+## まずは最小構成
 
 まずは`yarn init -y`して・・・
 
@@ -75,13 +78,15 @@ server.start(() => {
 
 resolversはどんなクエリにどんな値を返すかを定義します。
 
+サーバを起動します。
+
 ```shell
 $ node index.js
 
 Server is running on localhost:4000
 ```
 
-`http://localhost:4000`にアクセスします。
+`http://localhost:4000`にアクセスすると、GraphQL Playgroundが現れます。
 
 ![](./images/image01.jpg)
 
@@ -103,7 +108,7 @@ Server is running on localhost:4000
 
 さすがにもう少し凝ったことをしたいので、先ほどのhelloクエリを編集し、
 「自分の名前を渡し、`Hello 名前`と返ってくる」ようにしたいと思います。
-引数はnameとし、String型を指定、末尾に`!`をつけて必須にします。
+引数名はnameとし、String型を指定、末尾に`!`をつけて必須にします。
 
 ```javascript{3,5}
 const { GraphQLServer } = require("graphql-yoga");
@@ -116,26 +121,64 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    hello: (_, {name}) => `Hello ${ name }`
+    hello: (_, {name}) => {
+      `Hello ${ name }`
+    }
   }
 }
 
-const server = new GraphQLServer({ typeDefs, resolvers});
-
-server.start(() => {
-  console.log('Server is running on localhost:4000');
-})
-
+(略)
 ```
 
 ```graphql
   {
     hello(name: "kento")
   }
-
   # Hello kento
 ```
 
+渡した値は第二引数にオブジェクト形式で入ります。
+
+```javascript
+(略)
+
+const typeDefs = `
+  type Query {
+    # [データ型]で、戻り値を配列に設定
+    hello(name: String!, age: Int!): [String]!
+  }
+`
+
+// プロパティを取得
+const resolvers = {
+  Query: {
+    hello: (_, args) => {
+
+      let result = [];
+
+      Object.keys(args).forEach(arg => {
+        result.push(arg)
+      })
+
+      return result
+    }
+  }
+}
+
+(略)
+//"hello": ["name", "age"]
+```
+
+```javascript
+hello: (_, args) => typeof args
+// "hello": "object"
+
+// 分割代入で受け取るか、
+hello: (_, {name}) => `Hello ${ name }`)
+
+// もしくはnameキーにアクセスして受け取る
+hello: (_, args) => `Hello ${ args.name }`)
+```
 
 ## 引数を増やす
 
@@ -162,47 +205,76 @@ const resolvers = {
 // "hello": "I'm kento. 12 years old."
 ```
 
-渡した値は第二引数におbジェクト形式で入るみたいです。
+## クエリを投げてデータを取得する
+
+まず、データをオブジェクト形式で定義します。適当にpersonalDataなどとします。
 
 ```javascript
-(略)
+const personalData = [
+  {
+    id: 1,
+    name: "kento"
+  },
+  {
+    id: 2,
+    name: "hikari"
+  }
+]
+```
 
+次にスキーマを定義します。
+
+```javascript
 const typeDefs = `
+  type Data {
+    id: Int,
+    name: String,
+  }
   type Query {
-    hello(name: String!, age: Int!): [String]
+    data: [Data]
   }
 `
+```
 
-// プロパティを取得
+採取携帯
+
+```javascript
+const { GraphQLServer } = require("graphql-yoga");
+
+const typeDefs = `
+  type Data {
+    id: Int,
+    name: String,
+  }
+  type Query {
+    data: [Data]
+  }
+`
+const personalData = [
+  {
+    id: 1,
+    name: "kento"
+  },
+  {
+    id: 2,
+    name: "hikari"
+  }
+]
+
 const resolvers = {
   Query: {
-    hello: (_, args) => {
-
-      let result = [];
-
-      Object.keys(args).forEach(arg => {
-        result.push(arg)
-      })
-
-      return result
-    }
+    data: () => personalData
   }
 }
 
-(略)
+const server = new GraphQLServer({ typeDefs, resolvers });
 
-//"hello": ["name", "age"]
+server.start(() => {
+  console.log('Server is running on localhost:4000');
+})
 ```
 
-```javascript
-hello: (_, args) => typeof args
-// "hello": "object"
 
-hello: (_, {name}) => `Hello ${ name }`)
-
-// もしくは、
-hello: (_, args) => `Hello ${ args.name }`)
-```
 
 # 参考
 

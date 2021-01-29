@@ -7,11 +7,15 @@ categorySlug: "HandsonPostgreSQL"
 tags: ["PostgreSQL", "MVCC"]
 ---
 
+## PostgreSQLは追記型アーキテクチャのDB
+
+
+
 # MVCCとは?
 
 Multi-Version Concurrency Control（多版型同時実行制御）。
 
-更新作業を行ったとき、**更新前のデータを保存しておく**仕組み。追記型アーキテクチャとも呼ばれる。
+更新作業を行ったとき、**更新前のデータを保存しておく**仕組み。
 
 定期的に整理しないと使用されないデータ（不要領域）が肥大していく。
 
@@ -54,3 +58,7 @@ postgres=# SHOW data_directory
 [DBの実データサイズを調べる（PostgreSQL編）](https://doruby.jp/users/oneafter999_on_rails/entries/DB_PostgreSQL_)
 
 [稼動統計情報を活用しよう(3)](https://lets.postgresql.jp/documents/technical/statistics/3)
+
+[PostgreSQL のトランザクション & MVCC & スナップショットの仕組み](http://www.nminoru.jp/~nminoru/postgresql/pg-transaction-mvcc-snapshot.html)
+
+[MVCC による PostgreSQL の並列性](https://devcenter.heroku.com/ja/articles/postgresql-concurrency)
