@@ -59,7 +59,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
                 <div className="info">
                   <p className="category">
                     <FontAwesomeIcon icon={faFolder} />
-                    <Link to={`/category/${post.frontmatter.categorySlug}/`}>
+                    <Link to={`/category/${post.frontmatter.categorySlug}/page/1/`}>
                     {post.frontmatter.categoryName}</Link>
                   </p>
                   <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
@@ -137,8 +137,8 @@ export const pageQuery = graphql`
             fields: [frontmatter___postdate],
             order: DESC,
           }
-            limit: $limit,
-            skip: $skip
+          limit: $limit,
+          skip: $skip
         ) {
           nodes {
             id

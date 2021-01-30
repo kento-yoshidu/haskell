@@ -58,7 +58,7 @@ const Header = ({ headerTitle,
       <div>
         <p>
           <FontAwesomeIcon icon={ faFolder } />
-          <Link to={`/category/${ categorySlug }/`}>
+          <Link to={`/category/${ categorySlug }/page/1/`}>
             { categoryName }
           </Link>
         </p>
