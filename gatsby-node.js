@@ -97,29 +97,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // カテゴリごとの記事一覧
-
-  /*
-  const category = await graphql(
-    ` {
-      allMarkdownRemark {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              categorySlug
-              categoryName
-            }
-          }
-        }
-      }
-    } `
-  )
-  */
-
   const category = await graphql(`
     {
       allMarkdownRemark {
@@ -164,28 +141,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  /*
-  category.data.allMarkdownRemark.edges.forEach(({ node }) => {
-
-    createPage({
-      path: `category/${node.frontmatter.categorySlug}`,
-      component: path.resolve(`./src/templates/category.js`),
-      context: {
-        category: node.frontmatter.categoryName,
-        categoryId: node.frontmatter.categorySlug,
-        skip: 0,
-        limit: 1000,
-        currentPage: 1,
-        isFirst: true,
-        isLast: true,
-      }
-    })
-  })
-  */
-
-  /*
-  * tagページ生成
-  */
+  // tagページ生成
 
   const tag = await graphql(`
     {
