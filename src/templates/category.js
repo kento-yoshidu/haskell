@@ -7,7 +7,13 @@ import Links from "../components/links"
 import Footer from "../components/footer"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
+import {  faFolder,
+          faClock,
+          faUndo,
+          faTags,
+          faChevronCircleLeft,
+          faChevronCircleRight
+        } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -16,8 +22,8 @@ config.autoAddCss = false
 const Category = ({ pageContext, data }) => {
 
   const { category } = pageContext
-  console.log("===============")
-  console.log(data)
+  const { categoryId } = pageContext
+
   const nodes = data.allMarkdownRemark.nodes
 
   return (
@@ -75,6 +81,34 @@ const Category = ({ pageContext, data }) => {
           })
         }
       </ol>
+
+      <div className="pagination">
+        {!pageContext.isFirst && (
+          <p className="prev">
+            <FontAwesomeIcon icon={faChevronCircleLeft} />
+            <Link
+              to={
+                pageContext.currentPage === 2
+                  ? `/category/${categoryId}/page/1/`
+                  : `/category/${categoryId}/page/${pageContext.currentPage - 1}/`
+              }
+              rel = "prev"
+            >
+              前のページ
+            </Link>
+          </p>
+        )}
+
+        {!pageContext.isLast && (
+          <p className="next">
+            <Link to={`/category/${categoryId}/page/${pageContext.currentPage + 1}`} rel="next">
+              次のページ
+            </Link>
+            <FontAwesomeIcon icon={faChevronCircleRight} />
+          </p>
+        )}
+      </div>
+
       </main>
 
       <Footer />
