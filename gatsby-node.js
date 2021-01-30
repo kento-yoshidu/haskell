@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  // 各記事ページの生成
 
   const markdowns = await graphql(`
     query {
@@ -28,18 +28,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  const group = markdowns.data.allMarkdownRemark.group
+  // グループごとに記事取得
+  const groups = markdowns.data.allMarkdownRemark.group
 
-  group.forEach((nodes) => {
+  groups.forEach((group) => {
 
-    nodes.nodes.forEach((node, index) => {
+    group.nodes.forEach((node, index) => {
 
-      const previousPostId = index === 0 ? null : nodes.nodes[index - 1].id
-      const nextPostId = index === nodes.nodes.length - 1 ? null : nodes.nodes[index + 1].id
+      const previousPostId = index === 0 ? null : group.nodes[index - 1].id
+      const nextPostId = index === group.nodes.length - 1 ? null : group.nodes[index + 1].id
 
       createPage({
         path: node.fields.slug,
-        component: blogPost,
+        component: path.resolve("./src/templates/blog-post.js"),
         context: {
           id: node.id,
           previousPostId,
@@ -49,10 +50,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  /*
-  ****************************************************************
-  */
-  // ページネーション
+  // 記事一覧(ページネーション付き)
 
   const allposts = await graphql(`
     query {
@@ -75,16 +73,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  // 1ページに表示する記事数
-  const blogPostsPerPage = 6;
-
   // 記事合計数
   const blogPosts = allposts.data.allMarkdownRemark.nodes.length;
 
-  // 何ページ生成するかの計算
-  const blogPages = Math.ceil(blogPosts / blogPostsPerPage)
+  // 1ページに表示する記事数
+  const blogPostsPerPage = 6;
 
-  Array.from({ length: blogPages }).forEach((_, i) => {
+  // 何ページ生成することになるかの計算
+  const Pages = Math.ceil(blogPosts / blogPostsPerPage)
+
+  Array.from({ length: Pages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? "/page/1/" : `/page/${i + 1}/`,
       component: path.resolve("./src/templates/page.js"),
@@ -94,55 +92,56 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         // 現在のページ番号
         currentPage: i + 1,
         isFirst: i + 1 === 1,
-        isLast: i + 1 === blogPages,
+        isLast: i + 1 === Pages,
       }
     })
   })
 
-  /*
-  ****************************************************************
-  */
-  // categoryページに関して
-
-  const category = await graphql(
-    ` {
+  const category = await graphql(`
+    {
       allMarkdownRemark {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
+        group(field: frontmatter___categorySlug) {
+          nodes {
             frontmatter {
-              categorySlug
               categoryName
+              categorySlug
+              title
             }
           }
+          fieldValue
         }
       }
-    } `
-  )
+    }
+  `)
 
-  category.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  category.data.allMarkdownRemark.group.map(category => {
 
-    createPage({
-      path: `category/${node.frontmatter.categorySlug}`,
-      component: path.resolve(`./src/templates/category.js`),
-      context: {
-        category: node.frontmatter.categoryName,
-        categoryId: node.frontmatter.categorySlug,
-        skip: 0,
-        limit: 1000,
-        currentPage: 1,
-        isFirst: true,
-        isLast: true,
-      }
+    // カテゴリごとの記事合計数
+    const blogPosts = category.nodes.length;
+
+    // 何ページ生成することになるかの計算
+    const Pages = Math.ceil(blogPosts / blogPostsPerPage)
+
+    console.log(category.nodes[0].frontmatter.categorySlug)
+
+    Array.from({ length: Pages}).forEach((_, i) => {
+      createPage({
+        path: 1 === 0 ? `/category/${category.fieldValue}/` : `/category/${category.fieldValue}/page/${i + 1}/`,
+        component: path.resolve("./src/templates/category.js"),
+        context: {
+          category: category.nodes[0].frontmatter.categoryName,
+          categoryId: category.nodes[0].frontmatter.categorySlug,
+          skip: blogPostsPerPage * i,
+          limit: blogPostsPerPage,
+          currentPage: i + 1,
+          isFirst: i + 1 === 1,
+          isLast: i + 1 === Pages,
+        }
+      })
     })
   })
 
-  /*
-  * tagページ生成
-  */
+  // tagページ生成
 
   const tag = await graphql(`
     {

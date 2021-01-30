@@ -7,7 +7,13 @@ import Links from "../components/links"
 import Footer from "../components/footer"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
+import {  faFolder,
+          faClock,
+          faUndo,
+          faTags,
+          faChevronCircleLeft,
+          faChevronCircleRight
+        } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -16,6 +22,8 @@ config.autoAddCss = false
 const Category = ({ pageContext, data }) => {
 
   const { category } = pageContext
+  const { categoryId } = pageContext
+
   const nodes = data.allMarkdownRemark.nodes
 
   return (
@@ -52,7 +60,7 @@ const Category = ({ pageContext, data }) => {
               <div className="info">
                 <p className="category">
                   <FontAwesomeIcon icon={faFolder} />
-                  <Link to={`/category/${node.frontmatter.categorySlug}/`}>{node.frontmatter.categoryName}</Link>
+                  <Link to={`/category/${node.frontmatter.categorySlug}/page/1/`}>{node.frontmatter.categoryName}</Link>
                 </p>
                 <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
                 <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
@@ -73,6 +81,34 @@ const Category = ({ pageContext, data }) => {
           })
         }
       </ol>
+
+      <div className="pagination">
+        {!pageContext.isFirst && (
+          <p className="prev">
+            <FontAwesomeIcon icon={faChevronCircleLeft} />
+            <Link
+              to={
+                pageContext.currentPage === 2
+                  ? `/category/${categoryId}/page/1/`
+                  : `/category/${categoryId}/page/${pageContext.currentPage - 1}/`
+              }
+              rel = "prev"
+            >
+              前のページ
+            </Link>
+          </p>
+        )}
+
+        {!pageContext.isLast && (
+          <p className="next">
+            <Link to={`/category/${categoryId}/page/${pageContext.currentPage + 1}`} rel="next">
+              次のページ
+            </Link>
+            <FontAwesomeIcon icon={faChevronCircleRight} />
+          </p>
+        )}
+      </div>
+
       </main>
 
       <Footer />
@@ -83,12 +119,18 @@ const Category = ({ pageContext, data }) => {
 export default Category
 
 export const pageQuery = graphql`
-  query($categoryId: String) {
+  query(
+    $categoryId: String,
+    $limit: Int!,
+    $skip: Int!
+  ) {
     allMarkdownRemark (
       sort: {
         fields: [frontmatter___postdate],
         order: DESC
       }
+      limit: $limit,
+      skip: $skip
       filter: {
         frontmatter: {
           categorySlug: {
