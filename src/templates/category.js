@@ -16,6 +16,8 @@ config.autoAddCss = false
 const Category = ({ pageContext, data }) => {
 
   const { category } = pageContext
+  console.log("===============")
+  console.log(data)
   const nodes = data.allMarkdownRemark.nodes
 
   return (
@@ -83,12 +85,18 @@ const Category = ({ pageContext, data }) => {
 export default Category
 
 export const pageQuery = graphql`
-  query($categoryId: String) {
+  query(
+    $categoryId: String,
+    $limit: Int!,
+    $skip: Int!
+  ) {
     allMarkdownRemark (
       sort: {
         fields: [frontmatter___postdate],
         order: DESC
       }
+      limit: $limit,
+      skip: $skip
       filter: {
         frontmatter: {
           categorySlug: {

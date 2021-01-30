@@ -137,8 +137,8 @@ export const pageQuery = graphql`
             fields: [frontmatter___postdate],
             order: DESC,
           }
-            limit: $limit,
-            skip: $skip
+          limit: $limit,
+          skip: $skip
         ) {
           nodes {
             id
