@@ -13,6 +13,7 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const { previous, next } = data;
+  const { tableOfContents } = data.markdownRemark;
 
   return (
     <div>
@@ -32,6 +33,11 @@ const BlogPostTemplate = ({ data, location }) => {
         categoryName={ post.frontmatter.categoryName}
         tags={ post.frontmatter.tags }
         isArticle={ true }
+      />
+
+      <div
+        className="table-of-content"
+        dangerouslySetInnerHTML={{ __html: tableOfContents }}
       />
 
       <main
@@ -87,6 +93,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
       frontmatter {
         title
         postdate(formatString: "YYYY年 MM月 DD日")

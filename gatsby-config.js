@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sass`,
+    `gatsby-remark-autolink-headers`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
