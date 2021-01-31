@@ -69,7 +69,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
                       post.frontmatter.tags.map(tag => {
                         return (
                           <Link 
-                            to={`/tag/${tag}/`}
+                            to={`/tag/${tag}/page/1/`}
                             key={`${tag}`}
                           >
                             #{ tag }

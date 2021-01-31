@@ -29,7 +29,7 @@ const Tags = ({ data, location }) => {
           {tags.map(tag => {
             return (
               <li className="listItem">
-                <Link to={`/tag/${tag.fieldValue}/`}>
+                <Link to={`/tag/${tag.fieldValue}/page/1/`}>
                   { tag.fieldValue }({ tag.totalCount })
                 </Link>
               </li>
