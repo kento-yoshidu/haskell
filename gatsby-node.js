@@ -6,30 +6,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const { createPage } = actions
 
+  // --------------------------------------------------
   // 各記事ページの生成
 
-  const markdowns = await graphql(`
+  // グループごとに記事取得
+  const articlesByCategory = await graphql(`
     query {
-      allMarkdownRemark(
-          sort: {
-            fields: [frontmatter___postdate],
-          }
-          limit: 1000
-        ) {
-          group(field: frontmatter___categorySlug) {
-            nodes {
-              id
-              fields {
-                slug
-              }
+      allMarkdownRemark (
+        sort: {
+          fields: [frontmatter___postdate],
+        }
+      ) {
+        group(field: frontmatter___categorySlug) {
+          nodes {
+            id
+            fields {
+              slug
             }
           }
         }
+      }
     }
   `)
 
-  // グループごとに記事取得
-  const groups = markdowns.data.allMarkdownRemark.group
+  // グループごとの記事
+  const groups = articlesByCategory.data.allMarkdownRemark.group
 
   groups.forEach((group) => {
 
@@ -50,23 +51,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  // --------------------------------------------------
   // 記事一覧(ページネーション付き)
 
-  const allposts = await graphql(`
+  // すべての記事を取得
+  const allArticles = await graphql(`
     query {
       allMarkdownRemark {
         nodes {
+          id
           fields {
             slug
-          }
-          id
-          frontmatter {
-            categoryName
-            categorySlug
-            tags
-            title
-            postdate(difference: "")
-            updatedate(formatString: "", fromNow: false, locale: "")
           }
         }
       }
@@ -74,7 +69,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   // 記事合計数
-  const blogPosts = allposts.data.allMarkdownRemark.nodes.length;
+  const blogPosts = allArticles.data.allMarkdownRemark.nodes.length;
 
   // 1ページに表示する記事数
   const blogPostsPerPage = 6;
@@ -97,18 +92,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  // --------------------------------------------------
+  // カテゴリごとの記事一覧(ページネーション付き)
+
   const category = await graphql(`
     {
       allMarkdownRemark {
         group(field: frontmatter___categorySlug) {
+          fieldValue
           nodes {
+            id
             frontmatter {
               categoryName
-              categorySlug
-              title
             }
           }
-          fieldValue
         }
       }
     }
@@ -116,21 +113,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   category.data.allMarkdownRemark.group.map(category => {
 
+    const categorySlug = category.fieldValue;
+    const categoryName = category.nodes[0].frontmatter.categoryName;
+
     // カテゴリごとの記事合計数
     const blogPosts = category.nodes.length;
 
     // 何ページ生成することになるかの計算
     const Pages = Math.ceil(blogPosts / blogPostsPerPage)
 
-    console.log(category.nodes[0].frontmatter.categorySlug)
-
     Array.from({ length: Pages}).forEach((_, i) => {
       createPage({
-        path: 1 === 0 ? `/category/${category.fieldValue}/` : `/category/${category.fieldValue}/page/${i + 1}/`,
+        path: 1 === 0 ? `/category/${category.fieldValue}/page/1/` : `/category/${category.fieldValue}/page/${i + 1}/`,
         component: path.resolve("./src/templates/category.js"),
         context: {
-          category: category.nodes[0].frontmatter.categoryName,
-          categoryId: category.nodes[0].frontmatter.categorySlug,
+          categoryName: categoryName,
+          categorySlug: categorySlug,
           skip: blogPostsPerPage * i,
           limit: blogPostsPerPage,
           currentPage: i + 1,
@@ -141,7 +139,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // tagページ生成
+  // --------------------------------------------------
+  // タグごとの記事一覧
 
   const tag = await graphql(`
     {
@@ -156,7 +155,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   tag.data.tagsGroup.group.map(tag => {
 
     createPage({
-      path: `tag/${tag.fieldValue}`,
+      path: `/tag/${tag.fieldValue}`,
       component: path.resolve(`./src/templates/tag.js`),
       context: {
         tag: tag.fieldValue
