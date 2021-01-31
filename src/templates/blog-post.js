@@ -13,6 +13,7 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const { previous, next } = data;
+  const { tableOfContents } = data.markdownRemark;
 
   return (
     <div>
@@ -34,11 +35,18 @@ const BlogPostTemplate = ({ data, location }) => {
         isArticle={ true }
       />
 
-      <main
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        //itemProp="articleBody"
-        className="main article"
-      />
+      <div className="wrapper">
+        <div
+          className="table-of-content"
+          dangerouslySetInnerHTML={{ __html: tableOfContents }}
+        />
+
+        <main
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          //itemProp="articleBody"
+          className="main article"
+        />
+      </div>
 
       <nav className="beforeAndAfter">
         {previous && (
@@ -87,6 +95,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
       frontmatter {
         title
         postdate(formatString: "YYYY年 MM月 DD日")

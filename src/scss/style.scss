@@ -156,9 +156,7 @@ a {
 .main {
   width: 75vw;
   margin: 2vh auto 4vh;
-
 }
-
 
 @media screen and (max-width: 768px) {
   .main,
@@ -168,7 +166,7 @@ a {
   }
 
   .main.article {
-    padding-top: 8vh;
+    padding-top: 3vh;
   }
 }
 
