@@ -1,6 +1,6 @@
 ---
 title: postgresql.confファイル
-postdhoate: "2021-01-09"
+postdate: "2021-01-09"
 updatedate: "2021-01-26"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
@@ -60,6 +60,8 @@ drwxr-xr-x 1 c-yoshizuke 1049089     0  1月 27 09:50 pg_xact/
 postgresql.confで設定されているパラメータは、テキストエディタでの編集はもちろん、SETコマンドを使用することで変更することもできます（SETコマンドによる変更はそのセッション内でのみ有効）。
 
 また、変更が反映されるタイミングはパラメータごとによって違います。サーバを再起動すれば確実に反映されますが、postgresqlファイルの再読み込み、そして一部、SETコマンドを使用するだけで変更が反映されるパラメータもあります。
+
+また、postgresql.confファイルに加え、postrgeql.auto.confファイルも存在しています。ファイルフォーマットはpostgresql.confと同じですが、このファイルは`ALTER SYSTEM`コマンドを使用して書き換えます。そして、サーバ再起動やpostgresql.confファイルの読み込み時、postgresql.auto.confファイルも同様に読み込まれ、設定内容を上書きします。
 
 ## サーバの動作関係
 

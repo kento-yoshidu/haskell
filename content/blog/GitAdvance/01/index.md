@@ -18,7 +18,7 @@ tags: ["git"]
 
 単純に`git log`を実行した場合、コミットのハッシュID40桁、Authorの情報、コミット日時、コメント全行が表示されます(「そういえばAuthorって何?」っていう人は本ページ下部の参考を見てください。)。
 
-```shell
+```shell:title=console
 $ git log
 
 commit c5d47834f21e0308b6a180260c2d207e75285f6e (HEAD -> master)
@@ -38,7 +38,7 @@ Date:   Fri Dec 11 11:06:07 2020 +0900
 
 `--oneline`を付けた場合、短縮されたハッシュID、HEADが指しているブランチ、そしてコメントの先頭行だけが表示されます。
 
-```shell
+```shell:title=console
 $ git log --oneline
 
 c5d4783 (HEAD -> master) master-commit
@@ -52,7 +52,7 @@ c5d4783 (HEAD -> master) master-commit
 
 developブランチを切っていてmasterブランチにいるとします。ここで単純に`git log`と打つと、masterブランチのログしか表示されません。
 
-```shell
+```shell:title=console
 $ git log --oneline
 
 c5d4783 (HEAD -> master) master-commit
@@ -63,7 +63,7 @@ c5d4783 (HEAD -> master) master-commit
 
 他のブランチのコミットも含めログを確認するには、`--all`オプションを渡します。
 
-```shell
+```shell:title=console
 $ git log --oneline --all
 
 4de3594 (develop) develop-commit        # developブランチのログも見れる！
@@ -73,7 +73,7 @@ c5d4783 (HEAD -> master) master-commit
 
 さらに`--graph`オプションを使用すると、アスタリスクや線を使い、グラフィカルにログを表示してくれます。
 
-```shell
+```shell:title=console
 $ git log --oneline --all --graph
 
 * 4de3594 (develop) develop-commit
@@ -88,7 +88,7 @@ $ git log --oneline --all --graph
 
 一応、コマンドエイリアスの設定方法をここで紹介しておきます。`git config --global --edit`を実行すると、テキストエディタが立ち上がりますので、以下のように入力します。
 
-```vim
+```shell:title=.gitconfig
 [alias]
   lol = log --oneline --all --graph
 ```
@@ -102,7 +102,7 @@ $ git log --oneline --all --graph
 `-p`オプションを渡すことで、コミットごとの変更内容を出力することができます。`git log`と`git diff`の組み合わせのようなものだと考えていいと思います。
 以下のコマンドを実行してください。ファイルの作成と内容の変更を行っています。
 
-```bash
+```shell:title=console
 # htmlファイルを作成し、コミットします。
 touch index.html
 git add .
@@ -121,7 +121,7 @@ git commit -m "Create css"
 
 `git log -p`とすることで、そのコミットでの変更箇所と内容を確認することができます。`git log -p --oneline`と入力してみます。
 
-```shell
+```shell:title=console
 $ git log -p --oneline
 
 80e04b5 (HEAD -> master) Create css
@@ -147,7 +147,7 @@ index 0000000..e69de29
 
 最初のコミット(上記で言うbb8d2e3)を見てみると、`new file`という記述があり、新しいファイルがコミットされたことを表しています。
 
-```shell
+```shell:title=console
 bb8d2e3 Create html
 diff --git a/index.html b/index.html
 new file mode 100644    # これ
@@ -156,7 +156,7 @@ index 0000000..e69de29
 
 次のコミットでは空だったファイルに3行を追記しました。これは追記した行に`＋`を記すことによって表されます。
 
-```shell
+```shell:title=console
 ce31455 Edit html
 diff --git a/index.html b/index.html
 index e69de29..1802a74 100644
@@ -170,7 +170,7 @@ index e69de29..1802a74 100644
 
 行を削除した場合や編集した場合は`-`で表現されます。
 
-```shell
+```shell:title=console
 # ファイルを上書きします。
 echo -e "aaaaaa\nbbb" > index.html
 
@@ -196,7 +196,7 @@ index 1802a74..183df72 100644
 
 次、ファイル名を変更してみます。`rename`と表示されます。
 
-```shell
+```shell:title=console
 # ファイルをindex.ejsに変更
 $ git mv index.html index.ejs
 
@@ -213,7 +213,7 @@ rename to index.ejs      # to ～へ
 
 続いて、ファイルを削除します。`delete`でファイルが削除されたこと、そして削除されたファイルの内容も教えてくれます。
 
-```shell
+```shell:title=console
 $ git rm index.ejs
 
 $ git commit -m "Remove index.ejs"
@@ -231,14 +231,12 @@ index 183df72..0000000
 -bbb
 ```
 
-
-
 ## `--word-diff`で-pの出力を読みやすくする
 
 `-p`オプションは便利ですが、出力結果が読みにくい気がしませんか？
 `2nd commit`では「aaaをaaaaaaに変更」、「cccを削除」という内容でした。`-p`を渡すだけだと、
 
-```shell
+```shell:title=console
 @@ -1,3 +1,2 @@
 -aaa
 +aaaaaa
@@ -248,7 +246,7 @@ index 183df72..0000000
 
 というアウトプットですが、`--word-diff`を渡すと以下のように変化します。
 
-```shell
+```shell:title=console
 #--grep="2nd"でログの絞り込み
 $ git log -p --word-diff --oneline --grep="2nd"
 
@@ -273,8 +271,7 @@ bbb
 
 `-p`よりももっとザクっと変更内容を確認したい、という時には`--stat`オプションを渡します。
 
-```shell
-
+```shell:title=console
 $ git log --stat --oneline
 
 14664e6 (HEAD -> master) Remove index.ejs   # ファイル削除
@@ -302,14 +299,12 @@ bb8d2e3 Create html                                 # ファイル作成
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
-
-
 ## `--name-status`で`--stat`よりも更に簡易表示する
 
 変更内容を一文字で表してくれます。
 A=Add、M=Modify、R=Rename、D=Delete。
 
-```shell
+```shell:title=console
 $ git log --name-status --oneline
 
 14664e6 (HEAD -> master) Remove index.ejs
@@ -340,7 +335,7 @@ Renameの時に`R100`と表示されていますが、この数字は「変更�
 
 名前からも分かる通り、変更のあったファイル名のみが表示されます。
 
-```shell
+```shell:title=console
 $ git log --name-only --oneline
 
 14664e6 (HEAD -> master) Remove index.ejs
@@ -368,7 +363,7 @@ index.html
 
 任意のファイルが含まれているコミットのみ出力する場合には、`-- <ファイル名 もしくは パス>`と記述します。以下の例では`--stat`と組み合わせています。`-p`と組み合わせることも可能です。
 
-```shell
+```shell:title=console
 # index.ejsのみ
 $ git log --stat --oneline -- index.ejs
 
@@ -399,7 +394,7 @@ $ git log --stat --oneline -- style.css
 そういう時は`--follow`オプションを付けてください。変更前のindex.htmlも検索してくれます。
 なお、引数の順番は注意が必要です。`--follow -- ファイル名`としなければ旧ファイルが検索されませんでした（git version 2.22.0）。
 
-```shell
+```shell:title=console
 $ git log --stat --oneline --follow -- index.ejs
 
 14664e6 (HEAD -> master) Remove index.ejs
@@ -430,7 +425,7 @@ bb8d2e3 Create html
 
 まず、以下の通り`develop`という名前のファイルを作成、コミットします。
 
-```shell
+```shell:title=console
 
 $ git commit --allow-empty -m "Initial Commit"
 
@@ -443,7 +438,7 @@ $ git commit -m "Create develop"
 
 この`develop`ファイルが含まれるコミットを出力するには`-- develop`コマンドを渡します。しかし、`develop`のみを渡しても同じ結果が得られることが分かります。
 
-```shell
+```shell:title=console
 
 # -- を付ける
 $ git log --stat --oneline -- develop
@@ -461,7 +456,7 @@ $ git log --stat --oneline develop
 
 次に、`develop`という名前のブランチを作成します。ブランチを作成するだけでOKです。コミットは特に必要ありません。
 
-```shell
+```shell:title=console
 
 $ git checkout -b develop 737329b
 
@@ -475,7 +470,7 @@ $ git branch
 
 そして再度masterブランチに戻り、`--`をつけないで`develop`を渡すと…
 
-```shell
+```shell:title=console
 
 $ git checkout master
 
@@ -490,7 +485,7 @@ Use '--' to separate paths from revisions, like this:
 
 `-- develop`とすることでエラーなく出力されることも確認しておきます。
 
-```shell
+```shell:title=console
 $ git log --stat --oneline -- develop
 
 960b51a (HEAD -> master) Create develop
@@ -504,7 +499,7 @@ $ git log --stat --oneline -- develop
 
 以下のようなコミット履歴があるとします。2017年から2020年まで、各年の1月1日にコミットを行っており、計4回のコミット履歴があります。
 
-```shell
+```shell:title=console
 $ git log --format=fuller
 
 commit 13a83c31fc4558b811ae2c0dbb373a60d2359c77 (HEAD -> master)
@@ -543,7 +538,7 @@ $ git log --since="2018-01-01:00:00:00" --oneline
 
 日付のフォーマットですが色々なものに対応しているようです。
 
-```shell
+```shell:title=console
 # YYYY-MM-DD
 $ git log --since="2018-01-01"
 
@@ -569,7 +564,7 @@ $ git log --since="last month"
 なお、フォーマットの一部のみ指定した場合の動作ですが、指定していない箇所は現在の日時で補完されるようです。
 以下の例では、YYYYに当たる`2019`のみ指定していますが動作します。ただ、2019年1月1日のコミットは表示されません。予想ですが、実行した日付の3月3日とその時間で絞り込みされることになると想像しました。
 
-```shell
+```shell:title=console
 $ git log --since="2019" # YYYYのみ
 commit 13a83c31fc4558b811ae2c0dbb373a60d2359c77 (HEAD -> master)
 Author: potsunen <potsunen@potsunen.com>
@@ -585,7 +580,7 @@ Date:   Fri Jan 10 00:00:00 2020 +0900
 
 `--until`は`--since`の逆、任意の日付以前にコミットされたコミットのみ出力します。
 
-```shell
+```shell:title=console
 $ git log --until="2018-01-01:00:00:00" --oneline
 
 # 2018年1月1日以前
@@ -595,7 +590,7 @@ d4657a5 2017 commit
 
 また、`--since`と`--until`を組み合わせることで「〇〇日以降、〇〇日以前」という風に日時を絞り込めます。
 
-```shell
+```shell:title=console
 $ git log --since="2017-06-30" --until="2018-06-29" --oneline
 
 41ece2d 2018 commit
@@ -607,7 +602,7 @@ $ git log --since="2017-06-30" --until="2018-06-29" --oneline
 
 通常、コミットの日時情報はYYYY-MM-DDといった風に絶対表示されますが、`--relative-date`オプションを渡すことで「〇か月前」「〇時間前」といった現在の日時に対する相対的な形式で出力することが可能です。
 
-```shell
+```shell:title=console
 $ git log --relative-date --abbrev-commit
 
 commit 1527aea (HEAD -> master)
@@ -635,7 +630,7 @@ Date:   5 months ago   # 5か月前
 
 `--merges`でマージコミットのみ、`--no-merges`でマージコミットを除外してログを出力します。
 
-```shell
+```shell:title=console
 $ git log --graph --all --oneline
 
 *   ba08362 (HEAD -> develop, master) Merge branch 'develop'
@@ -663,7 +658,7 @@ fa906d1 dev commit
 
 これはそのまま、`--author=〇〇`、`--committer=〇〇`の形で記述できます。
 
-```shell
+```shell:title=console
 $ git log --author="alien"
 
 commit 9061b6e9231fac0baf0b8967773e26b66517e6ca
@@ -696,7 +691,7 @@ CommitDate: Fri Mar 6 16:27:08 2020 +0900
 `git shortlog`で各コミットをコミットを行ったユーザごとに分類して表示します。
 以下の例だと、alien:alien:さんが1コミット、potsunenさんが5コミット行ったことが分かります。コミット数でマウントをとりたいときに便利です。
 
-```shell
+```shell:title=console
 $ git shortlog
 
 alien (1):
@@ -716,7 +711,7 @@ potsunen (5):
 |-s|コミット数だけを表示する|
 
 
-```shell
+```shell:title=console
 $ git shortlog -ns
      5  potsunen
      1  alien
@@ -728,7 +723,7 @@ $ git shortlog -ns
 
 `sayHello`という関数名を`screamHello`という名前に変更した人がいるとします。「誰や勝手に関数名変えたの...」
 
-```shell
+```shell:title=console
 $ git log -p
 
 bcb5843 (HEAD -> master) Edit script
@@ -746,7 +741,7 @@ index 4018eac..37504b5 100644
 
 `git blame`コマンドは、*行ごとに*コミットがあった日時、コミッターを表示します。引数にはファイル名を渡してあげてください。
 
-```shell
+```shell:title=console
 $ git blame script.ts
 
 ^0f1e08c (potsunen 2020-06-05 11:45:45 +0900 1)
@@ -779,7 +774,7 @@ bcb58434 (alien    2020-06-05 11:51:00 +0900 2) function screamHello(name: strin
 
 `git log`は多くの場面でAuthorしか出力しませんが、`--pretty=fuller`オプションを渡すことでCommitterも確認することができます。
 
-```shell
+```shell:title=console
 $ git log --pretty=fuller
 
 commit 743c4d51cc9631705894e771e1633d6481f8b61b (HEAD -> master)

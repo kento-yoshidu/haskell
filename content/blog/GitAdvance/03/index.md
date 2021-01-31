@@ -1,6 +1,6 @@
 ---
 title: "#3 git logの出力をカスタマイズする"
-postdate: "9999-11-20"
+postdate: "2020-11-20"
 updatedate: "2020-11-20"
 categoryName: "Git中級者を目指す"
 categorySlug: GitAdvance

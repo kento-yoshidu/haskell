@@ -9,7 +9,8 @@ tags: ["PostgreSQL","ドメイン"]
 
 `CREATE DOMAIN ドメイン名 AS データ型`
 
-```
+
+```shell
 postgres=# CREATE DOMAIN test_domain AS INT;
 CREATE DOMAIN
 
@@ -21,7 +22,7 @@ postgres=# \dD
 (1 行)
 ```
 
-```
+```shell
 postgres=# CREATE TABLE test_table (id test_domain, name TEXT);
 CREATE TABLE
 
@@ -33,7 +34,7 @@ postgres=# \d test_table
  name | text        |          |               |
 ```
 
-```
+```shell
 postgres=# INSERT INTO test_table VALUES (1, 'test');
 INSERT 0 1
 
@@ -42,7 +43,7 @@ ERROR:  invalid input syntax for type integer: "hoge"
 行 1: INSERT INTO test_table VALUES ('hoge', 'test');
 ```
 
-```
+```shell
 postgres=# CREATE DOMAIN test_domain2 AS INT NOT NULL DEFAULT 10;
 CREATE DOMAIN
 
@@ -55,7 +56,7 @@ postgres=# \dD
 (2 行)
 ```
 
-```
+```shell
 postgres=# CREATE DOMAIN test_domain2 AS INT NOT NULL DEFAULT 10;
 CREATE DOMAIN
 postgres=# \dD
