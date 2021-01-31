@@ -7,7 +7,13 @@ import Links from "../components/links"
 import Footer from "../components/footer"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
+import {  faFolder,
+          faClock,
+          faUndo,
+          faTags,
+          faChevronCircleLeft,
+          faChevronCircleRight
+        } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -61,7 +67,7 @@ const Tags = ({ pageContext, data }) => {
                     node.frontmatter.tags.map(tag => {
                       return (
                         <Link
-                          to={`/tag/${tag}`}
+                          to={`/tag/${tag}/page/1/`}
                           key={ node.id + tag }
                         >
                           #{ tag }
@@ -77,6 +83,32 @@ const Tags = ({ pageContext, data }) => {
         }
       </ol>
 
+      <div className="pagination">
+        {!pageContext.isFirst && (
+          <p className="prev">
+            <FontAwesomeIcon icon={faChevronCircleLeft} />
+            <Link
+              to={
+                pageContext.currentPage === 2
+                  ? `/tag/${tag}/page/1/`
+                  : `/tag/${tag}/page/${pageContext.currentPage - 1}/`
+              }
+              rel = "prev"
+            >
+              前のページ
+            </Link>
+          </p>
+        )}
+
+        {!pageContext.isLast && (
+          <p className="next">
+            <Link to={`/tag/${tag}/page/${pageContext.currentPage + 1}/`} rel="next">
+              次のページ
+            </Link>
+            <FontAwesomeIcon icon={faChevronCircleRight} />
+          </p>
+        )}
+      </div>
       </main>
 
       <Footer />
@@ -87,12 +119,18 @@ const Tags = ({ pageContext, data }) => {
 export default Tags
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query(
+    $tag: String,
+    $limit: Int!,
+    $skip: Int!
+  ) {
     allMarkdownRemark(
       sort: {
         fields: [frontmatter___postdate],
         order: DESC
       }
+      limit: $limit,
+      skip: $skip
       filter: {
         frontmatter: {
           tags: {
