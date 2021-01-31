@@ -39,7 +39,7 @@ const Header = ({ headerTitle,
 
     tag = tags.map(tag => {
       return (
-        <Link to={`/tag/${ tag }`}>{tag}</Link>
+        <Link to={`/tag/${ tag }/page/1/`}>{tag}</Link>
       )
     }
   )

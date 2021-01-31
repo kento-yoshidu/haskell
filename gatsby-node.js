@@ -144,22 +144,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const tag = await graphql(`
     {
-      tagsGroup: allMarkdownRemark {
+      allMarkdownRemark {
         group(field: frontmatter___tags) {
           fieldValue
+          nodes {
+            id
+          }
         }
       }
     }
   `)
 
-  tag.data.tagsGroup.group.map(tag => {
+  tag.data.allMarkdownRemark.group.map(tag => {
 
-    createPage({
-      path: `/tag/${tag.fieldValue}`,
-      component: path.resolve(`./src/templates/tag.js`),
-      context: {
-        tag: tag.fieldValue
-      }
+    // タグごとの記事合計数
+    const blogPosts = tag.nodes.length;
+
+    const pages = Math.ceil(blogPosts / blogPostsPerPage);
+
+    Array.from({ length: pages}).forEach((_, i) => {
+      createPage({
+        path: 1 === 0 ? `/tag/${tag.fieldValue}/page/1` : `/tag/${tag.fieldValue}/page/${i + 1}`,
+        component: path.resolve(`./src/templates/tag.js`),
+        context: {
+          tag: tag.fieldValue,
+          skip: blogPostsPerPage * i,
+          limit: blogPostsPerPage,
+          currentPage: i + 1,
+          isFirst: i + 1 === 1,
+          isLast: i + 1 === pages,
+        }
+      })
     })
   })
 }

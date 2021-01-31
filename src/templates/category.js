@@ -22,7 +22,6 @@ config.autoAddCss = false
 const Category = ({ pageContext, data }) => {
 
   const { categoryName, categorySlug } = pageContext
-
   const nodes = data.allMarkdownRemark.nodes
 
   return (
