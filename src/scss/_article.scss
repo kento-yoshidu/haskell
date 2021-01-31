@@ -12,6 +12,9 @@ $main-color2: #CB356B;
   margin-right: 6%;
   ul {
     list-style: none;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5vh;
     li {
       font-size: 1.6rem;
       p {
