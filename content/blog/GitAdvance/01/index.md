@@ -717,8 +717,6 @@ $ git shortlog -ns
      1  alien
 ```
 
-
-
 ## `git blame`で変更を行ったユーザを特定する
 
 `sayHello`という関数名を`screamHello`という名前に変更した人がいるとします。「誰や勝手に関数名変えたの...」
@@ -756,8 +754,6 @@ bcb58434 (alien    2020-06-05 11:51:00 +0900 2) function screamHello(name: strin
 
 長くなりましたので今回は以上です。次回は後編ということで、
 
-
-
 ## 参考 : AuthorとCommiterの違い
 
 私は
@@ -786,7 +782,9 @@ CommitDate: Fri Feb 28 11:15:26 2020 +0900
     地球侵略記念amend
 ```
 
-# 参考
+ijou 
+
+# 参考japrjpa
 
 - [gitでrename&modifyしたファイルのログを追跡できるようにしたい場合](https://qiita.com/yukimura1227/items/fbb076db61a2e43a32e3)
 - [git diff --name-status で出る R100 って何？](https://stakiran.hatenablog.com/entry/2019/01/14/072206)
