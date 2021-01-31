@@ -35,16 +35,18 @@ const BlogPostTemplate = ({ data, location }) => {
         isArticle={ true }
       />
 
-      <div
-        className="table-of-content"
-        dangerouslySetInnerHTML={{ __html: tableOfContents }}
-      />
+      <div className="wrapper">
+        <div
+          className="table-of-content"
+          dangerouslySetInnerHTML={{ __html: tableOfContents }}
+        />
 
-      <main
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        //itemProp="articleBody"
-        className="main article"
-      />
+        <main
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          //itemProp="articleBody"
+          className="main article"
+        />
+      </div>
 
       <nav className="beforeAndAfter">
         {previous && (
