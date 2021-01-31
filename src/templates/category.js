@@ -21,20 +21,19 @@ config.autoAddCss = false
 
 const Category = ({ pageContext, data }) => {
 
-  const { category } = pageContext
-  const { categoryId } = pageContext
+  const { categoryName, categorySlug } = pageContext
 
   const nodes = data.allMarkdownRemark.nodes
 
   return (
     <div>
       <SEO
-        title={`${ category }カテゴリの記事`}
+        title={`${ categoryName }カテゴリの記事`}
       />
 
       <Header
         headerTitle="鳥に生まれる人ができなかった人へ"
-        pageTitle={`${ category }カテゴリの記事`}
+        pageTitle={`${ categoryName }カテゴリの記事`}
       />
 
       <Links />
@@ -44,7 +43,7 @@ const Category = ({ pageContext, data }) => {
       <ol className="post-list">
         { nodes.map((node) => {
 
-          const title = node.frontmatter.title 
+          const pageTitle = node.frontmatter.title 
 
           return (
             <li
@@ -54,13 +53,13 @@ const Category = ({ pageContext, data }) => {
 
               <h2 className="post-title">
                 <Link to={node.fields.slug} itemProp="url">
-                  <span itemProp="headline">{ title }</span>
+                  <span itemProp="headline">{ pageTitle }</span>
                 </Link>
               </h2>
               <div className="info">
                 <p className="category">
                   <FontAwesomeIcon icon={faFolder} />
-                  <Link to={`/category/${node.frontmatter.categorySlug}/page/1/`}>{node.frontmatter.categoryName}</Link>
+                  <Link to={`/category/${categorySlug}/page/1/`}>{categoryName}</Link>
                 </p>
                 <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
                 <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
@@ -69,7 +68,10 @@ const Category = ({ pageContext, data }) => {
                     node.frontmatter.tags.map(tag => {
                       return (
                         <Link
-                          to={`/tag/${tag}/`}>#{ tag }
+                          to={`/tag/${tag}/`}
+                          key={node.key}
+                        >
+                          #{ tag }
                         </Link>
                       )
                     })
@@ -89,8 +91,8 @@ const Category = ({ pageContext, data }) => {
             <Link
               to={
                 pageContext.currentPage === 2
-                  ? `/category/${categoryId}/page/1/`
-                  : `/category/${categoryId}/page/${pageContext.currentPage - 1}/`
+                  ? `/category/${categorySlug}/page/1/`
+                  : `/category/${categorySlug}/page/${pageContext.currentPage - 1}/`
               }
               rel = "prev"
             >
@@ -101,7 +103,7 @@ const Category = ({ pageContext, data }) => {
 
         {!pageContext.isLast && (
           <p className="next">
-            <Link to={`/category/${categoryId}/page/${pageContext.currentPage + 1}`} rel="next">
+            <Link to={`/category/${categorySlug}/page/${pageContext.currentPage + 1}/`} rel="next">
               次のページ
             </Link>
             <FontAwesomeIcon icon={faChevronCircleRight} />
@@ -120,7 +122,7 @@ export default Category
 
 export const pageQuery = graphql`
   query(
-    $categoryId: String,
+    $categorySlug: String,
     $limit: Int!,
     $skip: Int!
   ) {
@@ -134,7 +136,7 @@ export const pageQuery = graphql`
       filter: {
         frontmatter: {
           categorySlug: {
-            eq: $categoryId
+            eq: $categorySlug
           }
         }
       }
