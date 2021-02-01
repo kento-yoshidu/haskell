@@ -1,7 +1,7 @@
 ---
 title: "#3 git logの出力をカスタマイズする"
-postdate: "2020-11-20"
-updatedate: "2020-11-20"
+postdate: "2020-11-22"
+updatedate: "2020-11-22"
 categoryName: "Git中級者を目指す"
 categorySlug: GitAdvance
 description: git logのコマンドを紹介した前回、`git log --oneline --all --graph`の組み合わせが便利ですよーとお話ししました。

@@ -7,18 +7,18 @@ $main-color2: #CB356B;
 }
 
 .table-of-content {
-  margin-top: 50px;
+  margin-top: 80px;
   width: 25%;
   margin-right: 6%;
   ul {
     list-style: none;
     position: -webkit-sticky;
     position: sticky;
-    top: 5vh;
+    top: 7vh;
     li {
       font-size: 1.6rem;
       p {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         a {
           font-size: 1.6rem;
         }
@@ -26,7 +26,7 @@ $main-color2: #CB356B;
       ul {
         li {
           margin-bottom: 10px;
-          margin-left: 12px;
+          margin-left: 14px;
           a {
             font-size: 1.5rem;
           }
@@ -60,6 +60,11 @@ $main-color2: #CB356B;
     Meiryo,
     sans-serif;
 
+  h1,
+  h2,
+  h3 {
+    padding-top: 10px;
+  }
   h1 {
     padding-bottom: 8px;
     font-size: 4rem;
