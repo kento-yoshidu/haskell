@@ -1,12 +1,145 @@
 ---
 title: "#2 git logでコミット履歴を見る(後編)"
 postdate: "2020-11-21"
-updatedate: "2020-11-21"
+updatedate: "2021-02-04"
 categoryName: "Git中級者を目指す"
 categorySlug: GitAdvance
-description: 前回は基本的なgit logのオプションを紹介しましたが、今回はもっと掘り下げて
+description: 前回は基本的な`git log`のオプションを紹介しましたが、今回はもっと掘り下げてより高度なオプションを紹介したいと思います。
 tags: ["git"]
 ---
+
+# より詳しいオプションを
+
+前回は`git log`の基本的なオプションを紹介しましたが、今回はもっと掘り下げてより高度なオプションを紹介したいと思います。
+
+<!--特に複数のブランチを考慮したlog出力を重点的に確認したいと思います。-->
+
+前回までは、いわば、ある一つのブランチの中で完結するようなオプションを紹介しました。
+複数のブランチが切られている時（というかそれが当たり前ですが）、`git log`と打ってどの範囲のログが出力されるか、正確にわかっていますか？
+「あのブランチだけのログが見たいのに、何故か違うブランチのログもしゅつりょくされる。。。」といったことはありませんか？
+たまーに出てくるチルダ(~)やキャレット(^)ですが、どのような意味を持っているかわかっていますか？
+
+~~私もわかっていなかったので~~改めて確認したいと思います。
+
+## その前に参考記事
+
+「ブランチって何？」「HEADって何？」を確認しておきたい方は以下の良記事を読むことをお勧めします。
+
+[GitのHEADとは何者なのか](https://qiita.com/ymzk-jp/items/00ff664da60c37458aaa)
+
+## 複数ブランチを対象としたgit logコマンド
+
+リポジトリは以下の状態であるとします。
+
+![](./image/01.jpg)
+
+main、develop、fixという3つのブランチがあります。
+
+青い丸の中の数字はコミットのハッシュIDです。
+
+コミット8はdevelopにfixをマージしたマージコミットです。現在HEADはdevelopを差しています。
+
+まずは`git log ブランチ名`と入力したときの出力を確認しておきます。
+
+### git log main
+
+mainブランチである`3`から矢印で辿れる、`3,2,1`が対象です。
+
+![](./image/02.jpg)
+
+### git log develop (git log HEAD)
+
+developブランチである`8`から辿れる、`8,7,6,5,4,1`が対象です。
+
+![](./image/03.jpg)
+
+### git log fix
+
+fixブランチである`7`から辿れる、`7,6,1`が対象です。
+
+![](./image/04.jpg)
+
+## `..`と`...`の動作
+
+### git log develop..main
+
+言語化するとしたら「developになくて、mainにあるもの」
+でしょうか  。
+
+`3,2`が出力されます。
+
+mainから`3,2,1`が辿れますが、`1`はdevelopからも辿れるので対象外です。
+
+![](./image/05.jpg)
+
+### git log main..develop
+
+上記の逆です。読み方は「mainになくて、developにあるもの」。
+
+developから`8,7,6,5,4,1`が辿れますが、`1`はmainからも辿れるので対象外です。
+
+![](./image/06.jpg)
+
+### git log main..fix
+
+読み方は「mainになくて、fixにあるもの」。
+
+fixから`7,6,1`が辿れますが、`1`はmainからも辿れるので対象外です。
+
+![](./image/07.jpg)
+
+### git log fix..develop
+
+読み方は「fixになくて、developにあるもの」。
+
+developから`8,7,6,5,4,1`が辿れますが、`7,6,1`はfixからも辿れるので対象外です。
+
+![](./image/08.jpg)
+
+### git log develop..fix
+
+読み方は「developになくて、fixにあるもの」。
+
+fixから`7,6,1`が辿れますが、これらは全てdevelopからも辿れるのでコミットは出力されません。
+
+![](./image/09.jpg)
+
+### git log main...develop (git log develop...main)
+
+読み方「mainかdevelopのどちらか一方にあるもの」。
+
+`1`はmainからもdevelopからも辿れるので対象外です。
+
+![](./image/10.jpg)
+
+なお、`...`を指定する場合、ブランチの
+
+### git log develop...fix (git log fix...develop)
+
+読み方「developとfixのどちらか一方にあるもの」。
+
+`7,6,1`はdevelopからもfixからも辿れるので対象外です。
+
+![](./image/11.jpg)
+
+## チルダとキャレット
+
+### git log develop~
+
+チルダを付与することで**親のコミット**を取得できます。
+
+この場合、`git log develop~`は`git log 5`と同義と言えます。
+
+![](./image/12.jpg)
+
+### git log develop~~ (git log develop~2) 
+
+チルダを複数つけることで、更に親を辿っていくことができます。また、`~~`は`~2`に置き換えることができます。
+
+![](./image/13.jpg)
+
+### git log develop^
+
 
 
 # `git log`ではないけれど
@@ -79,3 +212,9 @@ bcb58434 (alien    2020-06-05 11:51:00 +0900 2) function screamHello(name: strin
 この例で言うと2行目、alienさんが`bcb58434`コミットの時に変更したことが分かります。
 
 なお、blameは「責める、糾弾」などと言った意味です。自分が犯人だった時にはrebase等でもみ消しましょう。
+
+https://maku77.github.io/git/log/diff-between-branches.html
+
+https://maku77.github.io/git/log/diff-between-branches.html
+
+[GitのHEADとは何者なのか](https://qiita.com/ymzk-jp/items/00ff664da60c37458aaa)

@@ -491,9 +491,7 @@ $ git log --stat --oneline -- develop
 960b51a (HEAD -> master) Create develop
  develop | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
- ```
-
-
+```
 
 ## `--since`で日付以降のコミット、`--until`で日付以前のコミット
 
@@ -596,8 +594,6 @@ $ git log --since="2017-06-30" --until="2018-06-29" --oneline
 41ece2d 2018 commit
 ```
 
-
-
 ## `--relative-date`で日付を相対表示する
 
 通常、コミットの日時情報はYYYY-MM-DDといった風に絶対表示されますが、`--relative-date`オプションを渡すことで「〇か月前」「〇時間前」といった現在の日時に対する相対的な形式で出力することが可能です。
@@ -623,8 +619,6 @@ Date:   5 months ago   # 5か月前
 
     2nd commit
 ```
-
-
 
 ## マージ関係
 
@@ -652,11 +646,9 @@ fa906d1 dev commit
 4f4d558 initial commit
 ```
 
+## AuthorやCommitterで絞る
 
-
-## Authorとcommitter
-
-これはそのまま、`--author=〇〇`、`--committer=〇〇`の形で記述できます。
+これはそのまま、`--author="〇〇"`、`--committer="〇〇"`の形で記述できます。
 
 ```shell:title=console
 $ git log --author="alien"
@@ -678,8 +670,6 @@ CommitDate: Fri Mar 6 16:27:08 2020 +0900
 
     create index.html
 ```
-
-
 
 長くなりましたので今回は以上です。次回は後編ということで、
 
@@ -711,10 +701,9 @@ CommitDate: Fri Feb 28 11:15:26 2020 +0900
     地球侵略記念amend
 ```
 
-ijou 
+# 参考
 
-# 参考japrjpa
-
+- [git-log Documentation](https://git-scm.com/docs/git-log)
 - [gitでrename&modifyしたファイルのログを追跡できるようにしたい場合](https://qiita.com/yukimura1227/items/fbb076db61a2e43a32e3)
 - [git diff --name-status で出る R100 って何？](https://stakiran.hatenablog.com/entry/2019/01/14/072206)
 - [Advanced Git log](https://www.atlassian.com/ja/git/tutorials/git-log)
