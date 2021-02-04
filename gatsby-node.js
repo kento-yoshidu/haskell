@@ -82,6 +82,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? "/page/1/" : `/page/${i + 1}/`,
       component: path.resolve("./src/templates/page.js"),
       context: {
+        numberOfPages: Pages,
         skip: blogPostsPerPage * i,
         limit: blogPostsPerPage,
         // 現在のページ番号

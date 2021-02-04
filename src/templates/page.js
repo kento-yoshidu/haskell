@@ -84,22 +84,42 @@ const BlogIndex = ({ data, location, pageContext }) => {
           })}
         </ul>
 
-        <div className="pagination">
-          {!pageContext.isFirst && (
-            <p className="prev">
-              <FontAwesomeIcon icon={faChevronCircleLeft} />
-              <Link
-                to={
-                  pageContext.currentPage === 2
-                    ? `/page/1/`
-                    : `/page/${pageContext.currentPage - 1}/`
-                }
-                rel = "prev"
-              >
-                前のページ
-              </Link>
-            </p>
-          )}
+        <ol className="pagination">
+          <div className="preButton">
+            {!pageContext.isFirst && (
+              <p className="prev">
+                <FontAwesomeIcon icon={faChevronCircleLeft} />
+                <Link
+                  to={
+                    pageContext.currentPage === 2
+                      ? `/page/1/`
+                      : `/page/${pageContext.currentPage - 1}/`
+                  }
+                  rel = "prev"
+                >
+                  前のページ
+                </Link>
+              </p>
+            )}
+          </div>
+
+          <div className="buttons">
+            {
+              Array.from({ length: pageContext.numberOfPages - 1 }, (_, i) => (
+                <li className="test">
+                  {
+                    i + 1 === pageContext.currentPage
+                      ? <li>{ i + 1 }</li>
+                      : <li>
+                          <Link to={`/page/${i + 1}/`}>
+                            { i + 1 }
+                          </Link>
+                        </li>
+                  }
+                </li>
+              ))
+            }
+          </div>
 
           {!pageContext.isLast && (
             <p className="next">
@@ -109,8 +129,8 @@ const BlogIndex = ({ data, location, pageContext }) => {
               <FontAwesomeIcon icon={faChevronCircleRight} />
             </p>
           )}
-        </div>
 
+        </ol>
         </main>
       <Footer />
     </div>
