@@ -31,7 +31,9 @@ tags: ["git"]
 
 リポジトリは以下の状態であるとします。
 
-![](./image/01.jpg)
+<!--![](./image/01.jpg)-->
+
+![](./image/image01.png)
 
 main、develop、fixという3つのブランチがあります。
 
@@ -45,19 +47,19 @@ main、develop、fixという3つのブランチがあります。
 
 mainブランチである`3`から矢印で辿れる、`3,2,1`が対象です。
 
-![](./image/02.jpg)
+![](./image/image02.png)
 
 ### git log develop (git log HEAD)
 
 developブランチである`8`から辿れる、`8,7,6,5,4,1`が対象です。
 
-![](./image/03.jpg)
+![](./image/image03.png)
 
 ### git log fix
 
 fixブランチである`7`から辿れる、`7,6,1`が対象です。
 
-![](./image/04.jpg)
+![](./image/image04.png)
 
 ## `..`と`...`の動作
 
@@ -70,7 +72,7 @@ fixブランチである`7`から辿れる、`7,6,1`が対象です。
 
 mainから`3,2,1`が辿れますが、`1`はdevelopからも辿れるので対象外です。
 
-![](./image/05.jpg)
+![](./image/image05.png)
 
 ### git log main..develop
 
@@ -78,7 +80,7 @@ mainから`3,2,1`が辿れますが、`1`はdevelopからも辿れるので対�
 
 developから`8,7,6,5,4,1`が辿れますが、`1`はmainからも辿れるので対象外です。
 
-![](./image/06.jpg)
+![](./image/image06.png)
 
 ### git log main..fix
 
@@ -86,7 +88,7 @@ developから`8,7,6,5,4,1`が辿れますが、`1`はmainからも辿れるの�
 
 fixから`7,6,1`が辿れますが、`1`はmainからも辿れるので対象外です。
 
-![](./image/07.jpg)
+![](./image/image07.png)
 
 ### git log fix..develop
 
@@ -94,7 +96,7 @@ fixから`7,6,1`が辿れますが、`1`はmainからも辿れるので対象外
 
 developから`8,7,6,5,4,1`が辿れますが、`7,6,1`はfixからも辿れるので対象外です。
 
-![](./image/08.jpg)
+![](./image/image08.png)
 
 ### git log develop..fix
 
@@ -102,7 +104,7 @@ developから`8,7,6,5,4,1`が辿れますが、`7,6,1`はfixからも辿れる�
 
 fixから`7,6,1`が辿れますが、これらは全てdevelopからも辿れるのでコミットは出力されません。
 
-![](./image/09.jpg)
+![](./image/image09.png)
 
 ### git log main...develop (git log develop...main)
 
@@ -110,7 +112,7 @@ fixから`7,6,1`が辿れますが、これらは全てdevelopからも辿れる
 
 `1`はmainからもdevelopからも辿れるので対象外です。
 
-![](./image/10.jpg)
+![](./image/image010.png)
 
 なお、`...`を指定する場合、ブランチの
 
@@ -120,7 +122,7 @@ fixから`7,6,1`が辿れますが、これらは全てdevelopからも辿れる
 
 `7,6,1`はdevelopからもfixからも辿れるので対象外です。
 
-![](./image/11.jpg)
+![](./image/image11.png)
 
 ## チルダとキャレット
 
@@ -130,16 +132,17 @@ fixから`7,6,1`が辿れますが、これらは全てdevelopからも辿れる
 
 この場合、`git log develop~`は`git log 5`と同義と言えます。
 
-![](./image/12.jpg)
+![](./image/image12.png)
 
 ### git log develop~~ (git log develop~2) 
 
 チルダを複数つけることで、更に親を辿っていくことができます。また、`~~`は`~2`に置き換えることができます。
 
-![](./image/13.jpg)
+![](./image/image13.png)
 
 ### git log develop^
 
+![](./image/image14.png)
 
 
 # `git log`ではないけれど
