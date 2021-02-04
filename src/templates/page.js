@@ -97,24 +97,24 @@ const BlogIndex = ({ data, location, pageContext }) => {
                   }
                   rel = "prev"
                 >
-                  前のページ
+                  Prev
                 </Link>
               </p>
             )}
           </div>
 
-          <div className="buttons">
+          <div className="nationLinks">
             {
-              Array.from({ length: pageContext.numberOfPages - 1 }, (_, i) => (
-                <li className="test">
+              Array.from({ length: pageContext.numberOfPages }, (_, i) => (
+                <li className="items">
                   {
                     i + 1 === pageContext.currentPage
-                      ? <li>{ i + 1 }</li>
-                      : <li>
+                      ? <p className="text">{ i + 1 }</p>
+                      : <p className="link">
                           <Link to={`/page/${i + 1}/`}>
                             { i + 1 }
                           </Link>
-                        </li>
+                        </p>
                   }
                 </li>
               ))
@@ -124,7 +124,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
           {!pageContext.isLast && (
             <p className="next">
               <Link to={`/page/${pageContext.currentPage + 1}`} rel="next">
-                次のページ
+                Next
               </Link>
               <FontAwesomeIcon icon={faChevronCircleRight} />
             </p>
