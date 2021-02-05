@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Header from "../components/header"
 import SEO from "../components/seo"
+import Header from "../components/header"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
@@ -83,35 +83,50 @@ const Category = ({ pageContext, data }) => {
         }
       </ol>
 
-      <div className="pagination">
-        {!pageContext.isFirst && (
-          <p className="prev">
-            <FontAwesomeIcon icon={faChevronCircleLeft} />
-            <Link
-              to={
-                pageContext.currentPage === 2
-                  ? `/category/${categorySlug}/page/1/`
-                  : `/category/${categorySlug}/page/${pageContext.currentPage - 1}/`
+      <ol className="pagination">
+        <div className="preButton">
+          {!pageContext.isFirst && (
+            <p className="prev">
+              <FontAwesomeIcon icon={faChevronCircleLeft} />
+              <Link
+                to={
+                  pageContext.currentPage === 2
+                    ? `/category/${categorySlug}/page/1/`
+                    : `/category/${categorySlug}/page/${pageContext.currentPage - 1}/`
+                }
+                rel = "prev"
+              >
+                Prev
+              </Link>
+            </p>
+          )}
+        </div>
+
+        <div className="nationLinks">
+          { Array.from({ length: pageContext.numberOfPages }, (_, i) => (
+            <li className="items" key={pageContext.numberOfPages}>
+              { i + 1 === pageContext.currentPage
+                  ? <p className="text">{ i + 1 }</p>
+                  : <p className="link">
+                      <Link to={`/category/${categorySlug}/page/${i + 1}/`}>
+                        { i + 1 }
+                      </Link>
+                    </p>
               }
-              rel = "prev"
-            >
-              前のページ
-            </Link>
-          </p>
-        )}
+            </li>
+          )) }
+        </div>
 
         {!pageContext.isLast && (
           <p className="next">
             <Link to={`/category/${categorySlug}/page/${pageContext.currentPage + 1}/`} rel="next">
-              次のページ
+              Next
             </Link>
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </p>
         )}
-      </div>
-
+      </ol>
       </main>
-
       <Footer />
     </div>
   )

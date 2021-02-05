@@ -103,28 +103,25 @@ const BlogIndex = ({ data, location, pageContext }) => {
             )}
           </div>
 
-          <div className="buttons">
-            {
-              Array.from({ length: pageContext.numberOfPages - 1 }, (_, i) => (
-                <li className="test">
-                  {
-                    i + 1 === pageContext.currentPage
-                      ? <li>{ i + 1 }</li>
-                      : <li>
-                          <Link to={`/page/${i + 1}/`}>
-                            { i + 1 }
-                          </Link>
-                        </li>
-                  }
-                </li>
-              ))
-            }
+          <div className="nationLinks">
+            { Array.from({ length: pageContext.numberOfPages }, (_, i) => (
+              <li className="items">
+                { i + 1 === pageContext.currentPage
+                    ? <p className="text">{ i + 1 }</p>
+                    : <p className="link">
+                        <Link to={`/page/${i + 1}/`}>
+                          { i + 1 }
+                        </Link>
+                      </p>
+                }
+              </li>
+            )) }
           </div>
 
           {!pageContext.isLast && (
             <p className="next">
-              <Link to={`/page/${pageContext.currentPage + 1}`} rel="next">
-                次のページ
+              <Link to={`/page/${pageContext.currentPage + 1}/`} rel="next">
+                Next
               </Link>
               <FontAwesomeIcon icon={faChevronCircleRight} />
             </p>
