@@ -67,7 +67,7 @@ const Category = ({ pageContext, data }) => {
                     node.frontmatter.tags.map(tag => {
                       return (
                         <Link
-                          to={`/tag/${tag}/`}
+                          to={`/tag/${tag}/page/1/`}
                           key={node.key}
                         >
                           #{ tag }

@@ -83,22 +83,39 @@ const Tags = ({ pageContext, data }) => {
         }
       </ol>
 
-      <div className="pagination">
-        {!pageContext.isFirst && (
-          <p className="prev">
-            <FontAwesomeIcon icon={faChevronCircleLeft} />
-            <Link
-              to={
-                pageContext.currentPage === 2
-                  ? `/tag/${tag}/page/1/`
-                  : `/tag/${tag}/page/${pageContext.currentPage - 1}/`
+      <ol className="pagination">
+        <div className="preButton">
+          {!pageContext.isFirst && (
+            <p className="prev">
+              <FontAwesomeIcon icon={faChevronCircleLeft} />
+              <Link
+                to={
+                  pageContext.currentPage === 2
+                    ? `/tag/${tag}/page/1/`
+                    : `/tag/${tag}/page/${pageContext.currentPage - 1}/`
+                }
+                rel = "prev"
+              >
+                Prev
+              </Link>
+            </p>
+          )}
+        </div>
+
+        <div className="nationLinks">
+          { Array.from({ length: pageContext.numberOfPages }, (_, i) => (
+            <li className="items" key={pageContext.numberOfPages}>
+              { i + 1 === pageContext.currentPage
+                  ? <p className="text">{ i + 1 }</p>
+                  : <p className="link">
+                      <Link to={`/tag/${tag}/page/${i + 1}/`}>
+                        { i + 1 }
+                      </Link>
+                    </p>
               }
-              rel = "prev"
-            >
-              前のページ
-            </Link>
-          </p>
-        )}
+            </li>
+          )) }
+        </div>
 
         {!pageContext.isLast && (
           <p className="next">
@@ -108,7 +125,7 @@ const Tags = ({ pageContext, data }) => {
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </p>
         )}
-      </div>
+      </ol>
       </main>
 
       <Footer />
