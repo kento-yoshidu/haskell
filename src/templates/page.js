@@ -123,7 +123,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
 
           {!pageContext.isLast && (
             <p className="next">
-              <Link to={`/page/${pageContext.currentPage + 1}`} rel="next">
+              <Link to={`/page/${pageContext.currentPage + 1}/`} rel="next">
                 Next
               </Link>
               <FontAwesomeIcon icon={faChevronCircleRight} />

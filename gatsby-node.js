@@ -128,6 +128,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: 1 === 0 ? `/category/${category.fieldValue}/page/1/` : `/category/${category.fieldValue}/page/${i + 1}/`,
         component: path.resolve("./src/templates/category.js"),
         context: {
+          numberOfPages: Pages,
           categoryName: categoryName,
           categorySlug: categorySlug,
           skip: blogPostsPerPage * i,
@@ -168,6 +169,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: 1 === 0 ? `/tag/${tag.fieldValue}/page/1` : `/tag/${tag.fieldValue}/page/${i + 1}`,
         component: path.resolve(`./src/templates/tag.js`),
         context: {
+          numberOfPages: pages,
           tag: tag.fieldValue,
           skip: blogPostsPerPage * i,
           limit: blogPostsPerPage,
