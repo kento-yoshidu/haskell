@@ -24,6 +24,8 @@ const Category = ({ pageContext, data }) => {
   const { categoryName, categorySlug } = pageContext
   const nodes = data.allMarkdownRemark.nodes
 
+  console.log(pageContext.postCount)
+
   return (
     <div>
       <SEO
@@ -33,16 +35,14 @@ const Category = ({ pageContext, data }) => {
       <Header
         headerTitle="鳥に生まれる人ができなかった人へ"
         pageTitle={`${ categoryName }カテゴリの記事` }
-        page={`${pageContext.currentPage}gaprjgpa`}
+        postCount={pageContext.postCount} 
+        currentPage={pageContext.currentPage}
+        pageCount={`${pageContext.pageCount}`}
       />
 
       <main className="main">
 
       <section className="post-list">
-        <h2 className="section-title">
-          {categoryName} カテゴリの記事一覧 { pageContext.currentPage} / {pageContext.numberOfPages}
-        </h2>
-
         { nodes.map((node) => {
 
           const pageTitle = node.frontmatter.title 
@@ -112,8 +112,8 @@ const Category = ({ pageContext, data }) => {
         </div>
 
         <div className="nationLinks">
-          { Array.from({ length: pageContext.numberOfPages }, (_, i) => (
-            <li className="items" key={pageContext.numberOfPages}>
+          { Array.from({ length: pageContext.pageCount }, (_, i) => (
+            <li className="items" key={i}>
               { i + 1 === pageContext.currentPage
                   ? <p className="text">{ i + 1 }</p>
                   : <p className="link">

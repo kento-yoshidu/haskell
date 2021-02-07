@@ -25,6 +25,8 @@ const BlogIndex = ({ data, location, pageContext }) => {
   const siteData = data.siteData;
   const postData = data.postData;
 
+  console.log(location)
+
   return (
     <div>
       <SEO
@@ -32,17 +34,16 @@ const BlogIndex = ({ data, location, pageContext }) => {
       />
 
       <Header
-        headerTitle={ siteData.siteMetadata.title}
+        headerTitle={siteData.siteMetadata.title}
         pageTitle="記事一覧"
-        isTopPage={ true }
+        isTopPage={true}
+        postCount={pageContext.postCount}
+        currentPage={pageContext.currentPage}
+        pageCount={pageContext.pageCount}
       />
 
       <main className="main">
         <section className="post-list">
-          <h2 className="section-title">
-            記事一覧　ページ { pageContext.currentPage } / { pageContext.numberOfPages }
-          </h2>
-
           {postData.nodes.map(post => {
             const title = post.frontmatter.title || post.fields.slug
 
@@ -73,18 +74,16 @@ const BlogIndex = ({ data, location, pageContext }) => {
 
                   <p className="tags">
                     <FontAwesomeIcon icon={faTags} /> <span>Tag</span>
-                    {
-                      post.frontmatter.tags.map(tag => {
-                        return (
-                          <Link 
-                            to={`/tag/${tag}/page/1/`}
-                            key={`${tag}`}
-                          >
-                            #{ tag }
-                          </Link>
-                        )
-                      })
-                    }
+                    {post.frontmatter.tags.map(tag => {
+                      return (
+                        <Link 
+                          to={`/tag/${tag}/page/1/`}
+                          key={`${tag}`}
+                        >
+                          #{ tag }
+                        </Link>
+                      )
+                    })}
                   </p>
                 </div>
               </Link>
@@ -92,53 +91,52 @@ const BlogIndex = ({ data, location, pageContext }) => {
           })}
         </section>
 
-        <ol className="pagination">
+        <div className="pagination">
           <div className="preButton">
             {!pageContext.isFirst && (
-              <p className="prev">
-                <FontAwesomeIcon icon={faChevronCircleLeft} />
-                <Link
-                  to={
-                    pageContext.currentPage === 2
-                      ? `/page/1/`
-                      : `/page/${pageContext.currentPage - 1}/`
-                  }
-                  rel = "prev"
+              <Link
+                className="prev"
+                to={
+                  pageContext.currentPage === 2
+                    ? `/page/1/`
+                    : `/page/${pageContext.currentPage - 1}/`
+                }
+                rel = "prev"
                 >
-                  Prev
-                </Link>
-              </p>
+                <FontAwesomeIcon icon={faChevronCircleLeft} />
+                  <span>Prev</span>
+              </Link>
             )}
           </div>
 
           <div className="nationLinks">
-            {
-              Array.from({ length: pageContext.numberOfPages }, (_, i) => (
-                <li className="items">
-                  {
-                    i + 1 === pageContext.currentPage
-                      ? <p className="text">{ i + 1 }</p>
-                      : <p className="link">
-                          <Link to={`/page/${i + 1}/`}>
-                            { i + 1 }
-                          </Link>
-                        </p>
-                  }
-                </li>
-              ))
-            }
+            {Array.from({ length: pageContext.pageCount }, (_, i) => (
+              <div
+                className="items"
+                key={i}
+              >
+                {i + 1 === pageContext.currentPage
+                  ? <p className="text">{ i + 1 }</p>
+                  : <p className="link">
+                      <Link to={`/page/${i + 1}/`}>
+                        { i + 1 }
+                      </Link>
+                    </p>
+                }
+              </div>
+            ))}
           </div>
 
           {!pageContext.isLast && (
-            <p className="next">
-              <Link to={`/page/${pageContext.currentPage + 1}/`} rel="next">
-                Next
-              </Link>
+            <Link
+              className="next"
+              to={`/page/${pageContext.currentPage + 1}/`}
+            >
+              <span>Next</span>
               <FontAwesomeIcon icon={faChevronCircleRight} />
-            </p>
+            </Link>
           )}
-
-        </ol>
+        </div>
 
         <Links />
       
