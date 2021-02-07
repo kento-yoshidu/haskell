@@ -35,13 +35,13 @@ const BlogIndex = ({ data, location, pageContext }) => {
         headerTitle={ siteData.siteMetadata.title}
         pageTitle="記事一覧"
         isTopPage={ true }
+        postCount={pageContext.postCount}
+        currentPage={pageContext.currentPage}
+        pageCount={pageContext.pageCount}
       />
 
       <main className="main">
         <section className="post-list">
-          <h2 className="section-title">
-            記事一覧　ページ { pageContext.currentPage } / { pageContext.numberOfPages }
-          </h2>
 
           {postData.nodes.map(post => {
             const title = post.frontmatter.title || post.fields.slug
@@ -113,7 +113,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
 
           <div className="nationLinks">
             {
-              Array.from({ length: pageContext.numberOfPages }, (_, i) => (
+              Array.from({ length: pageContext.pageCount }, (_, i) => (
                 <li className="items">
                   {
                     i + 1 === pageContext.currentPage

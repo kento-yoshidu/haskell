@@ -24,6 +24,8 @@ const Category = ({ pageContext, data }) => {
   const { categoryName, categorySlug } = pageContext
   const nodes = data.allMarkdownRemark.nodes
 
+  console.log(pageContext.postCount)
+
   return (
     <div>
       <SEO
@@ -33,6 +35,7 @@ const Category = ({ pageContext, data }) => {
       <Header
         headerTitle="鳥に生まれる人ができなかった人へ"
         pageTitle={`${ categoryName }カテゴリの記事` }
+        postCount={pageContext.postCount} 
         page={`${pageContext.currentPage}gaprjgpa`}
       />
 

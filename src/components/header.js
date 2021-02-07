@@ -10,17 +10,19 @@ config.autoAddCss = false
 
 const Header = ({ headerTitle,
                   pageTitle,
-                  page,
-                  blogPosts,
-                  isTopPage,
+                  currentPage,
+                  postCount,
+                  pageCount,
                   postdate,
                   updatedate,
                   categorySlug,
                   categoryName,
                   tags,
+                  isTopPage,
                   isArticle,
                 }) => {
 
+                  console.log(postCount)
   let h1,
       info,
       tag;
@@ -78,7 +80,8 @@ const Header = ({ headerTitle,
       { h1 }
       <h2 className="page-title">{ pageTitle }</h2>
       { info }
-      <p className="page">{blogPosts}件の記事</p>
+      <p className="page">{postCount}件の記事</p>
+      <p className="page">{currentPage} / {pageCount}</p>
     </header>
   )
 }

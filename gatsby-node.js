@@ -69,26 +69,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   // 記事合計数
-  const blogPosts = allArticles.data.allMarkdownRemark.nodes.length;
+  const postCount = allArticles.data.allMarkdownRemark.nodes.length;
 
-  // 1ページに表示する記事数
-  const blogPostsPerPage = 6;
+  console.log(postCount)
 
   // 何ページ生成することになるかの計算
-  const Pages = Math.ceil(blogPosts / blogPostsPerPage)
+  const pageCount = Math.ceil(postCount / 6)
 
-  Array.from({ length: Pages }).forEach((_, i) => {
+  Array.from({ length: pageCount }).forEach((_, i) => {
     createPage({
       path: i === 0 ? "/page/1/" : `/page/${i + 1}/`,
       component: path.resolve("./src/templates/page.js"),
       context: {
-        numberOfPages: Pages,
-        skip: blogPostsPerPage * i,
-        limit: blogPostsPerPage,
+        postCount: postCount,
+        totalPageCount: pageCount,
+        skip: 6 * i,
+        limit: 6,
         // 現在のページ番号
         currentPage: i + 1,
         isFirst: i + 1 === 1,
-        isLast: i + 1 === Pages,
+        isLast: i + 1 === pageCount,
       }
     })
   })
@@ -121,7 +121,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const blogPosts = category.nodes.length;
 
     // 何ページ生成することになるかの計算
-    const Pages = Math.ceil(blogPosts / blogPostsPerPage)
+    const Pages = Math.ceil(blogPosts / 6)
 
     Array.from({ length: Pages}).forEach((_, i) => {
       createPage({
@@ -131,8 +131,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           numberOfPages: Pages,
           categoryName: categoryName,
           categorySlug: categorySlug,
-          skip: blogPostsPerPage * i,
-          limit: blogPostsPerPage,
+          skip: 6 * i,
+          limit: 6,
           currentPage: i + 1,
           isFirst: i + 1 === 1,
           isLast: i + 1 === Pages,
@@ -162,7 +162,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // タグごとの記事合計数
     const blogPosts = tag.nodes.length;
 
-    const pages = Math.ceil(blogPosts / blogPostsPerPage);
+    const pages = Math.ceil(blogPosts / 6);
 
     Array.from({ length: pages}).forEach((_, i) => {
       createPage({
@@ -172,8 +172,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           blogPosts: blogPosts,
           numberOfPages: pages,
           tag: tag.fieldValue,
-          skip: blogPostsPerPage * i,
-          limit: blogPostsPerPage,
+          skip: 6 * i,
+          limit: 6,
           currentPage: i + 1,
           isFirst: i + 1 === 1,
           isLast: i + 1 === pages,
