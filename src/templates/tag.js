@@ -35,17 +35,14 @@ const Tags = ({ pageContext, data }) => {
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
         pageTitle={`${ tag }タグの記事`}
-        blogPosts={pageContext.blogPosts} 
+        postCount={pageContext.postCount} 
+        currentPage={pageContext.currentPage}
+        pageCount={pageContext.pageCount}
       />
 
 
       <main className="main">
-
         <section className="post-list">
-          <h2 className="section-title">
-            {tag} タグの記事一覧　ページ { pageContext.currentPage } / { pageContext.numberOfPages }
-          </h2>
-
           { nodes.map(node => {
             const title = node.frontmatter.title 
 
@@ -53,6 +50,7 @@ const Tags = ({ pageContext, data }) => {
               <Link
                 key={node.id}
                 className="post-item"
+                to={node.fields.slug}
               >
 
                 <p className="post-title">
@@ -111,8 +109,8 @@ const Tags = ({ pageContext, data }) => {
         </div>
 
         <div className="nationLinks">
-          { Array.from({ length: pageContext.numberOfPages }, (_, i) => (
-            <li className="items" key={pageContext.numberOfPages}>
+          { Array.from({ length: pageContext.pageCount }, (_, i) => (
+            <li className="items" key={pageContext.pageCount}>
               { i + 1 === pageContext.currentPage
                   ? <p className="text">{ i + 1 }</p>
                   : <p className="link">

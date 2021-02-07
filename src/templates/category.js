@@ -36,16 +36,13 @@ const Category = ({ pageContext, data }) => {
         headerTitle="鳥に生まれる人ができなかった人へ"
         pageTitle={`${ categoryName }カテゴリの記事` }
         postCount={pageContext.postCount} 
-        page={`${pageContext.currentPage}gaprjgpa`}
+        currentPage={pageContext.currentPage}
+        pageCount={`${pageContext.pageCount}`}
       />
 
       <main className="main">
 
       <section className="post-list">
-        <h2 className="section-title">
-          {categoryName} カテゴリの記事一覧 { pageContext.currentPage} / {pageContext.numberOfPages}
-        </h2>
-
         { nodes.map((node) => {
 
           const pageTitle = node.frontmatter.title 
@@ -115,8 +112,8 @@ const Category = ({ pageContext, data }) => {
         </div>
 
         <div className="nationLinks">
-          { Array.from({ length: pageContext.numberOfPages }, (_, i) => (
-            <li className="items" key={pageContext.numberOfPages}>
+          { Array.from({ length: pageContext.pageCount }, (_, i) => (
+            <li className="items" key={i}>
               { i + 1 === pageContext.currentPage
                   ? <p className="text">{ i + 1 }</p>
                   : <p className="link">
