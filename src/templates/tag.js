@@ -23,6 +23,8 @@ const Tags = ({ pageContext, data }) => {
 
   const { tag } = pageContext
   const nodes = data.allMarkdownRemark.nodes
+
+  console.log(pageContext)
   
   return (
     <div>
@@ -33,38 +35,45 @@ const Tags = ({ pageContext, data }) => {
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
         pageTitle={`${ tag }タグの記事`}
+        blogPosts={pageContext.blogPosts} 
       />
 
-      <Links />
 
       <main className="main">
 
-      <ol className="post-list">
-        { nodes.map(node => {
-          const title = node.frontmatter.title 
+        <section className="post-list">
+          <h2 className="section-title">
+            {tag} タグの記事一覧　ページ { pageContext.currentPage } / { pageContext.numberOfPages }
+          </h2>
 
-          return (
-            <li
-              key={node.id}
-              className="post-list-item"
-            >
+          { nodes.map(node => {
+            const title = node.frontmatter.title 
 
-              <h2 className="post-title">
-                <Link to={node.fields.slug} itemProp="url">
-                  <span itemProp="headline">{ title }</span>
-                </Link>
-              </h2>
+            return (
+              <Link
+                key={node.id}
+                className="post-item"
+              >
 
-              <div className="info">
-                <p className="category">
-                  <FontAwesomeIcon icon={faFolder} />
-                  <Link to={`/category/${node.frontmatter.categorySlug}/page/1/`}>{node.frontmatter.categoryName}</Link>
+                <p className="post-title">
+                  <Link to={node.fields.slug} itemProp="url">
+                    <span itemProp="headline">{ title }</span>
+                  </Link>
                 </p>
-                <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
-                <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
-                <p className="tags"><FontAwesomeIcon icon={faTags} />
-                  {
-                    node.frontmatter.tags.map(tag => {
+
+                <div className="info">
+                  <div className="date">
+                    <p className="post"><FontAwesomeIcon icon={faClock} />{node.frontmatter.postdate}</p>
+                    <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
+                  </div>
+
+                  <p className="category">
+                    <FontAwesomeIcon icon={faFolder} /> <span>Category</span>
+                    <Link to={`/category/${node.frontmatter.categorySlug}/page/1/`}>{node.frontmatter.categoryName}</Link>
+                  </p>
+
+                  <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>Tag</span>
+                    { node.frontmatter.tags.map(tag => {
                       return (
                         <Link
                           to={`/tag/${tag}/page/1/`}
@@ -73,15 +82,14 @@ const Tags = ({ pageContext, data }) => {
                           #{ tag }
                         </Link>
                       )
-                    })
-                  }
-                </p>
+                    }) }
+                  </p>
               </div>
-            </li>
+            </Link>
             )
           })
         }
-      </ol>
+      </section>
 
       <ol className="pagination">
         <div className="preButton">
@@ -126,6 +134,9 @@ const Tags = ({ pageContext, data }) => {
           </p>
         )}
       </ol>
+
+      <Links />
+
       </main>
 
       <Footer />
