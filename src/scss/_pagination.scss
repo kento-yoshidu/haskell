@@ -18,26 +18,26 @@
       list-style: none;
       margin: 0 10px;
 
-      .text {
-        font-size: 2.5rem;
-        margin: 0 -5px;
+      .link a {
+        padding: .4rem 1.3rem;
       }
 
-      .link a,
       .text {
-        padding: .4rem 1.3rem;
+        margin: 0 -5px;
+        background-color: $main-color;
+        padding: 1rem 1.3rem;
+        color: #fff;
       }
 
       .link {
         a {
-          background-color: $main-color;
+          background-color: #888;
           color: #fff;
           text-decoration: none;
         }
         &:hover {
           a {
-            background-color: #fff;
-            color: $main-color;
+            background-color: $main-color;
           }
         }
       }

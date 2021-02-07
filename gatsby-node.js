@@ -169,6 +169,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: 1 === 0 ? `/tag/${tag.fieldValue}/page/1` : `/tag/${tag.fieldValue}/page/${i + 1}`,
         component: path.resolve(`./src/templates/tag.js`),
         context: {
+          blogPosts: blogPosts,
           numberOfPages: pages,
           tag: tag.fieldValue,
           skip: blogPostsPerPage * i,

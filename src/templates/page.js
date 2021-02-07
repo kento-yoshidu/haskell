@@ -37,34 +37,42 @@ const BlogIndex = ({ data, location, pageContext }) => {
         isTopPage={ true }
       />
 
-      <Links />
-
       <main className="main">
-        <ul className="post-list">
+        <section className="post-list">
+          <h2 className="section-title">
+            記事一覧　ページ { pageContext.currentPage } / { pageContext.numberOfPages }
+          </h2>
+
           {postData.nodes.map(post => {
             const title = post.frontmatter.title || post.fields.slug
 
             return (
-              <li key={post.id}
-                className="post-list-item"
+              <Link key={post.id}
+                className="post-item"
                 itemScope
                 itemType="http://schema.org/Article"
+                to={post.fields.slug}
               >
-                <h2 className="post-title">
+                <p className="post-title">
                   <Link to={post.fields.slug} itemProp="url">
                     <span itemProp="headline">{title}</span>
                   </Link>
-                </h2>
+                </p>
 
                 <div className="info">
+                  <div className="date">
+                    <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
+                    <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
+                  </div>
+
                   <p className="category">
-                    <FontAwesomeIcon icon={faFolder} />
+                    <FontAwesomeIcon icon={faFolder} /> <span>Category</span>
                     <Link to={`/category/${post.frontmatter.categorySlug}/page/1/`}>
                     {post.frontmatter.categoryName}</Link>
                   </p>
-                  <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
-                  <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
-                  <p className="tags"><FontAwesomeIcon icon={faTags} />
+
+                  <p className="tags">
+                    <FontAwesomeIcon icon={faTags} /> <span>Tag</span>
                     {
                       post.frontmatter.tags.map(tag => {
                         return (
@@ -79,10 +87,10 @@ const BlogIndex = ({ data, location, pageContext }) => {
                     }
                   </p>
                 </div>
-              </li>
+              </Link>
             )
           })}
-        </ul>
+        </section>
 
         <ol className="pagination">
           <div className="preButton">
@@ -131,6 +139,9 @@ const BlogIndex = ({ data, location, pageContext }) => {
           )}
 
         </ol>
+
+        <Links />
+      
         </main>
       <Footer />
     </div>

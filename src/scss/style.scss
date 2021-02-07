@@ -15,10 +15,6 @@ html {
 a {
   color: #666;
   transition: .2s;
-
-  &:hover {
-    color: $main-color;
-  }
 }
 
 .header {
@@ -39,7 +35,7 @@ a {
   }
 
   h1 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 600;
     letter-spacing: 3px;
 
@@ -53,7 +49,7 @@ a {
 
   .page-title {
     margin: 6vh 0;
-    font-size: 4rem;
+    font-size: 3.5rem;
     letter-spacing: 4px;
   }
 
@@ -80,8 +76,11 @@ a {
           }
         }
       }
-
     }
+  }
+
+  .page {
+    font-size: 3rem;
   }
 }
 
@@ -174,45 +173,74 @@ a {
   margin-top: 50px;
   list-style: none;
 
-  .post-list-item {
-    margin-bottom: 55px;
+  .section-title {
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    margin-left: 40px;
+  }
+
+  .post-item {
+    display: block;
+    padding: 30px 50px 30px 40px;
+    width: 75%;
+    border-bottom: 1px solid #bbb;
+    text-decoration: none;
+
+    &:first-of-type {
+      border-top: 1px solid #bbb;
+    }
+
+    &:hover {
+      background-color: rgba(200,200,200, .3);
+    }
 
     .post-title {
-      margin-bottom: 7px;
+      margin-bottom: 15px;
 
       a {
         color: #444;
-        text-decoration: none;
         font-size: 3rem;
-        font-weight: 900;
-        transition: .5s;
+        font-weight: 500;
         line-height: 1.5;
 
         &:hover {
-          color: #BD3F32;
+          color: $main-color;
         }
+
       }
     }
 
     .info {
-      display: flex;
+      .date {
+        display: flex;
+        margin-bottom: 10px;
+
+        .post,
+        .update {
+          font-size: 1.7rem;
+          padding: 3px 7px 3px 0px;
+          margin-right: 15px;
+          text-decoration: none;
+        }
+        svg {
+          margin-right: 5px;
+        }
+      }
 
       .category,
-      .post,
-      .update,
       .tags {
         font-size: 1.7rem;
         padding: 3px 7px 3px 0px;
-        margin-right: 15px;
-
-        svg {
-          margin-right: 5px;
+        margin-bottom: 15px;
+        text-decoration: none;
+        span {
+          margin-right: 10px;
         }
 
         a {
           color: #444;
           margin-right: 9px;
-
           &:hover {
             color: $main-color;
           }
@@ -224,11 +252,13 @@ a {
 
 @media screen and (max-width: 768px) {
   .post-list {
-    width: 85%;
+    width: 100%;
     margin: 0 auto;
 
-    .post-list-item {
+    .post-item {
       margin-bottom: 20px;
+      width: 90%;
+      padding: 10px 20px;
       .post-title {
         a {
           font-size: 2rem;
@@ -239,13 +269,26 @@ a {
         flex-direction: column;
         margin: 0;
 
+        .date {
+          .post,
+          .update {
+            font-size: 1.35rem;
+            padding: 0;
+            margin-bottom: 5px;
+          }
+        }
+
         .category,
-        .post,
-        .update,
         .tags {
+          span {
+            margin-right: 10px;
+          }
           font-size: 1.35rem;
           padding: 0;
           margin-bottom: 5px;
+          a {
+            margin: 0 5px;
+          }
         }
       }
     }
@@ -272,11 +315,6 @@ a {
       transition: .3s;;
       border: 2px solid #888;
       border-radius: 3px;
-
-      &:hover {
-        color: $main-color;
-        border-color: $main-color;
-      }
     }
   }
 }

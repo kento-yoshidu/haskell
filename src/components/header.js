@@ -10,6 +10,8 @@ config.autoAddCss = false
 
 const Header = ({ headerTitle,
                   pageTitle,
+                  page,
+                  blogPosts,
                   isTopPage,
                   postdate,
                   updatedate,
@@ -68,7 +70,7 @@ const Header = ({ headerTitle,
         </p>
       </div>
     </div>
-    )
+  )
   }
 
   return (
@@ -76,6 +78,7 @@ const Header = ({ headerTitle,
       { h1 }
       <h2 className="page-title">{ pageTitle }</h2>
       { info }
+      <p className="page">{blogPosts}件の記事</p>
     </header>
   )
 }
