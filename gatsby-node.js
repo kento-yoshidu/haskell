@@ -71,8 +71,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // 記事合計数
   const postCount = allArticles.data.allMarkdownRemark.nodes.length;
 
-  console.log(postCount)
-
   // 何ページ生成することになるかの計算
   const pageCount = Math.ceil(postCount / 6)
 
@@ -82,6 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve("./src/templates/page.js"),
       context: {
         postCount: postCount,
+        pageCount: pageCount,
         totalPageCount: pageCount,
         skip: 6 * i,
         limit: 6,
@@ -118,24 +117,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const categoryName = category.nodes[0].frontmatter.categoryName;
 
     // カテゴリごとの記事合計数
-    const blogPosts = category.nodes.length;
+    const postCount = category.nodes.length;
 
     // 何ページ生成することになるかの計算
-    const Pages = Math.ceil(blogPosts / 6)
+    const pageCount = Math.ceil(postCount / 6)
 
-    Array.from({ length: Pages}).forEach((_, i) => {
+    Array.from({ length: pageCount }).forEach((_, i) => {
       createPage({
         path: 1 === 0 ? `/category/${category.fieldValue}/page/1/` : `/category/${category.fieldValue}/page/${i + 1}/`,
         component: path.resolve("./src/templates/category.js"),
         context: {
-          numberOfPages: Pages,
+          postCount: postCount,
+          pageCount: pageCount,
           categoryName: categoryName,
           categorySlug: categorySlug,
           skip: 6 * i,
           limit: 6,
           currentPage: i + 1,
           isFirst: i + 1 === 1,
-          isLast: i + 1 === Pages,
+          isLast: i + 1 === pageCount,
         }
       })
     })
@@ -160,23 +160,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   tag.data.allMarkdownRemark.group.map(tag => {
 
     // タグごとの記事合計数
-    const blogPosts = tag.nodes.length;
+    const postCount = tag.nodes.length;
 
-    const pages = Math.ceil(blogPosts / 6);
+    const pageCount = Math.ceil(postCount / 6);
 
-    Array.from({ length: pages}).forEach((_, i) => {
+    Array.from({ length: pageCount }).forEach((_, i) => {
       createPage({
         path: 1 === 0 ? `/tag/${tag.fieldValue}/page/1` : `/tag/${tag.fieldValue}/page/${i + 1}`,
         component: path.resolve(`./src/templates/tag.js`),
         context: {
-          blogPosts: blogPosts,
-          numberOfPages: pages,
+          postCount: postCount,
+          pageCount: pageCount,
           tag: tag.fieldValue,
           skip: 6 * i,
           limit: 6,
           currentPage: i + 1,
           isFirst: i + 1 === 1,
-          isLast: i + 1 === pages,
+          isLast: i + 1 === pageCount,
         }
       })
     })
