@@ -24,8 +24,6 @@ const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   const nodes = data.allMarkdownRemark.nodes
 
-  console.log(pageContext)
-  
   return (
     <div>
       <SEO
@@ -47,7 +45,7 @@ const Tags = ({ pageContext, data }) => {
             const title = node.frontmatter.title 
 
             return (
-              <Link
+              <div
                 key={node.id}
                 className="post-item"
                 to={node.fields.slug}
@@ -83,7 +81,7 @@ const Tags = ({ pageContext, data }) => {
                     }) }
                   </p>
               </div>
-            </Link>
+            </div>
             )
           })
         }
