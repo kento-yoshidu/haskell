@@ -48,7 +48,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
             const title = post.frontmatter.title || post.fields.slug
 
             return (
-              <Link key={post.id}
+              <div key={post.id}
                 className="post-item"
                 itemScope
                 itemType="http://schema.org/Article"
@@ -86,7 +86,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
                     })}
                   </p>
                 </div>
-              </Link>
+              </div>
             )
           })}
         </section>
