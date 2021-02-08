@@ -24,8 +24,6 @@ const Category = ({ pageContext, data }) => {
   const { categoryName, categorySlug } = pageContext
   const nodes = data.allMarkdownRemark.nodes
 
-  console.log(pageContext.postCount)
-
   return (
     <div>
       <SEO
@@ -48,12 +46,10 @@ const Category = ({ pageContext, data }) => {
           const pageTitle = node.frontmatter.title 
 
           return (
-            <Link
+            <div
               key={node.id}
               className="post-item"
-              to={node.fields.slug}
             >
-
               <p className="post-title">
                 <Link to={node.fields.slug} itemProp="url">
                   <span itemProp="headline">{ pageTitle }</span>
@@ -86,7 +82,7 @@ const Category = ({ pageContext, data }) => {
                   }
                 </p>
               </div>
-            </Link>
+            </div>
             )
           })
         }

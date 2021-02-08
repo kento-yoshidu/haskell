@@ -20,12 +20,10 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
-const BlogIndex = ({ data, location, pageContext }) => {
+const BlogIndex = ({ data, pageContext }) => {
 
   const siteData = data.siteData;
   const postData = data.postData;
-
-  console.log(location)
 
   return (
     <div>
@@ -52,7 +50,6 @@ const BlogIndex = ({ data, location, pageContext }) => {
                 className="post-item"
                 itemScope
                 itemType="http://schema.org/Article"
-                to={post.fields.slug}
               >
                 <p className="post-title">
                   <Link to={post.fields.slug} itemProp="url">
