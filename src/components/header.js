@@ -2,7 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
+import { faHome, faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
+import { faGithub} from "@fortawesome/free-brands-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -41,12 +42,13 @@ const Header = ({ headerTitle,
 
   if(isArticle) {
 
-    tag = tags.map(tag => {
+    /*tag = tags.map(tag => {
         return (
           <Link to={`/tag/${ tag }/page/1/`}>{tag}</Link>
         )
       }
     )
+    */
 
     info = (
       <div className="info">
@@ -76,8 +78,8 @@ const Header = ({ headerTitle,
   } else {
     countInfo = (
       <div className="countInfo">
-        <p className="page">{postCount}件の記事</p>
-        <p className="page">{currentPage} / {pageCount}</p>
+        <p className="page"><span>{postCount}</span> 件の記事</p>
+        <p className="page"><span>{pageCount}</span> ページ中 / <span>{currentPage}</span> ページ目</p>
       </div>
     )
   }
@@ -85,7 +87,24 @@ const Header = ({ headerTitle,
   return (
     <header className="header">
       { h1 }
-      <h2 className="page-title">{ pageTitle }</h2>
+      <div className="links">
+        <Link
+          to={"https://www.toriwatari.work/"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faHome} />
+        </Link>
+        <Link
+          to={"https://github.com/kento-yoshidu"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faGithub} />
+        </Link>
+
+      </div>
+      <h2 className="page-title">
+        { pageTitle }
+      </h2>
       { info }
       { countInfo }
     </header>

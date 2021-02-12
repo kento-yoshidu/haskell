@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `鳥に生まれることができなかった人へ`,
-    siteUrl: `https://potsunen-blog.netlify.app/`,
+    siteUrl: `https://blog.toriwatari.work`,
     author: {
       name: `Kento Yoshizu`,
       summary: `Front-end engineer in Shiga, Japan`,
