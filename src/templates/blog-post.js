@@ -2,7 +2,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
-//import Links from "../components/links"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
@@ -10,7 +9,7 @@ import FixHeader from "../components/fixHeader"
 import "prismjs/themes/prism-tomorrow.css"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;
   const { previous, next } = data;
   const { tableOfContents } = data.markdownRemark;
@@ -26,12 +25,14 @@ const BlogPostTemplate = ({ data, location }) => {
 
       <Header
         headerTitle={ data.site.siteMetadata.title }
+        /*
         pageTitle={ post.frontmatter.title }
         postdate={ post.frontmatter.postdate}
         updatedate={ post.frontmatter.updatedate }
         categorySlug={ post.frontmatter.categorySlug}
         categoryName={ post.frontmatter.categoryName}
         tags={ post.frontmatter.tags }
+        */
         isArticle={ true }
       />
 
@@ -43,7 +44,6 @@ const BlogPostTemplate = ({ data, location }) => {
 
         <main
           dangerouslySetInnerHTML={{ __html: post.html }}
-          //itemProp="articleBody"
           className="main article"
         />
       </div>
