@@ -3,9 +3,7 @@
 @import "./fixHeader";
 @import "./article";
 @import "./pagination";
-
-$main-color: #BD3F32;
-$main-color2: #CB356B;
+@import "./variables";
 
 html {
   color: #444;
