@@ -107,21 +107,31 @@ const BlogIndex = ({ data, pageContext }) => {
           </div>
 
           <div className="nationLinks">
-            {Array.from({ length: pageContext.pageCount }, (_, i) => (
-              <div
-                className="items"
-                key={i}
-              >
-                {i + 1 === pageContext.currentPage
-                  ? <p className="text">{ i + 1 }</p>
-                  : <p className="link">
-                      <Link to={`/page/${i + 1}/`}>
-                        { i + 1 }
-                      </Link>
-                    </p>
+            { Array.from({ length: pageContext.pageCount }, (_, i) => {
+              if (pageContext.pageCount > 4) {
+                if (i === 1) {
+                  return (
+                    <p>いっぱい！</p> 
+                  )
                 }
-              </div>
-            ))}
+              } else {
+                return (
+                  <div
+                    className="items"
+                    key={i}
+                  >
+                    {i + 1 === pageContext.currentPage
+                      ? <p className="text">{ i + 1 }</p>
+                      : <p className="link">
+                          <Link to={`/page/${i + 1}/`}>
+                            { i + 1 }
+                          </Link>
+                        </p>
+                    }
+                  </div>
+                )
+              }
+            })}
           </div>
 
           {!pageContext.isLast && (
