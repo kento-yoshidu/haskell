@@ -1,19 +1,7 @@
 @import "./variables";
 
 .header {
-  /*
-  background: #E44D26;  /* fallback for old browsers 
-  background: -webkit-linear-gradient(to right, #F16529, #E44D26);  /* Chrome 10-25, Safari 5.1-6 
-  background: linear-gradient(to right, #F16529, #E44D26); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
-  */
-  //height: 50vh;
   margin-top: 8vh;
-  /*
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  */
   text-align: center;
   color: #444;
 
@@ -40,7 +28,6 @@
     font-weight: 500;
     letter-spacing: 7px;
     background: linear-gradient(90deg, #ff0000 40%, #ffd800 55%);
-    color: #444;
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255,255,255,0.0);
     color: #ff0000;
