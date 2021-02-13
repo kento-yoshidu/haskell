@@ -320,7 +320,7 @@ a {
 .gatsby-resp-image-wrapper {
   margin-left: 1rem !important;
   margin-bottom: 50px;
-  width: 80%;
+  max-width: 90%;
   img {
     height: auto;
     box-shadow: 0 0 5px 5px #eee !important;
@@ -343,14 +343,15 @@ a {
   font-size: 1.6rem;
 }
 
+// 協調行
 .gatsby-highlight-code-line {
-  background-color: #feb;
+  background-color: #066;
   display: block;
   margin-right: -1em;
   margin-left: -1em;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+  border-left: 0.25em solid #066;
 }
 
 .gatsby-highlight pre[class*="language-"] {
