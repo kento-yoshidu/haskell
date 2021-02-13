@@ -4,7 +4,7 @@ postdate: "2021-02-05"
 updatedate: "2021-02-05"
 categoryName: "日記"
 categorySlug: diary
-description: " "
+description: "静的サイトジェネレータのGatsbyを使用してブログを立ち上げました。その経緯と使ってみた所感を記したいと思います。"
 tags: ["日記", "Gatsby"]
 ---
 
