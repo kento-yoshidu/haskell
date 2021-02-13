@@ -73,7 +73,7 @@ const Category = ({ pageContext, data }) => {
                       return (
                         <Link
                           to={`/tag/${tag}/page/1/`}
-                          key={node.key}
+                          key={`${node.key}${tag}`}
                         >
                           #{ tag }
                         </Link>

@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Links from "../components/links"
 import Footer from "../components/footer"
 
-const Categorys = ({ data, location }) => {
+const Categorys = ({ data }) => {
 
   const categories = data.allMarkdownRemark.group
 
@@ -19,10 +19,9 @@ const Categorys = ({ data, location }) => {
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
         pageTitle="カテゴリ一覧"
-        isTopPage={ false }
+        isArticle={ true }
       />
 
-      <Links />
 
       <main className="main categoriesMain">
         <ul className="categoryList">
@@ -37,6 +36,8 @@ const Categorys = ({ data, location }) => {
           })}
         </ul>
       </main>
+
+      <Links />
 
       <Footer />
     </div>
