@@ -112,7 +112,10 @@ const Tags = ({ pageContext, data }) => {
               { i + 1 === pageContext.currentPage
                   ? <p className="text">{ i + 1 }</p>
                   : <p className="link">
-                      <Link to={`/tag/${tag}/page/${i + 1}/`}>
+                      <Link
+                        to={`/tag/${tag}/page/${i + 1}/`}
+                        key={i}
+                      >
                         { i + 1 }
                       </Link>
                     </p>

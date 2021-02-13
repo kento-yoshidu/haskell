@@ -19,10 +19,9 @@ const Tags = ({ data, location }) => {
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
         pageTitle="タグ一覧"
-        isTopPage={ false }
+        isArticle={ true }
       />
 
-      <Links />
 
       <main className="main tagsMain">
         <ul className="tagList">
@@ -37,6 +36,8 @@ const Tags = ({ data, location }) => {
           })}
         </ul>
       </main>
+
+      <Links />
 
       <Footer />
     </div>

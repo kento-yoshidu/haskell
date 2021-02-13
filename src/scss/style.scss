@@ -54,6 +54,12 @@ a {
   margin: 2vh auto 4vh;
 }
 
+.main.categoriesMain,
+.main.tagsMain {
+  margin-top: 100px;
+  width: 60vw;
+}
+
 @media screen and (max-width: 768px) {
   .main,
   .main.article{

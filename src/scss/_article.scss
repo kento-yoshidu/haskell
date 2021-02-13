@@ -1,7 +1,7 @@
 @import "./variables";
 
 .article-info {
-  margin-top: 150px;
+  margin-top: 100px;
   margin-left: 15vw;
   width: 50%;
 
@@ -94,27 +94,27 @@
 
 .table-of-content {
   margin-top: 80px;
-  width: 25%;
-  margin-right: 6%;
+  width: 30%;
+  margin-right: 5vw;
   ul {
     list-style: none;
     position: -webkit-sticky;
     position: sticky;
-    top: 7vh;
+    top: 9vh;
     li {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       p {
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         a {
-          font-size: 1.6rem;
+          font-size: 1.7rem;
         }
       }
       ul {
         li {
-          margin-bottom: 10px;
-          margin-left: 14px;
+          margin-bottom: 14px;
+          margin-left: 10px;
           a {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
           }
         }
       }
@@ -129,7 +129,9 @@
 }
 
 .main.article {
+  width: 60%;
   margin-left: 15vw;
+  margin-right: 5vw;
   padding-top: 0;
   font-family:
     -apple-system,
