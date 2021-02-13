@@ -24,6 +24,7 @@ const BlogIndex = ({ data, pageContext }) => {
 
   const siteData = data.siteData;
   const postData = data.postData;
+  const array = [];
 
   return (
     <div>
@@ -108,13 +109,46 @@ const BlogIndex = ({ data, pageContext }) => {
 
           <div className="nationLinks">
             { Array.from({ length: pageContext.pageCount }, (_, i) => {
-              if (pageContext.pageCount > 4) {
-                if (i === 1) {
+              if (pageContext.pageCount > 6) {
+                // パージ数がたくさんある時
+
+                if(pageContext.currentPage < 5) {
+                  // 現在のページが1~4だった場合、
+                  // 1~6と、最後のページを表示させる
+
+                  if (i < 6 || i === pageContext.pageCount -1) {
+
+                    array.push(i + 1)
+                    return (
+                      <div className="items">
+
+                        {
+                        /*
+                        i + 1 < 6 && i + 1 === pageContext.currentPage
+                          ? <p className="text">{pageContext.currentPage}</p>
+                          : <p>
+                            <Link to={`/page/${i + 1}/`}>
+                              { i + 1 }
+                              </Link>
+                            </p>
+                            */
+                        }
+                      </div>
+                    )
+                  }
+
+                }
+                
+                if (pageContext.currentPage > 4 && pageContext.currentPage < pageContext.pageCount - 4) {
                   return (
-                    <p>いっぱい！</p> 
+                    <p>真ん中らへん</p>
                   )
                 }
+
+
+
               } else {
+                // ページ数がそんなにないとき
                 return (
                   <div
                     className="items"
