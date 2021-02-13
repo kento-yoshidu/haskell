@@ -14,18 +14,11 @@ const Header = ({ headerTitle,
                   currentPage,
                   postCount,
                   pageCount,
-                  postdate,
-                  updatedate,
-                  categorySlug,
-                  categoryName,
-                  tags,
                   isTopPage,
-                  isArticle,
+                  isArticle
                 }) => {
 
   let h1,
-      info,
-      tag,
       countInfo;
 
   if (isTopPage) {
@@ -41,48 +34,12 @@ const Header = ({ headerTitle,
   }
 
   if(!isArticle) {
-
     countInfo = (
       <div className="countInfo">
         <p className="page"><span>{postCount}</span> 件の記事</p>
         <p className="page"><span>{pageCount}</span> ページ中 / <span>{currentPage}</span> ページ目</p>
       </div>
     )
-    /*tag = tags.map(tag => {
-        return (
-          <Link to={`/tag/${ tag }/page/1/`}>{tag}</Link>
-        )
-      }
-    )
-
-    info = (
-      <div className="info">
-        <div>
-          <p>
-            <FontAwesomeIcon icon={faClock} />{ postdate }
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faUndo} />{ updatedate }
-          </p>
-        </div>
-
-        <div>
-          <p>
-            <FontAwesomeIcon icon={ faFolder } />
-            <Link to={`/category/${ categorySlug }/page/1/`}>
-              { categoryName }
-            </Link>
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faTags} />
-            { tag }
-          </p>
-        </div>
-      </div>
-    )
-    */
-  } else {
-    /* 記事ページの時は何も表示しない */
   }
 
   return (
@@ -110,6 +67,7 @@ const Header = ({ headerTitle,
       { countInfo }
     </header>
   )
-}
+  }
+
 
 export default Header

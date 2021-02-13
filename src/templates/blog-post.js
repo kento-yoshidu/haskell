@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
 import SEO from "../components/seo"
+import ArticleInfo from "../components/articleInfo"
 import Footer from "../components/footer"
 import FixHeader from "../components/fixHeader"
 
@@ -21,19 +22,19 @@ const BlogPostTemplate = ({ data }) => {
         description={post.frontmatter.description || post.excerpt}
       />
 
-      <FixHeader />
-
       <Header
         headerTitle={ data.site.siteMetadata.title }
-        /*
+        isArticle={ true }
+      />
+
+      <ArticleInfo
+        categorySlug={ post.frontmatter.categorySlug}
+        categoryName={ post.frontmatter.categoryName}
         pageTitle={ post.frontmatter.title }
         postdate={ post.frontmatter.postdate}
         updatedate={ post.frontmatter.updatedate }
-        categorySlug={ post.frontmatter.categorySlug}
-        categoryName={ post.frontmatter.categoryName}
+        description={ post.frontmatter.description }
         tags={ post.frontmatter.tags }
-        */
-        isArticle={ true }
       />
 
       <div className="wrapper">
