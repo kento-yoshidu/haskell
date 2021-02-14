@@ -75,18 +75,19 @@ const Pagination = ({
                         </p>
                     }
                   </div> 
-              )} else if(i === pageCount - 1) {
-                return (
-                  <div className="items">
-                    <p className="link">
-                      <Link to={`/page/${pageCount}/`}>
-                        { pageCount}
-                      </Link>
-                    </p>
-                  </div>
-                )
-              }
+              )} 
             })}
+
+            <div>…</div>
+
+            <div className="items">
+              <p className="link">
+                <Link to={`/page/${pageCount}`}>
+                  {pageCount}
+                </Link>
+              </p>
+            </div>
+
           </div>
       } else if (currentPage  > pageCount - 3) {
         // 最後の方のページだった場合、最初と最後から5ページ分を表示
