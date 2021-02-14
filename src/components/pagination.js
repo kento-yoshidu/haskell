@@ -8,7 +8,7 @@ import {
         } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
-import { config } from "@fortawesome/fontawesome-svg-core"
+import { config, counter } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
 const Pagination = ({
@@ -38,7 +38,7 @@ const Pagination = ({
             <span>Prev</span>
         </Link>
       )}
-    </div>
+    </div>;
 
   nextButton =
     <div className="preButton">
@@ -51,26 +51,71 @@ const Pagination = ({
           <FontAwesomeIcon icon={faChevronCircleRight} />
         </Link>
       )}
-    </div>
+    </div>;
 
-  nationLinks =
-    <div className="nationLinks">
-      {Array.from({ length: pageCount }, (_, i) => (
-        <div
-          className="items"
-          key={i}
-        >
-          {i + 1 === currentPage
-            ? <p className="text">{ i + 1 }</p>
-            : <p className="link">
-                <Link to={`/page/${i + 1}/`}>
-                  { i + 1 }
-                </Link>
-              </p>
-          }
+    if (pageCount > 10) {
+
+      if (currentPage < 5) {
+        // 1~4にいるときは、1~5と最後のページを表示
+        nationLinks =
+          <div className="nationLinks">
+            {Array.from({ length: pageCount }, (_, i) => {
+              if (i < 5) {
+                return (
+                  <div
+                    className="items"
+                  >
+                    {i + 1 === currentPage
+                      ? <p className="text">{ i + 1 }</p>
+                      : <p className="link">
+                          <Link to={`/page/${i + 1}/`}>
+                            { i + 1 }
+                          </Link>
+                        </p>
+                    }
+                  </div> 
+              )} else if(i === pageCount - 1) {
+                return (
+                  <div className="items">
+                    <p className="link">
+                      <span>... </span>
+                      <Link to={`/page/${pageCount}/`}>
+                        { pageCount}
+                      </Link>
+                    </p>
+                  </div>
+
+                )
+              }
+            })}
+          </div>
+      } else if (currentPage  > pageCount - 4) {
+        nationLinks = <div>何なか</div>
+      } else {
+
+      }
+
+    } else {
+      nationLinks =
+        <div className="nationLinks">
+          {Array.from({ length: pageCount }, (_, i) => (
+            <div
+              className="items"
+              key={i}
+            >
+              {i + 1 === currentPage
+                ? <p className="text">{ i + 1 }</p>
+                : <p className="link">
+                    <Link to={`/page/${i + 1}/`}>
+                      { i + 1 }
+                    </Link>
+                  </p>
+              }
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+
+    }
 
   return (
     <div className="pagination">

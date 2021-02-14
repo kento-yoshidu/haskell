@@ -23,7 +23,6 @@ const BlogIndex = ({ data, pageContext }) => {
 
   const siteData = data.siteData;
   const postData = data.postData;
-  const array = [];
 
   return (
     <div>
