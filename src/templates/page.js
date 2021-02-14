@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Header from "../components/header"
+import Pagination from "../components/pagination"
 import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
@@ -12,8 +13,6 @@ import {  faFolder,
           faClock,
           faUndo,
           faTags,
-          faChevronCircleLeft,
-          faChevronCircleRight
         } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -89,99 +88,17 @@ const BlogIndex = ({ data, pageContext }) => {
           })}
         </section>
 
-        <div className="pagination">
-          <div className="preButton">
-            {!pageContext.isFirst && (
-              <Link
-                className="prev"
-                to={
-                  pageContext.currentPage === 2
-                    ? `/page/1/`
-                    : `/page/${pageContext.currentPage - 1}/`
-                }
-                rel = "prev"
-                >
-                <FontAwesomeIcon icon={faChevronCircleLeft} />
-                  <span>Prev</span>
-              </Link>
-            )}
-          </div>
-
-          <div className="nationLinks">
-            { Array.from({ length: pageContext.pageCount }, (_, i) => {
-              if (pageContext.pageCount > 6) {
-                // パージ数がたくさんある時
-
-                if(pageContext.currentPage < 5) {
-                  // 現在のページが1~4だった場合、
-                  // 1~6と、最後のページを表示させる
-
-                  if (i < 6 || i === pageContext.pageCount -1) {
-
-                    array.push(i + 1)
-                    return (
-                      <div className="items">
-
-                        {
-                        /*
-                        i + 1 < 6 && i + 1 === pageContext.currentPage
-                          ? <p className="text">{pageContext.currentPage}</p>
-                          : <p>
-                            <Link to={`/page/${i + 1}/`}>
-                              { i + 1 }
-                              </Link>
-                            </p>
-                            */
-                        }
-                      </div>
-                    )
-                  }
-
-                }
-                
-                if (pageContext.currentPage > 4 && pageContext.currentPage < pageContext.pageCount - 4) {
-                  return (
-                    <p>真ん中らへん</p>
-                  )
-                }
-
-
-
-              } else {
-                // ページ数がそんなにないとき
-                return (
-                  <div
-                    className="items"
-                    key={i}
-                  >
-                    {i + 1 === pageContext.currentPage
-                      ? <p className="text">{ i + 1 }</p>
-                      : <p className="link">
-                          <Link to={`/page/${i + 1}/`}>
-                            { i + 1 }
-                          </Link>
-                        </p>
-                    }
-                  </div>
-                )
-              }
-            })}
-          </div>
-
-          {!pageContext.isLast && (
-            <Link
-              className="next"
-              to={`/page/${pageContext.currentPage + 1}/`}
-            >
-              <span>Next</span>
-              <FontAwesomeIcon icon={faChevronCircleRight} />
-            </Link>
-          )}
-        </div>
+        <Pagination
+          isFirst={pageContext.isFirst}
+          isLast={pageContext.isLast}
+          pageCount={pageContext.pageCount}
+          currentPage={pageContext.currentPage}
+        />
 
         <Links />
-      
+
         </main>
+
       <Footer />
     </div>
   )
