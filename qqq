@@ -1,0 +1,405 @@
+*   [33m4ce631f[m[33m ([m[1;36mHEAD -> [m[1;32m122_Pagination[m[33m)[m Merge branch 'develop' into 122_Pagination
+[31m|[m[32m\[m  
+[31m|[m *   [33mfad9c40[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m Merge branch '129_PaginationComponent' into develop
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m * [33ma473e64[m[33m ([m[1;32m129_PaginationComponent[m[33m)[m #129 ページネーションのコンポーネント化
+[31m|[m [33m|[m * [33mf0ff898[m #129 WIP Create pagination.js
+[31m|[m [33m|[m[33m/[m  
+* [33m|[m [33mb955f9d[m WIP
+* [33m|[m [33mcc2e430[m #122 WIP
+[33m|[m[33m/[m  
+* [33mb0d39ab[m Update Article
+* [33m39f25ff[m Develop
+*   [33mcdcaaee[m Merge branch '135_FixHeader' into develop
+[35m|[m[36m\[m  
+[35m|[m * [33mfd472c4[m[33m ([m[1;32m135_FixHeader[m[33m)[m #135 WIP Fix header.js articleInfo.js
+[35m|[m * [33m0503ba9[m #135 WIP Fix header.js
+[35m|[m[35m/[m  
+*   [33m47c93df[m Merge branch '135_FixHeader' into develop
+[1;31m|[m[1;32m\[m  
+[1;31m|[m * [33me3ce75f[m #135 Update Header
+[1;31m|[m[1;31m/[m  
+* [33md727a72[m Update Article
+*   [33mba86052[m Merge branch '130_Fix_Rendering' into develop
+[1;33m|[m[1;34m\[m  
+[1;33m|[m * [33m1c59949[m[33m ([m[1;32m130_Fix_Rendering[m[33m)[m Fix #130
+[1;33m|[m[1;33m/[m  
+*   [33mf57280c[m Merge branch '130_Fix_Rendering' into develop
+[1;35m|[m[1;36m\[m  
+[1;35m|[m * [33m675a68b[m Fix #130
+[1;35m|[m[1;35m/[m  
+* [33m8100f61[m Update Article
+*   [33m63a7a83[m Merge branch '122_Pagination' into develop
+[31m|[m[32m\[m  
+[31m|[m * [33md170cfc[m #122 Develop Pagination
+[31m|[m[31m/[m  
+* [33maf54996[m Develop #122
+*   [33m7730534[m Merge branch '122_Pagination' into develop
+[33m|[m[34m\[m  
+[33m|[m * [33m8146d0e[m WIP #122 Pagination
+[33m|[m[33m/[m  
+* [33mdac32b0[m Update Article
+*   [33md2b10bf[m Merge branch '122_Pagination' into develop
+[35m|[m[36m\[m  
+[35m|[m * [33m25ed3a3[m #122 Pagination
+[35m|[m[35m/[m  
+*   [33m18f1ef0[m Merge branch '122_Pagination' into develop
+[1;31m|[m[1;32m\[m  
+[1;31m|[m * [33m569832f[m Merge develop
+* [1;32m|[m [33mc796150[m Update
+* [1;32m|[m [33md0b39b5[m Merge branch '122_Pagination' into develop
+[1;33m|[m[1;32m\[m[1;32m|[m 
+[1;33m|[m * [33ma723eb1[m Develop Pagination
+[1;33m|[m[1;33m/[m  
+* [33m04a53b6[m Update Article
+* [33mba27aa6[m Update Article
+* [33m39ca388[m Update Article
+* [33mf884b79[m Update Article
+*   [33m8fb5f99[m Merge branch '29_PageIndex' into develop
+[1;35m|[m[1;36m\[m  
+[1;35m|[m * [33m68732c9[m[33m ([m[1;32m29_PageIndex[m[33m)[m #29 Develop SCSS
+* [1;36m|[m [33m326d4ef[m Merge branch '29_PageIndex' into develop
+[31m|[m[1;36m\[m[1;36m|[m 
+[31m|[m * [33m09d5720[m #29 Develop
+[31m|[m * [33mba742d0[m Install gatsby-remark-autolink-headers
+[31m|[m[31m/[m  
+*   [33mfb3bc85[m Merge branch '89_fileTitle' into develop
+[33m|[m[34m\[m  
+[33m|[m * [33me082667[m[33m ([m[1;32m89_fileTitle[m[33m)[m Install gatsby-remark-code-title
+[33m|[m[33m/[m  
+*   [33m9aa0948[m Merge branch '103_Pagination' into develop
+[35m|[m[36m\[m  
+[35m|[m * [33m6f9ff6f[m 103_Pagination
+[35m|[m[35m/[m  
+*   [33m92e765b[m Merge branch '111_RefactaringGraphQL' into develop
+[1;31m|[m[1;32m\[m  
+[1;31m|[m * [33m522dbf6[m[33m ([m[1;32m111_RefactaringGraphQL[m[33m)[m #111 Refactaring GraphQL
+[1;31m|[m[1;31m/[m  
+*   [33m6c2ce2d[m Merge branch '103_Pagination' into develop
+[1;33m|[m[1;34m\[m  
+[1;33m|[m * [33m79e41f3[m #103 Develop
+[1;33m|[m * [33m254c6f1[m #103 WIP
+[1;33m|[m * [33mcce3e66[m #103 WIP
+[1;33m|[m[1;33m/[m  
+* [33mb1f0ea6[m Update Article
+* [33m8fab914[m Update Article
+*   [33m8a0dfa1[m Merge branch '4_CSSStyling' into develop
+[1;35m|[m[1;36m\[m  
+[1;35m|[m * [33maef02e2[m[33m ([m[1;32m4_CSSStyling[m[33m)[m #4 Update SCSS
+[1;35m|[m[1;35m/[m  
+* [33mae1a5a3[m Update Article
+* [33m75f765a[m Update Article
+*   [33m6b48950[m Merge branch '68_RemoveSectionTag' into develop
+[31m|[m[32m\[m  
+[31m|[m * [33mfffab21[m[33m ([m[1;32m68_RemoveSectionTag[m[33m)[m #68 Fix Markdowns
+[31m|[m[31m/[m  
+* [33m5cb8982[m Update Articles
+*   [33mcfa22e5[m Merge branch '68_RemoveSectionTag' into develop
+[33m|[m[34m\[m  
+[33m|[m * [33m394689b[m #68 WIP
+[33m|[m[33m/[m  
+* [33m9fa13d2[m Develop
+*   [33m0ac6b25[m[33m ([m[1;32m31_DarkMode[m[33m)[m Merge branch '48_Pagination' into develop
+[35m|[m[36m\[m  
+[35m|[m * [33med9344c[m[33m ([m[1;32m48_Pagination[m[33m)[m #48 Fix page.js
+[35m|[m[35m/[m  
+[35m|[m * [33m9e50a44[m[33m ([m[1;32m101_Redirect[m[33m)[m #101 WIP
+[35m|[m[35m/[m  
+*   [33m74fb7c3[m Merge branch '48_Pagination' into develop
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m8e14de1[m #48 Develop CSS
+[1;32m|[m * [33me6dee7a[m 機能完成
+[1;32m|[m[1;32m/[m  
+*   [33mcb2d5dc[m Merge branch 'develop' into 48_Pagination
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33ma846f22[m 不要なファイルを整理
+[1;34m|[m *   [33m0d603d0[m Merge branch '96_Fix_header' into develop
+[1;34m|[m [1;36m|[m[31m\[m  
+[1;34m|[m [1;36m|[m * [33m7ed8e69[m[33m ([m[1;32m96_Fix_header[m[33m)[m #96 Fix_header
+[1;34m|[m * [31m|[m [33m3294322[m Merge branch '96_Fix_header' into develop
+[1;34m|[m [32m|[m[31m\[m[31m|[m 
+[1;34m|[m [32m|[m * [33m62f1aa7[m #96 Fix_header
+[1;34m|[m [32m|[m * [33mb9379f6[m #96 Fix_header
+[1;34m|[m [32m|[m[32m/[m  
+[1;34m|[m *   [33m17e263a[m Merge branch '93_Fix_prev&next_links' into develop
+[1;34m|[m [34m|[m[35m\[m  
+[1;34m|[m [34m|[m * [33mf5072f5[m[33m ([m[1;32m93_Fix_prev&next_links[m[33m)[m #93 Prev&Next_links
+[1;34m|[m [34m|[m[34m/[m  
+[1;34m|[m *   [33m80d1479[m #93 Prev&Next_Links
+[1;34m|[m [36m|[m[1;31m\[m  
+[1;34m|[m [36m|[m * [33m8cd409b[m #93 Prev&Next_Links
+[1;34m|[m [36m|[m[36m/[m  
+* [36m/[m [33m2805594[m #48 WIP Pagination
+[36m|[m[36m/[m  
+*   [33m2e42808[m Merge branch '93_Fix_prev&next_links' into develop
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33mec39801[m #93 WIP Fix_prev&next_links
+* [1;33m|[m [33ma7b9ebc[m Merge branch '93_Fix_prev&next_links' into develop
+[1;34m|[m[1;33m\[m[1;33m|[m 
+[1;34m|[m * [33meaf509b[m #93 WIP Fix_prev&next_links
+[1;34m|[m[1;34m/[m  
+*   [33m94f3079[m #91 Fix mainWidth
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33m4299b43[m #91 Fix_mainWidth
+[1;36m|[m[1;36m/[m  
+* [33md770ab6[m Update Markdown
+*   [33m9db3edb[m Merge branch '82_CreateHeaderComponent' into develop
+[32m|[m[33m\[m  
+[32m|[m * [33m99eb7d9[m[33m ([m[1;32m82_CreateHeaderComponent[m[33m)[m #82 CreateHeaderComponent
+[32m|[m[32m/[m  
+*   [33m6b3c5b3[m Merge branch '86_emoji' into develop
+[34m|[m[35m\[m  
+[34m|[m * [33md15cb23[m #86 Install gatsby-remark-emoji
+[34m|[m[34m/[m  
+* [33md988a72[m Develop
+* [33m7acaa22[m Develop
+* [33m9660c45[m Develop
+* [33m1e9b7c1[m Develop
+* [33m76ad7c6[m Update
+* [33mdb26428[m Develop
+* [33m62d8400[m #78 Fix Google-Analytics
+* [33m701a685[m #78 Setting Google-Analytics
+* [33mdef48cc[m Develop
+* [33mde2cac6[m Update Style.scss
+*   [33m628c466[m Merge branch '69_CreateTag' into develop
+[36m|[m[1;31m\[m  
+[36m|[m * [33m0b465e6[m[33m ([m[1;32m69_CreateTag[m[33m)[m #69_CreateTag
+[36m|[m * [33m79ebf03[m #69 CreateTag
+[36m|[m * [33m539e644[m #69 Create tags.js
+[36m|[m[36m/[m  
+* [33m2dd83aa[m Update
+* [33me26b394[m Update
+*   [33m850eb77[m Merge branch '64_CreateCategoriesPage' into develop
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33mf0ebddb[m[33m ([m[1;32m64_CreateCategoriesPage[m[33m)[m #64 CreateCategoriesPage
+[1;32m|[m[1;32m/[m  
+*   [33mf5c8c91[m Merge branch '64_CreateCategoriesPage' into develop
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33md17a4ff[m #64 CreateCategoriesPage
+* [1;35m|[m   [33mbe2a484[m Merge branch '69_CreateTag' into develop
+[1;36m|[m[31m\[m [1;35m\[m  
+[1;36m|[m * [1;35m|[m [33m20ace04[m #69 CreateTag
+[1;36m|[m[1;36m/[m [1;35m/[m  
+* [1;35m|[m [33m36691d7[m Update style.scss
+* [1;35m|[m   [33maa3a7ec[m Merge branch '29_PageIndex' into develop
+[32m|[m[33m\[m [1;35m\[m  
+[32m|[m * [1;35m|[m [33mf2d1eb0[m #29 Create pageIndex.js
+[32m|[m [1;35m|[m[1;35m/[m  
+* [1;35m|[m [33m3c12300[m Merge branch '64_CreateCategoriesPage' into develop
+[34m|[m[1;35m\[m[1;35m|[m 
+[34m|[m * [33m7312f12[m #64 Create categories.js
+[34m|[m[34m/[m  
+* [33mcf7f6ab[m Develop Header
+* [33mc9bba45[m Develop
+*   [33m3313463[m Merge branch '55_CategoryList' into develop
+[36m|[m[1;31m\[m  
+[36m|[m * [33m996c4eb[m[33m ([m[1;32m55_CategoryList[m[33m)[m Develop #55 CategoryList
+[36m|[m * [33mffbf826[m #55 Develop CategoryList
+* [1;31m|[m [33ma1b786b[m Develop
+* [1;31m|[m [33mc41838c[m Merge branch '55_CategoryList' into develop
+[1;32m|[m[1;31m\[m[1;31m|[m 
+[1;32m|[m * [33m26a9c10[m #55 Develop CategoryList
+[1;32m|[m[1;32m/[m  
+*   [33m74f4122[m Merge branch '21_CreateCategoryPage' into develop
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m70ff823[m[33m ([m[1;32m21_CreateCategoryPage[m[33m)[m #21 Develop CreateCategoryPage
+* [1;35m|[m [33me74bb4b[m Merge branch '(#21)CreateCategoryPage' into develop
+[1;36m|[m[1;35m\[m[1;35m|[m 
+[1;36m|[m * [33m9588b50[m[33m ([m[1;31morigin/(#21)CreateCategoryPage[m[33m)[m Develop CreateCategoryPage
+[1;36m|[m[1;36m/[m  
+* [33mc39c40a[m Fix #21Error
+* [33m0f9e2e1[m Fix #21Error
+* [33mbe27eb7[m Fix #21Error
+*   [33m2c9bc52[m Merge branch '(#21)CreateCategoryPage' into develop
+[32m|[m[33m\[m  
+[32m|[m * [33mb1c655b[m Develop CreateCategoryPage
+[32m|[m * [33m0249fa7[m Developing
+[32m|[m[32m/[m  
+* [33mae7af3d[m update
+[33m|[m *   [33m9130b4d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Merge pull request #45 from kento-yoshidu/develop
+[33m|[m [34m|[m[33m\[m  
+[33m|[m [34m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m   
+* [34m|[m [33m6b8c7ca[m Update
+[35m|[m *   [33m5ae3c9b[m Merge pull request #44 from kento-yoshidu/develop
+[35m|[m [36m|[m[35m\[m  
+[35m|[m [36m|[m[35m/[m  
+[35m|[m[35m/[m[36m|[m   
+* [36m|[m [33mf3d98cc[m Update Postgres
+[1;31m|[m *   [33m596ad8e[m Merge pull request #43 from kento-yoshidu/develop
+[1;31m|[m [1;32m|[m[1;31m\[m  
+[1;31m|[m [1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[1;32m|[m   
+* [1;32m|[m [33m3e8218b[m Update Postres
+[1;33m|[m *   [33m100f4e3[m Merge pull request #42 from kento-yoshidu/develop
+[1;33m|[m [1;34m|[m[1;33m\[m  
+[1;33m|[m [1;34m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;34m|[m   
+* [1;34m|[m [33mcf4049b[m Fix Markdown
+* [1;34m|[m [33me0434d4[m Update Postgres
+[1;35m|[m *   [33m482fad8[m Merge pull request #39 from kento-yoshidu/develop
+[1;35m|[m [1;36m|[m[1;35m\[m  
+[1;35m|[m [1;36m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[1;36m|[m   
+* [1;36m|[m [33mb8107df[m #37 Update
+[31m|[m *   [33m2341b71[m Merge pull request #38 from kento-yoshidu/develop
+[31m|[m [32m|[m[31m\[m  
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+* [32m|[m [33m39f2c54[m #37 Update
+[33m|[m *   [33ma9c244d[m Merge pull request #36 from kento-yoshidu/develop
+[33m|[m [34m|[m[33m\[m  
+[33m|[m [34m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m   
+* [34m|[m [33m1b8f859[m #4 Update style.scss
+[35m|[m *   [33m08fcc53[m Merge pull request #35 from kento-yoshidu/develop
+[35m|[m [36m|[m[35m\[m  
+[35m|[m [36m|[m[35m/[m  
+[35m|[m[35m/[m[36m|[m   
+* [36m|[m [33m24470af[m Update Postgres
+[1;31m|[m *   [33m3fb0e3c[m Merge pull request #34 from kento-yoshidu/develop
+[1;31m|[m [1;32m|[m[1;31m\[m  
+[1;31m|[m [1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[1;32m|[m   
+* [1;32m|[m [33m10efea3[m Update Postgres
+[1;33m|[m *   [33me455978[m Merge pull request #33 from kento-yoshidu/develop
+[1;33m|[m [1;34m|[m[1;33m\[m  
+[1;33m|[m [1;34m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;34m|[m   
+* [1;34m|[m [33mb4f7018[m Update Postgres
+[1;35m|[m *   [33m0059d30[m Merge pull request #30 from kento-yoshidu/develop
+[1;35m|[m [1;36m|[m[1;35m\[m  
+[1;35m|[m [1;36m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[1;36m|[m   
+* [1;36m|[m [33mc52def3[m Update Postgres
+[31m|[m *   [33m04c7678[m Merge pull request #28 from kento-yoshidu/develop
+[31m|[m [32m|[m[31m\[m  
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+* [32m|[m [33mb1348cc[m Update Postgres
+[33m|[m *   [33mdccb042[m Merge pull request #27 from kento-yoshidu/develop
+[33m|[m [34m|[m[33m\[m  
+[33m|[m [34m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m   
+* [34m|[m [33m1234e7f[m Create Postgres
+[35m|[m *   [33mc89bef9[m Merge pull request #26 from kento-yoshidu/develop
+[35m|[m [36m|[m[35m\[m  
+[35m|[m [36m|[m[35m/[m  
+[35m|[m[35m/[m[36m|[m   
+* [36m|[m [33m76e7c26[m Update GitAdvance
+[1;31m|[m *   [33md3e916b[m Merge pull request #25 from kento-yoshidu/develop
+[1;31m|[m [1;32m|[m[1;31m\[m  
+[1;31m|[m [1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[1;32m|[m   
+* [1;32m|[m [33m6c5c024[m Update
+[1;33m|[m *   [33mbf17923[m Merge pull request #24 from kento-yoshidu/develop
+[1;33m|[m [1;34m|[m[1;33m\[m  
+[1;33m|[m [1;34m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;34m|[m   
+* [1;34m|[m [33mf1c692c[m #4 Update style.scss
+[1;35m|[m *   [33m0b6d389[m Merge pull request #23 from kento-yoshidu/develop
+[1;35m|[m [1;36m|[m[1;35m\[m  
+[1;35m|[m [1;36m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[1;36m|[m   
+* [1;36m|[m [33m81bc1e3[m #21 Create category-list.js
+[31m|[m *   [33mf0dfeb5[m Merge pull request #22 from kento-yoshidu/develop
+[31m|[m [32m|[m[31m\[m  
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+* [32m|[m [33m555cce1[m Create HelloWeb
+[33m|[m *   [33m3777450[m Merge pull request #20 from kento-yoshidu/develop
+[33m|[m [34m|[m[33m\[m  
+[33m|[m [34m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m   
+* [34m|[m [33m08c17a4[m Fix FolderName
+[35m|[m *   [33mf4578d2[m Merge pull request #19 from kento-yoshidu/develop
+[35m|[m [36m|[m[35m\[m  
+[35m|[m [36m|[m[35m/[m  
+[35m|[m[35m/[m[36m|[m   
+* [36m|[m [33m4c62507[m Update
+[1;31m|[m *   [33me8aa1f2[m Merge pull request #18 from kento-yoshidu/develop
+[1;31m|[m [1;32m|[m[1;31m\[m  
+[1;31m|[m [1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[1;32m|[m   
+* [1;32m|[m [33mfb1f4c4[m Update
+[1;33m|[m *   [33mdc8e5f3[m Merge pull request #17 from kento-yoshidu/develop
+[1;33m|[m [1;34m|[m[1;33m\[m  
+[1;33m|[m [1;34m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;34m|[m   
+* [1;34m|[m [33m2ad2169[m Fix FonAwesome
+[1;35m|[m *   [33m0b5ef0a[m Merge pull request #16 from kento-yoshidu/develop
+[1;35m|[m [1;36m|[m[1;35m\[m  
+[1;35m|[m [1;36m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[1;36m|[m   
+* [1;36m|[m [33m9366177[m Update
+[31m|[m *   [33m7bbd535[m Merge pull request #15 from kento-yoshidu/develop
+[31m|[m [32m|[m[31m\[m  
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+* [32m|[m   [33m2bef75d[m Merge branch 'npm-install' into develop
+[34m|[m[35m\[m [32m\[m  
+[34m|[m * [32m|[m [33m5bc0139[m Install FontAwesome
+[34m|[m [35m|[m *   [33m643d794[m Merge pull request #14 from kento-yoshidu/develop
+[34m|[m [35m|[m [36m|[m[34m\[m  
+[34m|[m [35m|[m[34m_[m[36m|[m[34m/[m  
+[34m|[m[34m/[m[35m|[m [36m|[m   
+* [35m|[m [36m|[m [33m8168437[m #13 Create footer.js
+[1;31m|[m [35m|[m *   [33m3299053[m Merge pull request #12 from kento-yoshidu/develop
+[1;31m|[m [35m|[m [1;32m|[m[1;31m\[m  
+[1;31m|[m [35m|[m[1;31m_[m[1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[35m|[m [1;32m|[m   
+* [35m|[m [1;32m|[m [33m776da2a[m Update
+[1;33m|[m [35m|[m *   [33m2f4aa22[m Merge pull request #11 from kento-yoshidu/develop
+[1;33m|[m [35m|[m [1;34m|[m[1;33m\[m  
+[1;33m|[m [35m|[m[1;33m_[m[1;34m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[35m|[m [1;34m|[m   
+* [35m|[m [1;34m|[m [33ma7fca6f[m Update
+[1;35m|[m [35m|[m *   [33me75145a[m Merge pull request #10 from kento-yoshidu/develop
+[1;35m|[m [35m|[m [1;36m|[m[1;35m\[m  
+[1;35m|[m [35m|[m[1;35m_[m[1;36m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[35m|[m [1;36m|[m   
+* [35m|[m [1;36m|[m [33ma3cf3c7[m #4 Update style.scss
+[31m|[m [35m|[m *   [33m14040cd[m Merge pull request #8 from kento-yoshidu/develop
+[31m|[m [35m|[m [32m|[m[31m\[m  
+[31m|[m [35m|[m[31m_[m[32m|[m[31m/[m  
+[31m|[m[31m/[m[35m|[m [32m|[m   
+* [35m|[m [32m|[m [33m4878b23[m Update blog-post.js
+[33m|[m [35m|[m *   [33m1044314[m Merge pull request #7 from kento-yoshidu/develop
+[33m|[m [35m|[m [34m|[m[33m\[m  
+[33m|[m [35m|[m[33m_[m[34m|[m[33m/[m  
+[33m|[m[33m/[m[35m|[m [34m|[m   
+* [35m|[m [34m|[m [33m9cad55a[m Update index.js
+[35m|[m [35m|[m *   [33m9994ed2[m Merge pull request #6 from kento-yoshidu/develop
+[35m|[m [35m|[m [36m|[m[35m\[m  
+[35m|[m [35m|[m[35m_[m[36m|[m[35m/[m  
+[35m|[m[35m/[m[35m|[m [36m|[m   
+* [35m|[m [36m|[m [33mcd27c77[m #4 Update SCSS
+[1;31m|[m [35m|[m *   [33m8009bbd[m Merge pull request #5 from kento-yoshidu/develop
+[1;31m|[m [35m|[m [1;32m|[m[1;31m\[m  
+[1;31m|[m [35m|[m[1;31m_[m[1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[35m|[m [1;32m|[m   
+* [35m|[m [1;32m|[m [33ma0207bd[m #4 SCSS適用
+* [35m|[m [1;32m|[m [33mfe4e546[m Merge branch 'npm-install' into develop
+[1;34m|[m[35m\[m[35m|[m [1;32m|[m 
+[1;34m|[m * [1;32m|[m [33m857cb5a[m Downgrade node-sass
+* [1;35m|[m [1;32m|[m [33m409c0b5[m Merge branch 'npm-install' into develop
+[1;36m|[m[1;35m\[m[1;35m|[m [1;32m|[m 
+[1;36m|[m * [1;32m|[m [33m314e517[m Install node-sass gatsby-plugin-sass
+[1;36m|[m[1;36m/[m [1;32m/[m  
+[1;36m|[m *   [33mcfb7f3d[m Merge pull request #3 from kento-yoshidu/develop
+[1;36m|[m [32m|[m[1;36m\[m  
+[1;36m|[m [32m|[m[1;36m/[m  
+[1;36m|[m[1;36m/[m[32m|[m   
+* [32m|[m [33m96e2013[m Update GitAdvance
+[33m|[m *   [33m98abd08[m Merge pull request #2 from kento-yoshidu/develop
+[33m|[m [34m|[m[33m\[m  
+[33m|[m [34m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m   
+* [34m|[m [33mccf26f9[m Update
+[35m|[m *   [33m8620ff8[m Merge pull request #1 from kento-yoshidu/develop
+[35m|[m [36m|[m[35m\[m  
+[35m|[m [36m|[m[35m/[m  
+[35m|[m[35m/[m[36m|[m   
+* [36m|[m [33md5f20d0[m Develop markdown
+[36m|[m[36m/[m  
+* [33m8c9f4b7[m Initial commit
