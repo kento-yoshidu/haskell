@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Header from "../components/header"
+import Pagination from "../components/pagination"
 import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
@@ -87,53 +88,12 @@ const BlogIndex = ({ data, pageContext }) => {
             )
           })}
         </section>
-
-        <div className="pagination">
-          <div className="preButton">
-            {!pageContext.isFirst && (
-              <Link
-                className="prev"
-                to={
-                  pageContext.currentPage === 2
-                    ? `/page/1/`
-                    : `/page/${pageContext.currentPage - 1}/`
-                }
-                rel = "prev"
-                >
-                <FontAwesomeIcon icon={faChevronCircleLeft} />
-                  <span>Prev</span>
-              </Link>
-            )}
-          </div>
-
-          <div className="nationLinks">
-            {Array.from({ length: pageContext.pageCount }, (_, i) => (
-              <div
-                className="items"
-                key={i}
-              >
-                {i + 1 === pageContext.currentPage
-                  ? <p className="text">{ i + 1 }</p>
-                  : <p className="link">
-                      <Link to={`/page/${i + 1}/`}>
-                        { i + 1 }
-                      </Link>
-                    </p>
-                }
-              </div>
-            ))}
-          </div>
-
-          {!pageContext.isLast && (
-            <Link
-              className="next"
-              to={`/page/${pageContext.currentPage + 1}/`}
-            >
-              <span>Next</span>
-              <FontAwesomeIcon icon={faChevronCircleRight} />
-            </Link>
-          )}
-        </div>
+          
+        <Pagination
+          isFirst={pageContext.isFirst}
+          isLast={pageContext.isLast}
+          currentPage={pageContext.currentPage}
+        />
 
         <Links />
       
