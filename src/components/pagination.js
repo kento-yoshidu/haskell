@@ -79,7 +79,6 @@ const Pagination = ({
                 return (
                   <div className="items">
                     <p className="link">
-                      <span>... </span>
                       <Link to={`/page/${pageCount}/`}>
                         { pageCount}
                       </Link>
@@ -125,7 +124,37 @@ const Pagination = ({
           </div>
       } else {
         // 真ん中らへんだったら、最初と最後、カレントページの前後2ページを出力
-        nationLinks = <div>真ん中</div>
+        nationLinks =
+          <div className="nationLinks">
+            <div className="items">
+              <p className="link">
+                <Link to={`/page/1/`}>1</Link>
+              </p>
+            </div>
+
+            <div>…</div>
+
+            {Array.from({ length: pageCount }, (_, i) => {
+              if (i + 1 === currentPage -2 || i + 1 === currentPage -1 || i + 1 === currentPage || i + 1 === currentPage + 1 || i + 1 === currentPage + 2) {
+                return (
+                  <div className="items">
+                    {
+                      i + 1 === currentPage
+                      ? <p className="text">{ i + 1}</p>
+                      : <p className="link"><Link to={`/page/${i + 1}`}>{i + 1}</Link></p>}
+                  </div>
+                )
+              }
+            })}
+
+            <div>…</div>
+
+            <div className="items">
+              <p className="link">
+                <Link to={`/page/${pageCount}/`}>{pageCount}</Link>
+              </p>
+            </div>
+          </div>
       }
 
     } else {
