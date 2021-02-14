@@ -84,15 +84,48 @@ const Pagination = ({
                       </Link>
                     </p>
                   </div>
-
                 )
               }
             })}
           </div>
       } else if (currentPage  > pageCount - 4) {
-        nationLinks = <div>何なか</div>
-      } else {
+        nationLinks = 
+          <div className="nationLinks">
+            <div className="items">
+              <p className="link">
+                <Link to={`/page/1/`}>1</Link>
+              </p>
+            </div>
 
+            <div>...</div>
+
+            {Array.from({ length: pageCount }, (_, i) => {
+              if(true) {
+                return (
+                  <div>{i + 1}</div>
+                )
+              }
+            })}
+
+            <div>...</div>
+
+            {Array.from({ length: pageCount }, (_, i) => {
+              if (i > pageCount - 4 && i <= pageCount) {
+                return (
+                  <div className="items">
+                    {pageCount}
+                    {
+                      i + 1 === pageCount
+                      ? <p className="text"> {pageCount} </p>
+                      : <p className="link"> <Link to={`/page/${i}/`}>{i}</Link> </p>
+                    }
+                  </div>
+                )
+              }
+            })}
+          </div>
+      } else {
+        nationLinks = <div>真ん中</div>
       }
 
     } else {
