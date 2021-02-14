@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config, counter } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
+
 const Pagination = ({
         isFirst,
         isLast,
@@ -88,7 +89,8 @@ const Pagination = ({
               }
             })}
           </div>
-      } else if (currentPage  > pageCount - 4) {
+      } else if (currentPage  > pageCount - 3) {
+        // 最後の方のページだった場合、最初と最後から5ページ分を表示
         nationLinks = 
           <div className="nationLinks">
             <div className="items">
@@ -97,27 +99,24 @@ const Pagination = ({
               </p>
             </div>
 
-            <div>...</div>
-
             {Array.from({ length: pageCount }, (_, i) => {
               if(true) {
                 return (
-                  <div>{i + 1}</div>
+                  <div></div>
                 )
               }
             })}
 
-            <div>...</div>
+            <div>…</div>
 
             {Array.from({ length: pageCount }, (_, i) => {
-              if (i > pageCount - 4 && i <= pageCount) {
+              if (i >= pageCount - 5 && i < pageCount) {
                 return (
                   <div className="items">
-                    {pageCount}
                     {
-                      i + 1 === pageCount
-                      ? <p className="text"> {pageCount} </p>
-                      : <p className="link"> <Link to={`/page/${i}/`}>{i}</Link> </p>
+                      i + 1 === currentPage
+                      ? <p className="text">{i + 1}</p>
+                      : <p className="link"><Link to={`/page/${i + 1}/`}>{i + 1}</Link> </p>
                     }
                   </div>
                 )
@@ -125,6 +124,7 @@ const Pagination = ({
             })}
           </div>
       } else {
+        // 真ん中らへんだったら、最初と最後、カレントページの前後2ページを出力
         nationLinks = <div>真ん中</div>
       }
 

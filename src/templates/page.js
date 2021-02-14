@@ -24,6 +24,8 @@ const BlogIndex = ({ data, pageContext }) => {
   const siteData = data.siteData;
   const postData = data.postData;
 
+  console.log(pageContext.postCount)
+
   return (
     <div>
       <SEO

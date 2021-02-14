@@ -54,5 +54,4 @@ const Header = ({ headerTitle,
   )
   }
 
-
 export default Header
