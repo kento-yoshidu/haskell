@@ -13,8 +13,6 @@ import {  faFolder,
           faClock,
           faUndo,
           faTags,
-          faChevronCircleLeft,
-          faChevronCircleRight
         } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -88,16 +86,18 @@ const BlogIndex = ({ data, pageContext }) => {
             )
           })}
         </section>
-          
+
         <Pagination
           isFirst={pageContext.isFirst}
           isLast={pageContext.isLast}
+          pageCount={pageContext.pageCount}
           currentPage={pageContext.currentPage}
         />
 
         <Links />
-      
+
         </main>
+
       <Footer />
     </div>
   )
