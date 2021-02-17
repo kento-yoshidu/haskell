@@ -31,7 +31,6 @@ const Category = ({ pageContext, data }) => {
       />
 
       <Header
-        headerTitle="鳥に生まれる人ができなかった人へ"
         pageTitle={`${ categoryName }カテゴリの記事` }
         postCount={pageContext.postCount} 
         currentPage={pageContext.currentPage}
