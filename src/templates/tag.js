@@ -31,7 +31,6 @@ const Tags = ({ pageContext, data }) => {
       />
 
       <Header
-        headerTitle="鳥に生まれることができなかった人へ"
         pageTitle={`${ tag }タグの記事`}
         postCount={pageContext.postCount} 
         currentPage={pageContext.currentPage}

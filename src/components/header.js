@@ -1,16 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
-/*
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { config } from "@fortawesome/fontawesome-svg-core"
-config.autoAddCss = false
-*/
-
-const Header = ({ headerTitle,
-                  pageTitle,
+const Header = ({ pageTitle,
                   currentPage,
                   postCount,
                   pageCount,
@@ -18,17 +9,35 @@ const Header = ({ headerTitle,
                   isArticle
                 }) => {
 
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            social {
+              twitter
+            }
+          }
+        }
+      }
+    `
+  )
+
+  console.log(site)
+
   let h1,
       countInfo;
 
   if (isTopPage) {
     h1 = (
-      <h1 className="header-title">{ headerTitle }</h1>
+      <h1 className="header-title">{ site.siteMetadata.title }</h1>
     )
   } else {
     h1 = (
       <h1 className="header-title">
-        <Link to="/page/1/">{ headerTitle }</Link>
+        <Link to="/page/1/">{ site.siteMetadata.title }</Link>
       </h1>
     )
   }

@@ -31,7 +31,6 @@ const BlogIndex = ({ data, pageContext }) => {
       />
 
       <Header
-        headerTitle={siteData.siteMetadata.title}
         pageTitle="記事一覧"
         isTopPage={true}
         postCount={pageContext.postCount}

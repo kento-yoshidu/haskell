@@ -22,7 +22,6 @@ const BlogPostTemplate = ({ data }) => {
       />
 
       <Header
-        headerTitle={ data.site.siteMetadata.title }
         isArticle={ true }
       />
 
