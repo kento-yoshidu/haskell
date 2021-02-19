@@ -1,13 +1,33 @@
 ---
-title: PostgreSQLをDokcerで使う
+title: PostgreSQLをDockerで使う
 postdate: "2021-01-27"
-updatedate: "2021-01-27"
+updatedate: "2021-02-18"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 tags: ["PostgreSQL", "Docker"]
 ---
 
+まずはdocker runで起動してみて、所感をつかみます。その後はdocker-compose化します。最後にユーザ名やパスワードを`.env`化します。
+
+# 前提
+
+ - Windows10 64bit 2004
+ - Doceker version 20.10.2, build 2291f61
+ - dokcerイメージ postgres:12-alpine
+
 ## apline版のDockerファイルを落とす
+
+まずはDocker Hubにアクセスし、alpineイメージがあるかを確認しておきます。
+
+[こちら](https://hub.docker.com/_/postgres)から、PostgreSQLのオフィシャルイメージのページにアクセスします。
+
+**Tags**をクリックし、alpineタグがついているものを探します。
+
+見つかったら、コマンド（赤枠で囲っているところ）をコピーします。
+
+![](./images/image01.jpg)
+
+では、コンソールでpullコマンドを入力し、イメージを落とします。
 
 ```shell
 $ docker pull postgres:apline
@@ -18,6 +38,13 @@ alpine: Pulling from library/postgres
 $ docker image ls
 REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
 postgres      alpine    91aed320ad01   5 days ago      160MB
+```
+
+せっかくなので、`docker inspect`コマンドでイメージの中身を見てみます。
+
+```shell
+
+
 ```
 
 ## コンテナを起動する
@@ -39,3 +66,4 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED          STATU
 
 
 
+## docker-compose化する

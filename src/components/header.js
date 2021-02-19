@@ -58,6 +58,7 @@ const Header = ({ pageTitle,
       <h2 className="page-title">
         { pageTitle }
       </h2>
+
       { countInfo }
     </header>
   )
