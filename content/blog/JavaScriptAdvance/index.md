@@ -119,6 +119,163 @@ MDNでも以下のように述べられています。
 
 [メモリ管理 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Memory_Management)
 
+---
+
+# オブジェクト
+
+JavaScriptを理解するためには、オブジェクトの習得は避けては通れません。
+JavaScriptにおいて、全てのデータはオブジェクトであるか、もしくはオブジェクトであるかのようにふるまいます。
+
+オブジェクトとは、名前の付いたデータや機能を格納するコンテナのことです。以下のように、`key: value`の形で、データや機能を表します。
+
+```javascript
+const obj = {
+  name: "kento",
+  
+  greeting: function() {
+    return `Hello, I\'m ${this.name}`;
+  }
+}
+
+console.log(obj.name);
+//=> kento
+
+console.log(obj.greeting());
+//=> Hello, I'm kento
+```
+
+この`obj`というオブジェクトは、**name**という名前の付いたkentoというデータ、そして、**greeting**という名前のついた、挨拶をする機能(関数)を格納しています。
+
+また、名前の付いたデータを**プロパティ**、そして名前の付いた関数を**メソッド**と呼びます。
+
+## オブジェクトの作成方法
+
+### Objectコンストラクタ関数での作成
+
+オブジェクトの作成方法は、Objectコンストラクタ関数を用いる方法、オブジェクトリテラルを用いる方法の2種類があります。
+
+まずはObjectコンストラクタ関数から説明します。
+
+構文は以下の通りです。
+
+```javascript
+const obj = new Object();
+
+console.log(typeof obj)
+//=> object
+```
+
+new演算子を用いObjectコンストラクタ関数からインスタンスを生成します。プロパティはもっていませんが、これもれっきとしたオブジェクトです。`typeof`演算子を使用すると、`object`が返ってくることからもそれが分かります。
+
+続けて、作成したobjオブジェクトにプロパティを与えてみます。記法はドット記法と角括弧記法があります。
+
+```javascript
+const obj = new Object();
+
+// nameというプロパティを作成、kentoというデータを格納(ドット記法)
+obj.name = "kento"
+console.log(obj.name);
+//=> kento
+
+// ageというプロパティを作成、33というデータを格納(角括弧記法)
+obj["age"] = 33;
+console.log(obj["age"]);
+//=> 33
+```
+
+主流は、ドット記法を使用する方法です。ただ、プロパティ名に数値を使用したいときには角括弧記法を使用しなければいけません。
+
+```javascript
+obj.1 = "one";
+//=> SyntaxError: Unexpected number
+
+obj[1] = "one";
+//=> OK!
+
+obj["item price"] = 30;
+//=> OK!
+```
+
+本書では、プロパティの追加も呼び出しも基本的にドット記法を使用します。
+
+---
+
+続けて、関数であるメソッドも追加してみます。メソッドも代入演算子を使用して追加できます。
+
+```javascript
+(略)
+
+obj.greeting = function() {
+  return `I\'m ${this.name}, ${this.age} years.`
+}
+
+console.log(obj.greeting())
+//=> I'm kento, 33 years.。
+```
+
+ここで、オブジェクトの持つ、プロパティやメソッドを取得する方法を考えます。いくつか方法がありますが、ここでは`for...in`構文を試したいと思います。
+
+`key`にはキー（つまり、name、age、greeting）が入ります。そして`obj[key]`とすることで、キーの値を取得することができます。
+
+```javascript
+(略)
+
+for(const key in obj) {
+  console.log(`${key}: ${obj.key}`)
+}
+/*
+  name: kento
+  age: 33
+  greeting: function() {
+    return `I\'m ${this.name}, ${this.age} years.`
+  }
+*/
+```
+
+## オブジェクトリテラルを使用する
+
+ブラケットを用いてオブジェクトを作成します。これはObjectコンストラクタ関数を使用するのと全く同じことです。
+
+このブラケット`{}`は、**オブジェクトリテラル**と呼ばれています。
+
+```javascript
+const obj = {
+  name: "kento",
+  age: 33,
+
+  greeting: function() {
+    return `I\'m ${this.name}, ${this.age} years.`
+  }
+}
+
+console.log(obj.greeting());
+//=>I'm kento, 33 years.
+```
+
+## オブジェクトのプロパティは変更できる
+
+現在の状態を整理しておくと、nameプロパティには**kento**、ageプロパティには**33**が格納されています。
+代入演算子`=`を使用して、この値を上書きすることができます。
+
+```javascript
+obj.name = 'hikari';
+obj.age = 20;
+
+console.log(obj.greeting());
+//=>I'm hikari, 20 years.
+```
+
+そして、greetingメソッドを書き換えることもできます。それも、関数に限らず、例えば真偽値に置き換えることも可能です。
+
+```javascript
+// 真偽値を代入
+obj.greeting = true;
+
+// ↓ 関数ではなくなったら()はなくす
+console.log(obj.greeting);
+//=> true
+```
+
 
 
 ## 同じプロパティを持つオブジェクトの比較
@@ -128,12 +285,22 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Data_structures
 https://qiita.com/hcr1s/items/172ba167ba44a35c2a45
 https://qiita.com/makotoo2/items/9566cebf205ef8b42505
 https://qiita.com/sho_U/items/38460b6e9bcd1dae1387
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/new
 
+
+# オブジェクトの操作
+
+## Object.entriesでオブジェクトから配列を取得する
+
+https://jsprimer.net/basic/object/
 
 ## モジュールの歴史
 
 - JavaScriptにはモジュールがなかった。
 - `CommonJS`、`AMD`、`ESModules`は仕様の名前
+
 
 # CommonJsによるexport
 
