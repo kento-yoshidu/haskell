@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import SEO from "../components/seo"
 import Header from "../components/header"
 import Pagination from "../components/pagination"
+import MobliePagination from "../components/mobilePagination"
 import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
@@ -21,7 +22,6 @@ config.autoAddCss = false
 
 const BlogIndex = ({ data, pageContext }) => {
 
-  const siteData = data.siteData;
   const postData = data.postData;
 
   return (
@@ -87,6 +87,13 @@ const BlogIndex = ({ data, pageContext }) => {
         </section>
 
         <Pagination
+          isFirst={pageContext.isFirst}
+          isLast={pageContext.isLast}
+          pageCount={pageContext.pageCount}
+          currentPage={pageContext.currentPage}
+        />
+
+        <MobliePagination
           isFirst={pageContext.isFirst}
           isLast={pageContext.isLast}
           pageCount={pageContext.pageCount}
