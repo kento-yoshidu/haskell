@@ -3,8 +3,10 @@ import { Link } from "gatsby"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-          faChevronCircleLeft,
-          faChevronCircleRight
+          faAngleLeft,
+          faAngleDoubleLeft,
+          faAngleRight,
+          faAngleDoubleRight
         } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -24,60 +26,48 @@ const MobilePagination = ({
       prevButton,
       nextButton;
 
-  topButton =
-    <div>
-      {!isFirst && (
-        <Link
-          to={`/page/1/`}
-        >
-          <span>Prev</span>
-        </Link>
-      )}
-    </div>
+  if (!isFirst) {
+    topButton =
+      <Link
+        to={`/page/1/`}
+        className="top-button"
+      >
+        <FontAwesomeIcon icon={faAngleDoubleLeft} />
+      </Link>
 
-  prevButton = 
-    <div className="preButton">
-      {!isFirst && (
-        <Link
-          className="prev"
-          to={
-            currentPage === 2
-              ? `/page/1/`
-              : `/page/${currentPage - 1}/`
-          }
-          rel = "prev"
-        >
-          <FontAwesomeIcon icon={faChevronCircleLeft} />
-          <span>Prev</span>
-        </Link>
-      )}
-    </div>;
+    prevButton = 
+      <Link
+        className="prev-button"
+        to={
+          currentPage === 2
+            ? `/page/1/`
+            : `/page/${currentPage - 1}/`
+        }
+        rel = "prev"
+      >
+        <FontAwesomeIcon icon={faAngleLeft} />
+      </Link>
+  }
 
-  nextButton =
-    <div className="preButton">
-      {!isLast && (
-        <Link
-          className="next"
-          to={`/page/${currentPage + 1}/`}
-        >
-          <span>Next</span>
-          <FontAwesomeIcon icon={faChevronCircleRight} />
-        </Link>
-      )}
-    </div>;
-    
+  if(!isLast) {
+    nextButton =
+      <Link
+        className="next-button"
+        to={`/page/${currentPage + 1}/`}
+      >
+        <FontAwesomeIcon icon={faAngleRight} />
+      </Link>
 
-  lastButton =
-    <div>
-      {!isLast && (
-        <Link
-          to={`/page/${pageCount}/`}
-        >
-          last
-        </Link>
+    lastButton =
+      <Link
+        to={`/page/${pageCount}/`}
+        className="last-button"
+      >
+        <FontAwesomeIcon icon={faAngleDoubleRight} />
+      </Link>
 
-      )}
-    </div>
+  }
+
 
   return (
     <div className="mobile-pagination">
