@@ -25,8 +25,6 @@ const Header = ({ pageTitle,
     `
   )
 
-  console.log(site)
-
   let h1,
       countInfo;
 

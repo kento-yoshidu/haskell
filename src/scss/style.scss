@@ -4,16 +4,27 @@
 @import "./article";
 @import "./pagination";
 @import "./variables";
+@import "./footer";
 
 html {
   color: #444;
   font-size: 62.5%;
-  font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+  font-family:
+    'Hiragino Kaku Gothic Pro',
+    'ヒラギノ角ゴ Pro W3',
+    'メイリオ',
+    Meiryo,
+    'ＭＳ Ｐゴシック',
+    sans-serif;
 }
 
 a {
   color: #666;
   transition: .2s;
+
+  &:hover {
+    color: $main-color;
+  }
 }
 
 .links  {
@@ -313,11 +324,6 @@ a {
     height: auto;
     box-shadow: 0 0 5px 5px #eee !important;
   }
-}
-
-.footer {
-  height: 30vh;
-  background: #444;
 }
 
 // 外枠?

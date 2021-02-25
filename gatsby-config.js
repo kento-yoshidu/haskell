@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `鳥に生まれることができなかった人へ`,
-    siteUrl: `https://blog.toriwatari.work`,
+    subTitle: `Powered by Gatsby`,
+    siteUrl: `https://blog.toriwatari.work/page/1/`,
     author: {
       name: `Kento Yoshizu`,
       summary: `Front-end engineer in Shiga, Japan`,
