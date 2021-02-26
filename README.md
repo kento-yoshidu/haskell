@@ -1,99 +1,163 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's blog starter
-</h1>
+# Gaysbyでブログを始めました
 
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+![](./content/assets/gatsby-icon.png)
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+情報をアウトプットできる場所が欲しいなと前から思っており、Qiitaやはてぶの利用も考えていましたが、「もっと気楽にやりたい」「自分メモ的なものも置きたい」「スタイルは自分で自由に変えたい」などと言い訳ばかりして全然進んでいませんでした。
 
-## 🚀 Quick start
+しかし情報を仕入れているうちに、Gatsbyという静的サイトジェネレータを知り、「これは面白そうだ（楽できそうだ（面倒くさくなさそうだ））」と思い一念発起、重い腰をあげることにしました。
 
-1.  **Create a Gatsby site.**
+作りたいのはブログ≒単純な静的ページを集めたサイトだったので、バックエンドは不要。よってWordPress等のCMSは最初の内に選択肢から消えました。
 
-    Use the Gatsby CLI to create a new site, specifying the blog starter.
+興味のあったNginxでサーバを立てて動かしてみようとも思ったのですが、「静的サイトジェネレータを使ってみたい」「せっかくならJavaScriptでかけるものがいい」「新しい技術の習得も兼ねたい」ということで、いくつか選択肢はあったのですが、結局Gatsbyを採用しました。
+(Next.jsやNuxt.jsは他の静的コンテンツで使用するつもりです。）
 
-    ```shell
-    # create a new Gatsby site using the blog starter
-    gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
-    ```
+このページでは、当ブログの機能やこだわりポイントを書きなぐっています。
 
-1.  **Start developing.**
+素人仕事で恐縮ですが、「Gatsbyってどんなことができるの❓」「使ってみたいけど何か難しそう…:confused:」など、Gatsbyでのブログ作成を考えている方の参考になれば幸いです。
 
-    Navigate into your new site’s directory and start it up.
+くそ雑魚エンジニアの僕でもこれくらいはできたので、敷居は高くないと思います。
 
-    ```shell
-    cd my-blog-starter/
-    gatsby develop
-    ```
+## Point1 マークダウンでの記事作成
 
-1.  **Open the source code and start editing!**
+記事は全てマークダウンファイルで用意しています。
 
-    Your site is now running at `http://localhost:8000`!
+当初はヘッドレスCMSであるContentfulの導入を考えていましたが、高機能で便利な代わりに自由度はマークダウンの方が高そうだったのでこちらに変更しました。
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+何より、ローカルで好きな時にさくっと作業できるというのがいいですね。
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### プラグインを使用してより充実した記事に
 
-## 🧐 What's inside?
+マークダウン用にたくさんのGatsbyプラグインが用意されています。
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+技術ブログでは必須のコードブロックとシンタックスハイライトですが、`gatsby-remark-prismjs`というプラグインを使用し、簡単に実現できます。
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+行番号の表示や特定行のハイライトも当然可能です。
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+```typescript
+function func(id: number): void {
+  console.log(id)
+}
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+func(1)
+```
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+また、`gatsby-remark-emoji`プラグインを使用すれば絵文字を使用できます。:stuck_out_tongue_closed_eyes:
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+## Point2 コンテンツの取得はGraphQLで
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+こだわりポイントというかGatsbyがそういう作りになっているのですが、Gatsbyでは**GraphQL**というクエリ言語を使用してコンテンツを取得、サイトを構築（ビルド）します。
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+例えばこのページのヘッダに、当サイトのサイト名である「鳥に生まれることができなかった人へ」という文字を表示させていますが、これはmarkdownやReactコンポーネントに「鳥に生まれる～」とべた書きしているのではなく、`gatsby-config.js`というファイルに以下のような形でサイト名を記述、ビルド時にGraphQLがこれを取得、表示させてくれています。
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+```javascript
+module.exports = {
+  siteMetadata: {
+    title: `鳥に生まれることができなかった人へ`,
+    siteUrl: `https://blog.toriwatari.work/`,
+    author: {
+      name: `Kento Yoshizu`,
+      summary: `Hello World`,
+    },
+    description: `IT技術ブログとその他趣味`,
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+    (略)
+```
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+以下が`gatsby-config.js`で定義したサイト名を取得するgraphqlクエリです。
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+```yaml
+query {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+(略)
+```
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+これをおおむね以下のような感じでheaderコンポーネントに渡しています。
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+```javascript:title=header.js
 
-## 🎓 Learning Gatsby
+```
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+Gatsbyを選んだそもそもの理由が「クエリ言語にGraphQLを採用しているから」というのもありましたし、結果的にいい勉強になったと思っています。
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+## Point3 カテゴリ機能とタグ機能
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+それぞれの記事にカテゴリとタグを付与し、必要に応じて収集し利用しています。
 
-## 💫 Deploy
+たとえば、[こちら](https://blog.toriwatari.work/categories/)にアクセスすると、当ブログのカテゴリ一覧と各カテゴリの記事件数が表示されます。
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog)
+これももちろん、僕が一つ一つ手で書いてるのではなく、GraphQLを使用しコンテンツを取得、Gatsbyが自動でページを生成してます。
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-blog)
+マークダウンファイルの先頭に以下のようにyaml風味な形式（frontmatterと呼ばれています）で、記事が属するカテゴリやタグを記述します。
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+```markdown:title=例：このページのfrontmatter
+---
+title: "Gatsbyでブログを始めました"
+postdate: "2021-02-05"
+updatedate: "2021-02-05"
+categoryName: "日記"
+categorySlug: diary
+description: "静的サイトジェネレータのGatsbyを使用してブログを立ち上げました。"
+tags: ["日記", "Gatsby"]
+---
+```
+
+`gatsby-node.js`を使用し、ビルド時に「GraphQLでマークダウンファイルの情報（frontmatter）を取得、それらを同じカテゴリの記事ごとに集約、それらをリスト化したページを作成」、というようなことをやってくれています。
+
+また、[こちら](https://blog.toriwatari.work/category/GitAdvance/page/1/)のページでは「Git中級者を目指す」というカテゴリの記事一覧をリストアップしています。
+
+これもGraphQLを使用し、「同じカテゴリの記事一覧を取得、記事数だけループで表示させる」ということをやっています。
+
+## Point4 「前後の記事へ」機能
+
+記事の下の方までいくと「次の記事」というリンクがあります。
+
+これはGraphQLで「同じカテゴリの記事を投稿日付順に取得、このページの記事の前後のリンクを作成する」ということをやっています。
+
+![](./images/image01.png)
+
+## Point5 ページネーション機能
+
+多分、実装に一番時間をかけた機能です。
+
+1ページに何十件も記事がリストアップされると困りますよね。当ブログでは1ページ当たり6件の記事を表示される、としてページネーション機能を付与しました。
+
+![](./images/image01.jpg)
+
+GraphQLで「全ての記事の個数をカウント、6で割ってその数だけページを生成」します。後はページの数だけリンクを表示させてあげたり、前後のページへ移動するprev、nextボタンを設置しました。
+
+なお、このページネーションの機能はカテゴリ、タグごとの記事一覧にも同じように設置しています。
+
+地味に大変だったのが、ページネーションのリンクの一部を省略する機能を実装することでした。
+
+例えば、１～４ページにいるときは、6ページ移行を省略して最後のページのリンクを表示。
+
+![](./images/image02.jpg)
+
+逆に後ろの方のページにいる時は、最初のページと最後から５ページ分のリンクを表示。
+
+![](./images/image03.jpg)
+
+そのどちらでもない、真ん中あたりにいる時は最初と最後のページと、現在のページの周辺のリンクを表示します。
+
+![](./images/image04.jpg)
+
+一応できたことはできたんですが、かなりコードが汚くなってしまいました。また、カテゴリごとの記事一覧ページ、タグごと記事一覧ページのために、それぞれコンポーネントファイルを別で用意している始末。いつか直さないといけないと思いつつ、一応動いているので後回しにしています。
+
+## Point6 デプロイはAWS Amplifyで
+
+当初はNetlifyというホスティングサービスを利用し、サイトを公開していましたが、せっかくなのでAWS Amplifyに移行しました。
+
+特に難しいことはしていませんが、以下が構成図です。
+
+![](./images/image10.jpg)
+
+# これから
+
+現時点でGatsbyには不満がないのでこれからも使っていくと思います。
+今はNetlifyでホスティングしているのでAWSに移行するのが目標です。
+
+
