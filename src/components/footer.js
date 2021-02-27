@@ -1,8 +1,15 @@
 import React from "react"
-import { Link, useStaticQuery, graphql, useScrollRestoration } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 
-const Footer = ({}) => {
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { config } from "@fortawesome/fontawesome-svg-core"
+config.autoAddCss = false
+
+const Footer = () => {
 
   const { site } = useStaticQuery(
     graphql`
@@ -30,20 +37,54 @@ const Footer = ({}) => {
           </Link>
         </h1>
         <h2>
-          { site.siteMetadata.subTitle }
+          Powered By <Link to={"https://www.gatsbyjs.com/"} target="_blink">Gatsby</Link>
         </h2>
       </hgroup>
 
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
-      <p>jgapjrpajg</p>
+      <div className="link external-link">
+        <Link
+          to={"https://github.com/kento-yoshidu/GatsbyBlog"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faGithubSquare} />
+        </Link>
+      </div>
+
+      <div className="link internal-link">
+        <Link
+          to={"/categories/"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+          カテゴリ一覧
+        </Link>
+        <Link
+          to={"/tags/"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+          タグ一覧
+        </Link>
+      </div>
+
+      <div className="link meta-link">
+        <Link
+          to={"/categories/"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+          サイトポリシー
+        </Link>
+        <Link
+          to={"/categories/"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+          プライバシーポリシー
+        </Link>
+      </div>
+
+      <p className="copyright">Copyright @ 2021 toriwatari</p>
     </footer>
   )
 }
