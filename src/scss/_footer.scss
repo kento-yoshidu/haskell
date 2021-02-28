@@ -66,7 +66,9 @@
       width: 90%;
 
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
+        letter-spacing: 1px;
+        text-align: center;
       }
       h2 {
         font-size: 1.3rem;
@@ -79,6 +81,18 @@
     }
     .external-link {
       text-align: center;
+    }
+
+    .internal-link,
+    .meta-link {
+      a {
+        font-size: 1.2rem;
+        margin-right: 15px;
+      }
+    }
+    .copyright {
+      margin-top: 30px;
+      font-size: 1.5rem;
     }
   }
 }
