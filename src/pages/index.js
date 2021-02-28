@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Header from "../components/header"
-import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
@@ -30,8 +29,6 @@ const BlogIndex = ({ data, location }) => {
         pageTitle="記事一覧"
         isTopPage={ true }
       />
-
-      <Links />
 
       <main className="main">
         <ul className="post-list">

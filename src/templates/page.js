@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 import Header from "../components/header"
 import Pagination from "../components/pagination"
 import MobliePagination from "../components/mobilePagination"
-import Links from "../components/links"
 import Footer from "../components/footer"
 import "../scss/style.scss"
 
@@ -99,8 +98,6 @@ const BlogIndex = ({ data, pageContext }) => {
           pageCount={pageContext.pageCount}
           currentPage={pageContext.currentPage}
         />
-
-        <Links />
 
         </main>
 

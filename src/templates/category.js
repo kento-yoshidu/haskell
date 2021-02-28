@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Header from "../components/header"
-import Links from "../components/links"
 import Footer from "../components/footer"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -130,7 +129,7 @@ const Category = ({ pageContext, data }) => {
           </p>
         )}
       </ol>
-      <Links />
+
       </main>
       <Footer />
     </div>
