@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
 import SEO from "../components/seo"
-import Links from "../components/links"
 import Footer from "../components/footer"
 
 const Tags = ({ data, location }) => {
@@ -36,8 +35,6 @@ const Tags = ({ data, location }) => {
           })}
         </ul>
       </main>
-
-      <Links />
 
       <Footer />
     </div>
