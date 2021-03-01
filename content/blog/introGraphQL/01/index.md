@@ -1,55 +1,53 @@
 ---
-title: "#1 GraphQLサーバを立てる"
+title: "#1 graphql-yoga🧘でローカルサーバを立てる(前編)"
 postdate: "2021-01-20"
-updatedate: "2021-01-26"
+updatedate: "2021-03-01"
 categoryName: "入門GraphQL"
 categorySlug: introGraphQL
 tags: ["GraphQL", "GraphQL-Yoga", "入門"]
 ---
 
-# 環境構築する
-いつまで経ってもGraphQLに慣れない。GraphQLを手軽に操作検証できるように、勉強がてらローカルサーバを立てます。
+# graphql-yoga🧘を使ってみる
+
+なかなかGraphQLに慣れない。GraphQLを手軽に操作検証できるように、勉強がてらNode.js環境でローカルサーバを立てます。
+
+サーバライブラリはいくつかありますが、シンプルそうだったのでまずは`GraphQL-yoga`を使用してみたいと思います。
+
+おおむね[こちら](https://github.com/prisma-labs/graphql-yoga)のページを参考にしました。
+
+前編では最小構成でサーバを立て、queryでデータを取得するところまで。
+後編ではMongoDBに接続し、queryでデータを取得するところまでを行います。
+
+## 環境
+
+```shell
+$ node -v
+v14.15.4
+
+$ yarn -v
+1.22.5
+```
 
 ## まずは最小構成
 
-まずは`yarn init -y`して・・・
+`yarn init -y`して、サーバライブラリの`graphql-yoga`をインストールします。
 
 ```shell
-
 $ yarn init -y
-  yarn init v1.22.5
-  question name (graphql):
-  question version (1.0.0):
-  question description:
-  question entry point (index.js):
-  question repository url:
-  question author:
-  question license (MIT):
-  question private:
-  success Saved package.json
-  Done in 18.61s.
-```
 
-サーバライブラリの`graphql-yoga`をインストールします。
-
-```shell
 $ yarn add graphql-yoga
 
 $ cat package.json
-
 {
-  "name": "graphql",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  ...
   "dependencies": {
     "graphql-yoga": "^1.18.3"
-  },
+  }
 }
 ```
 
-index.jsを作成、以下の通り記述します。
-最小構成という事で、"Hello World"と返すだけのhelloクエリを定義しています。
+ルートディレクトリにindex.jsを作成、以下の通り記述します。
+最小構成という事で、"Hello World"と返すだけのhelloクエリを定義します。
 
 ```javascript
 const { GraphQLServer } = require("graphql-yoga");
@@ -66,19 +64,22 @@ const resolvers = {
   }
 }
 
-const server = new GraphQLServer({ typeDefs, resolvers});
+const server = new GraphQLServer({typeDefs, resolvers});
 
 server.start(() => {
   console.log('Server is running on localhost:4000');
 })
 ```
 
-`typeDefs`にスキーマを定義します。必須の引数です。
-`hello: String!`はhelloクエリが必ずString型の値を返すことを意味しています。(!はnullにならないという意味)
+`typeDefs`にスキーマを定義します。`hello: String!`はhelloクエリが必ずString型の値を返すことを意味しています。(!はnullにならないという意味)
 
-resolversはどんなクエリにどんな値を返すかを定義します。
+`resolvers`はどんなクエリにどんな値を返すかを定義します。
 
-サーバを起動します。
+スキーマ情報とリゾルバは、サーバをnewする時の必須の引数です。
+
+---
+
+では、サーバを起動します。
 
 ```shell
 $ node index.js
@@ -87,6 +88,8 @@ Server is running on localhost:4000
 ```
 
 `http://localhost:4000`にアクセスすると、GraphQL Playgroundが現れます。
+
+簡易的なクライアントとして使用でき、様々なクエリを投げることができます。
 
 ![](./images/image01.jpg)
 
@@ -103,7 +106,6 @@ Server is running on localhost:4000
 
 ![](./images/image02.jpg)
 
-
 ## 引数付きのクエリを作成する
 
 さすがにもう少し凝ったことをしたいので、先ほどのhelloクエリを編集し、
@@ -111,10 +113,11 @@ Server is running on localhost:4000
 引数名はnameとし、String型を指定、末尾に`!`をつけて必須にします。
 
 ```javascript{3,5}
-const { GraphQLServer } = require("graphql-yoga");
+...
 
 const typeDefs = `
   type Query {
+    # 必須の引数にString型のname、戻り値も必須でString型
     hello(name: String!): String!
   }
 `
@@ -127,20 +130,67 @@ const resolvers = {
   }
 }
 
-(略)
+...
 ```
 
 ```graphql
-  {
+  query {
     hello(name: "kento")
   }
-  # Hello kento
+
+  # result
+  {
+    "data": {
+      "hello": "Hello kento"
+    }
+  }
 ```
 
-渡した値は第二引数にオブジェクト形式で入ります。
+## 引数を増やす
+
+年齢を格納する数値型のageフィールドを追加します。
 
 ```javascript
-(略)
+...
+
+const typeDefs = `
+  type Query {
+    // ageを追加
+    hello(name: String!, age: Int!): String!
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello: (_, {name, age}) =>
+      `I\'m ${name}. ${age} years old.`
+  }
+}
+
+...
+```
+
+クエリは以下のように投げます。
+
+```graphql
+  query {
+    hello(name: "kento", age: 33)
+  }
+
+  # result
+  {
+    "data": {
+      "hello": "I'm kento. 33 years old."
+    }
+  }
+```
+
+---
+
+渡した値は第二引数にオブジェクト形式で入るらしいので試しにダンプしてみます。
+
+```javascript
+...
 
 const typeDefs = `
   type Query {
@@ -156,7 +206,7 @@ const resolvers = {
 
       let result = [];
 
-      Object.keys(args).forEach(arg => {
+      Object.keys(args).map(arg => {
         result.push(arg)
       })
 
@@ -165,47 +215,38 @@ const resolvers = {
   }
 }
 
-(略)
-//"hello": ["name", "age"]
+...
 ```
 
-```javascript
-hello: (_, args) => typeof args
-// "hello": "object"
+```graphql
+query {
+	hello(name: "kento", age: 33)
+}
 
+ # result
+  {
+    "data": {
+      "hello": [
+        "name",
+        "age"
+      ]
+    }
+  }
+```
+
+よって、いかのような取り出し方もできます。（これはJavaScriptのオブジェクトの扱いの話ですね。）
+
+```javascript
 // 分割代入で受け取るか、
-hello: (_, {name}) => `Hello ${ name }`)
+hello: (_, {name, age}) => `Hello ${ name }. `)
 
 // もしくはnameキーにアクセスして受け取る
 hello: (_, args) => `Hello ${ args.name }`)
 ```
 
-## 引数を増やす
-
-年齢を格納するageフィールドを追加します。
-
-```javascript
-(略)
-
-const typeDefs = `
-  type Query {
-    // ageを追加
-    hello(name: String!, age: Int!): String!
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: (_, {name, age}) => `I\'m ${name}. ${age} years old.`
-  }
-}
-
-(略)
-
-// "hello": "I'm kento. 12 years old."
-```
-
 ## クエリを投げてデータを取得する
+
+いよいよクエリからデータを取得してみたいと思います。DBに接続してクエリを投げて、、、と行きたいですが、まずは`index.js`にデータをハードコートして、それを取得してみます。
 
 まず、データをオブジェクト形式で定義します。適当にpersonalDataなどとします。
 
@@ -236,10 +277,29 @@ const typeDefs = `
 `
 ```
 
-採取携帯
+以下のようなスクリプトを用意します。
 
 ```javascript
 const { GraphQLServer } = require("graphql-yoga");
+
+const personalData = [
+  {
+    id: 1,
+    name: "kento"
+  },
+  {
+    id: 2,
+    name: "hikari"
+  },
+  {
+    id: 3,
+    name: "hiroshi"
+  },
+  {
+    id: 4,
+    name: "ayaka"
+  },
+]
 
 const typeDefs = `
   type Data {
@@ -250,17 +310,6 @@ const typeDefs = `
     data: [Data]
   }
 `
-const personalData = [
-  {
-    id: 1,
-    name: "kento"
-  },
-  {
-    id: 2,
-    name: "hikari"
-  }
-]
-
 const resolvers = {
   Query: {
     data: () => personalData
@@ -274,13 +323,60 @@ server.start(() => {
 })
 ```
 
+これまでと同じように`localhost:4000`にアクセスして、GraphQL Playgroudを開きます。
 
+クエリは以下のように投げます。
+
+```graphql
+query {
+  data {
+    id,
+    name
+  }
+}
+
+# result
+{
+  "data": {
+    "data": [
+      {
+        "id": 1,
+        "name": "kento"
+      },
+      {
+        "id": 2,
+        "name": "hikari"
+      },
+      {
+        "id": 3,
+        "name": "hiroshi"
+      },
+      {
+        "id": 4,
+        "name": "ayaka"
+      }
+    ]
+  }
+}
+```
+
+見事！データを取得できました。
+
+今回はここまでにしたいと思います。後編ではMongoDBとPostgreSQLを用意して、DBからデータを取得する方法を考えたいと思います。
+
+## MongoDBからデータを取得する
 
 # 参考
 
-https://www.apollographql.com/docs/apollo-server/data/resolvers/
+[prisma-labs/graphql-yoga](https://github.com/prisma-labs/graphql-yoga)
+
+[graphql-yoga/index.js at master · prisma-labs/graphql-yoga](https://github.com/prisma-labs/graphql-yoga/blob/master/examples/fullstack/server/index.js)
+
+[Resolvers - Apollo Server - Apollo GraphQL Docs](https://www.apollographql.com/docs/apollo-server/data/resolvers/)
 
 https://apollographql-jp.com/tutorial/resolvers/
 
 
 https://medium.com/@gbolahanolawuyi/setting-up-a-graphql-server-with-node-graphql-yoga-prisma-a3f59d33dac0
+
+[How To Build a GraphQL Server in Node.js Using GraphQL-yoga and MongoDB | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-build-a-graphql-server-in-node-js-using-graphql-yoga-and-mongodb)
