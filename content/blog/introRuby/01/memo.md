@@ -1,3 +1,12 @@
+---
+title: 今更Rubyに入門してみた
+postdate: 2021-02-03
+updatedate: 2021-02-03
+categoryName: "今更Rubyに入門してみた"
+categorySlug: introRuby
+tags: ["Ruby"]
+---
+
 変数のインクリメント、デクリメントは`+=`と`-=`で。`++`,`--`は用意されていない。`*=`、
 
 ```ruby
