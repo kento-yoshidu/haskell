@@ -1,38 +1,39 @@
 ---
-title: "入門MongoDB"
+title: "#1 MongoDBをインストールする"
 postdate: "2021-01-21"
-updatedate: "2020-01-21"
+updatedate: "2021-03-01"
 categoryName: "入門MongoDB"
 categorySlug: introMongoDB
 description: 
 tags: ["MongoDB","入門"]
 ---
 
+# WindowsにMongoDBをインストールする
 
 [こちら](https://www.mongodb.com/try/download/community)にアクセスし、**MongoDB Community Server**を選択します。
 
-![](./images/image01.JPG)
+![](./images/image01.jpg)
 
 下記の通り、ダウンロードするバージョン等を選択できます。Downloadをクリックすれば、インストーラをダウンロードできます。
 
-![](./images/image02.JPG)
+![](./images/image02.jpg)
 
 インストーラを実行します。
 
-![](./images/image03.JPG)
+![](./images/image03.jpg)
 
 同意して
-![](./images/image04.JPG)
+![](./images/image04.jpg)
 
 
-![](./images/image05.JPG)
+![](./images/image05.jpg)
 
-![](./images/image06.JPG)
-![](./images/image07.JPG)
-![](./images/image08.JPG)
-![](./images/image09.JPG)
-![](./images/image10.JPG)
-![](./images/image11.JPG)
+![](./images/image06.jpg)
+![](./images/image07.jpg)
+![](./images/image08.jpg)
+![](./images/image09.jpg)
+![](./images/image10.jpg)
+![](./images/image11.jpg)
 
 ついでに`version()`コマンドでバージョンも確認しときましょう。
 
@@ -115,21 +116,21 @@ MongoDBのGUIツールは様々ありますが、個人的にはRobo 3Tという
 (こちら)[https://robomongo.org/download]にアクセスします。
 **Download Robo 3T Only**を選択します。
 
-![](./images/image12.JPG)
+![](./images/image12.jpg)
 
-![](./images/image13.JPG)
+![](./images/image13.jpg)
 
-![](./images/image14.JPG)
+![](./images/image14.jpg)
 
 完了したらexeを実行します。
 
-![](./images/image15.JPG)
-![](./images/image16.JPG)
-![](./images/image17.JPG)
-![](./images/image18.JPG)
-![](./images/image19.JPG)
-![](./images/image20.JPG)
-![](./images/image21.JPG)
-![](./images/image22.JPG)
-![](./images/image24.JPG)
-![](./images/image23.JPG)
+![](./images/image15.jpg)
+![](./images/image16.jpg)
+![](./images/image17.jpg)
+![](./images/image18.jpg)
+![](./images/image19.jpg)
+![](./images/image20.jpg)
+![](./images/image21.jpg)
+![](./images/image22.jpg)
+![](./images/image24.jpg)
+![](./images/image23.jpg)
