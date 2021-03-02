@@ -1,7 +1,7 @@
 ---
-title: "#1 graphql-yoga🧘でローカルサーバを立てる(前編)"
+title: "#1 graphql-yoga🧘でローカルサーバを立てる"
 postdate: "2021-01-20"
-updatedate: "2021-03-01"
+updatedate: "2021-03-02"
 categoryName: "入門GraphQL"
 categorySlug: introGraphQL
 tags: ["GraphQL", "GraphQL-Yoga", "入門"]
@@ -15,8 +15,13 @@ tags: ["GraphQL", "GraphQL-Yoga", "入門"]
 
 おおむね[こちら](https://github.com/prisma-labs/graphql-yoga)のページを参考にしました。
 
-前編では最小構成でサーバを立て、queryでデータを取得するところまで。
-後編ではMongoDBに接続し、queryでデータを取得するところまでを行います。
+今回はgraphql-yogaでサーバを立て、queryでデータを取得するところまで。
+
+今回はまず、graphql-yogaでGraphQLサーバを立てます。
+
+肝心のデータですが、いきなりDBに接続するのはハードルが高いので、サーバスクリプトにオブジェクト形式で記載したものを取得することにしたいと思います。
+
+次の#2ではMongoDBに接続し、queryでデータを取得するところまでを行います。
 
 ## 環境
 

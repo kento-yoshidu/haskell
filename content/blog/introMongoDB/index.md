@@ -98,8 +98,8 @@ test    0.000GB
 ```shell
 > db.testColl.insertOne({name: "kento", age: 17})
 {
-        "acknowledged" : true,
-        "insertedId" : ObjectId("600e1f8cbf91faeb9710fd92")
+  "acknowledged" : true,
+  "insertedId" : ObjectId("600e1f8cbf91faeb9710fd92")
 }
 ```
 
