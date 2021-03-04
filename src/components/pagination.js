@@ -8,7 +8,7 @@ import {
         } from "@fortawesome/free-solid-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
-import { config, counter } from "@fortawesome/fontawesome-svg-core"
+import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
 
@@ -74,8 +74,9 @@ const Pagination = ({
                           </Link>
                         </p>
                     }
-                  </div> 
-              )} 
+                  </div>
+                )
+              } 
             })}
 
             <div>…</div>
