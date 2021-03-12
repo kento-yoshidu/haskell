@@ -389,7 +389,7 @@ $ git log --stat --oneline -- style.css
 
 今回は途中で`index.html`から`index.ejs`にファイル名を変更しています。`-- index.ejs`で検索しても、`index.html`は検索されません。
 
-![キャプチャ](./image01.png)
+![キャプチャ](./images/image01.png)
 
 そういう時は`--follow`オプションを付けてください。変更前のindex.htmlも検索してくれます。
 なお、引数の順番は注意が必要です。`--follow -- ファイル名`としなければ旧ファイルが検索されませんでした（git version 2.22.0）。
@@ -417,7 +417,7 @@ bb8d2e3 Create html
  index.html | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
-![キャプチャ](./image02.png)
+![キャプチャ](./images/image02.png)
 
 ### ファイル名の前に`--`を付けるのはどんな時？
 
