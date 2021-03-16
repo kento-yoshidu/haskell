@@ -1,10 +1,10 @@
 ---
 title: "#1 git logでコミット履歴を見る(前編)"
 postdate: "2021-03-05"
-updatedate: "2021-03-05"
+updatedate: "2021-03-16"
 categoryName: "Git中級者を目指す"
-categorySlug: GitAdvance
-description: git log のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。
+categorySlug: "GitAdvance"
+description: "git log のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。"
 tags: ["git"]
 ---
 
@@ -16,33 +16,33 @@ tags: ["git"]
 
 ## `--oneline`で簡易出力する
 
-単純に`git log`を実行した場合、コミットのハッシュID40桁、Authorの情報、コミット日時、コメント全行が表示されます(「そういえばAuthorって何?」っていう人は本ページ下部の参考を見てください。)。
+単純に`git log`を実行した場合、コミットのハッシュID40桁、ブランチが指しているコミット、Authorの名前とメールアドレス、コミット日時、コメント全行が表示されます(「そういえばAuthorって何?」っていう人は本ページ下部の参考を見てください。)。
 
 ```shell:title=console
 $ git log
 
-commit c5d47834f21e0308b6a180260c2d207e75285f6e (HEAD -> master)
-Author: potsunen <potsunen@potsunen.com>
-Date:   Fri Dec 11 11:06:40 2020 +0900
+commit eee108669ce7c42613e091533de0f6d218e3098c (HEAD -> main)
+Author: kento <kento@toriwatari.bird>
+Date:   Tue Mar 16 19:57:22 2021 +0900
 
-    master-commit
+    main-commit
 
-    masterブランチでのコミット
+    mainブランチでのコミット
 
-commit 993a41313015b66a99727ad65deaed3d837e4bc2
-Author: potsunen <potsunen@potsunen.com>
-Date:   Fri Dec 11 11:06:07 2020 +0900
+commit cce92e83d647515732629d0e5ea46cfb908383ca
+Author: kento <kento@toriwatari.bird>
+Date:   Tue Mar 16 19:56:58 2021 +0900
 
     Initial Commit
 ```
 
-`--oneline`を付けた場合、短縮されたハッシュID、HEADが指しているブランチ、そしてコメントの先頭行だけが表示されます。
+`--oneline`を付けた場合、短縮されたハッシュID、ブランチが指しているコミット、そしてコメントの先頭行だけが表示されます。
 
 ```shell:title=console
 $ git log --oneline
 
-c5d4783 (HEAD -> master) master-commit
-993a413 Initial Commit
+eee1086 (HEAD -> main) main-commit
+cce92e8 Initial Commit
 ```
 
 なお、`--oneline`は`--pretty=oneline --abbrev-commit`を短縮したオプションのようです。
@@ -50,43 +50,47 @@ c5d4783 (HEAD -> master) master-commit
 
 ## `--all`と`--graph`で他ブランチも含め、グラフィカルに出力する
 
-developブランチを切っていてmasterブランチにいるとします。ここで単純に`git log`と打つと、masterブランチのログしか表示されません。
+developブランチを切っていてmainブランチにいるとします。おおよそこんなイメージです。
+
+※画像挿入
+
+ここで単純に`git log`と打つと、mainブランチのログしか表示されません。
 
 ```shell:title=console
 $ git log --oneline
 
-c5d4783 (HEAD -> master) master-commit
+c5d4783 (HEAD -> main) main-commit
 993a413 Initial Commit
 
-※本当はdevelopブランチでのコミットがある。masterブランチにいるから見えない。
+※本当はdevelopブランチでのコミットがある。mainブランチにいるから見えない。
 ```
 
 他のブランチのコミットも含めログを確認するには、`--all`オプションを渡します。
 
 ```shell:title=console
-$ git log --oneline --all
+$ git log --all --oneline
 
-4de3594 (develop) develop-commit        # developブランチのログも見れる！
-c5d4783 (HEAD -> master) master-commit
-993a413 Initial Commit
+9a9ba29 (develop) develop-commit # developブランチのコミットも見れる！
+eee1086 (HEAD -> main) main-commit
+cce92e8 Initial Commit
 ```
 
 さらに`--graph`オプションを使用すると、アスタリスクや線を使い、グラフィカルにログを表示してくれます。
 
 ```shell:title=console
-$ git log --oneline --all --graph
+$ git log --all --graph --oneline
 
-* 4de3594 (develop) develop-commit
-| * c5d4783 (HEAD -> master) master-commit
+* 9a9ba29 (develop) develop-commit
+| * eee1086 (HEAD -> main) main-commit
 |/
-* 993a413 Initial Commit
+* cce92e8 Initial Commit
 ```
 
 通常、複数のブランチを切りマージを繰り返していきますので、`--all`と`--graph`の組み合わせは強力です。
 
 私は`git log --oneline --all --graph`のエイリアスを設定しています。
 
-一応、コマンドエイリアスの設定方法をここで紹介しておきます。`git config --global --edit`を実行すると、テキストエディタが立ち上がりますので、以下のように入力します。
+一応、コマンドエイリアスの設定方法を紹介しておきます。`git config --global --edit`を実行すると、テキストエディタが立ち上がりますので、以下のように入力します。
 
 ```shell:title=.gitconfig
 [alias]
@@ -95,28 +99,27 @@ $ git log --oneline --all --graph
 
 `lol`がエイリアスの名前です。一度設定しておけば`git lol`と実行するだけでグラフィカルなログが閲覧できます。
 
-
-
 ## `-p`で変更内容を確認する
 
 `-p`オプションを渡すことで、コミットごとの変更内容を出力することができます。`git log`と`git diff`の組み合わせのようなものだと考えていいと思います。
+
 以下のコマンドを実行してください。ファイルの作成と内容の変更を行っています。
 
 ```shell:title=console
 # htmlファイルを作成し、コミットします。
 touch index.html
 git add .
-git commit -m "Create html"
+git commit -m "Create index.html"
 
 # 作成したファイルに3行追記し、コミットします。
 echo -e "aaa\nbbb\nccc" >> index.html
 git add .
-git commit -m "Edit html"
+git commit -m "Edit index.html"
 
 # cssファイルを作成し、コミットします。
 touch style.css
 git add .
-git commit -m "Create css"
+git commit -m "Create style.css"
 ```
 
 `git log -p`とすることで、そのコミットでの変更箇所と内容を確認することができます。`git log -p --oneline`と入力してみます。
@@ -124,12 +127,12 @@ git commit -m "Create css"
 ```shell:title=console
 $ git log -p --oneline
 
-80e04b5 (HEAD -> master) Create css
+4aefdf3 (HEAD -> main) Create style.css
 diff --git a/style.css b/style.css
 new file mode 100644
 index 0000000..e69de29
 
-ce31455 Edit html
+be1bf08 Edit index.html
 diff --git a/index.html b/index.html
 index e69de29..1802a74 100644
 --- a/index.html
@@ -139,25 +142,25 @@ index e69de29..1802a74 100644
 +bbb
 +ccc
 
-bb8d2e3 Create html
+fd4955b Create index.html
 diff --git a/index.html b/index.html
 new file mode 100644
 index 0000000..e69de29
 ```
 
-最初のコミット(上記で言うbb8d2e3)を見てみると、`new file`という記述があり、新しいファイルがコミットされたことを表しています。
+最初`index.html`を作成したコミット（上記で言うfd4955b）を見てみると、`new file`という記述があり、新しいファイルがコミットされたことを表しています。
 
 ```shell:title=console
-bb8d2e3 Create html
+fd4955b Create index.html
 diff --git a/index.html b/index.html
-new file mode 100644    # これ
+new file mode 100644 # これ
 index 0000000..e69de29
 ```
 
-次のコミットでは空だったファイルに3行を追記しました。これは追記した行に`＋`を記すことによって表されます。
+次のコミットでは空だった`index.html`に3行追記しました。これは追記した行に`＋`を記すことによって表されます。
 
 ```shell:title=console
-ce31455 Edit html
+be1bf08 Edit index.html
 diff --git a/index.html b/index.html
 index e69de29..1802a74 100644
 --- a/index.html
@@ -176,11 +179,11 @@ echo -e "aaaaaa\nbbb" > index.html
 
 git add .
 
-git commit -m "2nd Edit"
+git commit -m "2nd Edit index.html"
 
 $ git log -p --oneline -1
 
-2ec6072 (HEAD -> master) 2nd Edit
+360e27d (HEAD -> main) 2nd Edit index.html
 diff --git a/index.html b/index.html
 index 1802a74..183df72 100644
 --- a/index.html
@@ -192,7 +195,7 @@ index 1802a74..183df72 100644
 -ccc
 ```
 
-1行目の`aaa`は`aaaaaa`に変更されました。これは「`aaa`を削除した。`aaaaaa`を追記した。」と捉えられます。ですので、`aaa`には`-`、`aaaaaa`には`＋`が付与されます。削除された`ccc`も同じく`-`が付与されます。
+1行目の`aaa`は`aaaaaa`に変更されました。これは「`aaa`を削除し`aaaaaa`を追記した」と捉えられます。ですので、`aaa`には`-`、`aaaaaa`には`＋`が付与されます。削除された`ccc`も同じく`-`が付与されます。
 
 次、ファイル名を変更してみます。`rename`と表示されます。
 
@@ -204,14 +207,14 @@ $ git commit -m "Rename index.html"
 
 $ git log -p --oneline -1
 
-ff9e010 (HEAD -> master) Rename index.html
+cb039c3 (HEAD -> main) Rename index.html to index.ejs
 diff --git a/index.html b/index.ejs
 similarity index 100%
-rename from index.html   # from ～から
-rename to index.ejs      # to ～へ
+rename from index.html # ～から
+rename to index.ejs    # ～へ
 ```
 
-続いて、ファイルを削除します。`delete`でファイルが削除されたこと、そして削除されたファイルの内容も教えてくれます。
+続いて、`index.ejs`を削除します。`deleted`でファイルが削除されたこと、そして削除されたファイルの内容も教えてくれます。
 
 ```shell:title=console
 $ git rm index.ejs
@@ -220,9 +223,9 @@ $ git commit -m "Remove index.ejs"
 
 $ git log -p --oneline -1
 
-14664e6 (HEAD -> master) Remove index.ejs
+d7e6535 (HEAD -> main) Delete index.ejs
 diff --git a/index.ejs b/index.ejs
-deleted file mode 100644    # これ
+deleted file mode 100644 # deleted
 index 183df72..0000000
 --- a/index.ejs
 +++ /dev/null
@@ -250,7 +253,7 @@ index 183df72..0000000
 #--grep="2nd"でログの絞り込み
 $ git log -p --word-diff --oneline --grep="2nd"
 
-2ec6072 2nd Edit
+360e27d 2nd Edit index.html
 diff --git a/index.html b/index.html
 index 1802a74..183df72 100644
 --- a/index.html
@@ -261,75 +264,72 @@ bbb
 [-ccc-]
 ```
 
-`aaa`と`aaaaaa`が同じ行で、`-`と`+`で表現されています。これにより変更内容が分かりやすくなった…気がしませんか:thinking:?
-
-他の例も以下に置いておきます。マークダウン上で見るよりもgitコンソールの方がカラフルですし幾分見やすいですね。
-
-
+`aaa`と`aaaaaa`が同じ行で、`[-]`と`{+}`で表現されています。これにより変更内容が分かりやすくなった…気がしませんか:thinking:?私はあまり使いませんが。
 
 ## `--stat`で変更内容を簡易的に確認する
 
-`-p`よりももっとザクっと変更内容を確認したい、という時には`--stat`オプションを渡します。
+`-p`よりももっとザクっと変更内容を確認したい、という時には`--stat`を渡します。
+
+`-p`はファイルが具体的にどう変更されたかを教えてくれますが、`--stat`はどのファイルに変更があったか、そして変更の要約を出力します。
 
 ```shell:title=console
 $ git log --stat --oneline
 
-14664e6 (HEAD -> master) Remove index.ejs   # ファイル削除
- index.ejs | 2 --                           # 削除されたファイルに2行記載があった
- 1 file changed, 2 deletions(-)             # 要約
+d7e6535 (HEAD -> main) Delete index.ejs   # ファイル削除
+ index.ejs | 2 --                         # 削除されたファイルに2行記載があった
+ 1 file changed, 2 deletions(-)           # コミットの要約
 
-ff9e010 Rename index.html                           # ファイル名変更
- index.html => index.ejs | 0                        # 変更内容
+cb039c3 Rename index.html to index.ejs              # ファイル名変更
+ index.html => index.ejs | 0                        # 新旧ファイル名
  1 file changed, 0 insertions(+), 0 deletions(-)
 
-2ec6072 2nd Edit
+360e27d 2nd Edit index.html
  index.html | 3 +--                                 # 3箇所変更
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-80e04b5 Create css                                  # ファイル作成
+4aefdf3 Create style.css                            # ファイル作成
  style.css | 0                                      # 作成したファイル名
  1 file changed, 0 insertions(+), 0 deletions(-)
 
-ce31455 Edit html
- index.html | 3 +++                                 # 3箇所変更
+be1bf08 Edit index.html
+ index.html | 3 +++
  1 file changed, 3 insertions(+)
 
-bb8d2e3 Create html                                 # ファイル作成
- index.html | 0                                     # 作成したファイル名
+fd4955b Create index.html
+ index.html | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
 ## `--name-status`で`--stat`よりも更に簡易表示する
 
-変更内容を一文字で表してくれます。
-A=Add、M=Modify、R=Rename、D=Delete。
+変更があったファイルと、その変更内容を一文字で表してくれます。
+
+A=Add、M=Modify、R=Rename、D=Deleteです。
 
 ```shell:title=console
 $ git log --name-status --oneline
 
-14664e6 (HEAD -> master) Remove index.ejs
+d7e6535 (HEAD -> main) Delete index.ejs
 D       index.ejs
 
-ff9e010 Rename index.html
+cb039c3 Rename index.html to index.ejs
 R100    index.html      index.ejs
 
-2ec6072 2nd Edit
+360e27d 2nd Edit index.html
 M       index.html
 
-80e04b5 Create css
+4aefdf3 Create style.css
 A       style.css
 
-ce31455 Edit html
+be1bf08 Edit index.html
 M       index.html
 
-bb8d2e3 Create html
+fd4955b Create index.html
 A       index.html
 ```
 
-Renameの時に`R100`と表示されていますが、この数字は「変更の前と後で、ファイルの中身がどれくらい一緒か」をパーセンテージで表しています。
-今回の例ではファイル名を変更しただけで内容は一切触っていないので、100=「100%一緒だよ」になります。
-
-
+Renameの時に`R100`と表示されていますが、この数字は「変更の前と後で、ファイルの中身がどれくらい一緒か」をパーセンテージで教えてくれています。
+今回の例ではファイル名を変更しただけで内容は一切触っていないので、100=「100%一緒だよ」という意味です。
 
 ## `--name-only`でファイル名のみ表示する
 
@@ -338,56 +338,52 @@ Renameの時に`R100`と表示されていますが、この数字は「変更�
 ```shell:title=console
 $ git log --name-only --oneline
 
-14664e6 (HEAD -> master) Remove index.ejs
+d7e6535 (HEAD -> main) Delete index.ejs
 index.ejs
 
-ff9e010 Rename index.html
+cb039c3 Rename index.html to index.ejs
 index.ejs
 
-2ec6072 2nd Edit
+360e27d 2nd Edit index.html
 index.html
 
-80e04b5 Create css
+4aefdf3 Create style.css
 style.css
 
-ce31455 Edit html
+be1bf08 Edit index.html
 index.html
 
-bb8d2e3 Create html
+fd4955b Create index.html
 index.html
 ```
 
-
-
 ## `-- <path>`で特定のファイルの履歴を確認する
 
-任意のファイルが含まれているコミットのみ出力する場合には、`-- <ファイル名 もしくは パス>`と記述します。以下の例では`--stat`と組み合わせています。`-p`と組み合わせることも可能です。
+任意のファイルに変更があったコミットのみ出力する場合には、`-- <ファイル名 もしくは パス>`と記述します。以下の例では`--stat`と組み合わせています。`-p`と組み合わせることも可能です。
 
 ```shell:title=console
 # index.ejsのみ
-$ git log --stat --oneline -- index.ejs
-
-14664e6 (HEAD -> master) Remove index.ejs
+d7e6535 (HEAD -> main) Delete index.ejs
  index.ejs | 2 --
  1 file changed, 2 deletions(-)
 
-ff9e010 Rename index.html
+cb039c3 Rename index.html to index.ejs
  index.ejs | 2 ++
  1 file changed, 2 insertions(+)
 
 # style.cssのみ
 $ git log --stat --oneline -- style.css
 
-80e04b5 Create css
+4aefdf3 Create style.css
  style.css | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
-なお、パスの前に`--`を付与していますが、これは`git log`に「渡しているのはファイル名だよ」と伝える意味を持っています。もし付与しない場合はブランチ名とみなされます。検索したいファイル名と同名のブランチが切られていないなら、`--`は省略できます（ほとんどの場合省略できそうですね）。
+なお、パスの前に`--`を付与していますが、これは`git log`に「渡しているのはファイル名だよ」と伝える意味を持っています。~~もし付与しない場合はブランチ名とみなされます。検索したいファイル名と同名のブランチが切られていないなら、`--`は省略できます（ほとんどの場合省略できそうですね）。~~
 
 ### あれ？index.htmlが引っかからないけど。。。
 
-今回は途中で`index.html`から`index.ejs`にファイル名を変更しています。`-- index.ejs`で検索しても、`index.html`は検索されません。
+今回は途中で`index.html`から`index.ejs`にファイル名を変更しています。`-- index.ejs`で検索しても、`index.html`が対象のコミットは出力されません。
 
 ![キャプチャ](./images/image01.png)
 
@@ -397,82 +393,72 @@ $ git log --stat --oneline -- style.css
 ```shell:title=console
 $ git log --stat --oneline --follow -- index.ejs
 
-14664e6 (HEAD -> master) Remove index.ejs
+d7e6535 (HEAD -> main) Delete index.ejs
  index.ejs | 2 --
  1 file changed, 2 deletions(-)
 
-ff9e010 Rename index.html
+cb039c3 Rename index.html to index.ejs
  index.html => index.ejs | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 
-2ec6072 2nd Edit
+360e27d 2nd Edit index.html
  index.html | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-ce31455 Edit html
+be1bf08 Edit index.html
  index.html | 3 +++
  1 file changed, 3 insertions(+)
 
-bb8d2e3 Create html
+fd4955b Create index.html
  index.html | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
+
 ![キャプチャ](./images/image02.png)
 
 ### ファイル名の前に`--`を付けるのはどんな時？
 
-コミット対象になったファイルを指定するには`--`を付与します。基本的に「ファイル名の前には常に付ける」と思っておけばいいのですが、「じゃあ付けなかったらどうなるの？」と思うのが人情です。
+コミット対象になったファイルを指定するには`--`を付与します。私は「ファイル名の前には常に付ける」と考えているのですが、「じゃあ付けなかったらどうなるの？」と思うのが人情です。
 
-まず、以下の通り`develop`という名前のファイルを作成、コミットします。
+いくつか検証してみます。
 
-```shell:title=console
+現在、`index.ejs`は削除されていますが、ここで`--`をつけずにindex.ejsを指定するとエラーになってしまいます。
 
-$ git commit --allow-empty -m "Initial Commit"
+```
+# -- なしで実行
+$ git log --stat --oneline index.ejs
 
-$ touch develop
-
-$ git add .
-
-$ git commit -m "Create develop"
+fatal: ambiguous argument 'index.ejs': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
 ```
 
-この`develop`ファイルが含まれるコミットを出力するには`-- develop`コマンドを渡します。しかし、`develop`のみを渡しても同じ結果が得られることが分かります。
+`ambiguous argument`、つまり「曖昧な引数」というメッセージが出力され、ご丁寧に「ファイル名の前に`--`をつけてね」というアドバイスまでくれています。
 
-```shell:title=console
+(https://rcmdnk.com/blog/2017/10/01/computer-git/)
 
-# -- を付ける
-$ git log --stat --oneline -- develop
-960b51a (HEAD -> master) Create develop
- develop | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
+ワーキングツリーに存在している`style.css`であれば`--`なしでも検索できます。
 
-# -- を付けない
-$ git log --stat --oneline develop
-
-960b51a (HEAD -> master) Create develop
- develop | 0
+```
+$ git log --stat --oneline style.css
+4aefdf3 Create style.css
+ style.css | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
-次に、`develop`という名前のブランチを作成します。ブランチを作成するだけでOKです。コミットは特に必要ありません。
+次に、**ファイル名と同じブランチが切られている場合**について検証します。
+
+今、ワーキングツリーには`style.css`がありますから、`style.css`という名前のブランチを切ります。特にコミットはしなくてOKです。
 
 ```shell:title=console
-
-$ git checkout -b develop 737329b
-
-Switched to a new branch 'develop'
-
-$ git branch
-
-*  develop
-   master
+$  git checkout -b style.css
 ```
 
-そして再度masterブランチに戻り、`--`をつけないで`develop`を渡すと…
+ここで`--`を渡さないで
 
 ```shell:title=console
 
-$ git checkout master
+$ git checkout main
 
 $ git log --stat --oneline develop
 
@@ -488,7 +474,7 @@ Use '--' to separate paths from revisions, like this:
 ```shell:title=console
 $ git log --stat --oneline -- develop
 
-960b51a (HEAD -> master) Create develop
+960b51a (HEAD -> main) Create develop
  develop | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
@@ -500,7 +486,7 @@ $ git log --stat --oneline -- develop
 ```shell:title=console
 $ git log --format=fuller
 
-commit 13a83c31fc4558b811ae2c0dbb373a60d2359c77 (HEAD -> master)
+commit 13a83c31fc4558b811ae2c0dbb373a60d2359c77 (HEAD -> main)
 Author:     potsunen <potsunen@potsunen.com>
 Date: Fri Jan 10 00:00:00 2020 +0900
 
@@ -529,7 +515,7 @@ Date: Sun Jan 1 00:00:00 2017 +0900
 
 ```shell
 $ git log --since="2018-01-01:00:00:00" --oneline
-13a83c3 (HEAD -> master) 2020 commit
+13a83c3 (HEAD -> main) 2020 commit
 0fb21bf 2019 commit
 41ece2d 2018 commit
 ```
@@ -564,7 +550,7 @@ $ git log --since="last month"
 
 ```shell:title=console
 $ git log --since="2019" # YYYYのみ
-commit 13a83c31fc4558b811ae2c0dbb373a60d2359c77 (HEAD -> master)
+commit 13a83c31fc4558b811ae2c0dbb373a60d2359c77 (HEAD -> main)
 Author: potsunen <potsunen@potsunen.com>
 Date:   Fri Jan 10 00:00:00 2020 +0900
 
@@ -601,7 +587,7 @@ $ git log --since="2017-06-30" --until="2018-06-29" --oneline
 ```shell:title=console
 $ git log --relative-date --abbrev-commit
 
-commit 1527aea (HEAD -> master)
+commit 1527aea (HEAD -> main)
 Author: potsunen <potsunen@potsunen.com>
 Date:   3 minutes ago  # 3分前
 
@@ -627,21 +613,21 @@ Date:   5 months ago   # 5か月前
 ```shell:title=console
 $ git log --graph --all --oneline
 
-*   ba08362 (HEAD -> develop, master) Merge branch 'develop'
+*   ba08362 (HEAD -> develop, main) Merge branch 'develop'
 |\
 | * fa906d1 dev commit
-* | be5f689 master commit
+* | be5f689 main commit
 |/
 * 4f4d558 initial commit
 
 # マージコミットのみ
 $ git log --merges --oneline
-ba08362 (HEAD -> develop, master) Merge branch 'develop'
+ba08362 (HEAD -> develop, main) Merge branch 'develop'
 
 # マージコミットを除外
 $ git log --no-merges --oneline
 
-be5f689 master commit
+be5f689 main commit
 fa906d1 dev commit
 4f4d558 initial commit
 ```
@@ -662,7 +648,7 @@ Date:   Fri Mar 6 16:25:04 2020 +0900
 # Committerを確認する場合は、fullerオプションを付けてください。
 $ git log --committer="potsunen" --format="fuller"
 
-commit c85203de19d282266cdcfe73f800a66a49486e66 (HEAD -> master)
+commit c85203de19d282266cdcfe73f800a66a49486e66 (HEAD -> main)
 Author:     potsunen <potsunen@potsunen.com>
 AuthorDate: Fri Mar 6 16:27:08 2020 +0900
 Commit:     potsunen <potsunen@potsunen.com> # Committer
@@ -692,7 +678,7 @@ CommitDate: Fri Mar 6 16:27:08 2020 +0900
 ```shell:title=console
 $ git log --pretty=fuller
 
-commit 743c4d51cc9631705894e771e1633d6481f8b61b (HEAD -> master)
+commit 743c4d51cc9631705894e771e1633d6481f8b61b (HEAD -> main)
 Author:     potsunen <potsunen@potsunen.co.jp>   # 作成者
 AuthorDate: Fri Feb 28 11:13:02 2020 +0900
 Commit:     宇宙人 <utyuujin@Andromeda.space>     # amendした人
