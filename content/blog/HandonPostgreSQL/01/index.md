@@ -1,19 +1,22 @@
 ---
-title: PostgreSQLをインストールする（Windows）
-postdate: "2020-12-23"
-updatedate: "2020-12-23"
+title: PostgreSQLをインストールする
+postdate: "2021-03-22"
+updatedate: "2021-03-21"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 tags: ["PostgreSQL"]
 ---
 
+# WindowsにPostgreSQLをインストールする
+
 ## インストーラをダウンロードする
 
-[こちら](https://www.enterprisedb.com/downloads/postgresql)からPostgreSQLのインストーラをダウンロードします。
+<!--[こちら](https://www.enterprisedb.com/downloads/postgresql)からPostgreSQLのインストーラをダウンロードします。-->
+[こちら](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)からPostgreSQLのインストーラをダウンロードします。
 
-2020年12月現在、13.1のインストーラが用意されているようですが、ここでは12.5のインストーラを落とします。
+2021年3月現在、13.2のインストーラが用意されているようですが、ここでは12.6のインストーラを落とします。皆様におかれましては好きなバージョンを落としていただいてかまいませんが、このハンズオンではバージョン12を前提に話を進めます。
 
-![](images/01.jpg)
+![](images/image01.jpg)
 
 exeファイルがダウンロードされると思いますので、管理者として実行します。
 
