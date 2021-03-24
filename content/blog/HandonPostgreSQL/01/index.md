@@ -1,7 +1,7 @@
 ---
-title: PostgreSQLをインストールする
+title: "#2 PostgreSQLをインストールする"
 postdate: "2021-03-22"
-updatedate: "2021-03-21"
+updatedate: "2021-03-24"
 categoryName: "ハンズオンPostgreSQL"
 categorySlug: "HandsonPostgreSQL"
 tags: ["PostgreSQL"]
@@ -16,36 +16,37 @@ tags: ["PostgreSQL"]
 
 2021年3月現在、13.2のインストーラが用意されているようですが、ここでは12.6のインストーラを落とします。皆様におかれましては好きなバージョンを落としていただいてかまいませんが、このハンズオンではバージョン12を前提に話を進めます。
 
-![](images/image01.jpg)
+![](images/image01.png)
 
 exeファイルがダウンロードされると思いますので、管理者として実行します。
 
-![](images/02.jpg)
+![](images/image02.png)
 
 ## インストールする
 
 Nextをクリックします。
 
-![](images/03.jpg)
+![](images/image03.png)
 
 PostgreSQL本体をインストールする場所を指定します。デフォルトのままがいいと思いますので、このままNextをクリックします。
 
-![](images/04.jpg)
+![](images/image04.png)
 
 インストールするコンポーネントを聞かれますので、全てにチェックが入っている状態でNextをクリックします。
 
-![](images/05.jpg)
+![](images/image05.png)
 
-続いて、DBデータなどが保存される**クラスタ**の設定場所を聞かれます。デフォルトのままでもいいですが、ここではCドライブの直下に`postgres`フォルダを作成、そこをクラスタとすることにします。
+続いて、DBデータなどが保存される**クラスタ**の設定場所を聞かれます。デフォルトのままでもいいですが、私はCドライブの直下に`workdpace`というフォルダを作成しさらにその中に`postgres`フォルダを作成、そこをクラスタとすることにします。クラスタは後からいくらでも作り直せるので、あまり深く考えなくてもOKです。
 
-![](images/06.jpg)
+![](images/image06.png)
 
 続いて、postgresユーザ（全ての権限をもつスーパーユーザです）のパスワードを設定します。
 
-![](images/07.jpg)
+![](images/image07.png)
 
 PostgreSQLサーバが待ち受けるポート番号を指定します。ここではデフォルトのまま、5432を設定します。
-![](images/08.jpg)
+
+![](images/image08.png)
 
 続いてロケール（言語、地域設定）を設定します。恐らく`Japanses, Japan`などと表示されていると思いますが、これを変更し`C`を選択することをお勧めします。
 
@@ -55,18 +56,29 @@ PostgreSQLサーバが待ち受けるポート番号を指定します。ここ�
 
 余裕があるならば両方のロケールを設定してみて、どういった違いがあるのかを確認してみるものいいと思います。
 
-ただ、ここではCロケールを設定し、先に進みます。
+ここではCロケールを設定し、先に進みます。
 
-![](images/09.jpg)
+![](images/image09.png)
 
 Nextをクリックします。
-![](images/10.jpg)
+
+![](images/image10.png)
 
 Nextをクリックすればインストールが開始されます。
-![](images/11.jpg)
 
+![](images/image11.png)
 
-![](images/12.jpg)
+インストールが完了すると以下のような画面が現れます。チェックボックスにチェックが入っていると思いますが、ここではチェックを外してFinishを選択します。
+
+チェックを入れてFinishを選択すると、PostgreSQLをサポートするツールなどをダウンロードできるStack Builderというツールが起動します。本旨から外れますので起動させずに先に進めます。
+
+![](images/image12.png)
+
+なお、Stack Builderは、PostgreSQLをインストールしたフォルダ（ハンズオン通りだと`C:\Program Files\PostgreSQL\12\`）の中の`bin`フォルダの中に`stackbuilder.exe`が実体として存在してますので、こちらを実行すればいつでもツールをダウンロードできます。
+
+以下はStack Builderを起動した様子です。参考までに。
+
+![](images/image13.png)
 
 ![](images/13.jpg)
 
