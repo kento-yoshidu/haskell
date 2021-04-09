@@ -32,6 +32,12 @@ a {
   margin: 2vh auto 4vh;
 }
 
+@media screen and (max-width: 768px) {
+  .main {
+    width: 88vw;
+  }
+}
+
 .main.categoriesMain,
 .main.tagsMain {
   margin: 100px auto;
@@ -134,7 +140,7 @@ a {
     .post-item {
       margin-bottom: 20px;
       width: 90%;
-      padding: 10px 20px;
+      padding: 8px 15px;
       .post-title {
         a {
           font-size: 2rem;
