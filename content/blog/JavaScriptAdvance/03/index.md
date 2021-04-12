@@ -1,8 +1,51 @@
+---
+title: "#3 Node.jsのインストール"
+postdate: "2021-04-09"
+updatedate: "2020-04-09"
+categoryName: "JavaScript中級者を目指す"
+categorySlug: "JavaScriptAdvance"
+description: 
+tags: ["JavaScript", "Node.js"]
+---
+
+# JavaScriptのデータ型
+
+# プリミティブとオブジェクト
+
+# 変数
+
+# オブジェクトが持つメソッド
+
+---
+
+# Node.jsのインストール
+
+Node.jsについて公式Webサイトを見てみると
+
+> Node.js® は、Chrome の V8 JavaScript エンジン で動作する JavaScript 環境です。
+
+とされています。要するに**JavaScriptの実行環境**であると言えます。
+
+これまではHTMLファイルを作成し、JavaScriptファイルを読み込んでブラウザ上でJavaScriptを実行していました。この時はブラウザがJavaScriptの実行環境であった、と言えます。
+
+Node.jsはブラウザに変わるJavaScriptの実行環境です。Google Chromeの中のJavaScriptの解析、実行をしている**V8**と呼ばれるプログラムを抜き出し、PCやサーバ上で利用しているようなイメージです。
+
+Node.jsを利用すれば、コンソールでのJavaScriptの実行、また、**REPL**という対話形式でJavaScriptを実行できるプログラムも利用できます。
+
+また、**npm**というパッケージ管理システムも利用し、JavaScriptの開発を補助してくれるライブラリやフレームワークをダウンロード、実行できます。
+
+このように、Node.jsには、現代のJavaScriptプログラミングに必要なものが揃っていますので、ぜひNode.jsをインストールして使用しましょう。
+
+
+
+
+
+
 # JavaScriptのデータ型
 
 JavaScriptに限らない話ですが、ほとんどのプログラミング言語で**データ型**という概念が存在します。
 
-データ型は、ある変数やある値が**整数なのか、少数なのか、文字なのか、複数のデータをひとまとめにしたものなのか**、データの**種類**を表すものです。言語や文脈によって、**タイプ**や**型**などとも呼ばれたりします。
+データ型は、ある変数やある値が**整数なのか、少数なのか、文字なのか、複数のデータをひとまとめにしたものなのか**、データの**種類**を表すものです。言語や文脈によって、**タイプ(Type)**や**型**などとも呼ばれたりします。
 
 データ型の必要性を考える例として、`1 + 1`という式をプログラミング言語に計算させた時の答えを考えてみます。
 
@@ -10,7 +53,7 @@ JavaScriptに限らない話ですが、ほとんどのプログラミング言�
 
 ただ、多くのプログラミング言語には**数値型**、そして**文字列型**というデータ型が存在します。数字の1だけではなく、文字列の1が存在するということです。そして、プログラミング言語が`1 + 1`という計算式を実行する時には、それぞれの数値のデータ型が明確になっていなければなりません。
 
-また、計算結果を考えたとき、`数字の1 + 数字の1`の答えは`数字の2`であると想像できますが、`文字列の1 + 数値の1`の場合はどうなるでしょうか？また、`文字列の1 + 文字列の1`の場合は？
+例えば、上記の計算結果を考えたとき、`数字の1 + 数字の1`の答えは`数字の2`であると想像できますが、`文字列の1 + 数値の1`の場合はどうなるでしょうか？`文字列の1 + 文字列の1`の場合は？
 
 これらの計算結果、そして、そもそも計算が行えるかどうかは、言語によって異なります。
 
@@ -72,13 +115,13 @@ JavaScriptでは変数宣言時、データ型を指定する必要がありま�
 let i = 1;
 ```
 
-MDNでも
+[MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Data_structures)でも
 
 >JavaScript では、変数が直接的に特定のデータ型に関連付けられているわけではなく、どの変数にもあらゆる型の値を代入(および再代入)できます。
 
 と述べられています。
 
-また、後から違うデータ型の値を再代入することが可能です。
+また、後から違うデータ型の値を再代入することも可能です。
 
 ```javascript
 // 数値型の変数i
@@ -90,7 +133,7 @@ i = "hello";
 
 このように、自動的に型を付与してくれたり後から型を変更できる型システムを持った言語は、**動的型付け言語**と呼ばれ分類されます。
 
-JavaScriptは動的型付けです。
+JavaScriptは動的型付け言語です。
 
 逆に、後からデータ型を変更できない言語を**静的型付け言語**と言います。JavaScriptの親戚である**TypeScript**はまさに静的型付け言語です。
 
@@ -129,9 +172,9 @@ i = "string"
 
 ## 数値型
 
-数値型は文字通り、数を指します。10進数、2進数、8進数、16進数、浮動小数点などが表現できます。
+数値型は文字通り、**数**を指します。10進数、2進数、8進数、16進数、浮動小数点などが表現できます。
 
-JavaScriptにおいて数のデータ型は、数値型と、のちに紹介するBigInt型の2種類です。
+JavaScriptにおいて数のデータ型は、数値型と後に紹介するBigInt型の2種類です。
 
 言語によっては整数と浮動小数点でデータ型が分かれていたり、桁数によって分かれていたりしますが、JavaScriptにおいてはこのような分け方はされていません。
 
@@ -142,14 +185,14 @@ JavaScriptにおいて数のデータ型は、数値型と、のちに紹介す�
 `.`を付ければ小数点を表現できますし、`-`を付ければ負の数を表現できます。
 
 ```javascript
-console.log(1) 
+console.log(1) ;
 //=> 1
 
-console.log(-10.5)
+console.log(-10.5);
 //=> -10.5
 ```
 
-※正確にはJavaScriptの数値型は、全て64bitの浮動小数点数です。整数は存在していません。内部的に浮動小数点数だが、画面に表示する時に整数っぽく見せてくれているということです。これはまた別にページを設けたいと思います。
+※正確にはJavaScriptの数値型は、全て[IEEE754](https://ja.wikipedia.org/wiki/IEEE_754)に準拠した64bitの浮動小数点数です。整数は存在していません。「内部的に浮動小数点数で持ち、画面に表示する時に整数っぽく見せてくれている」ということです。これはまた別にページを設けたいと思います。
 
 ---
 
@@ -168,9 +211,9 @@ console.log(typeof -1)
 
 この通り、整数も小数点も負の数も全てnumber（数値）型で一括りにされていることがわかります。
 
-これは他のデータ型の紹介部分でも使用しますので、憶えておいてください。
+`typeof`演算子は他のデータ型の紹介部分でも使用しますので、憶えておいてください。
 
-続けて、いくつかの演算子を使って計算もしてみましょう。
+続けて、いくつかの計算演算子を使って計算もしてみましょう。
 
 ```javascript
 console.log(1 + 2)
@@ -206,7 +249,7 @@ console.log(1.3 + 1.1);
 
 ### 2進数[ES2015]
 
-2進数リテラルは`0b`もしくは`0B`を付与することで表現します。この2進数リテラル表現はES2015から導入されました。
+2進数は`0b`もしくは`0B`を付与することで表現します。2進数の表現はES2015から導入されました。
 
 `0`と`1`以外の数値を使用した時はシンタックスエラーになります。また、`typeof`で`number`が出力されることも確認しておきます。
 
@@ -223,7 +266,7 @@ console.log(typeof 0b11)
 
 ### 8進数
 
-8進数リテラルは`0o`もしくは`0O`を付与することで表現します(OctocalのO)。この8進数リテラルの導入もES2015からです。
+8進数リテラルは`0o`もしくは`0O`を付与することで表現します(OctocalのO)。8進数という数値の表現自体はES5以前からありましたが、8進数リテラルの導入はES2015からです。
 
 ```javascript
 console.log(0o11)
@@ -236,7 +279,7 @@ console.log(0o9)
 //=> SyntaxError: Invalid or unexpected token
 ```
 
-ちなみに、ES5までは先頭に`0`を付与して8進数リテラルを表現していたようですが、非常に分かりにくいですね。
+ES5までは先頭に`0`を付与して8進数リテラルを表現していたようですが、非常に分かりにくいですね。
 
 ```javascript
 // 一応これでも8進数
@@ -253,7 +296,7 @@ console.log(0xff);
 //=> 255
 
 console.log(typeof 0xff);
-//=> 255
+//=> number
 
 console.log(0xgg)
 //=> SyntaxError: Invalid or unexpected token
@@ -264,10 +307,10 @@ console.log(0xgg)
 浮動小数点リテラルは`.`か`e`もしくは`E`を用いて表現します。
 
 ```javascript
-console.log(1.1)
+console.log(1.1);
 //=> 1.1
 
-console.log(314e-2)
+console.log(314e-2);
 //=> 3.14
 ```
 
@@ -291,27 +334,134 @@ console.log(2 / "test");
 //=> NaN
 ```
 
-
-
 ### Infinity
 
 ```javascript
 const i = 10 ** 1000;
 
-console.log(i)
+console.log(i);
 ```
-
-
-
-
-
-### NanとInfinity
 
 [データ型とリテラル · JavaScript Primer #jsprimer](https://jsprimer.net/basic/data-type/)
 
 [IEEE 754 - Wikipedia](https://ja.wikipedia.org/wiki/IEEE_754)
 
 [The history of “typeof null”](https://2ality.com/2013/10/typeof-null.html)
+
+
+## 文字列型
+
+JavaScriptにおける文字や文字列は、全て文字列型として表現されます。言語によっては1文字だと`char`型、みたいなこともありますが、JavaScriptでは1文字だろが100文字だろうが文字列型として扱われます。
+
+文字列型は、引用符（ダブルクオテーション`"`、シングルクオテーション`'`）、もしくはバッククオテーション`` ` ``で文字列を囲って表現します。これを文字列リテラルといいます。
+
+```javascript
+console.log("Hello World");
+//=> Hello World
+
+const str = 'HogeFoo';
+
+console.log(str);
+//=> HogeFoo
+```
+
+また、文字列型データに`typeof`演算子を使用すると、`string`が返ってきます。
+
+```javascript
+console.log(typeof "Hello");
+//=> string
+
+console.log(typeof "a");
+//=> string
+```
+
+## シングルクオート、ダブルクオート
+
+シングルクオートとダブルクオートは**全く同じ**です。違いはありません。どちらを使うかは個人（もしくはチーム）の自由です。
+
+2つの引用符を用い、文字列の中で引用符を表現することができます。以下の例では、文字列をダブルクオーテーションで囲い、`my`をシングルクオテーションで囲っています。
+
+```javascript
+console.log("This is 'my' cake");
+// => This is 'my' cake
+```
+
+これは1種類の引用符だけでは実現できません。
+
+```javascript
+const str = 'This is 'my' cake';
+//=> SyntaxError: Unexpected identifier
+```
+
+上記の例では文字列全体をシングルクオテーションで囲い、更にその中で`my`をシングルクオテーションで囲っています。
+
+この時、`This is `と` cake`がシングルクオテーションで囲われていることになり、結果シンタックスエラーになります。
+
+## バッククオート
+
+バッククオートは上記2つの引用符とは違う特徴があります。バッククオートは文字列の中で**変数や関数を呼び出す**ことができます。
+
+呼び出す変数や関数は`${}`で囲います。以下は変数を埋め込んだ例です。
+
+```javascript
+const name = "Kento";
+
+//文字列をバッククオートで囲う
+//nameは${}で囲う
+console.log(`My name is ${name}`);
+//=> My name is Kento
+```
+
+このように、バッククオートで囲った文字列の中に変数などを埋め込み、
+値を表示させることを**式展開**などと言います。
+
+これを引用符で実現しようと思っても上手くいきません。`${name}`も文字列の一部として認識され、そのまま出力されます。
+
+```javascript
+const name = "Kento";
+
+//ダブルクオーテーションで囲う
+console.log("My name is ${name}");
+//=>My name is ${name}
+```
+
+ダブルクオートでも実現できますが、`+`演算子で文字列を連結させる必要があります。
+バッククオートを使って変数展開した方が分かりやすいと思いますがどうでしょう。
+
+```javascript
+const name = "Kento";
+
+// + で連結する
+console.log("My name is " + name);
+//=> My name is Kento
+```
+
+関数を展開する例も記述しておきます。
+
+```javascript
+const square = (num) => {
+  return num * num;
+}
+
+console.log(`9の二乗は${square(9)}です。`);
+//=> 9の二乗は81です。
+```
+
+
+JavaScriptは文字コードとしてUTF-16を採用しています。
+
+## null
+
+何度かプロポーザルも投げられているようですが、**後方互換性**のために残しているようです。（nullが返ってくるように変更することで支障が生じるようなコードがある）
+****
+
+[The history of “typeof null”](https://2ality.com/2013/10/typeof-null.html)
+
+[>typeof null](https://esdiscuss.org/topic/typeof-null#content-44)
+
+## typeof演算子について考える
+
+
 
 ---
 
@@ -347,11 +497,11 @@ const obj = {
 
 [Primitive (プリミティブ) - MDN Web Docs 用語集: ウェブ関連用語の定義 | MDN](https://developer.mozilla.org/ja/docs/Glossary/Primitive)
 
-# letとconstによる変数の宣言
+# constとletによる変数の宣言
 
 ## constによる変数の宣言
 
-constキーワードを用いて変数を定義することができます。constは**constant**の略であり、「定数、不変」といった意味を持ちます。constによって宣言された変数は、**値の再代入**ができません。
+`const`キーワードを用いて変数を定義することができます。`const`は**constant**の略であり、「定数、不変」といった意味を持ちます。`const`によって宣言された変数は、**値の再代入**ができません。
 
 ```javascript:title="script.js
 const i = 1;
@@ -368,7 +518,7 @@ myObj = {id: 1};
 // => TypeError: Assignment to constant variable.
 ```
 
-そして、同じ定数を複数回宣言することはできません。シンタックスエラーになります。
+そして、同じ変数を再度宣言することもできません。シンタックスエラーになります。
 
 ```javascript
 const i = 1;
@@ -378,9 +528,9 @@ const i = 10;
 //=> SyntaxError: Identifier 'i' has already been declared
 ```
 
-### constはブロックスコープを持つ
+### constとletはブロックスコープを持つ
 
-ただ、`const`と`let`は**ブロックスコープ**を持ちます。よって、`{}`で囲まれている部分の外と中であれば、同じ名前で変数を宣言できます。`{}`が境界線になっているのです。詳しくはブロックスコープの章で解説します。
+`const`と`let`で宣言された変数は、**ブロックスコープ**を持ちます。よって、`{}`で囲まれている部分の外と中であれば、同じ名前で変数を宣言できます。`{}`が境界線になっているのです。詳しくはブロックスコープの章で解説します。
 
 ```javascript
 const i = 10;
@@ -417,7 +567,7 @@ constant=定数、という言葉から、その値は変わらないイミュ�
 
 つまり、イミュータブルであるプリミティブ型のデータを代入すればイミュータブルになるし、ミュータブルであるオブジェジェクト型のデータを代入すればミュータブルになります。
 
-JavaScriptにおけるプリミティブ型は、`string`、`number`、`boolean`、`symbol`、`null`、`undefined`でした。これらは、値を後から変更しようとしてもできません。よってイミュータブルな定数であると言えます。
+JavaScriptにおけるプリミティブ型は、`string`、`number`、`boolean`、`symbol`、`null`、`undefined`、`BigInt`でした。これらは、値を後から変更しようとしてもできません。よってイミュータブルな定数であると言えます。
 
 ```javascript
 const i = 1;
@@ -474,9 +624,7 @@ MDNでは**定数**という言葉を用いていますが、私としては**�
 
 ## letによる変数宣言
 
-`let`キーワードを用いることでも変数を宣言できます。constによる変数は再代入が不可でしたが、letによる変数は後から値の再代入が可能です。
-
-また、`let`では変数宣言のみを行うことが可能です。後から必要になったタイミングで値を代入することができます。
+`let`キーワードを用いることでも変数を宣言できます。`const`による変数は再代入が不可でしたが、letによる変数は後から値の再代入が可能です。
 
 ```javascript
 let i = 1;
@@ -486,7 +634,11 @@ i = 10;
 
 console.log(i)
 //=> 10
+```
 
+また、`let`では変数宣言のみを行うことが可能です。後から必要になったタイミングで値を代入することができます。
+
+```javascript
 // 宣言のみも可。後から代入できる。
 let j;
 
@@ -629,6 +781,148 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/new
 ## Object.entriesでオブジェクトから配列を取得する
 
 https://jsprimer.net/basic/object/
+
+
+
+# Stringクラス
+
+## Stringクラスのプロパティやメソッド
+
+### lengthプロパティ
+
+`length`プロパティは、文字列の文字数を返します。
+
+```javascript
+console.log("aaa".length);
+//=> 3
+
+console.log("こんにちは".length);
+//=> 5
+```
+
+
+<small>※**文字数**という言葉は正確には正しくありません。**文字コードの数**を返します。
+
+文字列型のページで説明しましたが、JavaScriptは内部的に文字コードとしてUTF-16を採用しています。そして**サロゲートペア文字列**は文字コードを2つ組み合わせて1つの文字を表現していますので、lengthメソッドを使用すると`2`が返ってきます。
+
+```javascript
+const str = "\u{1F64F}";
+const str2 = "\u{23C7F}";
+
+console.log(str);
+//=> 🙏
+
+console.log(str.length);
+//=> 2
+
+console.log(str2);
+//=> 𣱿
+
+console.log(str2.length);
+//=>2
+```
+
+詳しくはこちら（作成中）を確認ください。</small>
+
+[サロゲートペア入門：CodeZine（コードジン）](https://codezine.jp/article/detail/1592)
+
+[文字列とUnicode · JavaScript Primer #jsprimer](https://jsprimer.net/basic/string-unicode/)
+
+https://itsakura.com/it-unicode-utf
+
+
+### `includes`,`startsWidth`,`endsWidth`メソッド
+
+この3つのメソッドは、文字列内に**任意の文字列があるかないか**を判定します。戻り値はboolean型です。
+
+まずは`includes`メソッドを使用してみます。引数に任意の文字列を渡し、その文字列が対象の文字列中に含まれているかを判定します。
+
+```javascript
+let str = 'Kento Yoshizu';
+
+console.log(str.includes('Kento'))
+// => true
+
+console.log(str.includes('to Yo'))
+// => true
+```
+
+ただし、これらの3つのメソッドは大文字と小文字を区別します。
+
+```javascript
+let str = 'Kento Yoshizu';
+
+// kが小文字だからfalse
+console.log(str.includes('kento'))
+// => false
+```
+
+こんな時は先ほど紹介した`toLocalLowerCase`メソッドを使用します。`toLocalLowerCase`メソッドでstr文字列を全て小文字に変換、それを`includes`メソッドに渡して判定します。
+
+```javascript
+let str = 'Kento Yoshizu';
+
+// strを小文字に変換してから判定
+console.log(str.toLocaleLowerCase().includes('kento'));
+// => true
+```
+
+`startsWith`メソッドは、**文字列の先頭**に任意の文字列が含まれているかを判定します。
+
+```javascript
+let str = "Kento Yoshizu";
+
+console.log(str.startsWith('Kent'));
+// => true
+
+// 先頭にはないのでfalse
+console.log(str.startsWith('ent'));
+// => false
+```
+
+`endsWith`メソッドは**文字列の末尾**に任意の文字列が存在しているかを判定します。
+
+```javascript
+let str = "Kento Yoshizu";
+
+console.log(str.endsWith("izu"));
+// => true
+
+// 末尾にはないのでfalse
+console.log(str.endsWith("hiz"));
+// => false
+```
+
+### [参考]`concat`メソッド
+
+`concat`メソッドは文字列同士を連結します。任意の文字列を引数として渡し、`concat`メソッドを呼び出した文字列の末尾に連結します。
+
+引数の数に制限はありません。3つでも4つでも渡して連結させることができます。
+
+```javascript
+console.log("Hello".concat(" World"));
+// => Hello World
+
+// 引数を3つ渡す
+console.log("Hello".concat(",", "World", "!"));
+// => Hello,World!
+```
+
+#### `concat`メソッドの代わりに`+`演算子を
+
+`concat`メソッドを**参考**としたのは、MDNが`concatメソッドの代わりに+演算子を使って`と述べているからです。
+
+>性能
+concat() メソッドの代わりに 代入演算子 (+ または +=) を使用する事を強くお勧めします。
+この性能試験によれば、代入演算子のほうが数倍高速です。
+
+`性能試験`のリンクにアクセスできないので何とも言えないですが、
+
+まぁ、`+`演算子の方がシンプルで直感的に分かりやすいと思いますし。
+
+
+イミュータブルであるとはこういうことです。今回の例では`str1`から`concat`メソッドを呼び出して`str2`を連結しましたが、`str1`が変更されるわけではありません。連結した新しい文字列が返されますが、`str1`、`str2`は不変（イミュータブル）です。
+
 
 ## モジュールの歴史
 
