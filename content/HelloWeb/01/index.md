@@ -1,9 +1,9 @@
 ---
 title: "#1 初めてのHTML & CSS"
-postdate: "2020-11-29"
-updatedate: "2021-01-18"
+postdate: "2021-04-11"
+updatedate: "2021-04-11"
 categoryName: "初めてのHTML & CSS"
-categorySlug: HelloWeb
+categorySlug: "HelloWeb"
 description: 
 tags: ["HTML", "CSS", "入門"]
 ---
