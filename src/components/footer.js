@@ -69,12 +69,21 @@ const Footer = () => {
 
       <div className="link meta-link">
         <Link
+          to={"/about/"}
+          target="_blink"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+          このブログについて
+        </Link>
+
+        <Link
           to={"/categories/"}
           target="_blink"
         >
           <FontAwesomeIcon icon={faChevronRight} />
           サイトポリシー
         </Link>
+
         <Link
           to={"/categories/"}
           target="_blink"
