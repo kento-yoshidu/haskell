@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Header from "../components/header"
+import PageInfo from "../components/pageInfo"
 import SEO from "../components/seo"
 import Footer from "../components/footer"
 
@@ -31,11 +32,13 @@ const Tags = ({ pageContext, data }) => {
 
       <Header
         pageTitle={`${ tag }タグの記事`}
+      />
+
+      <PageInfo
         postCount={pageContext.postCount} 
         currentPage={pageContext.currentPage}
         pageCount={pageContext.pageCount}
       />
-
 
       <main className="main">
         <section className="post-list">
@@ -62,11 +65,11 @@ const Tags = ({ pageContext, data }) => {
                   </div>
 
                   <p className="category">
-                    <FontAwesomeIcon icon={faFolder} /> <span>Category</span>
+                    <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
                     <Link to={`/category/${node.frontmatter.categorySlug}/page/1/`}>{node.frontmatter.categoryName}</Link>
                   </p>
 
-                  <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>Tag</span>
+                  <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>タグ</span>
                     { node.frontmatter.tags.map(tag => {
                       return (
                         <Link

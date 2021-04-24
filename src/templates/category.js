@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Header from "../components/header"
+import PageInfo from "../components/pageInfo"
 import Footer from "../components/footer"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +32,9 @@ const Category = ({ pageContext, data }) => {
 
       <Header
         pageTitle={`${ categoryName }カテゴリの記事` }
+      />
+
+      <PageInfo
         postCount={pageContext.postCount} 
         currentPage={pageContext.currentPage}
         pageCount={`${pageContext.pageCount}`}
@@ -61,11 +65,11 @@ const Category = ({ pageContext, data }) => {
                 </div>
 
                 <p className="category">
-                  <FontAwesomeIcon icon={faFolder} /> <span>Category</span>
+                  <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
                   <Link to={`/category/${categorySlug}/page/1/`}>{categoryName}</Link>
                 </p>
 
-                <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>Tag</span>
+                <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>タグ</span>
                   {
                     node.frontmatter.tags.map(tag => {
                       return (

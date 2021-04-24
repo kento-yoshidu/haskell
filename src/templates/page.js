@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import SEO from "../components/seo"
 import Header from "../components/header"
 import Pagination from "../components/pagination"
+import PageInfo from "../components/pageInfo"
 import MobliePagination from "../components/mobilePagination"
 import Footer from "../components/footer"
 import "../scss/style.scss"
@@ -32,6 +33,9 @@ const BlogIndex = ({ data, pageContext }) => {
       <Header
         pageTitle="記事一覧"
         isTopPage={true}
+      />
+
+      <PageInfo
         postCount={pageContext.postCount}
         currentPage={pageContext.currentPage}
         pageCount={pageContext.pageCount}
@@ -61,13 +65,13 @@ const BlogIndex = ({ data, pageContext }) => {
                   </div>
 
                   <p className="category">
-                    <FontAwesomeIcon icon={faFolder} /> <span>Category</span>
+                    <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
                     <Link to={`/category/${post.frontmatter.categorySlug}/page/1/`}>
                     {post.frontmatter.categoryName}</Link>
                   </p>
 
                   <p className="tags">
-                    <FontAwesomeIcon icon={faTags} /> <span>Tag</span>
+                    <FontAwesomeIcon icon={faTags} /> <span>タグ</span>
                     {post.frontmatter.tags.map(tag => {
                       return (
                         <Link 
