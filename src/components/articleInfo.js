@@ -18,40 +18,39 @@ const ArticleInfo = ({
     description
   }) => {
 
-  let tag = tags.map(tag => {
-    return (
-      <p key={`p${tag}`}>
-        <Link
-          to={`/tag/${tag}/page/1/`}
-          key={`link${tag}`}
-        >
-        #{ tag }
-        </Link>
-      </p>
-    )
-
-      })
-
+    let tag = tags.map(tag => {
       return (
-        <div className="article-info">
+        <p key={`p${tag}`}>
+          <Link
+            to={`/tag/${tag}/page/1/`}
+            key={`link${tag}`}
+          >
+          #{ tag }
+          </Link>
+        </p>
+      )
+    })
 
-          <p className="category">
-            <FontAwesomeIcon icon={ faFolder } />
-            <Link to={`/category/${categorySlug}/page/1/`}>
-              { categoryName }
-            </Link>
+    return (
+      <div className="article-info">
+
+        <p className="category">
+          <FontAwesomeIcon icon={ faFolder } />
+          <Link to={`/category/${categorySlug}/page/1/`}>
+            { categoryName }
+          </Link>
+        </p>
+
+        <h1 className="pageTitle">{pageTitle}</h1>
+
+        <div className="date-info">
+          <p>
+            <FontAwesomeIcon icon={faClock} />{ postdate }
           </p>
-
-          <h1 className="pageTitle">{pageTitle}</h1>
-
-          <div className="date-info">
-            <p>
-              <FontAwesomeIcon icon={faClock} />{ postdate }
-            </p>
-            <p>
-              <FontAwesomeIcon icon={faUndo} />{ updatedate }
-            </p>
-          </div>
+          <p>
+            <FontAwesomeIcon icon={faUndo} />{ updatedate }
+          </p>
+        </div>
 
           <div className="tags">
             <FontAwesomeIcon icon={ faTags } />
