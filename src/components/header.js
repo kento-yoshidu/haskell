@@ -2,11 +2,7 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 const Header = ({ pageTitle,
-                  currentPage,
-                  postCount,
-                  pageCount,
                   isTopPage,
-                  isArticle
                 }) => {
 
   const { site } = useStaticQuery(
@@ -25,8 +21,7 @@ const Header = ({ pageTitle,
     `
   )
 
-  let h1,
-      countInfo;
+  let h1
 
   if (isTopPage) {
     h1 = (
@@ -40,6 +35,7 @@ const Header = ({ pageTitle,
     )
   }
 
+  /*
   if(!isArticle) {
     countInfo = (
       <div className="countInfo">
@@ -48,6 +44,7 @@ const Header = ({ pageTitle,
       </div>
     )
   }
+  */
 
   return (
     <header className="header">
@@ -56,8 +53,6 @@ const Header = ({ pageTitle,
       <h2 className="page-title">
         { pageTitle }
       </h2>
-
-      { countInfo }
     </header>
   )
   }

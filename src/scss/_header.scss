@@ -40,44 +40,6 @@
       }
     }
   }
-
-  .countInfo {
-    margin: 30px 0;
-    font-size: 2.2rem;
-    .page {
-      margin: 20px 0 25px;
-      span {
-        font-size: 3.2rem;
-      }
-    }
-  }
-
-  .info {
-    display: flex;
-    justify-content: center;
-
-    div {
-      text-align: left;
-      margin: 0 10px;
-
-      p {
-        font-size: 2rem;
-        margin: 0 20px;
-        svg {
-          margin-right: 10px;
-        }
-        a {
-          color: #fff;
-          margin-right: 8px;
-
-          &:hover {
-            color: #444;
-          }
-        }
-      }
-    }
-  }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -104,24 +66,5 @@
       }
     }
 
-    .countInfo {
-      font-size: 1.5rem;
-      .page {
-        margin: 10px 0 15px;
-        span {
-          font-size: 2.2rem;
-        }
-      }
-    }
-
-    .info {
-      div {
-        margin: 0;
-        p {
-          font-size: 1rem;
-          margin-bottom: 3px;
-        }
-      }
-    }
   }
 }
