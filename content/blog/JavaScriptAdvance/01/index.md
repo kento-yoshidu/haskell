@@ -1,7 +1,7 @@
 ---
 title: "#1 JavaScript中級者を目指そう"
 postdate: "2021-04-09"
-updatedate: "2020-04-16"
+updatedate: "2020-04-25"
 categoryName: "JavaScript中級者を目指す"
 categorySlug: "JavaScriptAdvance"
 description: 
@@ -57,6 +57,22 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 ## 参考にした書籍、サイト
 
+### JavaScript Primer 迷わないための入門書
+
+[Amazonリンク](https://www.amazon.co.jp/JavaScript-Primer-%E8%BF%B7%E3%82%8F%E3%81%AA%E3%81%84%E3%81%9F%E3%82%81%E3%81%AE%E5%85%A5%E9%96%80%E6%9B%B8-azu/dp/4048930737/ref=cm_cr_arp_d_pl_foot_top?ie=UTF8)
+
+出版：2020年4月
+
+お勧め度：⭐⭐️⭐⭐️⭐️
+
+個人的に一番お勧めの本です。少し言葉は硬いかなと思いますが本格的な書籍の中ではとっつきやすいと思います。
+
+実はWebサイトも存在しており、どうやら同じ内容のものを無料で読めるようですが、素晴らしい本なので課金したいですよね。
+
+[JavaScript Primer(Webサイト)](https://jsprimer.net/)
+
+
+
 ### JavaScript: The Definitive Guide, 7th Edition
 
 [Amazonリンク](https://www.amazon.co.jp/Javascript-Definitive-Most-used-Programming-Language/dp/1491952024/ref=pd_lpo_14_t_0/356-6084002-4274440?_encoding=UTF8&pd_rd_i=1491952024&pd_rd_r=4c12a428-25c6-4422-8ba4-1c7b4bf8c7a7&pd_rd_w=oYNI9&pd_rd_wg=d464b&pf_rd_p=43793539-bb55-42ca-a906-e224e71aa7fd&pf_rd_r=0A4E885RX080FC2565YP&psc=1&refRID=0A4E885RX080FC2565YP)
@@ -65,7 +81,11 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 お勧め度：⭐⭐️⭐️
 
-いわゆるサイ本の7版(英語)です。英語は苦手ですが、文章は平易なのでそんなに苦労せず読めました。内容は言わずもがな、細かいところまで踏み込んでいます。早く日本語版が出てほしいですね。日本語版がでたら️⭐5です、多分。️
+いわゆるサイ本の7版(英語)です。英語は苦手ですが、文章は平易なのでそんなに苦労せず読めました。ES2020まで対応しています。
+
+ページ数はなんと687ページにわたり、詳しさは言わずもがなですが、価格が少し高いのがネックです(2021年1月時点で、Amazonで6,500円くらい)。
+
+早く日本語版が出てほしいですね。日本語版がでたら️⭐5です、多分。️
 
 ### 改訂新版JavaScript本格入門 ～モダンスタイルによる基礎から現場での応用まで
 
