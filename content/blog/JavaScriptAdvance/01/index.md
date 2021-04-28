@@ -1,7 +1,7 @@
 ---
 title: "#1 JavaScript中級者を目指そう"
 postdate: "2021-04-09"
-updatedate: "2020-04-25"
+updatedate: "2020-04-28"
 categoryName: "JavaScript中級者を目指す"
 categorySlug: "JavaScriptAdvance"
 description: 
@@ -20,17 +20,18 @@ tags: ["JavaScript"]
 
 - \#1 JavaScript中級者を目指そう（本ページ）
 - [#2 JavaScriptの歴史](http://blog.toriwatari.work/JavaScriptAdvance/02/)
-- [#3 Node.jsのインストール]
-- [#4 JavaScriptのデータ型(1)]
-- [#5 JavaScriptのデータ型(2)]
-- [#6 プリミティブ値とオブジェクト]
-- [#7 変数]
-- [#8 オブジェクトが持つメソッド]
-- [#9 if/else文]
-- [#10 for文とwhile文]
-- [#11 関数]
-- [#12 Numberオブジェクト]
-- [#13 Stringオブジェクト
+- [#3 Node.jsのインストール](http://blog.toriwatari.work/JavaScriptAdvance/03/)
+- [#4 JavaScriptの基本的な書き方](http://blog.toriwatari.work/JavaScriptAdvance/04/)
+- [#5 JavaScriptのデータ型(1)](http://blog.toriwatari.work/JavaScriptAdvance/05/)
+- [#6 JavaScriptのデータ型(2)]
+- [#7 プリミティブ値とオブジェクト]
+- [#8 変数]
+- [#9 オブジェクトが持つメソッド]
+- [#10 if/else文]
+- [#11 for文とwhile文]
+- [#12 関数]
+- [#13 Numberオブジェクト]
+- [#14 Stringオブジェクト]
 - [#x 非同期処理（コールバック関数）]
 - [#x 非同期処理（Promise）]
 - [#x 非同期処理（async/await）]
@@ -67,11 +68,9 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 個人的に一番お勧めの本です。少し言葉は硬いかなと思いますが本格的な書籍の中ではとっつきやすいと思います。
 
-実はWebサイトも存在しており、どうやら同じ内容のものを無料で読めるようですが、素晴らしい本なので課金したいですよね。
+実はWebサイトも存在しており、どうやら同じ内容のものを無料で読めるようですが、素晴らしい本なので購入したいですね。
 
 [JavaScript Primer(Webサイト)](https://jsprimer.net/)
-
-
 
 ### JavaScript: The Definitive Guide, 7th Edition
 
@@ -79,11 +78,11 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 出版：2020年6月
 
-お勧め度：⭐⭐️⭐️
+お勧め度：⭐⭐️⭐️⭐️
 
-いわゆるサイ本の7版(英語)です。英語は苦手ですが、文章は平易なのでそんなに苦労せず読めました。ES2020まで対応しています。
+いわゆるサイ本の7版（英語）です。英語は苦手ですが、文章は平易なのでそんなに苦労せず読めました。ES2020まで対応しています。
 
-ページ数はなんと687ページにわたり、詳しさは言わずもがなですが、価格が少し高いのがネックです(2021年1月時点で、Amazonで6,500円くらい)。
+ページ数はなんと687ページにわたり詳しさは言わずもがなですが、価格が少し高いのがネックです（2021年1月時点で、Amazonで6,500円くらい）。
 
 早く日本語版が出てほしいですね。日本語版がでたら️⭐5です、多分。️
 
@@ -98,6 +97,7 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 内容は充実しており、私はすごく好きで何週も読み直した本です。ただ、いかんせん古いですね。ES2015には対応していますが、「まずはES5で解説、その後ES2015にあてはめて解説」という形になっています。
 
 今はもっと新しく充実した本がたくさんあるので、選択肢にはあがりにくいと思います。早く改訂版が出てほしいですね。改定版がでたら️⭐5です、多分。️
+
 ### 開眼! JavaScript ―言語仕様から学ぶJavaScriptの本質
 
 [Amazonリンク](https://www.amazon.co.jp/%E9%96%8B%E7%9C%BC-JavaScript-%E2%80%95%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6JavaScript%E3%81%AE%E6%9C%AC%E8%B3%AA-Cody-Lindley/dp/487311621X/ref=sr_1_6?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1J2KZFHJO1CQN&dchild=1&keywords=javascript+%E3%82%AA%E3%83%A9%E3%82%A4%E3%83%AA%E3%83%BC&qid=1619239437&sprefix=javascript+%2Caps%2C335&sr=8-6)
@@ -107,6 +107,10 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 お勧め度：⭐⭐️⭐️
 
 こちらも2013念出版ということでES5までしか対応していませんが、
+
+入門と題してありますが、JavaScriptを触ったことがない初心者がいきなりこれを読むと挫折します。変数の説明の前にBabelの説明から始まりますから。
+
+
 
 ### 現代の JavaScript チュートリアル(サイト)
 

@@ -265,6 +265,26 @@
   }
 }
 
+blockquote {
+  position: relative;
+  width: 90%;
+  margin-left: 1rem;
+  margin-bottom: 10px;
+  padding: 2% 2% 1% 6%;
+  background-color: #eee;
+  border-radius: 3px;
+  box-shadow: 0 0 1.5px 1.5px #ddd;
+  ::before {
+    position: absolute;
+    line-height: 30px;
+    text-align: center;
+    top: 25%;
+    left: 0;
+    content: "❝";
+    color: #999;
+    font-size: 6.5rem;
+  }
+}
 .beforeAndAfter {
   width: 50%;
   margin-left: 15vw;
