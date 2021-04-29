@@ -1014,13 +1014,70 @@ console.log(func1(5))
 
 ```
 
+これがなかなか曲者で、意図しない結果を招くため、積極的に使用することは少ないでしょう。
+
+例えば、以下の`console.log`の結果は**全てtrue**になります。
+
+```javascript
+console.log(undefined == null);
+//=> true
+
+console.log(0 == "0");
+//=> true
+
+console.log(0 == false);
+//=> true
+
+console.log("0" == false);
+//=> true
+```
+この暗黙的な変換を利用して、短くコードをかけることもあるかもしれませんが、少なくとも私は使いこなせる自信がないので、全く使用していません。
+
+100%、ではありませんがほとんど全ての場合で`===`を使用した方がいいと思います。
+
+## 明示的なデータ型変換
+
+### 文字列型への変換
+
+では、様々なデータ型を文字列型へ変換したとき、どのような結果になるかを試してみます。結論から言ってしまえば、数値型への変換とは異なり、全てのデータが文字列へ変換されます（エラーになることはない）。
+
+|渡す文字列|結果|
+|--------|----|
+|undefined|"undefined"|
+|null|"null"|
+|true|"true"|
+|false|"false"|
+|0|"0"|
+|-0|"0"|
+|Infinity|"Infinity"|
+|-Infinity|"-Infinity"|
+|NaN|"Nan"|
+|{}|[object Object]
+|[]|""|
+|[9]|"9"|
+|['a', 'b']|'a,b'|
+|function(){}|function(){}|
+
+※上記の表は、[JavaScript: The Definitive Guide, 7th Edition](https://www.oreilly.com/library/view/javascript-the-definitive/9781491952016/)のP45を参考に、表の一部を抜き出し、編集して記述しています。
+
+「？」となる挙動もありますが、結構有名であり騒がれつくした感もあるのでご存じの方も多いかもしれません。
+
+数値型への変換の挙動と同じように、手順を追って確認していきたいと思います。
+
 参考：[](https://262.ecma-international.org/8.0/#sec-abstract-equality-comparison)
+
+## オブジェクトからプリミティブ値への変換
+
+以下のようなステップを経て、オブジェクトからプリミティブ値の変換を行います。
+
+### オブジェクトから真偽値型への変換
+
+全てのオブジェクトが**true**へ変換されます。
 
 ## モジュールの歴史
 
 - JavaScriptにはモジュールがなかった。
 - `CommonJS`、`AMD`、`ESModules`は仕様の名前
-
 
 # CommonJsによるexport
 

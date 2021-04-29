@@ -1,2 +1,8 @@
-const num = Number("1")
-console.log(typeof num)
+const obj = {
+  a: "a",
+  b: {
+    c: "c"
+  }
+}
+
+console.log(Number(obj))
