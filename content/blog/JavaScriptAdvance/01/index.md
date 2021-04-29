@@ -58,6 +58,20 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 ## 参考にした書籍、サイト
 
+このブログを書くにあたり参考にした書籍やWebサイトを紹介しておきます。書籍に関しては出版日とお勧め度を⭐️で表しています。
+
+### JavaScript リファレンス - JavaScript | MDN（Webサイト）
+
+[JavaScript リファレンス - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference)
+
+JavaScriptの公式リファレンスです。ほとんどのページが日本語されています。
+
+### ECMAScript 2020 Language Specification（Webサイト）
+
+[Webサイトリンク](https://262.ecma-international.org/11.0/)
+
+JavaScriptともコアともいえる、ECMAScriptの公式リファレンスです。
+
 ### JavaScript Primer 迷わないための入門書
 
 [Amazonリンク](https://www.amazon.co.jp/JavaScript-Primer-%E8%BF%B7%E3%82%8F%E3%81%AA%E3%81%84%E3%81%9F%E3%82%81%E3%81%AE%E5%85%A5%E9%96%80%E6%9B%B8-azu/dp/4048930737/ref=cm_cr_arp_d_pl_foot_top?ie=UTF8)
