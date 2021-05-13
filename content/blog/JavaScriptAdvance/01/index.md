@@ -1,7 +1,7 @@
 ---
 title: "#1 JavaScript中級者を目指そう"
 postdate: "2021-04-09"
-updatedate: "2020-04-28"
+updatedate: "2020-05-12"
 categoryName: "JavaScript中級者を目指す"
 categorySlug: "JavaScriptAdvance"
 description: 
@@ -14,7 +14,7 @@ tags: ["JavaScript"]
 
 とりあえずJavaScriptを書いて動かすことを最優先にしていたので、**JavaScriptの言語仕様**についてはほとんど触れていませんでしたが、今回はその言語仕様を理解することが目標です。
 
-具体的にこんなアプリを作る、といった目標はありません。人によっては退屈な内容に思えるかもしれません。
+具体的にこんなアプリを作る、といった目標はありません。ただひたすらにJavaScriptの仕様を学んでいくだけです。人によっては退屈な内容に思えるかもしれません。
 
 学習することはJavaScriptについてのほぼ全てで（そうしたいという願望）、目次は以下の通りです（随時更新します。）。
 
@@ -37,6 +37,8 @@ tags: ["JavaScript"]
 - [#x 非同期処理（async/await）]
 
 ---
+
+- [コラム#1 【ECMAScript】この構文って使える？](http://blog.toriwatari.work/JavaScriptAdvance/column01/)
 
 - [#コラム オブジェクト処理大全]
 
@@ -120,7 +122,7 @@ JavaScriptともコアともいえる、ECMAScriptの公式リファレンスで
 
 お勧め度：⭐⭐️⭐️
 
-こちらも2013念出版ということでES5までしか対応していませんが、
+こちらも2013年出版ということでES5までしか対応していませんが、
 
 入門と題してありますが、JavaScriptを触ったことがない初心者がいきなりこれを読むと挫折します。変数の説明の前にBabelの説明から始まりますから。
 
