@@ -30,7 +30,18 @@ const AboutPage = ({ data, location }) => {
 
       <main className="main aboutMain">
         <section>
-          <h2>このブログには何を書いているのか</h2>
+          <h2>このブログは何なのか</h2>
+          <p>このブログは<a href="https://github.com/kento-yoshidu">私</a>の個人ブログです。自称ITエンジニアですので、技術をアウトプットできる空間、そして転職時のポートフォリオになればいいと思い作成しました。</p>
+          <p>このブログはGatsbyという静的サイトジェネレータを使用して作成しました。Githubのリポジトリは<a href="https://github.com/kento-yoshidu/GatsbyBlog" target="_blink">こちら</a>です。</p>
+        </section>
+
+        <section>
+          <h2>何を書いているのか</h2>
+          <p>基本的にIT、プログラミングに関することを書いています。私はWeb開発への転職を目指していますので、HTMLやCSS、JavaScriptの記事が多めです。</p>
+          <p>あと、日記代わりにも使いたいと思います。</p>
+
+          <h3>カテゴリ分けしています</h3>
+          <p>単発で終わるような記事ではなく、シリーズ化した一連の記事をたくさん書きたいと思っています。そのため、記事ごとにカテゴリ分類を設けました。</p>
         </section>
 
         <section>
