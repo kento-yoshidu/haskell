@@ -83,15 +83,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `鳥に生まれることができなかった人へ`,
+        short_name: `toriwatari`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#2948ff`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
   ],
 }
