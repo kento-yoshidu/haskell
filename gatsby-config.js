@@ -87,7 +87,7 @@ module.exports = {
         short_name: `toriwatari`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#2948ff`,
+        theme_color: `#666666`,
         display: `standalone`,
         icon: `content/assets/gatsby-icon.png`,
       },
