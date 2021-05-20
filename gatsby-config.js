@@ -51,7 +51,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 830,
+              maxWidth: 680,
             },
           },
           {
@@ -84,7 +84,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `鳥に生まれることができなかった人へ`,
-        short_name: `toriwatari`,
+        short_name: `鳥に生まれることができなかった人へ`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#666666`,
