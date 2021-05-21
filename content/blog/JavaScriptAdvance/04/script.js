@@ -1,8 +1,8 @@
-const obj = {
-  a: "a",
-  b: {
-    c: "c"
-  }
-}
+const myObj = {};
 
-console.log(Number(obj))
+console.log(myObj);
+//=> {}
+
+// 小文字になっている
+console.log(myobj);
+//=> ReferenceError: myobj is not defined
