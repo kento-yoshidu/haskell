@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import "../scss/404.scss"
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+  //const siteTitle = data.site.siteMetadata.title
 
   return (
     <div>

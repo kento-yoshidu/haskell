@@ -1,7 +1,7 @@
 ---
 title: "#3 Node.jsのインストール"
 postdate: "2021-04-13"
-updatedate: "2020-04-16"
+updatedate: "2021-04-16"
 categoryName: "JavaScript中級者を目指す"
 categorySlug: "JavaScriptAdvance"
 description: 
