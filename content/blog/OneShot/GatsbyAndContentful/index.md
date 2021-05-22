@@ -1,11 +1,11 @@
 ---
 title: "GatsbyとContetnfulでブログを作成する時の注意点"
 postdate: "2021-05-21"
-updatedate: "2021-05-21"
+updatedate: "2021-05-22"
 categoryName: "単発記事"
 categorySlug: "OneShot"
 description: ""
-tags: ["Gatsby", "Contenful", "静的サイトジェンレータ", "Jamstack", "HeadlessCMS"]
+tags: ["Gatsby", "Contenful", "GraphQL"]
 ---
 
 # 事の発端
@@ -16,29 +16,75 @@ tags: ["Gatsby", "Contenful", "静的サイトジェンレータ", "Jamstack", "
 
 2021年5月、Jamstackなサイトを量産しようと思い久しぶりにこの本を引っ張り出しましたが、上手く進まない、、、。具体的には、Contentfulからブログ記事の本文を取得するGraphQLクエリがエラーになるのです。このエラーを解消するのに数時間費やしてしまいました。
 
-まだ日本語の情報も少なく、ガチ初心者の方がたどり着くのもちょっと難しいと思いますので、記事に残しておきたいと思います。あと、将来の自分のためにも。
+需要がどれだけあるかは怪しいですが、日本語の情報も少なくガチ初心者の方がたどり着くのもちょっと難しいと思いますので、記事に残しておきたいと思います。あと、将来の自分のためにも。
 
 ## 前提条件
 
  - `gatsby-source-contentful`のv4.0.0以上を使用している
  - ContentfulでRichTextでコンテンツを管理している
 
- ※ 上記で紹介した本の内容に言及するものではありません。きっかけになったものとして紹介しただけです。
- ※ この構成のベストプラクティスを紹介する記事ではありません。「こうしたら動くようになった」を紹介する記事です。
+ ※ 上記で紹介した本の内容に言及したり、内容を訂正するするものではありません。
+ ※ この構成のベストプラクティスを紹介する記事ではありません。取り急ぎ「こうしたら動くようになった」を紹介する記事です。
 
 ## 結論
 
-graphqlクエリを以下のように書き換えます。
+Contentfulからブログ記事のリッチテキストを取得するgraphqlクエリを以下のように書き換えます。
 
+```graphql:title=blogpost.js
+# 動作しない
+  query($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
+      ...(略)
+      content {
+        json
+      }
+    }
+  }
+
+# 動作する
+  query($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
+      ...(略)
+      content {
+        raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            __typename
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`
 ```
 
-
-
-```
+しかし、GraphQLクエリを書き換えるだけではうまくいきません。
 
 ## 何が起こったのか
 
+Contentfulのリッチテキストで
 
+jsonだとえらーになる
+
+おそらく以下のエラーが発生すると思います。
+
+```shell
+# gatsby develop
+
+...
+
+failed Building development bundle - 9.097s
+ERROR in
+C:\Product\gatsby-cafe-site_2\src\templates\blogpost-template.js
+  135:9  error  Cannot query field "json" on type "ContentfulBlogPostContent"
+graphql/template-strings
+
+✖ 7 problems (1 error, 6 warnings)
+```
 
 ## 何が原因なのか
 
@@ -48,9 +94,57 @@ graphqlクエリを以下のように書き換えます。
 
 2020年11月以降に`Gatsby new`して環境構築した場合は更新後のプラグインがインストールされ、上手く動かない可能性が高いです。
 
+## GraphQLクエリを書き換える
+
+さて、リリースノートを見てみると「jsonではなくrawフィールドを使用してね」という旨のことが書いてありますのでそのように変更してみます。
+
+```graphql
+  query($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
+      ...(略)
+      content {
+        raw
+      }
+    }
+  }
+```
+
+そして`documentToReactComponents`に`raw`を渡してみます。
+
+```javascript
+<div className="postbody">
+  {documentToReactComponents(data.contentfulBlogPost.content.raw)}
+</div>
+
+```
+
+すると以下のようなエラーになると思います。
+
+![](./images/image01.jpg)
+
+ということで`raw`を外して`content`を渡してみます。
+
+おそらくエラーがでなくなるはずです。これで成功と思い生成されたページを見てみると…
+
+```javascript
+<div className="postbody">
+  {documentToReactComponents(data.contentfulBlogPost.content)}
+</div>
+```
+
+エラーは発生せず、ビルドしてくれました。これで解決かと思い生成されたページを見てみると、、、
+
+![](./images/image02.jpg)
+
+まだ本文が表示されていない🤔
+
+どうやらContentfulのRichTextの変換は`documentToReactComponents`ではなく`renderRichtext`を使用するみたいです。
+
+
+
 ## 感想
 
-これからもブログ記事はマークダウンで書こうと思いました。以上。
+かなり疲れた。そしてこれからもブログ記事はマークダウンで書こうと思いました。以上。
 
 # 参考
 
