@@ -28,13 +28,13 @@ tags: ["Gatsby", "Contenful", "GraphQL"]
 
 ## 結論
 
-Contentfulからブログ記事のリッチテキストを取得するgraphqlクエリを以下のように書き換えます。
+Contentfulからブログ記事のRichTextを取得するgraphqlクエリを以下のように書き換えます。
 
 ```graphql:title=blogpost.js
 # 動作しない
   query($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
-      ...(略)
+      (略)
       content {
         json
       }
@@ -44,7 +44,7 @@ Contentfulからブログ記事のリッチテキストを取得するgraphqlク
 # 動作する
   query($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
-      ...(略)
+      (略)
       content {
         raw
         references {
@@ -62,15 +62,46 @@ Contentfulからブログ記事のリッチテキストを取得するgraphqlク
 `
 ```
 
-しかし、GraphQLクエリを書き換えるだけではうまくいきません。
+ただ、GraphQLクエリを書き換えるだけではうまくいきません。RichTextを描画するためには`documentToReactComponents`ではなく、`renderRichtext`を使用する必要があります。この辺りも併せて説明を行います。
+
+```javascript
+// 動作しない
+<div className="postbody">
+  {documentToReactComponents(data.contentfulBlogPost.content.raw)}
+</div>
+
+// 動作する
+<div className="postbody">
+  {renderRichText(data.contentfulBlogPost.content)}
+</div>
+```
 
 ## 何が起こったのか
 
-Contentfulのリッチテキストで
+前提として、ContentfulのRichTextフィールドを取得するためには`gatsby-source-contentful`プラグインを使用します。
 
-jsonだとえらーになる
+具体的にはGraphQLクエリを以下のように記述します。
 
-おそらく以下のエラーが発生すると思います。
+```javascript
+  query($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
+      (略)
+      content {
+        json
+      }
+    }
+  }
+```
+
+このjsonフィールドにRichTextの中身が格納されるので、`documentToReactComponents`に渡し画面に描画します。
+
+```javascript
+<div className="postbody">
+  {documentToReactComponents(data.contentfulBlogPost.content.json)}
+</div>
+```
+
+しかし、`gatsby-source-contenful`のv4.0.0にて、**破壊的な変更**が加えられました。そのため、v4.0.0以上を使用していて上記のGarphQLクエリを投げた場合、おそらく以下のエラーが発生すると思います。
 
 ```shell
 # gatsby develop
@@ -88,39 +119,54 @@ graphql/template-strings
 
 ## 何が原因なのか
 
-2020年11月、Contentfulからブログデータを引っ張ってくるために必要なプラグインである`gatsby-content-source`のv4.0.0で破壊的変更が加えられたためです。Gatsby公式のリリースノートは[こちら](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-source-contentful/CHANGELOG.md#400-next0-2020-11-09)を参照してください。
+前述したとおり、2020年11月、Contentfulからデータを引っ張ってくるために必要なプラグインである`gatsby-content-source`のv4.0.0で破壊的変更が加えられたためです。
 
-これにより、RichTextを取得するGraphQLクエリのフィールドを変更する必要があります。
+Gatsby公式のリリースノートは[こちら](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-source-contentful/CHANGELOG.md#400-next0-2020-11-09)を参照してください。
 
-2020年11月以降に`Gatsby new`して環境構築した場合は更新後のプラグインがインストールされ、上手く動かない可能性が高いです。
+リリースノートには
 
-## GraphQLクエリを書き換える
+>BREAKING CHANGES
+This major release improves Contentful's Richtext experience. If you are not using the Rich Text Contentful field type there are no breaking changes.
 
-さて、リリースノートを見てみると「jsonではなくrawフィールドを使用してね」という旨のことが書いてありますのでそのように変更してみます。
+とあります。RichTextフィールドを使用している人のみがこの影響を受けます。
 
-```graphql
-  query($id: String!) {
-    contentfulBlogPost(id: { eq: $id }) {
-      ...(略)
-      content {
-        raw
-      }
+2020年11月以降に`Gatsby new`して環境構築した場合はv4以上のプラグインがインストールされ、上手く動かない可能性が高いです。
+
+### GraphQLクエリを書き換える
+
+では、リリースノートを見ながらプログラムを書き換えていきます。
+
+改めてリリースノートを見てみると
+
+>Use the raw subfield instead of json
+
+「jsonではなくrawフィールドを使用してね」という旨のことが書いてありますのでそのように変更してみます。
+
+```graphql{6}
+query($id: String!) {
+  contentfulBlogPost(id: { eq: $id }) {
+    ...(略)
+    content {
+-     json
++     raw
     }
   }
+}
 ```
 
-そして`documentToReactComponents`に`raw`を渡してみます。
+### renderRichTextに渡す
+
+続いて`documentToReactComponents`に`raw`を渡してみます。
 
 ```javascript
 <div className="postbody">
   {documentToReactComponents(data.contentfulBlogPost.content.raw)}
 </div>
-
 ```
 
 すると以下のようなエラーになると思います。
 
-![](./images/image01.jpg)
+![](./images/image02.jpg)
 
 ということで`raw`を外して`content`を渡してみます。
 
@@ -134,7 +180,7 @@ graphql/template-strings
 
 エラーは発生せず、ビルドしてくれました。これで解決かと思い生成されたページを見てみると、、、
 
-![](./images/image02.jpg)
+![](./images/image03.jpg)
 
 まだ本文が表示されていない🤔
 
