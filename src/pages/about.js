@@ -1,18 +1,9 @@
 import React from "react"
-import { /*Link,*/ graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Header from "../components/header"
 import Footer from "../components/footer"
-
-/*
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
-
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { config } from "@fortawesome/fontawesome-svg-core"
-config.autoAddCss = false
-*/
 
 const AboutPage = ({ data, location }) => {
 
@@ -56,11 +47,8 @@ const AboutPage = ({ data, location }) => {
           <h3>スモールステップ</h3>
           <p>目標は細かく、小さく設定します。</p>
 
-          <h3>無意味なイメージ画像を載せない</h3>
-
-          <h3>「いかがでしたか？」と書かない</h3>
-          <p>すみません、他のブログを批判しているつもりはありません。かといって出来た人間でもありませんが。</p>
-          <p>ほなこの辺りで...。</p>
+          <h3>世界一参考の多い記事を目指す</h3>
+          <p>このブログの文章上に、私が生み出したオリジナルの考えやテクニック、私しか知らない知識は一つもありません。全てはインターネットや書籍から拾い上げた情報です。世界一は言い過ぎでした、上位10%位を目指します。</p>
         </section>
       </main>
 
