@@ -7,7 +7,7 @@ import Footer from "../components/footer"
 
 const AboutPage = ({ data, location }) => {
 
-  const siteData = data.siteData;
+  const siteData = data.siteData
 
   return (
     <div>
