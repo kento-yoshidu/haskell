@@ -35,17 +35,6 @@ const Header = ({ pageTitle,
     )
   }
 
-  /*
-  if(!isArticle) {
-    countInfo = (
-      <div className="countInfo">
-        <p className="page"><span>{postCount}</span> 件の記事</p>
-        <p className="page"><span>{pageCount}</span> ページ中 / <span>{currentPage}</span> ページ目</p>
-      </div>
-    )
-  }
-  */
-
   return (
     <header className="header">
       { h1 }
@@ -55,6 +44,6 @@ const Header = ({ pageTitle,
       </h2>
     </header>
   )
-  }
+}
 
 export default Header
