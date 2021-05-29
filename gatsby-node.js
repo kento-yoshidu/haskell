@@ -6,13 +6,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const { createPage } = actions
 
-  // --------------------------------------------------
-  // 各記事ページの生成
-
-  // グループごとに記事取得
-  const articlesByCategory = await graphql(`
+  const queryResult = await graphql(`
     query {
-      allMarkdownRemark (
+      # グループごとに記事収集
+      allArticleByGroup: allMarkdownRemark (
         sort: {
           fields: [frontmatter___postdate],
         }
@@ -26,11 +23,36 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+
+      # 全ての記事を収集
+      allArticle: allMarkdownRemark {
+        nodes {
+          id
+          fields {
+            slug
+          }
+        }
+      }
+
+      # カテゴリごとに記事収集
+      articlesByCategory: allMarkdownRemark {
+        group(field: frontmatter___categorySlug) {
+          fieldValue
+          nodes {
+            id
+            frontmatter {
+              categoryName
+            }
+          }
+        }
+      }
     }
   `)
 
-  // グループごとの記事
-  const groups = articlesByCategory.data.allMarkdownRemark.group
+  // --------------------------------------------------
+  // 各ページの生成
+
+  const groups = queryResult.data.allArticleByGroup.group
 
   groups.forEach((group) => {
 
@@ -52,24 +74,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // --------------------------------------------------
-  // 記事一覧(ページネーション付き)
+  // 記事一覧の表示
 
-  // すべての記事を取得
-  const allArticles = await graphql(`
-    query {
-      allMarkdownRemark {
-        nodes {
-          id
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  `)
+  const allArticle = queryResult.data.allArticle
 
   // 記事合計数
-  const postCount = allArticles.data.allMarkdownRemark.nodes.length;
+  const postCount = allArticle.nodes.length;
 
   // 何ページ生成することになるかの計算
   const pageCount = Math.ceil(postCount / 6)
@@ -95,23 +105,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // --------------------------------------------------
   // カテゴリごとの記事一覧(ページネーション付き)
 
-  const category = await graphql(`
-    {
-      allMarkdownRemark {
-        group(field: frontmatter___categorySlug) {
-          fieldValue
-          nodes {
-            id
-            frontmatter {
-              categoryName
-            }
-          }
-        }
-      }
-    }
-  `)
+  const articlesByCategory = queryResult.data.articlesByCategory.group
 
-  category.data.allMarkdownRemark.group.map(category => {
+  articlesByCategory.forEach(category => {
 
     const categorySlug = category.fieldValue;
     const categoryName = category.nodes[0].frontmatter.categoryName;
