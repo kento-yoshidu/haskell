@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const queryResult = await graphql(`
     query {
-      # グループごとに記事収集
+      # グループごとに記事収集→各ページを生成
       allArticleByGroup: allMarkdownRemark (
         sort: {
           fields: [frontmatter___postdate],
@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
 
-      # 全ての記事を収集
+      # 全ての記事を収集→記事一覧を生成
       allArticle: allMarkdownRemark {
         nodes {
           id
@@ -43,6 +43,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             frontmatter {
               categoryName
             }
+          }
+        }
+      }
+
+      # タグごとに記事収集
+      articlesByTag: allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          fieldValue
+          nodes {
+            id
           }
         }
       }
@@ -103,7 +113,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // --------------------------------------------------
-  // カテゴリごとの記事一覧(ページネーション付き)
+  // カテゴリごとの記事一覧
 
   const articlesByCategory = queryResult.data.articlesByCategory.group
 
@@ -140,20 +150,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // --------------------------------------------------
   // タグごとの記事一覧
 
-  const tag = await graphql(`
-    {
-      allMarkdownRemark {
-        group(field: frontmatter___tags) {
-          fieldValue
-          nodes {
-            id
-          }
-        }
-      }
-    }
-  `)
+  const articlesByTag = queryResult.data.articlesByTag.group
 
-  tag.data.allMarkdownRemark.group.map(tag => {
+  articlesByTag.forEach(tag => {
 
     // タグごとの記事合計数
     const postCount = tag.nodes.length;
