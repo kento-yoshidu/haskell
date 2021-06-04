@@ -1,72 +1,90 @@
 ---
 title: "JamstackなWebサイトを構築してみた①"
 postdate: "2021-05-14"
-updatedate: "2021-05-21"
+updatedate: "2021-06-04"
 categoryName: "JamstackなWebサイトを構築してみた"
 categorySlug: "Jamstack"
 description: "いわゆるJamstackなサイトを作成してみて、何となく分かってきたので知見を記載します。"
-tags: ["Jamstack", "Gatsby", "Nuxt.js", "HeadlessCMS", "静的サイトジェネレータ", "JavaScript"]
+tags: ["Jamstack", "Gatsby", "Nuxt.js", "HeadlessCMS", "静的サイトジェネレータ"]
 ---
 
 # JamstackなWebサイトを沢山作ってみる
 
 2021年の目標を「SSGやHeadlessCMSを使ってWebサイトを10個作成する」という風に**5月に入ってから**決めました。
 
-5月末時点でまだ10個は作れてないですが、何となく感覚が分かってきたので、自分なりに「Jamstackとは何か？」というテーマで記事にしたいと思います。
+5月末時点でまだ10個は作れてないですが、何となくWebサイト構築の感覚が分かってきたので、自分なりに「Jamstackとは何か？」というテーマで記事にしたいと思います。
 
 ## どんなJamstackサイトを作ってる？
 
-「Jamstackって何？」というは後回しにして、私が作成したJamstackなサイトについて列挙します。
-
-作成したサイトは以下の通りです。基本的にメインとなるページ＋ブログ記事ページという構成になっています。
+「Jamstackって何？」という事は後回しにして、私が作成したJamstackなサイトについて列挙します。基本的にメインとなるページ＋ブログ記事ページという構成になっています。
 
 ブログ記事をマークダウンやファイルvueファイルで管理しているものもありますので、厳密にはJamstackではないものも含まれていますが大目に見てください。
 
 <aside>
-上から3番目以降はサンプル（お試し）で作成しており、ブログを更新とかしているわけではありません。
+上から3番目以降はサンプル（お試し）で作成しており、ブログを定期的に更新とかしているわけではありません。
 </aside>
 
 <aside>
-どんなサイトを作るか10個考える方が辛い。
+どんなテーマのサイトを作るか10個考える方が辛い。
 </aside>
 
-|サイト名|SSG|HeadlessCMS|デプロイ先|
+|サイト名|SSG|HeadlessCMS|ホスティング|
 |-------|---|-----------|-------|
-|鳥に生まれることができなかった人へ|Gatsby|-(マークダウン)|AWS Amplify|
-|CSS Animation & Tips|Nuxt.js|-(vueファイル)|AWS Amplify|
-|NuxtDentalClinic|Nuxt.js|microCMS|Netlify|
-|GatsbyCafe|Gatsby|Contentfull|Netlify|
-|-----------------|Gridsome|graphCMS|AWS Amplify|
+|鳥に生まれることができなかった人へ<br>（このサイト）|Gatsby|(マークダウン)|AWS Amplify|
+|[CSS Animation & Tips](https://cssanimation.toriwatari.work/)|Nuxt.js|(vueファイル)|AWS Amplify|
+|[NuxtDentalClinic](https://nuxtdentalclinic.netlify.app/)|Nuxt.js|microCMS|Netlify|
+|[GatsbyCafe](https://gatsbycafesite.netlify.app/)|Gatsby|Contentfull|Netlify|
+|作成中|Next.js|microCMS|未定|
+|作成中|Gridsome|graphCMS|未定|
+
+## Jamstackの構成要素
+
+Jamstackは概ね以下のような技術で構成されています。
+
+ - ✨ SSG（静的サイトジェネレータ）
+ - ✨ HeadlessCMS
+ - ✨ ホスティングサービス(CDN)
+
+Jamstackを触ってみて感じたのは、「それぞれのレイヤーの技術が**疎結合になっている**なぁ」ということです。自分が見識のある技術を、ある程度自由に組み合わせられるという事です。以下、3つの構成要素について、それぞれどんな選択肢があるのかを紹介したいと思います。
 
 ### SSGには何がある？
 
-今のところ、SSGとして**Gatsby**、**Nuxt.js**、**Gridsome**を使用しています。後はVue.jsベースの**VuePress**、Reactベースの**Next.js**が残っているのでぜひ作成したいですね。
+SSGにはとても多くの種類があります。[こちら](https://jamstack.org/generators/)のサイトでSSGがまとめられています。めちゃくちゃ多いですが、フロントエンドよりの技術のためか**JavaScriptベース**のSSGが多いですね。
 
-一番のお気に入りはGatsbyです。このブログはGatsby製です。次点でGridsomeです。両者ともGraphQLでデータを取得できるのでいい感じです。
+これまでに私は**Gatsby**、**Nuxt.js**、**Gridsome**を使用してWebサイトを作成しました。後はVue.jsベースの**VuePress**、Reactベースの**Next.js**、**Docusaurus**も試してみて形にしたいですね。
+
+今のところ、お気に入りはGatsbyです。このブログもGatsby製です。次点でGridsomeです。両者ともGraphQLでデータを取得できるのでいい感じです。
 
 ### 各種SSGの難易度は？
 
-多分、一番難しいのがGatsbyです。Reactベースなのに加えクエリ言語にGraphQLを使用していますので、それらについて初見の方が一から憶えていくのはきついと思います。ただ、日本語の記事も多くありますし、実際私も「Reactほんの少しだけ＋GraphQL初見」という所から、ブログの基本機能の作成まで～2週間くらいで進めましたので（結構苦労はしましたが）、難しいと言ってもソコソコです。爆速＋高機能なフレームワークなので頑張って覚える価値は間違いなくあります。
-
-逆に一番簡単なのはVuePressだと思います。
-
+多分、一番難しいのがGatsbyです。Reactベースなのに加えクエリ言語にGraphQLを使用していますので、それらについて初見の方が一から憶えていくのはきついと思います。ただ、参考にできる記事も多くありますし、実際私も「Reactほんの少しだけ＋GraphQL初見」という所から、ブログの基本機能の作成まで～2週間くらいで進めましたので（結構苦労はしましたが）、難しいと言ってもソコソコです。爆速＋高機能なフレームワークなので頑張って覚える価値は間違いなくあります。
 
 ### HeadlessCMSには何がある？
 
-microCMS、Contentful、graphCMSなどが挙げられます。
+HeadlessCMSも数多くありますが、microCMS、Contentful、graphCMS、NetlifyCMSなどが挙げられます。
 
-一番のお勧めはmicroCMです。日本の会社なのでドキュメントは全て日本語で読めますし、ブログにも力が入っていて**チュートリアルが充実**しています。このチュートリアルをこなすだけで1-2ヵ月くらいは暇をつぶせそうですね。
+HeadlessCMSを使いこなすというのは私にとって中々難しく、利用し始めて間もないこともあり、それぞれのサービスの違いなどを上げられるほど知見がありません。「こんなHeadlessCMSがありますよー」という紹介くらいに留まると思います。
+
+私がこの先も使用していきたいと考えているのは日本製のmicroCMSです。日本の会社なのでドキュメントを全て日本語で読め、サポートへの問い合わせなども日本語で出来るという安心感があります。また、技術ブログにも力が入っていて、特に**チュートリアルが充実**しています。このチュートリアルをこなすだけで1-2ヵ月くらいは暇をつぶせそうですね。
 
 [microCMSブログ（チュートリアル）](https://blog.microcms.io/category/tutorial/page/1)
 
-
+HeadlessCMSとCMSの違い、それぞれのメリットデメリットは後ほど紹介したいと思います。
 
 ### デプロイ先には何がある？
 
-https://monotein.com/blog/what-is-ssg
+AWSの中では、私はAWS Amplifyを主に利用しています。CloudFront + S3という構成もいいですね。
 
+ホスティングサービスで言うとNetlifyが一番有名なんじゃないかと思います。無料枠でも以下のようなサービスを受けられます（2021年6月現在）。
 
+- 🌠 SSGによるビルドとCDNによるWebサイト公開
+- 🌠 GitHubとの連携、自動ビルド
+- 🌠 ホスティングするWebサイトの数は無制限
+- 🌠 月100GBのデータ通信
+- 🌠 ビルド時間は300分/月
 
-さて、次は「Jamstackとは何か」ということについて考えたいと思います。
+※正確なことは[Netlifyのページ](https://www.netlify.com/pricing/)を参照ください。
 
-### HeadlessCMSは難しい部分もある
+---
+
+ここまで、ざっとJamstackの構成要素について説明しました。次回からはJamstackやSSG、HeadlessCMSについて解説したいと思います。

@@ -24,9 +24,13 @@ Netscape Navigatorの活躍から少し遅れ、Microsoft社が現在でもお�
 
 IEにJavaScriptを乗せられればよかったのですが、Netscape社はそれを許さなかったようです。そしてMicrosoftはMicrosoftで、JavaScriptの代替として独自に**JScript**という言語を開発します。
 
-※以前までは「JScriptってなに？変な略し方するなよ」とか思ってましたが、似てはいるものの、別物のれっきとしたプログラミング言語なんですね。勉強になりました。
+<aside>
+以前までは「JScriptってなに？変な略し方するなよ」とか思ってましたが、似てはいるものの、別物のれっきとしたプログラミング言語なんですね。勉強になりました。
+</aside>
 
-※Windows10になった現在でもJScriptはWSH（Windows Script Host）上で動作します。古めかしい言語のように思えますが、まだ現役です。
+<aside>
+Windows10になった現在でもJScriptはWSH（Windows Script Host）上で動作します。古めかしい言語のように思えますが、まだ現役です。
+</aside>
 
 しかし、JavaScriptとJScriptは似てはいるものの互換性がありませんでした。さらに、両社、さらにはブラウザベンダ各社までが対抗しそれぞれに独自の機能を追加していき、「JavaScriptはIEでは動かない」、反対に「JScriptはNetscapeでは動かない」、、、etc と言った状況に陥りました（この辺りは想像に難しくないですよね）。
 
@@ -38,12 +42,18 @@ ECMAScriptとはいったい何でしょうか。ECMAScariptは「JavaScriptの�
 
 ECMAScriptという仕様を元に、各社がブラウザにJavaScriptを実装します。ECMAScriptは**仕様**を定めているのみで、実装方法を定めるものではありません。ですので、ほとんどの機能は同じだけど、細かいところでブラウザによって挙動に違いがあることがあります。
 
-※この「ブラウザ間の挙動の違い」を吸収するのがJQueryだったりします。
-※標準化の流れのもと、2021年ともなれば、ブラウザ間でのJavaScriptの挙動の違いはほどんとないように思えます。
+
+<aside>
+この「ブラウザ間の挙動の違い」を吸収するのがJQueryだったりします。
+</aside>
+
+<aside>
+標準化の流れのもと、2021年ともなれば、ブラウザ間でのJavaScriptの挙動の違いはほとんどないように思えます。Safariが最新機能の追加が少し遅いかなーというイメージです。
+</aside>
 
 逆に、「JavaScriptって何？」と問われれば、「ECMAScriptをブラウザベンダが実装したもの」と答えることができます。
 
-## ECMAScriptは新しいエディションがリリースされる
+### ECMAScriptは新しいエディションがリリースされる
 
 ECMAScriptはたびたび改定されます。恐らく**ES5**だったり**ES2015**という言葉を聞いたことがあると思いますが、あれはECMAScriptのエディションを指しています。
 
@@ -54,7 +64,7 @@ ECMAScriptはたびたび改定されます。恐らく**ES5**だったり**ES20
 |1|1997年6月|記念すべき初版|
 |2|1998年6月||
 |3|1999年12月|正規表現、try/catch構文が追加|
-|4|放棄|
+|4|放棄||
 |5|2009年12月|strictモードが追加|
 |5.1|2011年6月||
 |2015(6)|2015年6月|class、let、const、Symbol、Promise 、、、など多数の機能/構文の追加|
@@ -100,8 +110,8 @@ ECMAScriptが作成され標準化が一応進んだはいいものの、1990年
 
 [The History of JavaScript: Everything You Need to Know | Springboard Blog](https://www.springboard.com/blog/history-of-javascript/)
 
-https://www.markupdancing.net/archive/20081111-083300.html
+[JavaScript の生い立ちを探る - MarkupDancing](https://www.markupdancing.net/archive/20081111-083300.html)
 
-(https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17)
+[A brief history of JavaScript | by Ben Aston | Medium](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17)
 
-https://noveltyinc.jp/2020/02/14/javascript-history/
+[JavaScript（ジャバスクリプト）の歴史について](https://noveltyinc.jp/2020/02/14/javascript-history/)
