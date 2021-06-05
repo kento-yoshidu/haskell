@@ -64,23 +64,23 @@ VSCodeをお使いの方に向けて、VSCodeでの上記の手順を記述し�
 
 VSCodeを立ち上げ、`ファイル(F)`を開き、`フォルダーを開く`を選択します。
 
-![フォルダーを開くを選択](./images/image03.jpg)
+![フォルダーを開くを選択](./images/image03.png)
 
 そして先ほど作成した`HTML&CSS`フォルダを選択し、`フォルダーの選択`をクリックします。
 
-![HTML&CSSフォルダを選択](./images/image04.jpg)
+![HTML&CSSフォルダを選択](./images/image04.png)
 
 これでVSCodeでフォルダを開くことができました。
 
-![HTML&CSSフォルダを選択](./images/image05.jpg)
+![HTML&CSSフォルダを選択](./images/image05.png)
 
 さらに、`HTML&CSS`フォルダの少し下で右クリックし、`新しいファイル`をクリックします。
 
-![HTML&CSSフォルダを選択](./images/image06.jpg)
+![HTML&CSSフォルダを選択](./images/image06.png)
 
 続けて`index.html`と打ち込めばhtmlファイルの出来上がりです。
 
-![HTML&CSSフォルダを選択](./images/image07.jpg)
+![HTML&CSSフォルダを選択](./images/image07.png)
 
 ## htmlファイルに内容を書きこむ
 
