@@ -202,6 +202,7 @@
     background-color: rgba($main-color2, 0.15);
     font-size: 1.6rem;
     line-height: 1.6;
+    box-shadow: 0 0 1.5px 1.5px rgba($main-color2, 0.2);
   }
   table {
     margin: 40px 0 40px 20px;
@@ -262,7 +263,7 @@
     }
     aside {
       padding: 10px 15px;
-      width: 95%;
+      width: 88%;
       font-size: 1.4rem;
     }
     table {
@@ -284,23 +285,37 @@
 blockquote {
   position: relative;
   width: 90%;
+  margin-top: 12px;
   margin-left: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   padding: 2% 2% 1% 6%;
   background-color: #eee;
   border-radius: 3px;
   box-shadow: 0 0 1.5px 1.5px #ddd;
-  ::before {
+  color: #666;
+  &::before {
     position: absolute;
     line-height: 30px;
     text-align: center;
     top: 25%;
-    left: 0;
+    left: 1rem;
     content: "❝";
     color: #999;
-    font-size: 6.5rem;
+    font-size: 6rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  blockquote {
+    padding: 10% 2% 1% 6%;
+    margin-left: 0;
+    &::before {
+      top: 1rem;
+      font-size: 5rem;
+    }
+  } 
+}
+
 .beforeAndAfter {
   width: 50%;
   margin-left: 15vw;
