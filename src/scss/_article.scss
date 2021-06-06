@@ -50,6 +50,7 @@
     flex-direction: row;
     margin-bottom: 20px;
     font-size: 1.8rem;
+    line-height: 1.5;
 
     svg {
       margin-right: 10px;
@@ -83,6 +84,9 @@
 
     .date-info {
       font-size: 1.5rem;
+      p {
+        margin-bottom: 10px;
+      }
     }
 
     .tags {
@@ -311,7 +315,7 @@ blockquote {
     margin-left: 0;
     &::before {
       top: 1rem;
-      font-size: 5rem;
+      font-size: 4rem;
     }
   } 
 }

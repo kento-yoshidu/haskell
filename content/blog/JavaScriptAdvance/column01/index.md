@@ -74,12 +74,6 @@ ES2015から登場したものの代表格として、変数宣言時の`let`、
 
 もちろんこんなのを憶えていくわけにはいかないので、Webサイトを見て確認することになります。
 
-まずは[ECMAScript 2016+ compatibility table](https://kangax.github.io/compat-table/es6/)を見てみましょう。
-
-このサイトは、各ブラウザがSCMAScriptのどの機能を実装しているかを教えてくれています。
-
-https://kangax.github.io/compat-table/es6/
-
-
+まずは[ECMAScript 2016+ compatibility table](https://kangax.github.io/compat-table/es6/)を見てみましょう。このサイトは、各ブラウザがECMAScriptのどの機能を実装しているかを教えてくれるサイトです。
 
 https://kangax.github.io/compat-table/es6/
