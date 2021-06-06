@@ -166,8 +166,16 @@ charset属性はそのページで使用されている**文字コード**を指
 ```html:title=index.html
 <head>
   <meta charset="UTF-8">
+  ...略
 </head>
 ```
+
+もう一つ、
+```html:title=index.html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+というのもありますね。これは**ビューポート**と呼ばれる、ブラウザの表示領域の大きさを設定する属性です。この記述はレスポンシブデザイン（）
 
 ### 空要素
 
