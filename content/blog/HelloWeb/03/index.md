@@ -1,7 +1,7 @@
 ---
 title: "#3 CSSでスタイリングする"
 postdate: "2021-05-27"
-updatedate: "2021-05-27"
+updatedate: "2021-06-12"
 categoryName: "初めてのHTML & CSS"
 categorySlug: "HelloWeb"
 description: 
@@ -20,7 +20,7 @@ Cascadingの意味を調べてみると「連続したもの」「数珠繋ぎ�
 
 ではさっそくハンズオンを始めたいと思います。
 
-まずは前回作成した`index.html`と同じ階層に`style.css`を作成してください。htmlファイルと同様、`style`の部分は変更可能です。慣習的に`style`が用いられていることが多いです。拡張子である`.css`は変更不可です。
+まずは前回作成した`index.html`と同じ階層に`style.css`を作成してください。htmlファイルと同様、`style`の部分は変更可能です。慣習的に`style`が用いられていることが多いです。拡張子である`.css`は変更不可です。また、cssファイルもhtmlファイルと同様に文字コード`UTF-8`を選択してください。
 
 現在、フォルダ構成は以下のようになっています。
 
@@ -47,7 +47,7 @@ Cascadingの意味を調べてみると「連続したもの」「数珠繋ぎ�
 
 先ほど`style.css`を作成しましたが、そのファイルをhtmlファイルのhead要素で読み込みます。
 
-`link要素`は**外部リソース**（今回のようなcssなどのファイル）を指定して取り込むための要素です。`href=〇〇`という形で、読み込ませたいファイルのパスを記述します。今回はhtmlファイルと同じ場所にcssファイルを置いているので`./style.css`とします。（パスの指定方法は別途詳しく説明します）。
+`link要素`は**外部リソース**（今回のようなcssファイル）を指定して取り込むための要素です。`href=〇〇`という形で、読み込ませたいファイルのパスを記述します。今回はhtmlファイルと同じ場所にcssファイルを置いているので`./style.css`とします。（パスの指定方法は別途詳しく説明します）。
 
 その後ろに`rel="stylesheet"`と記述していますが、これは**読み込ませたいファイルの役割**を指定するものです（`rel`はrelationshipの略）。cssファイルを読み込ませているので`stylesheet`と記述します。この一文はcssファイルを読み込ませる時の定型文みたいなものです。意味を理解して憶えておきましょう。
 
@@ -75,9 +75,7 @@ htmlページを開くと以下のように、画面全体が薄い青色に変�
 
 もし、上手くいかない（ページの背景色が変わらない）場合には、もう一度ここまでの手順を見直し、正確に記述できているかを確認してください。
 
-※上手くいかなければ、一度、このページに記載されている内容を丸ごとコピーすることをお勧めします。
-
-失敗の原因には様々なことが考えられてますが、その一つ一つの内容を詳しく記述するには余白が足りません。簡単なチェックリストを用意しましたので上から順番に見ていってください。
+失敗の原因には様々なことが考えられますが、その一つ一つの内容を詳しく記述するには余白が足りません。簡単なチェックリストを用意しましたので上から順番に見ていってください。
 
  - ✅ 目的の`index.html`をブラウザに表示しているか？（間違って違うhtmlファイルを表示させていないか？）
  - ✅ `style.css`を編集した後、`index.html`を再読み込みしたか？
@@ -222,10 +220,10 @@ p {
 
 ## 参考
 
-https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics
-http://www.htmq.com/csskihon/001.shtml
-https://developer.mozilla.org/ja/docs/Web/CSS/@charset
-https://developer.mozilla.org/ja/docs/Web/HTML/Link_types
-https://developer.mozilla.org/ja/docs/Web/HTML/Element/link
+[CSS の基本 | MDN](https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics)
 
+[@charset | MDN](https://developer.mozilla.org/ja/docs/Web/CSS/@charset)
 
+[リンク種別 | MDN](https://developer.mozilla.org/ja/docs/Web/HTML/Link_types)
+
+[&lt;link&gt;: 外部リソースへのリンク要素 | MDN](https://developer.mozilla.org/ja/docs/Web/HTML/Element/link)
