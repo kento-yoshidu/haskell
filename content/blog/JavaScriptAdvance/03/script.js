@@ -1,5 +1,1 @@
-const obj = {
-  a: false
-}
-
-console.log(obj.a.b)
+console.log("Hello World");

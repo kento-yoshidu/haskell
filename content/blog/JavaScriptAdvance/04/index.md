@@ -1,10 +1,10 @@
 ---
 title: "#4 JavaScriptの基本的な書き方"
-postdate: "2021-04-26"
-updatedate: "2021-05-21"
+postdate: "2021-06-12"
+updatedate: "2021-06-12"
 categoryName: "JavaScript中級者を目指す"
 categorySlug: "JavaScriptAdvance"
-description: "JavaScriptの持つデータ型について解説します。長くなってしまうので前後2つの記事に分けて解説します。"
+description: 
 tags: ["JavaScript"]
 ---
 
@@ -12,20 +12,28 @@ tags: ["JavaScript"]
 
 まずは簡単にJavaScriptの書き方や基本的なルールを説明します。入門JavaScriptで解説した部分も多いので、さらっと行きましょう。
 
-## 大文字と小文字は区別される
+## 文の末尾にはセミコロンをつける
 
-JavaScriptでは大文字と小文字は個別されます。例えば`myObj`というオブジェクトを用意したなら、きちんと`myObj`と呼び出さなければなりません。`myobj`（全部小文字）ではだめです。
+JavaScriptには**文**という表現があります。「変数を宣言する」「関数を呼び出す」などの命令の一つ一つが「文」です。
+
+そして**文を記述したら**その後ろにはセミコロン`;`をつけます。`;`が文と文の区切りを表します。
 
 ```javascript
-const myObj = {};
+// 変数定義
+const myId = 1;
 
-console.log(myObj);
-//=> {}
+// 関数を定義し変数に代入
+const getId = function (id) {
+  return id;
+};
 
-// 小文字になっている
-console.log(myobj);
-//=> ReferenceError: myobj is not defined
+// 関数呼び出し
+getId(myId);
 ```
+
+実は`;`をつけなくても、JavaScriptはコンパイル時に自動で`;`をつけてくれますが、これは時に意図しない不具合を招くことがあります。
+
+`;`を付けるつけないで**宗教戦争**もあったりしますが、少なくともこのサイトで学習するうえでは`;`は付けるようにしましょう。
 
 ## コメントアウト
 
@@ -50,20 +58,48 @@ console.log('test'); // ここからコメントアウト
 console.log('これは実行されます。');
 ```
 
-## 文の末尾にはセミコロンをつける
+## 大文字と小文字は区別される
 
-変数宣言したり関数を呼び出した時など、**文を記述したら**その後ろにはセミコロン`;`をつけましょう。`;`が文と文の区切りを表します。
+JavaScriptでは大文字と小文字は個別されます。例えば`myObj`というオブジェクトを用意したなら、きちんと`myObj`と呼び出さなければなりません。`myobj`（全部小文字）ではだめです。
 
 ```javascript
-const myId = 1;
+const myObj = {};
 
-const getId = function (id) {
-  return id;
-};
+console.log(myObj);
+//=> {}
 
-getId(myId);
+// 小文字になっている
+console.log(myobj);
+//=> ReferenceError: myobj is not defined
 ```
 
-実は`;`をつけなくても、JavaScriptはコンパイル時に自動で`;`をつけてくれますが、これは時に意図しない不具合を招くことがあります。
 
-`;`を付けるつけないで**宗教戦争**もあったりしますが、少なくともこのサイトで学習するうえでは`;`は付けるようにしましょう。
+## `"use strict";`を付ける
+
+JavaScriptファイルの中に`"use strict";`と記述することで、そのファイル中のコードは**Strictモード**で実行されます。これによりシンタックスがより厳格にチェックされ、問題のあるコードや推奨されないコードはエラーとなります（JavaScriptは普段、構文を厳密にチェックしていない、ということにもなります）。
+
+実際に例を見てみます。変数宣言の例です。変数宣言には`const`、`let`、`var`キーワードを用いるのが推奨されます。しかし、実際にはこれらのキーワードを使用しなくても変数を宣言することができます。
+
+```javascript
+str = "hoge"
+
+console.log(str)
+//=> hoge
+```
+
+しかし、ファイルの先頭に`"use strict";`と記述した上でこのコードを時効するとエラーが発生します。
+
+```javascript
+"use strict";
+
+str = "hoge"
+
+console.log(str)
+//=> ReferenceError: str is not defined
+```
+
+なぜキーワードなしに変数宣言するのが良くないのかは後で考えましょう。`"use strict";`を付けることで、危険なコードを未然に防止してくれるという事を理解してもらえればOKです。
+
+`"use strict";`はスコープを持っていますので、ファイルのどこに記述するかで効果が適用される範囲が変わってきます。
+
+この講座においては、明記しない限り**ファイルの先頭に**`"use strict";`を記述しているものとします。

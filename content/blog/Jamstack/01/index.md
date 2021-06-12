@@ -1,11 +1,11 @@
 ---
 title: "JamstackなWebサイトを構築してみた①"
 postdate: "2021-05-14"
-updatedate: "2021-06-04"
+updatedate: "2021-06-12"
 categoryName: "JamstackなWebサイトを構築してみた"
 categorySlug: "Jamstack"
 description: "いわゆるJamstackなサイトを作成してみて、何となく分かってきたので知見を記載します。"
-tags: ["Jamstack", "Gatsby", "Nuxt.js", "HeadlessCMS", "静的サイトジェネレータ"]
+tags: ["Jamstack", "HeadlessCMS", "静的サイトジェネレータ"]
 ---
 
 # JamstackなWebサイトを沢山作ってみる
@@ -16,7 +16,7 @@ tags: ["Jamstack", "Gatsby", "Nuxt.js", "HeadlessCMS", "静的サイトジェネ
 
 ## どんなJamstackサイトを作ってる？
 
-「Jamstackって何？」という事は後回しにして、私が作成したJamstackなサイトについて列挙します。基本的にメインとなるページ＋ブログ記事ページという構成になっています。
+「Jamstackって何？」という具体的な説明は後回しにして、私がこれまでに作成したJamstackなサイトについて列挙します。基本的にメインとなるページ＋ブログ記事ページという構成になっています。
 
 ブログ記事をマークダウンやファイルvueファイルで管理しているものもありますので、厳密にはJamstackではないものも含まれていますが大目に見てください。
 
@@ -55,10 +55,6 @@ SSGにはとても多くの種類があります。[こちら](https://jamstack.
 
 今のところ、お気に入りはGatsbyです。このブログもGatsby製です。次点でGridsomeです。両者ともGraphQLでデータを取得できるのでいい感じです。
 
-### 各種SSGの難易度は？
-
-多分、一番難しいのがGatsbyです。Reactベースなのに加えクエリ言語にGraphQLを使用していますので、それらについて初見の方が一から憶えていくのはきついと思います。ただ、参考にできる記事も多くありますし、実際私も「Reactほんの少しだけ＋GraphQL初見」という所から、ブログの基本機能の作成まで～2週間くらいで進めましたので（結構苦労はしましたが）、難しいと言ってもソコソコです。爆速＋高機能なフレームワークなので頑張って覚える価値は間違いなくあります。
-
 ### HeadlessCMSには何がある？
 
 HeadlessCMSも数多くありますが、microCMS、Contentful、graphCMS、NetlifyCMSなどが挙げられます。
@@ -87,4 +83,8 @@ AWSの中では、私はAWS Amplifyを主に利用しています。CloudFront +
 
 ---
 
-ここまで、ざっとJamstackの構成要素について説明しました。次回からはJamstackやSSG、HeadlessCMSについて解説したいと思います。
+以上、今回はざっとJamstackの構成要素について説明しました。次回からは具体的にJamstackやSSG、HeadlessCMSについて解説したいと思います。
+
+## 参考
+
+[For fast and secure sites | Jamstack](https://jamstack.org/)
