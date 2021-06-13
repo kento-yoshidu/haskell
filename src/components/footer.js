@@ -56,7 +56,7 @@ const Footer = () => {
           target="_blink"
         >
           <FontAwesomeIcon icon={faChevronRight} />
-          カテゴリ一覧
+          シリーズ一覧
         </Link>
         <Link
           to={"/tags/"}

@@ -12,12 +12,12 @@ const Categorys = ({ data }) => {
   return (
     <div>
       <SEO
-        title="カテゴリ一覧"
+        title="シリーズ一覧"
       />
 
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
-        pageTitle="カテゴリ一覧"
+        pageTitle="シリーズ一覧"
         isArticle={ true }
       />
 

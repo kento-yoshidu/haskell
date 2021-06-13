@@ -27,11 +27,11 @@ const Category = ({ pageContext, data }) => {
   return (
     <div>
       <SEO
-        title={`${ categoryName }カテゴリの記事`}
+        title={`${ categoryName }シリーズの記事`}
       />
 
       <Header
-        pageTitle={`${ categoryName }カテゴリの記事` }
+        pageTitle={`${ categoryName }シリーズの記事` }
       />
 
       <PageInfo
@@ -65,7 +65,7 @@ const Category = ({ pageContext, data }) => {
                 </div>
 
                 <p className="category">
-                  <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
+                  <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
                   <Link to={`/category/${categorySlug}/page/1/`}>{categoryName}</Link>
                 </p>
 

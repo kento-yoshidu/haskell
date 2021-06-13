@@ -65,7 +65,7 @@ const BlogIndex = ({ data, pageContext }) => {
                   </div>
 
                   <p className="category">
-                    <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
+                    <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
                     <Link to={`/category/${post.frontmatter.categorySlug}/page/1/`}>
                     {post.frontmatter.categoryName}</Link>
                   </p>
