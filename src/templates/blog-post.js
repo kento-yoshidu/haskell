@@ -26,8 +26,8 @@ const BlogPostTemplate = ({ data }) => {
       />
 
       <ArticleInfo
-        categorySlug={ post.frontmatter.categorySlug}
-        categoryName={ post.frontmatter.categoryName}
+        seriesSlug={ post.frontmatter.seriesSlug}
+        seriesName={ post.frontmatter.seriesName}
         pageTitle={ post.frontmatter.title }
         postdate={ post.frontmatter.postdate}
         updatedate={ post.frontmatter.updatedate }
@@ -100,8 +100,8 @@ export const pageQuery = graphql`
         postdate(formatString: "YYYY年MM月DD日")
         updatedate(formatString: "YYYY年MM月DD日")
         description
-        categoryName
-        categorySlug
+        seriesName
+        seriesSlug
         tags
       }
     }

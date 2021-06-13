@@ -2,8 +2,8 @@
 title: "#1 初めてのHTML & CSS"
 postdate: "2021-04-09"
 updatedate: "2021-04-16"
-categoryName: "初めてのHTML & CSS"
-categorySlug: "HelloWeb"
+seriesName: "初めてのHTML & CSS"
+seriesSlug: "HelloWeb"
 description: 
 tags: ["HTML", "CSS", "入門"]
 ---

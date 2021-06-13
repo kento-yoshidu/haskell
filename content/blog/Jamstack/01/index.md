@@ -2,8 +2,8 @@
 title: "JamstackなWebサイトを構築してみた①"
 postdate: "2021-05-14"
 updatedate: "2021-06-12"
-categoryName: "JamstackなWebサイトを構築してみた"
-categorySlug: "Jamstack"
+seriesName: "JamstackなWebサイトを構築してみた"
+seriesSlug: "Jamstack"
 description: "いわゆるJamstackなサイトを作成してみて、何となく分かってきたので知見を記載します。"
 tags: ["Jamstack", "HeadlessCMS", "静的サイトジェネレータ"]
 ---

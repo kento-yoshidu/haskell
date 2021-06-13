@@ -21,17 +21,17 @@ config.autoAddCss = false
 
 const Category = ({ pageContext, data }) => {
 
-  const { categoryName, categorySlug } = pageContext
+  const { seriesName, seriesSlug } = pageContext
   const nodes = data.allMarkdownRemark.nodes
 
   return (
     <div>
       <SEO
-        title={`${ categoryName }シリーズの記事`}
+        title={`${ seriesName }シリーズの記事`}
       />
 
       <Header
-        pageTitle={`${ categoryName }シリーズの記事` }
+        pageTitle={`${ seriesName }シリーズの記事` }
       />
 
       <PageInfo
@@ -66,7 +66,7 @@ const Category = ({ pageContext, data }) => {
 
                 <p className="category">
                   <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
-                  <Link to={`/series/${categorySlug}/page/1/`}>{categoryName}</Link>
+                  <Link to={`/series/${seriesSlug}/page/1/`}>{seriesName}</Link>
                 </p>
 
                 <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>タグ</span>
@@ -98,8 +98,8 @@ const Category = ({ pageContext, data }) => {
               <Link
                 to={
                   pageContext.currentPage === 2
-                    ? `/series/${categorySlug}/page/1/`
-                    : `/series/${categorySlug}/page/${pageContext.currentPage - 1}/`
+                    ? `/series/${seriesSlug}/page/1/`
+                    : `/series/${seriesSlug}/page/${pageContext.currentPage - 1}/`
                 }
                 rel = "prev"
               >
@@ -115,7 +115,7 @@ const Category = ({ pageContext, data }) => {
               { i + 1 === pageContext.currentPage
                   ? <p className="text">{ i + 1 }</p>
                   : <p className="link">
-                      <Link to={`/series/${categorySlug}/page/${i + 1}/`}>
+                      <Link to={`/series/${seriesSlug}/page/${i + 1}/`}>
                         { i + 1 }
                       </Link>
                     </p>
@@ -126,7 +126,7 @@ const Category = ({ pageContext, data }) => {
 
         {!pageContext.isLast && (
           <p className="next">
-            <Link to={`/series/${categorySlug}/page/${pageContext.currentPage + 1}/`} rel="next">
+            <Link to={`/series/${seriesSlug}/page/${pageContext.currentPage + 1}/`} rel="next">
               Next
             </Link>
             <FontAwesomeIcon icon={faChevronCircleRight} />
@@ -144,7 +144,7 @@ export default Category
 
 export const pageQuery = graphql`
   query(
-    $categorySlug: String,
+    $seriesSlug: String,
     $limit: Int!,
     $skip: Int!
   ) {
@@ -157,8 +157,8 @@ export const pageQuery = graphql`
       skip: $skip
       filter: {
         frontmatter: {
-          categorySlug: {
-            eq: $categorySlug
+          seriesSlug: {
+            eq: $seriesSlug
           }
         }
       }
@@ -171,8 +171,8 @@ export const pageQuery = graphql`
         frontmatter {
           postdate(formatString: "YYYY年MM月DD日")
           updatedate(formatString: "YYYY年MM月DD日")
-          categoryName
-          categorySlug
+          seriesName
+          seriesSlug
           title
           tags
         }

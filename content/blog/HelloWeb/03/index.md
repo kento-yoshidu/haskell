@@ -2,8 +2,8 @@
 title: "#3 CSSでスタイリングする"
 postdate: "2021-05-27"
 updatedate: "2021-06-12"
-categoryName: "初めてのHTML & CSS"
-categorySlug: "HelloWeb"
+seriesName: "初めてのHTML & CSS"
+seriesSlug: "HelloWeb"
 description: 
 tags: ["HTML", "CSS"]
 ---

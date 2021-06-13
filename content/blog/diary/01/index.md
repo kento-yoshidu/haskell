@@ -2,8 +2,8 @@
 title: "Gatsbyでブログを始めました"
 postdate: "2021-03-04"
 updatedate: "2021-05-21"
-categoryName: "日記"
-categorySlug: "Diary"
+seriesName: "日記"
+seriesSlug: "Diary"
 description: "静的サイトジェネレータのGatsbyを使用してブログを立ち上げました。その経緯と使ってみた所感を記したいと思います。"
 tags: ["日記", "Gatsby", "静的サイトジェネレータ"]
 ---
@@ -107,8 +107,8 @@ Gatsbyを選んだそもそもの理由が「クエリ言語にGraphQLを採用�
 title: "Gatsbyでブログを始めました"
 postdate: "2021-04-04"
 updatedate: "2021-05-21"
-categoryName: "日記"
-categorySlug: "diary"
+seriesName: "日記"
+seriesSlug: "diary"
 description: "静的サイトジェネレータのGatsbyを使用してブログを立ち上げました。"
 tags: ["日記", "Gatsby", "静的サイトジェネレータ"]
 ---
@@ -116,7 +116,7 @@ tags: ["日記", "Gatsby", "静的サイトジェネレータ"]
 
 `gatsby-node.js`を使用し、ビルド時に「GraphQLでマークダウンファイルの情報（frontmatter）を取得、それらを同じカテゴリの記事ごとに集約、それらをリスト化したページを作成」、というようなことをやってくれています。
 
-また、[こちら](https://blog.toriwatari.work/category/JavaScriptAdvance/page/1/)のページでは「JavaScript中級者を目指す」というカテゴリの記事一覧をリストアップしています。
+また、[こちら](https://blog.toriwatari.work/series/JavaScriptAdvance/page/1/)のページでは「JavaScript中級者を目指す」というカテゴリの記事一覧をリストアップしています。
 
 これもGraphQLを使用し、「同じカテゴリの記事一覧を取得、記事数だけループで表示させる」ということをやっています。
 

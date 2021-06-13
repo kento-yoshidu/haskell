@@ -2,8 +2,8 @@
 title: "GatsbyとContetnfulでブログを作成する時の注意点"
 postdate: "2021-05-21"
 updatedate: "2021-05-22"
-categoryName: "単発記事"
-categorySlug: "OneShot"
+seriesName: "単発記事"
+seriesSlug: "OneShot"
 description: ""
 tags: ["Gatsby", "Contenful", "GraphQL"]
 ---
