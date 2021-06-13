@@ -27,11 +27,11 @@ const Category = ({ pageContext, data }) => {
   return (
     <div>
       <SEO
-        title={`${ categoryName }カテゴリの記事`}
+        title={`${ categoryName }シリーズの記事`}
       />
 
       <Header
-        pageTitle={`${ categoryName }カテゴリの記事` }
+        pageTitle={`${ categoryName }シリーズの記事` }
       />
 
       <PageInfo
@@ -65,8 +65,8 @@ const Category = ({ pageContext, data }) => {
                 </div>
 
                 <p className="category">
-                  <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
-                  <Link to={`/category/${categorySlug}/page/1/`}>{categoryName}</Link>
+                  <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
+                  <Link to={`/series/${categorySlug}/page/1/`}>{categoryName}</Link>
                 </p>
 
                 <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>タグ</span>
@@ -98,8 +98,8 @@ const Category = ({ pageContext, data }) => {
               <Link
                 to={
                   pageContext.currentPage === 2
-                    ? `/category/${categorySlug}/page/1/`
-                    : `/category/${categorySlug}/page/${pageContext.currentPage - 1}/`
+                    ? `/series/${categorySlug}/page/1/`
+                    : `/series/${categorySlug}/page/${pageContext.currentPage - 1}/`
                 }
                 rel = "prev"
               >
@@ -115,7 +115,7 @@ const Category = ({ pageContext, data }) => {
               { i + 1 === pageContext.currentPage
                   ? <p className="text">{ i + 1 }</p>
                   : <p className="link">
-                      <Link to={`/category/${categorySlug}/page/${i + 1}/`}>
+                      <Link to={`/series/${categorySlug}/page/${i + 1}/`}>
                         { i + 1 }
                       </Link>
                     </p>
@@ -126,7 +126,7 @@ const Category = ({ pageContext, data }) => {
 
         {!pageContext.isLast && (
           <p className="next">
-            <Link to={`/category/${categorySlug}/page/${pageContext.currentPage + 1}/`} rel="next">
+            <Link to={`/series/${categorySlug}/page/${pageContext.currentPage + 1}/`} rel="next">
               Next
             </Link>
             <FontAwesomeIcon icon={faChevronCircleRight} />
