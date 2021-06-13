@@ -12,12 +12,12 @@ const Categorys = ({ data }) => {
   return (
     <div>
       <SEO
-        title="カテゴリ一覧"
+        title="シリーズ一覧"
       />
 
       <Header
         headerTitle="鳥に生まれることができなかった人へ"
-        pageTitle="カテゴリ一覧"
+        pageTitle="シリーズ一覧"
         isArticle={ true }
       />
 
@@ -27,7 +27,7 @@ const Categorys = ({ data }) => {
           { categories.map(category => {
             return (
               <li className="listItem">
-                <Link to={`/category/${category.nodes[0].frontmatter.categorySlug}/page/1/`}>
+                <Link to={`/series/${category.nodes[0].frontmatter.categorySlug}/page/1/`}>
                   { category.nodes[0].frontmatter.categoryName }({ category.totalCount })
                 </Link>
               </li>

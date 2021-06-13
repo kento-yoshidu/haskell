@@ -130,8 +130,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     Array.from({ length: pageCount }).forEach((_, i) => {
       createPage({
-        path: 1 === 0 ? `/category/${category.fieldValue}/page/1/` : `/category/${category.fieldValue}/page/${i + 1}/`,
-        component: path.resolve("./src/templates/category.js"),
+        path: 1 === 0 ? `/series/${category.fieldValue}/page/1/` : `/series/${category.fieldValue}/page/${i + 1}/`,
+        component: path.resolve("./src/templates/series.js"),
         context: {
           postCount: postCount,
           pageCount: pageCount,
