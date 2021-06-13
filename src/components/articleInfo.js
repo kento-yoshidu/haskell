@@ -12,8 +12,8 @@ const ArticleInfo = ({
     pageTitle,
     postdate,
     updatedate,
-    categorySlug,
-    categoryName,
+    seriesSlug,
+    seriesName,
     tags,
     description
   }) => {
@@ -36,8 +36,8 @@ const ArticleInfo = ({
 
         <p className="category">
           <FontAwesomeIcon icon={ faFolder } />
-          <Link to={`/series/${categorySlug}/page/1/`}>
-            { categoryName }
+          <Link to={`/series/${seriesSlug}/page/1/`}>
+            { seriesName }
           </Link>
         </p>
 

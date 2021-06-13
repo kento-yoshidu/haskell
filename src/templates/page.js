@@ -66,8 +66,8 @@ const BlogIndex = ({ data, pageContext }) => {
 
                   <p className="category">
                     <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
-                    <Link to={`/series/${post.frontmatter.categorySlug}/page/1/`}>
-                    {post.frontmatter.categoryName}</Link>
+                    <Link to={`/series/${post.frontmatter.seriesSlug}/page/1/`}>
+                    {post.frontmatter.seriesName}</Link>
                   </p>
 
                   <p className="tags">
@@ -142,8 +142,8 @@ export const pageQuery = graphql`
             frontmatter {
               postdate(formatString: "YYYY年MM月DD日")
               updatedate(formatString: "YYYY年MM月DD日")
-              categoryName
-              categorySlug
+              seriesName
+              seriesSlug
               title
               tags
             }

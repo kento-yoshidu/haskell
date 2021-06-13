@@ -2,8 +2,8 @@
 title: "#2 JavaScriptの歴史"
 postdate: "2021-04-12"
 updatedate: "2020-05-12"
-categoryName: "JavaScript中級者を目指す"
-categorySlug: "JavaScriptAdvance"
+seriesName: "JavaScript中級者を目指す"
+seriesSlug: "JavaScriptAdvance"
 description: 
 tags: ["JavaScript", "ECMAScript"]
 ---

@@ -50,8 +50,8 @@ const BlogIndex = ({ data, location }) => {
                 <div className="info">
                   <p className="category">
                     <FontAwesomeIcon icon={faFolder} />
-                    <Link to={`category/${post.frontmatter.categorySlug}`}>
-                    {post.frontmatter.categoryName}</Link>
+                    <Link to={`series/${post.frontmatter.seriesSlug}`}>
+                    {post.frontmatter.seriesName}</Link>
                   </p>
                   <p className="post"><FontAwesomeIcon icon={faClock} />{post.frontmatter.postdate}</p>
                   <p className="update"><FontAwesomeIcon icon={faUndo} />{post.frontmatter.updatedate}</p>
@@ -108,8 +108,8 @@ export const pageQuery = graphql`
           frontmatter {
             postdate(formatString: "YYYY年MM月DD日")
             updatedate(formatString: "YYYY年MM月DD日")
-            categoryName
-            categorySlug
+            seriesName
+            seriesSlug
             title
             tags
           }
