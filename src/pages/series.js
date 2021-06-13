@@ -27,7 +27,7 @@ const Categorys = ({ data }) => {
           { categories.map(category => {
             return (
               <li className="listItem">
-                <Link to={`/category/${category.nodes[0].frontmatter.categorySlug}/page/1/`}>
+                <Link to={`/series/${category.nodes[0].frontmatter.categorySlug}/page/1/`}>
                   { category.nodes[0].frontmatter.categoryName }({ category.totalCount })
                 </Link>
               </li>

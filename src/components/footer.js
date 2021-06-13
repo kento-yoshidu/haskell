@@ -52,7 +52,7 @@ const Footer = () => {
 
       <div className="link internal-link">
         <Link
-          to={"/categories/"}
+          to={"/series/"}
           target="_blink"
         >
           <FontAwesomeIcon icon={faChevronRight} />
@@ -77,7 +77,7 @@ const Footer = () => {
         </Link>
 
         <Link
-          to={"/categories/"}
+          to={"#"}
           target="_blink"
         >
           <FontAwesomeIcon icon={faChevronRight} />
@@ -85,7 +85,7 @@ const Footer = () => {
         </Link>
 
         <Link
-          to={"/categories/"}
+          to={"#"}
           target="_blink"
         >
           <FontAwesomeIcon icon={faChevronRight} />
