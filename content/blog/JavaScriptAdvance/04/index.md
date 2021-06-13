@@ -2,8 +2,8 @@
 title: "#4 JavaScriptの基本的な書き方"
 postdate: "2021-06-12"
 updatedate: "2021-06-12"
-categoryName: "JavaScript中級者を目指す"
-categorySlug: "JavaScriptAdvance"
+seriesName: "JavaScript中級者を目指す"
+seriesSlug: "JavaScriptAdvance"
 description: 
 tags: ["JavaScript"]
 ---

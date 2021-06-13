@@ -27,8 +27,8 @@ const Categorys = ({ data }) => {
           { categories.map(category => {
             return (
               <li className="listItem">
-                <Link to={`/series/${category.nodes[0].frontmatter.categorySlug}/page/1/`}>
-                  { category.nodes[0].frontmatter.categoryName }({ category.totalCount })
+                <Link to={`/series/${category.nodes[0].frontmatter.seriesSlug}/page/1/`}>
+                  { category.nodes[0].frontmatter.seriesName }({ category.totalCount })
                 </Link>
               </li>
             )
@@ -44,22 +44,22 @@ const Categorys = ({ data }) => {
 export default Categorys
 
 export const pageQuery = graphql`
-  query ($category: String) {
+  query ($series: String) {
     allMarkdownRemark(
       filter: {
         frontmatter: {
-          categorySlug: {
-            eq: $category
+          seriesSlug: {
+            eq: $series
           }
         }
       }
     ) {
       totalCount
-      group(field: frontmatter___categoryName) {
+      group(field: frontmatter___seriesName) {
         nodes {
           frontmatter {
-            categorySlug
-            categoryName
+            seriesSlug
+            seriesName
           }
         }
         fieldValue

@@ -2,8 +2,8 @@
 title: "#4 HTMLの基本①（DOCTYPE宣言とhtml要素、head要素）"
 postdate: "2021-06-04"
 updatedate: "2021-06-12"
-categoryName: "初めてのHTML & CSS"
-categorySlug: "HelloWeb"
+seriesName: "初めてのHTML & CSS"
+seriesSlug: "HelloWeb"
 description: 
 tags: ["HTML"]
 ---

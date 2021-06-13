@@ -66,7 +66,7 @@ const Tags = ({ pageContext, data }) => {
 
                   <p className="category">
                     <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
-                    <Link to={`/category/${node.frontmatter.categorySlug}/page/1/`}>{node.frontmatter.categoryName}</Link>
+                    <Link to={`/series/${node.frontmatter.seriesSlug}/page/1/`}>{node.frontmatter.seriesName}</Link>
                   </p>
 
                   <p className="tags"><FontAwesomeIcon icon={faTags} /> <span>タグ</span>
@@ -173,9 +173,8 @@ export const pageQuery = graphql`
         frontmatter {
           postdate(formatString: "YYYY年MM月DD日")
           updatedate(formatString: "YYYY年MM月DD日")
-          categoryName
-          categorySlug
-          categoryName
+          seriesName
+          seriesSlug
           title
           tags
         }

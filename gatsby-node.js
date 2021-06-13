@@ -14,7 +14,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           fields: [frontmatter___postdate],
         }
       ) {
-        group(field: frontmatter___categorySlug) {
+        group(field: frontmatter___seriesSlug) {
           nodes {
             id
             fields {
@@ -35,13 +35,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
 
       # カテゴリごとに記事収集
-      articlesByCategory: allMarkdownRemark {
-        group(field: frontmatter___categorySlug) {
+      articlesBySeries: allMarkdownRemark {
+        group(field: frontmatter___seriesSlug) {
           fieldValue
           nodes {
             id
             frontmatter {
-              categoryName
+              seriesName
             }
           }
         }
@@ -115,28 +115,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // --------------------------------------------------
   // カテゴリごとの記事一覧
 
-  const articlesByCategory = queryResult.data.articlesByCategory.group
+  const articlesBySeries = queryResult.data.articlesBySeries.group
 
-  articlesByCategory.forEach(category => {
+  articlesBySeries.forEach(series => {
 
-    const categorySlug = category.fieldValue;
-    const categoryName = category.nodes[0].frontmatter.categoryName;
+    const seriesSlug = series.fieldValue;
+    const seriesName = series.nodes[0].frontmatter.seriesName;
 
     // カテゴリごとの記事合計数
-    const postCount = category.nodes.length;
+    const postCount = series.nodes.length;
 
     // 何ページ生成することになるかの計算
     const pageCount = Math.ceil(postCount / 6)
 
     Array.from({ length: pageCount }).forEach((_, i) => {
       createPage({
-        path: 1 === 0 ? `/series/${category.fieldValue}/page/1/` : `/series/${category.fieldValue}/page/${i + 1}/`,
+        path: 1 === 0 ? `/series/${series.fieldValue}/page/1/` : `/series/${series.fieldValue}/page/${i + 1}/`,
         component: path.resolve("./src/templates/series.js"),
         context: {
           postCount: postCount,
           pageCount: pageCount,
-          categoryName: categoryName,
-          categorySlug: categorySlug,
+          seriesName: seriesName,
+          seriesSlug: seriesSlug,
           skip: 6 * i,
           limit: 6,
           currentPage: i + 1,

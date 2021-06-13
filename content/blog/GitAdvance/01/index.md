@@ -2,8 +2,8 @@
 title: "#1 git logでコミット履歴を見る(前編)"
 postdate: "2021-03-05"
 updatedate: "2021-03-16"
-categoryName: "Git中級者を目指す"
-categorySlug: "GitAdvance"
+seriesName: "Git中級者を目指す"
+seriesSlug: "GitAdvance"
 description: "git log のオプションは多岐にわたります。入門書に載っている基本的で有名なものからちょっとマニアックなものまで、できるだけ例を踏まえて紹介しますので良ければ実際にコマンドを打ち込みながら読んでみてください。"
 tags: ["git"]
 ---

@@ -2,8 +2,8 @@
 title: "#1 入門JavaScript"
 postdate: "2021-04-12"
 updatedate: "2021-05-28"
-categoryName: "入門JavaScript"
-categorySlug: "JavaScriptFirstPart"
+seriesName: "入門JavaScript"
+seriesSlug: "JavaScriptFirstPart"
 description: 
 tags: ["JavaScript"]
 ---

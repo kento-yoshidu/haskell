@@ -2,8 +2,8 @@
 title: "#2 HTMLでページを作ってみる"
 postdate: "2021-04-12"
 updatedate: "2021-06-12"
-categoryName: "初めてのHTML & CSS"
-categorySlug: "HelloWeb"
+seriesName: "初めてのHTML & CSS"
+seriesSlug: "HelloWeb"
 description: 
 tags: ["HTML","入門"]
 ---
