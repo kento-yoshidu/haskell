@@ -5,6 +5,7 @@
   color: #ccc;
   padding-top: 50px;
   padding-bottom: 50px;
+    line-height: 1.5;
 
   a {
     color: #ccc;
@@ -42,11 +43,12 @@
 
   .internal-link,
   .meta-link {
+    display: flex;
+    flex-wrap: wrap;
     a {
       font-size: 1.5rem;
       margin-right: 25px;
-      line-height: 1.5;
-
+      margin-bottom: 5px;
       svg {
         margin-right: 5px;
       }
