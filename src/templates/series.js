@@ -19,7 +19,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
 
-const Category = ({ pageContext, data }) => {
+const Series = ({ pageContext, data }) => {
 
   const { seriesName, seriesSlug } = pageContext
   const nodes = data.allMarkdownRemark.nodes
@@ -64,7 +64,7 @@ const Category = ({ pageContext, data }) => {
                   <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
                 </div>
 
-                <p className="category">
+                <p className="series">
                   <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
                   <Link to={`/series/${seriesSlug}/page/1/`}>{seriesName}</Link>
                 </p>
@@ -140,7 +140,7 @@ const Category = ({ pageContext, data }) => {
   )
 }
 
-export default Category
+export default Series
 
 export const pageQuery = graphql`
   query(

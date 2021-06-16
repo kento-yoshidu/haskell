@@ -34,7 +34,7 @@ const ArticleInfo = ({
     return (
       <div className="article-info">
 
-        <p className="category">
+        <p className="series">
           <FontAwesomeIcon icon={ faFolder } />
           <Link to={`/series/${seriesSlug}/page/1/`}>
             { seriesName }

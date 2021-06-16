@@ -64,8 +64,8 @@ const Tags = ({ pageContext, data }) => {
                     <p className="update"><FontAwesomeIcon icon={faUndo} />{node.frontmatter.updatedate}</p>
                   </div>
 
-                  <p className="category">
-                    <FontAwesomeIcon icon={faFolder} /> <span>カテゴリ</span>
+                  <p className="series">
+                    <FontAwesomeIcon icon={faFolder} /> <span>シリーズ</span>
                     <Link to={`/series/${node.frontmatter.seriesSlug}/page/1/`}>{node.frontmatter.seriesName}</Link>
                   </p>
 
