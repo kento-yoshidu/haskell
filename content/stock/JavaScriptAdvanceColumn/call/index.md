@@ -1,7 +1,7 @@
 ---
 title: "#1 JavaScript中級者を目指そう"
 postdate: "2021-04-09"
-updatedate: "2020-06-18"
+updatedate: "2020-05-12"
 seriesName: "JavaScript中級者を目指す"
 seriesSlug: "JavaScriptAdvance"
 description: 
@@ -27,11 +27,11 @@ tags: ["JavaScript"]
 - [#7 プリミティブ値とオブジェクト]
 - [#8 変数]
 - [#9 オブジェクトが持つメソッド]
-- [#10 関数]
-- [#11 Numberオブジェクト]
-- [#12 Stringオブジェクト]
-- [#13 if/else文]
-- [#14 for文とwhile文]
+- [#10 if/else文]
+- [#11 for文とwhile文]
+- [#12 関数]
+- [#13 Numberオブジェクト]
+- [#14 Stringオブジェクト]
 - [#x 非同期処理（コールバック関数）]
 - [#x 非同期処理（Promise）]
 - [#x 非同期処理（async/await）]
@@ -40,10 +40,11 @@ tags: ["JavaScript"]
 
 - [コラム#1 【ECMAScript】この構文って使える？](http://blog.toriwatari.work/JavaScriptAdvance/column01/)
 
-- [#コラム this完全攻略]
 - [#コラム オブジェクト処理大全]
 
-まずは**Node.js**をインストールするところから始めます。これまではブラウザ上でJavaScriptを実行していましたが、これからは基本的にNode.jsでコードを実行し動作を検証します。
+まずは**Node.js**をインストールするところから始めます。これまではブラウザ上でJavaScriptを実行していましたが、これからは基本的にNode.jsでscriptを実行し動作を検証します。
+
+非同期処理を行う`Promise`、そして`async/await`が最初の山場だと思います。
 
 ## JavaScriptからの発展
 
