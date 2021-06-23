@@ -72,6 +72,7 @@
   .article-info {
     width: 87%;
     margin: 50px auto 0;
+    border: 1px solid red;
 
     .category {
       font-size: 1.5rem;
@@ -79,7 +80,8 @@
     }
 
     .pageTitle {
-      font-size: 2.3rem;
+      font-size: 2.4rem;
+      font-weight: 400;
     }
 
     .date-info {
@@ -136,6 +138,7 @@
 @media screen and (max-width: 768px) {
   .table-of-content {
     display: none;
+    margin-top: 0px;
   }
 }
 
