@@ -1,8 +1,8 @@
 ---
-title: "コラム01 【ECMAScript】この構文って使える？"
+title: "【ECMAScript】この構文って使える？"
 postdate: "2021-05-14"
 updatedate: "2020-05-14"
-seriesName: "JavaScript中級者を目指す(コラム)"
+seriesName: "JavaScript中級者を目指す（コラム）"
 seriesSlug: "JavaScriptAdvanceColumn"
 description: 
 tags: ["JavaScript", "ECMAScript", "Can I use..."]
