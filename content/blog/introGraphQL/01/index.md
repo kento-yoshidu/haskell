@@ -1,26 +1,27 @@
 ---
-title: "#1 graphql-yoga🧘でローカルサーバを立てる"
-postdate: "2021-01-20"
-updatedate: "2021-03-02"
-categoryName: "入門GraphQL"
-categorySlug: introGraphQL
-tags: ["GraphQL", "GraphQL-Yoga", "入門"]
+title: "#1 graphql-yogaでローカルサーバを立てる"
+postdate: "2021-06-25"
+updatedate: "2021-06-25"
+seriesName: "入門GraphQL"
+seriesSlug: "introGraphQL"
+tags: ["GraphQL", "GraphQL-Yoga"]
 ---
-
 # graphql-yoga🧘を使ってみる
 
 なかなかGraphQLに慣れない。GraphQLを手軽に操作検証できるように、勉強がてらNode.js環境でローカルサーバを立てます。
 
 サーバーライブラリーはいくつかありますが、シンプルそうだったのでまずは`GraphQL-yoga`を使用してみたいと思います。
 
-おおむね[こちら](https://github.com/prisma-labs/graphql-yoga)のページを参考にしました。今回はgraphql-yogaでサーバーを立て、queryでデータを取得するところまでやります。
+おおむね[こちら](https://github.com/prisma-labs/graphql-yoga)のページを参考にしました。今回はgraphql-yogaでサーバーを立て、queryでデータを取得するところまでやります。クライアントはGraphql-yogaについてくるGraphQL Playgroundというのを使います。
 
-肝心のデータですが、いきなりDBに接続するのはハードルが高いので、サーバースクリプトにオブジェクト形式で記載したものを取得することにしたいと思います。
+肝心のデータですが、いきなりDBに接続するのはハードルが高いので、サーバースクリプトにオブジェクト形式で記述した値を取得することにしたいと思います。
 
-次の#2ではMongoDBに接続し、queryでデータを取得するところまでを行います。
+しばらくはこの形式でGraphQLをいろいろ触ってみて、そのあとMongoDBに接続してデータ取得などを行いたいと思います。
 
 <aside>
-このシリーズ自体が見切り発射ですので、順番どおりではなく必要な所だけかいつまんで読んでください。
+
+**入門**と銘打っていますが、このシリーズ自体が**完全に見切り発射**ですので、順番通りではなく必要な所だけかいつまんで読んでください。
+
 </aside>
 
 ## 環境
@@ -44,26 +45,27 @@ $ yarn add graphql-yoga
 
 $ cat package.json
 {
-  ...
+  ...(略)
   "dependencies": {
     "graphql-yoga": "^1.18.3"
   }
 }
 ```
 
-ルートディレクトリにindex.jsを作成、以下の通り記述します。最小構成という事で、"Hello World"と返すだけのhelloクエリを定義します。
+ルートディレクトリに`index.js`を作成、以下の通りに記述します。最小構成という事で、"Hello World"と返すだけのhelloクエリを定義しています。
 
-```javascript
+```javascript:title="index.js"
 const { GraphQLServer } = require("graphql-yoga");
 
+// スキーマを定義
 const typeDefs = `
   type Query {
     hello: String!
   }
 `
-
 const resolvers = {
   Query: {
+    // helloクエリ
     hello: () => `Hello World`
   }
 }
@@ -75,9 +77,11 @@ server.start(() => {
 })
 ```
 
-`typeDefs`にスキーマを定義します。`hello: String!`はhelloクエリが必ずString型の値を返すことを意味しています。(!はnullにならないという意味)
+`typeDefs`にスキーマを定義します。
 
-`resolvers`はどんなクエリにどんな値を返すかを定義します。スキーマ情報とリゾルバは、サーバをnewする時の必須の引数です。
+データを取得する`Query`クエリについて`hello`というクエリを定義します。`hello: String!`はhelloクエリが必ずString型の値を返すことを意味しています（!はnullにならないという意味）。
+
+`resolvers`はどんなクエリにどんな値を返すかを定義します。スキーマ情報とリゾルバは、インスタンス生成する時の必須の引数です。
 
 ---
 
@@ -89,16 +93,13 @@ $ node index.js
 Server is running on localhost:4000
 ```
 
-`http://localhost:4000`にアクセスすると、GraphQL Playgroundが現れます。
+`http://localhost:4000`にアクセスすると、GraphQL Playgroundが現れます（かっこいいですね）。簡易的なクライアントとして使用でき、様々なクエリを投げることができます。
 
-簡易的なクライアントとして使用でき、様々なクエリを投げることができます。
+![](./images/image01.png)
 
-![](./images/image01.jpg)
+左上のペインに以下の`hello`クエリを入力し、画面真ん中の三角ボタンをクリックします。
 
-
-左上のペインに以下のクエリを入力、ボタンをクリックします。
-
-```graphql
+```graphql:title="Playground"
   {
     hello
   }
@@ -106,7 +107,7 @@ Server is running on localhost:4000
 
 以下のような形で**Hello World**が返されたら成功です。
 
-![](./images/image02.jpg)
+![](./images/image02.png)
 
 ## 引数付きのクエリを作成する
 
@@ -192,7 +193,7 @@ const resolvers = {
 渡した値は第二引数にオブジェクト形式で入るらしいので試しにダンプしてみます。
 
 ```javascript
-...
+...(略)
 
 const typeDefs = `
   type Query {
@@ -217,10 +218,10 @@ const resolvers = {
   }
 }
 
-...
+...(略)
 ```
 
-```graphql
+```json:GraphQL Playground
 query {
 	hello(name: "kento", age: 33)
 }
@@ -236,13 +237,13 @@ query {
   }
 ```
 
-よって、以下のような取り出し方もできます。（これはJavaScriptのオブジェクトの扱いの話ですね。）
+よって、以下のような取り出し方もできます（これはJavaScriptのオブジェクトの扱いの話ですね）。
 
 ```javascript
 // 分割代入で受け取るか、
 hello: (_, {name, age}) => `Hello ${ name }. `)
 
-// もしくはnameキーにアクセスして受け取る
+// argsでまとめて受け取り、nameキーにアクセスして受け取る
 hello: (_, args) => `Hello ${ args.name }`)
 ```
 
