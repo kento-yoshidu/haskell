@@ -42,9 +42,17 @@ AZは論理的にまたがって利用できる。これをマルチAZ構成と�
 
 ## VPC
 
-Amazon Virtual Private Cloudの略。仮想的なプライベートのネットワーク。
+Amazon Virtual Private Cloudの略。利用者ごとの仮想的なプライベートのネットワーク。VPN内にサブネットを切って論理的に分離する。また、VPCはAZをまたぐことができる。
+
+![](images/image03.png)
+
+VPCがVPC外のリソースと通信するにはVPCエンドポイントを経由する。Internet GatewayやVPN Gateway、AWS Endpointsなど。
+
+
 
 
 https://aws.amazon.com/jp/about-aws/global-infrastructure/
 
 https://business.ntt-east.co.jp/content/cloudsolution/column-54.html
+
+https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/
