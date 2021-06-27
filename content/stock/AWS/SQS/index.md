@@ -5,7 +5,7 @@ updatedate: "2021-06-24"
 seriesName: "AWS SAA勉強メモ"
 seriesSlug: "AWS"
 description: ""
-tags: ["AWS", "AWS SQS"]
+tags: ["AWS", "SAA", "AWS SQS"]
 ---
 
 # AWS SQS

@@ -19,4 +19,4 @@ tags: ["AWS", "AWS SAA", "EFS"]
 ## 目次
 
 - \#1 AWS SAAメモ（本ページ）
-- [#2 AWS SAAメモ ネットワーク](/AWS/02/)
+- [#2 AWS SAAメモ インフラ・VPC](/AWS/02/)
