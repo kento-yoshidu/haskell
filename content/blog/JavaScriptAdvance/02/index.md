@@ -1,7 +1,7 @@
 ---
 title: "#2 JavaScriptの歴史"
 postdate: "2021-04-12"
-updatedate: "2020-05-12"
+updatedate: "2020-06-27"
 seriesName: "JavaScript中級者を目指す"
 seriesSlug: "JavaScriptAdvance"
 description: 
@@ -20,7 +20,7 @@ JavaScriptはよく「Webサイトに動きを付ける言語」とも呼ばれ�
 
 JavaScriptに改名された背景として、当時Netscape Communications社はSun Microsystems社と業務提携しており、また、Sun社が開発し**イケイケドンドン**だったJavaの名前を拝借してあやかろう、というマーケティング的な一面があったようです。ただ、あくまでも名前（加えて、一部の構文）をもじっただけであり、JavaScriptとJavaの間に技術的な関係はありません。
 
-Netscape Navigatorの活躍から少し遅れ、Microsoft社が現在でもおなじみのInternet Explorer(以下、IE)を開発、リリースします。
+Netscape Navigatorの活躍から少し遅れ、Microsoft社が現在でもおなじみのInternet Explorer（以下、IE）を開発、リリースします。
 
 IEにJavaScriptを乗せられればよかったのですが、Netscape社はそれを許さなかったようです。そしてMicrosoftはMicrosoftで、JavaScriptの代替として独自に**JScript**という言語を開発します。
 
@@ -34,11 +34,11 @@ Windows10になった現在でもJScriptはWSH（Windows Script Host）上で動
 
 しかし、JavaScriptとJScriptは似てはいるものの互換性がありませんでした。さらに、両社、さらにはブラウザベンダ各社までが対抗しそれぞれに独自の機能を追加していき、「JavaScriptはIEでは動かない」、反対に「JScriptはNetscapeでは動かない」、、、etc と言った状況に陥りました（この辺りは想像に難しくないですよね）。
 
-## ECMASciptの誕生
+## ECMAScriptの誕生
 
 「こりゃいかん！何とか標準的な規格をつくれないのか！」となり、Netscape社はECMA International（エクマインターナショナル）に**JavaScriptの標準化**を依頼します。そして誕生したのが**ECMAScript**(ECMA-262)です。
 
-ECMAScriptとはいったい何でしょうか。ECMAScariptは「JavaScriptのコアとなる**仕様**」であると私は考えています。
+ECMAScriptとはいったい何でしょうか。ECMAScriptは「JavaScriptのコアとなる**仕様**」であると私は考えています。
 
 ECMAScriptという仕様を元に、各社がブラウザにJavaScriptを実装します。ECMAScriptは**仕様**を定めているのみで、実装方法を定めるものではありません。ですので、ほとんどの機能は同じだけど、細かいところでブラウザによって挙動に違いがあることがあります。
 
@@ -98,7 +98,12 @@ ECMAScriptが作成され標準化が一応進んだはいいものの、1990年
 - [ECMAScript2017](https://www.ecma-international.org/wp-content/uploads/ECMA-262_8th_edition_june_2017.pdf)
 - [ECMAScript2018](https://www.ecma-international.org/wp-content/uploads/ECMA-262_9th_edition_june_2018.pdf)
 - [ECMAScript2019](https://www.ecma-international.org/wp-content/uploads/ECMA-262-10th-edition-June-2019.pdf)
-- [ECMAScript2020](https://www.ecma-international.org/wp-content/uploads/ECMA-262.pdf)
+- [ECMAScript2020](https://www.ecma-international.org/wp-content/uploads/ECMA-262_11th_edition_june_2020.pdf)
+
+
+**※2021年6月22日、ECMAScript2021がリリースされました**🎊
+
+- [ECMAScript2021](https://www.ecma-international.org/wp-content/uploads/ECMA-262_12th_edition_june_2021.pdf)
 
 ## 参考
 
