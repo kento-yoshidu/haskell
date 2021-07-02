@@ -1,7 +1,7 @@
 ---
 title: "#3 Node.jsのインストール"
 postdate: "2021-04-13"
-updatedate: "2021-06-12"
+updatedate: "2021-07-03"
 seriesName: "JavaScript中級者を目指す"
 seriesSlug: "JavaScriptAdvance"
 description: 
@@ -67,7 +67,7 @@ Node.jsを利用すれば、コンソールから`node`コマンドでのJavaScr
 
 続いて、コンソール（コマンドプロンプトなど）を立ち上げ、`node -v`と入力し実行します。`-v`オプションを渡すことでNode.jsのバージョンを確認することができます。
 
-```
+```console:title=console
 $ node -v
 v14.17.0
 ```
@@ -86,7 +86,7 @@ console.log('Hello World');
 
 コンソールで`script.js`を保存しているフォルダまで移動し、`node`コマンドで実行します。
 
-```console
+```console:title=console
 $ node script.js 
 Hello World
 ```
@@ -99,7 +99,7 @@ Node.jsには**REPL**と呼ばれる実行モードが備わっており、JavaS
 
 コンソールで`node`とだけ打って実行してください。以下のようなコンソールに切り替わります。
 
-```node
+```console:title=console
 $ node
 Welcome to Node.js v14.17.0.
 Type ".help" for more information.
@@ -108,7 +108,7 @@ Type ".help" for more information.
 
 試しに、`"Hello World"`と打ってEnterキーで実行してみましょう（ダブルクオートで囲むのを忘れないでください）。
 
-```node
+```javascript:title=REPL
 > "Hello World"
 'Hello World'
 ```
@@ -117,7 +117,7 @@ console.log(~)と打たなくても値が評価されて出力されました。
 
 もちろん、変数への値の代入、参照も可能です。`str`と実行するだけで値が出力されます。
 
-```
+```javascript:title=REPL
 > const str = "test";
 undefined
 > str
@@ -127,7 +127,7 @@ undefined
 この講座の目的はアプリケーションを作るのではなく言語使用を確認するものなので、どちらでも好きな方法で実行してください。
 
 <aside>
-この講座はJavaScriptの入門が目的なので、Node.jsやREPLの解説はしませんが、REPLの使い方でしたらやはりNode.jsの公式ページが詳しいので確認してみてください（日本語ではあまりいいページが見つかりませんでした）。
+この講座はJavaScriptの入門が目的なのでNode.jsやREPLの解説はしませんが、REPLの使い方でしたらやはりNode.jsの公式ページが詳しいので確認してみてください（日本語ではあまりいいページが見つかりませんでした）。
 
 [REPL | Node.js v14.17.0 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/repl.html)
 </aside>

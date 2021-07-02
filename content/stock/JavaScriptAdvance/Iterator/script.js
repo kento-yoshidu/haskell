@@ -1,14 +1,11 @@
-const iterator = {};
+const obj = { a: 1, b: 2 };
 
-iterator.next = () => {
-  const iteratorResult = { value: 1, done: false };
-  return iteratorResult;
+const iterableObj = Object.keys(obj);
+
+console.log(iterableObj)
+
+for (const key of iterableObj) {
+	console.log(`key=>${key} : value=>${obj[key]}`)
 }
-
-const obj = {};
-obj[Symbol.iterator] = () => {
-  return iterator;
-}
-
-const test = obj[Symbol.iterator]();
-console.log(test.next());
+//=> key=>a : value=>1
+//=> key=>b : value=>2
