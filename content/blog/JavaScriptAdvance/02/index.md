@@ -1,7 +1,7 @@
 ---
 title: "#2 JavaScriptの歴史"
 postdate: "2021-04-12"
-updatedate: "2020-06-27"
+updatedate: "2020-06-28"
 seriesName: "JavaScript中級者を目指す"
 seriesSlug: "JavaScriptAdvance"
 description: 
@@ -87,7 +87,7 @@ ECMAScriptが作成され標準化が一応進んだはいいものの、1990年
 
 ## 参考 | ECMAScriptの仕様書の在処
 
-「昔のECMAScriptも読んでみたい！」という物好きな諸兄姉のために、各エディションのpdfへのリンクを貼っておきます。
+「昔のECMAScriptも読んでみたい！」という物好きな諸兄姉のために、各エディションのWebページとPDFへのリンクを貼っておきます。
 
 - [ECMAScript1](https://www.ecma-international.org/wp-content/uploads/ECMA-262_1st_edition_june_1997.pdf)
 - [ECMAScript2](https://www.ecma-international.org/wp-content/uploads/ECMA-262_2nd_edition_august_1998.pdf)
@@ -97,13 +97,13 @@ ECMAScriptが作成され標準化が一応進んだはいいものの、1990年
 - [ECMAScript2016](https://www.ecma-international.org/wp-content/uploads/ECMA-262_7th_edition_june_2016.pdf)
 - [ECMAScript2017](https://www.ecma-international.org/wp-content/uploads/ECMA-262_8th_edition_june_2017.pdf)
 - [ECMAScript2018](https://www.ecma-international.org/wp-content/uploads/ECMA-262_9th_edition_june_2018.pdf)
-- [ECMAScript2019](https://www.ecma-international.org/wp-content/uploads/ECMA-262-10th-edition-June-2019.pdf)
-- [ECMAScript2020](https://www.ecma-international.org/wp-content/uploads/ECMA-262_11th_edition_june_2020.pdf)
+- [ECMAScript2019(HTML)](https://262.ecma-international.org/10.0/) | [ECMAScript2019(PDF)](https://www.ecma-international.org/wp-content/uploads/ECMA-262-10th-edition-June-2019.pdf)
+- [ECMAScript2020(HTML)](https://262.ecma-international.org/11.0/) | [ECMAScript2020(PDF)](https://www.ecma-international.org/wp-content/uploads/ECMA-262_11th_edition_june_2020.pdf)
 
 
 **※2021年6月22日、ECMAScript2021がリリースされました**🎊
 
-- [ECMAScript2021](https://www.ecma-international.org/wp-content/uploads/ECMA-262_12th_edition_june_2021.pdf)
+- [ECMAScript2021(HTML)](https://262.ecma-international.org/12.0/) | [ECMAScript2021(PDF)](https://www.ecma-international.org/wp-content/uploads/ECMA-262_12th_edition_june_2021.pdf)
 
 ## 参考
 

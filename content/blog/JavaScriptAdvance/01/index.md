@@ -1,7 +1,7 @@
 ---
 title: "#1 JavaScript中級者を目指そう"
 postdate: "2021-04-09"
-updatedate: "2020-06-18"
+updatedate: "2020-07-02"
 seriesName: "JavaScript中級者を目指す"
 seriesSlug: "JavaScriptAdvance"
 description: 
@@ -10,31 +10,39 @@ tags: ["JavaScript"]
 
 # JavaScript中級者を目指そう
 
-入門JavaScriptでは「WebページでJavaScriptを動作させる」「JavaScriptで簡単なアプリを作る」ことを目標としていました。
+入門JavaScriptのシリーズでは「WebページでJavaScriptを動作させる」「JavaScriptで簡単なアプリを作る」ことを目標としていました。
 
-とりあえずJavaScriptを書いて動かすことを最優先にしていたので、**JavaScriptの言語仕様**についてはほとんど触れていませんでしたが、今回はその言語仕様を理解することが目標です。
+とりあえずJavaScriptを書いて動かすことを最優先にしていたので、**JavaScriptの言語仕様**についてはほとんど触れていませんでしたが、今回はその言語仕様を理解することが目標です。具体的にこんなアプリを作る、といった目標はありません。ただひたすらにJavaScriptの仕様を学んでいくだけです。人によっては退屈な内容に思えるかもしれません。
 
-具体的にこんなアプリを作る、といった目標はありません。ただひたすらにJavaScriptの仕様を学んでいくだけです。人によっては退屈な内容に思えるかもしれません。
-
-学習することはJavaScriptについてのほぼ全てで（そうしたいという願望）、目次は以下の通りです（随時更新します。）。
+学習することはJavaScriptについてのほぼ全てで（そうしたいという目標）、目次は以下の通りです（随時更新します。）。
 
 - \#1 JavaScript中級者を目指そう（本ページ）
+
+- #### 前半
+
 - [#2 JavaScriptの歴史](http://blog.toriwatari.work/JavaScriptAdvance/02/)
 - [#3 Node.jsのインストール](http://blog.toriwatari.work/JavaScriptAdvance/03/)
 - [#4 JavaScriptの基本的な書き方](http://blog.toriwatari.work/JavaScriptAdvance/04/)
 - [#5 JavaScriptのデータ型(1)](http://blog.toriwatari.work/JavaScriptAdvance/05/)
 - [#6 JavaScriptのデータ型(2)]
-- [#7 プリミティブ値とオブジェクト]
-- [#8 変数]
-- [#9 オブジェクトが持つメソッド]
-- [#10 関数]
-- [#11 Numberオブジェクト]
-- [#12 Stringオブジェクト]
-- [#13 if/else文]
-- [#14 for文とwhile文]
+- [#7 演算子①]
+- [#8 プリミティブ値とオブジェクト]
+- [#9 変数]
+- [# 関数]
+- [#x 演算子②]
+- [#12 Numberオブジェクト]
+- [#13 Stringオブジェクト]
+- [#14 if/else文]
+- [#15 for文とwhile文]
 - [#x 非同期処理（コールバック関数）]
 - [#x 非同期処理（Promise）]
 - [#x 非同期処理（async/await）]
+- [#x iterator]
+- [#x generator]
+
+- #### 後半
+
+- [#x DOM]
 
 ---
 
@@ -43,7 +51,9 @@ tags: ["JavaScript"]
 - [#コラム this完全攻略]
 - [#コラム オブジェクト処理大全]
 
-まずは**Node.js**をインストールするところから始めます。これまではブラウザ上でJavaScriptを実行していましたが、これからは基本的にNode.jsでコードを実行し動作を検証します。
+前半では**Node.js**を使用して学習を行うので、それをインストールするところから始めます。
+
+後半はブラウザーをベースにブラウザーオブジェクトなどを学習します。
 
 ## JavaScriptからの発展
 
@@ -61,18 +71,15 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 ## このコンテンツで学習しない内容
 
-- Node.jsの仕様
-　※スクリプトの実行にNode.jsを利用しますが、Node.js自体の解説は行いません。
+- Node.jsの仕様（スクリプトの実行にNode.jsを利用しますが、Node.js自体の解説は行いません）
 
-- TypeScript
-　※AltJSの代表とも言えるTypeScriptですが、このコンテンツでは学習しません。
+- TypeScript（AltJSの代表とも言えるTypeScriptですが、このコンテンツでは学習しません）
 
-- 各種JavaScriptフレームワーク
-　※React、Vue.jsなどのフレームワークについては学習しません。
+- 各種JavaScriptフレームワーク（React、Vue.jsなどのフレームワークについては学習しません）
 
 ## 参考にした書籍、サイト
 
-このブログを書くにあたり参考にした書籍やWebサイトを紹介しておきます。書籍に関しては出版日とお勧め度を⭐️で表しています。
+このブログを書くにあたり参考にした書籍やWebサイトを紹介しておきます。書籍に関してはお勧め度を⭐️で表しています。
 
 ### JavaScript リファレンス - JavaScript | MDN（Webサイト）
 
@@ -80,7 +87,7 @@ JavaScriptを学習することで、様々なフレームワークやランタ�
 
 JavaScriptの公式リファレンスです。ほとんどのページが日本語されています。
 
-### ECMAScript 2020 Language Specification（Webサイト）
+### ECMAScript 2021 Language Specification（Webサイト）
 
 [Webサイトリンク](https://262.ecma-international.org/11.0/)
 
@@ -94,7 +101,7 @@ JavaScriptともコアともいえる、ECMAScriptの公式リファレンスで
 
 お勧め度：⭐⭐️⭐⭐️⭐️
 
-個人的に一番お勧めの本です。少し言葉は硬いかなと思いますが本格的な書籍の中ではとっつきやすいと思います。
+個人的に一番お勧めの本です。JavaScriptの基礎や他の言語の経験があった方がいいと思いますが、本格的な書籍の中ではとっつきやすいと思います。
 
 実はWebサイトも存在しており、どうやら同じ内容のものを無料で読めるようですが、素晴らしい本なので購入したいですね。
 
