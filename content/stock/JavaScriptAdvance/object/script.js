@@ -1,37 +1,19 @@
-const obj = {};
-
-console.log(obj.constructor);
-//=> [Function: Object]
-
-const obj2 = new Object();
-
-console.log(obj2.constructor)
-//=> [Function: Object]
-
 /*
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-}
+const myObj = {};
 
-const kento = new Person('kento', 34);
+console.log(typeof myObj);
+//=> object
 
-console.log(kento.name)
-//=> kento
+const myObj = new Object();
 
-console.log(kento.age)
-//=> 34
-
-const fumika = Person('fumika', 69)
-
-const str = new String('SampleString');
-
-console.log(str.constructor)
-
+console.log(typeof myObj);
+//=> object
 */
 
-const str = 'SampleString';
+const myObj = {
+  name: "kento",
+  age: 33,
+  gender: "man"
+};
 
-console.log(str.constructor)
+console.log(`${myObj.name}, ${myObj.age}, `)
