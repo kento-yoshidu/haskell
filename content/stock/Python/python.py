@@ -1,5 +1,11 @@
-print(type(1))
-# <type 'int'>
+age = 34
 
-print(type(1.0))
-# <type 'float'>
+# 右に寄せる(>)
+print(f'{age:>08}')
+# I'm 34 years old.
+
+# 中央に寄せる(^)
+print(f'{age:^08}')
+
+# 左に寄せる(<)
+print(f'{age:<08}')
