@@ -1,5 +1,5 @@
 ---
-title: "オブジェクト"
+title: "プロトタイプオブジェクト"
 postdate: "2021-04-28"
 updatedate: "2021-04-28"
 categoryName: "JavaScript中級者を目指す"

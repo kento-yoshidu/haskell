@@ -1,7 +1,7 @@
 ---
 title: "#2 JavaScriptの歴史"
 postdate: "2021-04-12"
-updatedate: "2020-06-28"
+updatedate: "2020-07-16"
 seriesName: "JavaScript中級者を目指す"
 seriesSlug: "JavaScriptAdvance"
 description: 
@@ -48,7 +48,7 @@ ECMAScriptという仕様を元に、各社がブラウザにJavaScriptを実装
 </aside>
 
 <aside>
-標準化の流れのもと、2021年ともなれば、ブラウザ間でのJavaScriptの挙動の違いはほとんどないように思えます。Safariが最新機能の追加が少し遅いかなーというイメージです。
+標準化の流れのもと、2021年ともなれば、ブラウザ間でのJavaScriptの挙動の違いはほとんどないように思えます。
 </aside>
 
 逆に、「JavaScriptって何？」と問われれば、「ECMAScriptをブラウザベンダが実装したもの」と答えることができます。
@@ -84,6 +84,17 @@ ECMAScriptはたびたび改定されます。恐らく**ES5**だったり**ES20
 ## JavaScriptの発展まで
 
 ECMAScriptが作成され標準化が一応進んだはいいものの、1990年代～2000年代初頭にかけては、JavaScriptの評価は低く、「プログラミング初心者が使う、おもちゃのようなプログラミング言語」だと考えられていたようです。
+
+## Ajaxの登場
+
+<aside>
+
+2005年2月、Ajaxが発表された。HTL5でJavaScript APIが強化された。SPAの登場も追い風。
+
+
+</aside>
+
+どんどん現代的な機能、文法が取り込まれていくことになります。
 
 ## 参考 | ECMAScriptの仕様書の在処
 
