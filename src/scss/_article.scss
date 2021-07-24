@@ -108,7 +108,7 @@
   margin-top: 80px;
   width: 30%;
   margin-right: 5vw;
-  ul {
+  ul, ol {
     list-style: none;
     position: -webkit-sticky;
     position: sticky;
@@ -188,6 +188,14 @@
     letter-spacing: 0.5px;
     line-height: 1.65;
     text-indent: .8rem;
+  }
+  ol {
+    padding: 10px 20px;
+    li {
+      font-size: 1.8rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
   }
   ul {
     list-style: none;
