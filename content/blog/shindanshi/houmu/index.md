@@ -5,7 +5,7 @@ updatedate: "2021-07-21"
 seriesName: "中小企業診断士試験 メモ"
 seriesSlug: "shindanshi"
 description: 
-tags: ["中小企業診断士", "経営法務"]
+tags: ["中小企業診断士試験", "経営法務"]
 ---
 
 # 株式会社の設立
