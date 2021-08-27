@@ -1,45 +1,26 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import * as React from "react"
+import { graphql } from "gatsby"
 
-import SEO from "../components/seo"
-import Header from "../components/header"
-import Footer from "../components/footer"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
 
 const NotFoundPage = ({ data, location }) => {
-
-  const siteData = data.siteData
+  const siteTitle = data.site.siteMetadata.title
 
   return (
-    <div>
-      <SEO
-        title="hoge"
-      />
-      
-      <Header
-        headerTitle={siteData.siteMetadata.title}
-        pageTitle="404 Page Not Found"
-        isTopPage={ false }
-      />
-
-      <main className="main aboutMain">
-        <section>
-          <h3>ページが見つかりません。</h3>
-          <p>ページが削除された、もしくは移動した可能性があります。<Link to={`/`}>トップページ</Link>に戻り、改めてお探しください。</p>
-          <p>また、<Link to={`/categories/`}>カテゴリ一覧ページ</Link>や<Link to={`/tags/`}>タグ一覧ページ</Link>も用意してあります。こちらからの方が探しやすいかもしれません。</p>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+    <Layout location={location} title={siteTitle}>
+      <Seo title="404: Not Found" />
+      <h1>404: Not Found</h1>
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    </Layout>
   )
 }
-
 
 export default NotFoundPage
 
 export const pageQuery = graphql`
   query {
-    siteData: site {
+    site {
       siteMetadata {
         title
       }

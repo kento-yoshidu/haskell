@@ -1,22 +1,40 @@
-import React from "react"
+import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import SEO from "../components/seo"
+import Layout from "../components/layout"
 import Header from "../components/header"
-import Footer from "../components/footer"
-import "../scss/style.scss"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolder, faClock, faUndo, faTags } from "@fortawesome/free-solid-svg-icons"
-
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { config } from "@fortawesome/fontawesome-svg-core"
-config.autoAddCss = false
-
-const BlogIndex = () => (
-  <div>
-    Hello
-  </div>
-)
+const BlogIndex = ({ data, location }) => {
+  return (
+    <Layout location={location}>
+      <Header
+        title="Hello World"
+      />
+    </Layout>
+  )
+}
 
 export default BlogIndex
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
+      }
+    }
+  }
+`
