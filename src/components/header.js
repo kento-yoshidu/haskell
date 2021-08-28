@@ -1,7 +1,9 @@
 import React from "react"
 
+import * as Styles from "../styles/_header.module.scss"
+
 export const Header = ({message}) => (
-	<header className="header">
+	<header className={Styles.header}>
 		{message}
 	</header>
 )
