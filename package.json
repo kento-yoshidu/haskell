@@ -37,11 +37,14 @@
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-essentials": "^6.3.7",
     "@storybook/addon-links": "^6.3.7",
+    "@storybook/builder-webpack5": "^6.3.7",
+    "@storybook/manager-webpack5": "^6.3.7",
     "@storybook/react": "^6.3.7",
     "babel-loader": "^8.2.2",
     "gatsby-plugin-sass": "^4.12.0",
     "node-sass": "^6.0.1",
-    "prettier": "2.3.2"
+    "prettier": "2.3.2",
+    "storybook-addon-gatsby": "^0.0.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
