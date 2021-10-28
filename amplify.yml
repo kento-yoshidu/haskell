@@ -3,6 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm install 14.15.0
         - nvm use 14.15.0
         - curl -o- -L https://yarnpkg.com/install.sh | bash
         - yarn global add @quasar/cli
