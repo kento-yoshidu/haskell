@@ -6,9 +6,10 @@ frontend:
         - nvm use stable
         - curl -o- -L https://yarnpkg.com/install.sh | bash
         - yarn global add @quasar/cli
+        - yarn install
     build:
       commands:
-        - npm run build
+        - yarn run build
   artifacts:
     baseDirectory: public
     files:
