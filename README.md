@@ -1,10 +1,16 @@
-# 【OLD】GatsbyBLog
+# Gatsby v4
 
-旧ブログ跡地。実験台にして色々試したい。
+Gatsby v4の練習台。
 
-## Gatsby4対応
+## デプロイ
+
+-  Netlify
+-  AWS Amplify
+  - `amlify.yml`でnodeのバージョン指定が必要
+
 ## TypeScript対応
 
-## ESLint対応
-
 ## Storybook対応
+
+## mdx対応
+
