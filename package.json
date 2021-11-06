@@ -21,6 +21,8 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "esbuild": "^0.13.12",
+    "esbuild-register": "^3.0.0",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   },
