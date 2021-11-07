@@ -1,4 +1,6 @@
-exports.createPages = async ({ actions }) => {
+import type { GatsbyNode } from "gatsby"
+
+const createPages: GatsbyNode['createPages']  = async ({ actions }) => {
   const { createPage } = actions
   createPage({
     path: "/using-dsg",
@@ -7,3 +9,5 @@ exports.createPages = async ({ actions }) => {
     defer: true,
   })
 }
+
+export { createPages }
