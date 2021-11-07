@@ -2,6 +2,7 @@ import type { GatsbyConfig } from "gatsby"
 import { resolve } from "path"
 
 const plugins: GatsbyConfig['plugins'] = [
+  `gatsby-plugin-sass`,
   `gatsby-plugin-typegen`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-image`,
