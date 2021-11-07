@@ -6,11 +6,19 @@ const plugins: GatsbyConfig['plugins'] = [
   `gatsby-plugin-typegen`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-image`,
+  `gatsby-plugin-mdx`,
   {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `images`,
       path: `${__dirname}/src/images`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `src/posts`,
+      name: `posts`,
     },
   },
   `gatsby-transformer-sharp`,
