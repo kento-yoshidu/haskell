@@ -4,10 +4,14 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import TestComponent from "../components/test"
+
 /*
 import "prismjs/themes/prism-tomorrow.css"
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 */
+
+import * as Styles from "../styles/blogPost.module.scss"
 
 interface Props {
   data: GatsbyTypes.BlogPostBySlugQuery
@@ -15,11 +19,15 @@ interface Props {
 }
 const Blog: React.VFC<Props> = ({ data, location }) => (
   <>
-    <MDXRenderer
-      frontmatter={data?.mdx?.frontmatter}
-    >
-      {data?.mdx?.body}
-    </MDXRenderer>
+    <TestComponent />
+
+    <div className={Styles.postWrapper}>
+      <MDXRenderer
+        frontmatter={data?.mdx?.frontmatter}
+      >
+          {data?.mdx?.body}
+      </MDXRenderer>
+    </div>
   </>
 )
 export default Blog
