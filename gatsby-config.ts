@@ -17,8 +17,8 @@ const plugins: GatsbyConfig['plugins'] = [
   {
     resolve: `gatsby-source-filesystem`,
     options: {
-      name: `src/posts`,
-      path: `posts`,
+      path: `src/posts`,
+      name: `posts`,
     },
   },
   `gatsby-transformer-sharp`,
