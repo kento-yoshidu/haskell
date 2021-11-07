@@ -43,10 +43,18 @@ const plugins: GatsbyConfig['plugins'] = [
 ]
 
 const siteMetadata: GatsbyConfig['siteMetadata'] = {
-  title: `Gatsby Default Starter`,
-  description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-  author: `@gatsbyjs`,
-  siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+  title: `CSS Animation & Tips`,
+  description: `CSSだけでできる色々なことの解説`,
+  lang: `ja`,
+  siteUrl: `https://cssanimation-and-tips.netlify.app`,
+  locale: `ja_JP`,
+  author: {
+    name: `Kento Yoshizu`,
+  },
+  //description: `A starter blog demonstrating what Gatsby can do.`,
+  social: {
+    //twitter: `kylemathews`,
+  },
 }
 
 const config: GatsbyConfig = {

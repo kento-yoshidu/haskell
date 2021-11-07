@@ -4,6 +4,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import TestComponent from "../components/test"
+
 /*
 import "prismjs/themes/prism-tomorrow.css"
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
@@ -15,11 +17,13 @@ interface Props {
 }
 const Blog: React.VFC<Props> = ({ data, location }) => (
   <>
-    <MDXRenderer
-      frontmatter={data?.mdx?.frontmatter}
-    >
-      {data?.mdx?.body}
-    </MDXRenderer>
+    <TestComponent />
+
+      <MDXRenderer
+        frontmatter={data?.mdx?.frontmatter}
+      >
+          {data?.mdx?.body}
+      </MDXRenderer>
   </>
 )
 export default Blog
