@@ -10,7 +10,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 */
 
 interface Props {
-  data: any
+  data: GatsbyTypes.BlogPostBySlugQuery
   location: string
 }
 const Blog: React.VFC<Props> = ({ data, location }) => (
