@@ -2913,16 +2913,6 @@ type ImageSharpSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type cProductGatsbyVerion4SrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type cProductGatsbyVerion4SrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type cProductGatsbyVerion4SrcpagesusingTypescriptTsx2907560070QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type cProductGatsbyVerion4SrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
-
 type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2953,6 +2943,16 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type cProductGatsbyVerion4SrcpagesusingTypescriptTsx2907560070QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type cProductGatsbyVerion4SrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
+
+type cProductGatsbyVerion4SrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type cProductGatsbyVerion4SrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
