@@ -8,9 +8,10 @@ Gatsby v4の練習台。
 -  AWS Amplify
   - `amlify.yml`でnodeのバージョン指定が必要
 
-## TypeScript対応
+## 色々
 
-## Storybook対応
-
-## mdx対応
-
+- 💮 TypeScript
+- 💮 SCSS
+- 💮 CSS Modules
+- 💮 MDX
+- 

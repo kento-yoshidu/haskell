@@ -1,19 +1,28 @@
-import * as React from "react"
+import React from "react"
 import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-  >
-    <div
-    >
-      <h1 style={{ margin: 0 }}>
+const Styles = require("../styles/_header.module.scss")
+
+interface Props {
+  location: {
+    pathname: string
+  }
+}
+
+const Header: React.VFC<Props> = ({ location }) => (
+  <header className={Styles.header}>
+    <h1 className={Styles.headerTitle}>CSS Animation & Tips</h1>
+
+    {
+      location.pathname !== "/" &&  (
         <Link
           to="/"
+          className={Styles.link}
         >
-          {siteTitle}
+          to HOME
         </Link>
-      </h1>
-    </div>
+      )
+    }
   </header>
 )
 
