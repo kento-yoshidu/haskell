@@ -6,6 +6,10 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
+  return (
+    <h1>TOP</h1>
+  )
+  /*
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
@@ -61,10 +65,12 @@ const BlogIndex = ({ data, location }) => {
       </ol>
     </Layout>
   )
+  */
 }
 
 export default BlogIndex
 
+/*
 export const pageQuery = graphql`
   query {
     site {
@@ -87,3 +93,4 @@ export const pageQuery = graphql`
     }
   }
 `
+*/
