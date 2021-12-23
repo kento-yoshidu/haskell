@@ -5,17 +5,22 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import { MDXRenderer } from "gatsby-plugin-mdx"
+
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
+  console.log(data)
+  const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
     <Layout location={location} title={siteTitle}>
+      {/*
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      */}
       <article
         className="blog-post"
         itemScope
@@ -26,9 +31,9 @@ const BlogPostTemplate = ({ data, location }) => {
           <p>{post.frontmatter.date}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+          <MDXRenderer>{post.body}</MDXRenderer>
         <hr />
         <footer>
           <Bio />
@@ -69,6 +74,28 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
+  ) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    mdx(id: { eq: $id }) {
+      id
+      body
+      mdxAST
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
+      }
+    }
+  }
+`
+/*
+export const pageQuery = graphql`
+  query BlogPostBySlug(
+    $id: String!
     $previousPostId: String
     $nextPostId: String
   ) {
@@ -77,7 +104,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    mdx(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
       html
@@ -105,3 +132,4 @@ export const pageQuery = graphql`
     }
   }
 `
+*/
