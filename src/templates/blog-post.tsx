@@ -7,11 +7,15 @@ import Seo from "../components/seo"
 
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-const BlogPostTemplate = ({ data, location }) => {
+interface Props {
+  data: GatsbyTypes.BlogPostBySlugQuery;
+  location: string;
+}
+
+const BlogPostTemplate: React.VFC<Props> = ({ data, location }) => {
   console.log(data)
   const post = data.mdx
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+  const siteTitle = data?.site?.siteMetadata?.title || `Title`
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -27,18 +31,19 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 itemProp="headline">{post?.frontmatter?.title}</h1>
+          <p>{post?.frontmatter?.date}</p>
         </header>
         <section
           itemProp="articleBody"
         />
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer>{post?.body}</MDXRenderer>
         <hr />
         <footer>
           <Bio />
         </footer>
       </article>
+      {/*
       <nav className="blog-post-nav">
         <ul
           style={{
@@ -65,6 +70,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </li>
         </ul>
       </nav>
+            */}
     </Layout>
   )
 }
