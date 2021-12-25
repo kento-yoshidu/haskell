@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -13,18 +12,11 @@ interface Props {
 }
 
 const BlogPostTemplate: React.VFC<Props> = ({ data, location }) => {
-  console.log(data)
   const post = data.mdx
   const siteTitle = data?.site?.siteMetadata?.title || `Title`
 
   return (
     <Layout location={location} title={siteTitle}>
-      {/*
-      <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
-      */}
       <article
         className="blog-post"
         itemScope
@@ -39,38 +31,7 @@ const BlogPostTemplate: React.VFC<Props> = ({ data, location }) => {
         />
           <MDXRenderer>{post?.body}</MDXRenderer>
         <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
-      {/*
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
-            */}
     </Layout>
   )
 }
