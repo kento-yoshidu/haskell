@@ -45,6 +45,7 @@
     "@types/react-dom": "^17.0.11",
     "esbuild": "^0.14.8",
     "esbuild-register": "^3.2.1",
+    "gatsby-plugin-dts-css-modules": "^2.2.0",
     "prettier": "^2.4.1",
     "typescript": "^4.5.4"
   },
