@@ -8,7 +8,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 interface Props {
   data: GatsbyTypes.BlogPostBySlugQuery;
-  location: string;
+  location: {
+    pathname: string
+  }
 }
 
 const BlogPostTemplate: React.VFC<Props> = ({ data, location }) => {
@@ -16,7 +18,9 @@ const BlogPostTemplate: React.VFC<Props> = ({ data, location }) => {
   const siteTitle = data?.site?.siteMetadata?.title || `Title`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout
+      location={location}
+    >
       <article
         className="blog-post"
         itemScope
