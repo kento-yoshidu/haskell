@@ -1,0 +1,27 @@
+@import "../scss//variables.scss";
+
+.header {
+  height: 25vh;
+  margin-bottom: 5vh;
+  border-bottom: 1px solid #eee;
+  color: #aaa;
+  .header-title {
+    margin: 10vh 15vw 30px 0;
+    font-size: 6rem;
+    font-weight: 500;
+    text-align: right;
+  }
+  .link {
+    margin-left: 15vw;
+    color: #aaa;
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    &:hover {
+      background: -webkit-linear-gradient(0deg, $main-color2, $main-color);//背景色にグラデーションを指定
+      -webkit-background-clip: text;//テキストでくり抜く
+      -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+    }
+  }
+}
