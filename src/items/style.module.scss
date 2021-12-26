@@ -1,0 +1,11 @@
+.mask {
+  background-color: #222;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 80%;
+  transition-duration: 0.45s;
+  &:hover {
+    top: 0;   
+  }
+}
