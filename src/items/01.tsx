@@ -1,21 +1,29 @@
-import { relative } from "path/posix"
-import React from "react"
+import * as React from "react"
+import { Link } from "gatsby"
 
-import * as BoxStyles from "../styles/box.module.scss"
 import * as Styles from "./style.module.scss"
 
 const Item01 = () => {
   return (
     <div
-      className={BoxStyles.box}
+      className={Styles.box}
       style={{
-        "position": "relative",
-        "overflow": "hidden",
+        "width": "20vw",
+        "height": "20vw",
       }}
     >
-      <div className={Styles.mask}>
-        this is a mask
-      </div>
+      <p>#01 Slide up</p>
+      <Link
+        className={Styles.mask}
+        to="/01"
+      >
+        <p className={Styles.title}>
+          Hover me
+        </p>
+        <p className={Styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+        </p>
+      </Link>
     </div>
   )
 }
