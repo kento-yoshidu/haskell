@@ -8,8 +8,8 @@ grp n
 
 fn :: Int -> Int -> String
 fn x y =
-    let a = grp x in
-    let b = grp y in
+    let a = grp x
+        b = grp y in
 
     if a == b then
         "YES"
