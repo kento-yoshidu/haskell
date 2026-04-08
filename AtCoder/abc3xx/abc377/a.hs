@@ -4,8 +4,7 @@ import Data.List (sort)
 
 fn :: String -> String
 fn s =
-    let sorted = sort s
-    in if sorted == "ABC" then
+    if sort s == "ABC" then
         "Yes"
     else
         "No"
