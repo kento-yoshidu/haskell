@@ -1,0 +1,24 @@
+-- https://atcoder.jp/contests/abc396/tasks/abc396_a
+
+fn :: Int -> [Int] -> String
+fn n (x:y:z:xs)
+    | x == y && y == z = "Yes"
+    | otherwise        = fn n (y:z:xs)
+fn _ _                 = "No"
+
+main :: IO ()
+main = do
+    putStrLn (fn 5 [1, 4, 4, 4, 2])
+    -- Yes
+
+    putStrLn (fn 6 [2, 4, 4, 2, 2, 4])
+    -- No
+
+    putStrLn (fn 8 [1, 4, 2, 5, 7, 7, 7, 2])
+    -- Yes
+
+    putStrLn (fn 10 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    -- No
+
+    putStrLn (fn 13 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+    -- Yes
